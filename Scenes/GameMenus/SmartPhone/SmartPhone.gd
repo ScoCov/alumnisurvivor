@@ -1,6 +1,8 @@
 extends Control
 class_name SmartPhone
 
+
+##Just adding a quick change
 var current_student_page: StudentPage
 
 func _ready():
