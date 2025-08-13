@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Attribute" load_steps=2 format=3 uid="uid://daw6jacc8mg1s"]
+
+[ext_resource type="Script" path="res://Scripts/Abstract Classes/Attribute.gd" id="1_3247a"]
+
+[resource]
+script = ExtResource("1_3247a")
+name = "Critical Chance"
+id = "ATTRIBUTE_CRITICAL_CHANCE"
+description = "Effects the chance of a critical hit occuring per giving damage instance."
+min_limit = 0.0
+max_limit = 0.0
+min_limit_active = false
+max_limit_active = false

@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="EnemyBase" load_steps=3 format=3 uid="uid://ctvbunsh15nw3"]
+
+[ext_resource type="Script" path="res://Scripts/Abstract Classes/Enemy.gd" id="1_388ap"]
+[ext_resource type="Texture2D" uid="uid://diks4x6brrsfm" path="res://Resources/Image/Temp/Orc.png" id="1_hgf4y"]
+
+[resource]
+script = ExtResource("1_388ap")
+name = "DEBUG"
+id = "ENEMY_DEBUG"
+tags = Array[int]([14, 2])
+image = ExtResource("1_hgf4y")
+experience_group = "None"

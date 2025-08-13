@@ -1,0 +1,888 @@
+[gd_scene load_steps=11 format=3 uid="uid://ddieonrosc10e"]
+
+[ext_resource type="Script" path="res://Scenes/GameMenus/MenuTablet.gd" id="1_4bfa7"]
+[ext_resource type="Shader" path="res://Resources/Shaders/paletteswap.gdshader" id="2_jwsyd"]
+[ext_resource type="Texture2D" uid="uid://tipd8jqpeh1b" path="res://Resources/Image/Temp/Player_Stance_NeutralLeft.png" id="4_6opp1"]
+
+[sub_resource type="Animation" id="Animation_cchn3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Bezel:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Bezel:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Bezel/ScreenControl/Content:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Bezel/ScreenControl/Content:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_b1iep"]
+resource_name = "scroll_right"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Bezel/ScreenControl/Content:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.4, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-750, 0), Vector2(750, 0), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Bezel/ScreenControl/Content:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_i8pml"]
+resource_name = "slide_in"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Bezel:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.241485, 0.241485),
+"update": 0,
+"values": [Vector2(0, 1000), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Bezel:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vrdw4"]
+_data = {
+"RESET": SubResource("Animation_cchn3"),
+"scroll_right": SubResource("Animation_b1iep"),
+"slide_in": SubResource("Animation_i8pml")
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eghxe"]
+bg_color = Color(0.858824, 0.854902, 0.886275, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+shadow_offset = Vector2(1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kf8pv"]
+shader = ExtResource("2_jwsyd")
+shader_parameter/original_0 = Color(0.1, 0.1, 0.1, 1)
+shader_parameter/original_1 = Color(0.1, 0.1, 0.1, 1)
+shader_parameter/original_2 = Color(0.1, 0.1, 0.1, 1)
+shader_parameter/original_3 = Color(0.1, 0.1, 0.1, 1)
+shader_parameter/original_4 = Color(0.1, 0.1, 0.1, 1)
+shader_parameter/replace_0 = Color(0.1, 0.1, 0.1, 1)
+shader_parameter/replace_1 = Color(0.1, 0.1, 0.1, 1)
+shader_parameter/replace_2 = Color(0.1, 0.1, 0.1, 1)
+shader_parameter/replace_3 = Color(0.1, 0.1, 0.1, 1)
+shader_parameter/replace_4 = Color(0.1, 0.1, 0.1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ktmer"]
+draw_center = false
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[node name="MenuTablet" type="Control"]
+custom_minimum_size = Vector2(738, 415)
+layout_mode = 3
+anchor_right = 0.00260417
+anchor_bottom = 0.00154321
+offset_right = 741.0
+offset_bottom = 416.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4bfa7")
+metadata/_edit_use_anchors_ = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_vrdw4")
+}
+
+[node name="Bezel" type="Panel" parent="."]
+visible = false
+clip_contents = true
+custom_minimum_size = Vector2(738, 415)
+layout_mode = 0
+offset_right = 738.0
+offset_bottom = 415.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_eghxe")
+metadata/_edit_lock_ = true
+
+[node name="ScreenControl" type="Control" parent="Bezel"]
+clip_contents = true
+layout_mode = 1
+anchor_left = 0.0228495
+anchor_top = 0.0407674
+anchor_right = 0.977151
+anchor_bottom = 0.959233
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
+
+[node name="Screen" type="ColorRect" parent="Bezel/ScreenControl"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0110876, 0.0110876, 0.0110876, 1)
+metadata/_edit_lock_ = true
+
+[node name="Content" type="Control" parent="Bezel/ScreenControl"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1408.55
+offset_bottom = 762.326
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
+
+[node name="Profile" type="Control" parent="Bezel/ScreenControl/Content"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_lock_ = true
+
+[node name="Doll" type="Control" parent="Bezel/ScreenControl/Content/Profile"]
+clip_contents = true
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 1
+anchors_preset = 0
+offset_left = 12.0
+offset_top = 12.0
+offset_right = 204.0
+offset_bottom = 204.0
+
+[node name="Center" type="Control" parent="Bezel/ScreenControl/Content/Profile/Doll"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PlayerStanceNeutralLeft" type="Sprite2D" parent="Bezel/ScreenControl/Content/Profile/Doll/Center"]
+material = SubResource("ShaderMaterial_kf8pv")
+texture = ExtResource("4_6opp1")
+
+[node name="Panel" type="Panel" parent="Bezel/ScreenControl/Content/Profile/Doll"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ktmer")
+
+[node name="Pages" type="TabContainer" parent="Bezel/ScreenControl/Content/Profile"]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -497.0
+offset_top = 12.0
+offset_right = -16.0
+offset_bottom = -11.0
+grow_horizontal = 0
+grow_vertical = 2
+tab_alignment = 1
+
+[node name="Info" type="Control" parent="Bezel/ScreenControl/Content/Profile/Pages"]
+layout_mode = 2
+focus_mode = 1
+
+[node name="Label" type="Label" parent="Bezel/ScreenControl/Content/Profile/Pages/Info"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 23.0
+grow_horizontal = 2
+text = "Infomation"
+horizontal_alignment = 1
+
+[node name="Control" type="Control" parent="Bezel/ScreenControl/Content/Profile/Pages/Info"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 23.0
+offset_bottom = -0.163208
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Bezel/ScreenControl/Content/Profile/Pages/Info/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_right = 12
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Bezel/ScreenControl/Content/Profile/Pages/Info/Control/MarginContainer"]
+layout_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="student_name" type="Label" parent="Bezel/ScreenControl/Content/Profile/Pages/Info/Control/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Name:"
+
+[node name="Label" type="Label" parent="Bezel/ScreenControl/Content/Profile/Pages/Info/Control/MarginContainer/VBoxContainer/student_name"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -126.0
+offset_top = -11.5
+offset_bottom = 11.5
+grow_horizontal = 0
+grow_vertical = 2
+text = "STUDENT_NAME"
+
+[node name="primary" type="Label" parent="Bezel/ScreenControl/Content/Profile/Pages/Info/Control/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Name:"
+
+[node name="Label" type="Label" parent="Bezel/ScreenControl/Content/Profile/Pages/Info/Control/MarginContainer/VBoxContainer/primary"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -126.0
+offset_top = -11.5
+offset_bottom = 11.5
+grow_horizontal = 0
+grow_vertical = 2
+text = "STUDENT_NAME"
+
+[node name="secondary" type="Label" parent="Bezel/ScreenControl/Content/Profile/Pages/Info/Control/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Name:"
+
+[node name="Label" type="Label" parent="Bezel/ScreenControl/Content/Profile/Pages/Info/Control/MarginContainer/VBoxContainer/secondary"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -126.0
+offset_top = -11.5
+offset_bottom = 11.5
+grow_horizontal = 0
+grow_vertical = 2
+text = "STUDENT_NAME"
+
+[node name="weakness" type="Label" parent="Bezel/ScreenControl/Content/Profile/Pages/Info/Control/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Name:"
+
+[node name="Label" type="Label" parent="Bezel/ScreenControl/Content/Profile/Pages/Info/Control/MarginContainer/VBoxContainer/weakness"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -126.0
+offset_top = -11.5
+offset_bottom = 11.5
+grow_horizontal = 0
+grow_vertical = 2
+text = "STUDENT_NAME"
+
+[node name="Outfits" type="Control" parent="Bezel/ScreenControl/Content/Profile/Pages"]
+visible = false
+layout_mode = 2
+focus_mode = 1
+
+[node name="Statistics" type="Control" parent="Bezel/ScreenControl/Content/Profile/Pages"]
+visible = false
+layout_mode = 2
+focus_mode = 1
+
+[node name="HSplitContainer" type="HSplitContainer" parent="Bezel/ScreenControl/Content/Profile/Pages/Statistics"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+split_offset = 206
+dragger_visibility = 2
+
+[node name="Primary" type="Control" parent="Bezel/ScreenControl/Content/Profile/Pages/Statistics/HSplitContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Bezel/ScreenControl/Content/Profile/Pages/Statistics/HSplitContainer/Primary"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 23.0
+offset_bottom = -0.163208
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 12
+
+[node name="attributes" type="VBoxContainer" parent="Bezel/ScreenControl/Content/Profile/Pages/Statistics/HSplitContainer/Primary/MarginContainer"]
+layout_mode = 2
+
+[node name="hitpoints" type="Label" parent="Bezel/ScreenControl/Content/Profile/Pages/Statistics/HSplitContainer/Primary/MarginContainer/attributes"]
+layout_mode = 2
+text = "Hitpoints: "
+
+[node name="value" type="Label" parent="Bezel/ScreenControl/Content/Profile/Pages/Statistics/HSplitContainer/Primary/MarginContainer/attributes/hitpoints"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -11.5
+offset_bottom = 11.5
+grow_horizontal = 0
+grow_vertical = 2
+text = "0"
+horizontal_alignment = 2
+
+[node name="damage" type="Label" parent="Bezel/ScreenControl/Content/Profile/Pages/Statistics/HSplitContainer/Primary/MarginContainer/attributes"]
+layout_mode = 2
+text = "Damage: "
+
+[node name="value" type="Label" parent="Bezel/ScreenControl/Content/Profile/Pages/Statistics/HSplitContainer/Primary/MarginContainer/attributes/damage"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -11.5
+offset_bottom = 11.5
+grow_horizontal = 0
+grow_vertical = 2
+text = "0"
+horizontal_alignment = 2
+
+[node name="movement_speed" type="Label" parent="Bezel/ScreenControl/Content/Profile/Pages/Statistics/HSplitContainer/Primary/MarginContainer/attributes"]
+layout_mode = 2
+text = "Movement Speed: "
+
+[node name="value" type="Label" parent="Bezel/ScreenControl/Content/Profile/Pages/Statistics/HSplitContainer/Primary/MarginContainer/attributes/movement_speed"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -11.5
+offset_bottom = 11.5
+grow_horizontal = 0
+grow_vertical = 2
+text = "0"
+horizontal_alignment = 2
+
+[node name="cooldown" type="Label" parent="Bezel/ScreenControl/Content/Profile/Pages/Statistics/HSplitContainer/Primary/MarginContainer/attributes"]
+layout_mode = 2
+text = "Cooldown: "
+
+[node name="value" type="Label" parent="Bezel/ScreenControl/Content/Profile/Pages/Statistics/HSplitContainer/Primary/MarginContainer/attributes/cooldown"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -11.5
+offset_bottom = 11.5
+grow_horizontal = 0
+grow_vertical = 2
+text = "0"
+horizontal_alignment = 2
+
+[node name="duration" type="Label" parent="Bezel/ScreenControl/Content/Profile/Pages/Statistics/HSplitContainer/Primary/MarginContainer/attributes"]
+layout_mode = 2
+text = "Duration: "
+
+[node name="value" type="Label" parent="Bezel/ScreenControl/Content/Profile/Pages/Statistics/HSplitContainer/Primary/MarginContainer/attributes/duration"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -11.5
+offset_bottom = 11.5
+grow_horizontal = 0
+grow_vertical = 2
+text = "0"
+horizontal_alignment = 2
+
+[node name="critical_chance" type="Label" parent="Bezel/ScreenControl/Content/Profile/Pages/Statistics/HSplitContainer/Primary/MarginContainer/attributes"]
+layout_mode = 2
+text = "Critical Hit Chance: "
+
+[node name="value" type="Label" parent="Bezel/ScreenControl/Content/Profile/Pages/Statistics/HSplitContainer/Primary/MarginContainer/attributes/critical_chance"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -11.5
+offset_bottom = 11.5
+grow_horizontal = 0
+grow_vertical = 2
+text = "0"
+horizontal_alignment = 2
+
+[node name="critical_damage" type="Label" parent="Bezel/ScreenControl/Content/Profile/Pages/Statistics/HSplitContainer/Primary/MarginContainer/attributes"]
+layout_mode = 2
+text = "Critical Damage: "
+
+[node name="value" type="Label" parent="Bezel/ScreenControl/Content/Profile/Pages/Statistics/HSplitContainer/Primary/MarginContainer/attributes/critical_damage"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -11.5
+offset_bottom = 11.5
+grow_horizontal = 0
+grow_vertical = 2
+text = "0"
+horizontal_alignment = 2
+
+[node name="attack_range" type="Label" parent="Bezel/ScreenControl/Content/Profile/Pages/Statistics/HSplitContainer/Primary/MarginContainer/attributes"]
+layout_mode = 2
+text = "Attack Range: "
+
+[node name="value" type="Label" parent="Bezel/ScreenControl/Content/Profile/Pages/Statistics/HSplitContainer/Primary/MarginContainer/attributes/attack_range"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -11.5
+offset_bottom = 11.5
+grow_horizontal = 0
+grow_vertical = 2
+text = "0"
+horizontal_alignment = 2
+
+[node name="dash" type="Label" parent="Bezel/ScreenControl/Content/Profile/Pages/Statistics/HSplitContainer/Primary/MarginContainer/attributes"]
+layout_mode = 2
+text = "Dashes: "
+
+[node name="value" type="Label" parent="Bezel/ScreenControl/Content/Profile/Pages/Statistics/HSplitContainer/Primary/MarginContainer/attributes/dash"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -11.5
+offset_bottom = 11.5
+grow_horizontal = 0
+grow_vertical = 2
+text = "0"
+horizontal_alignment = 2
+
+[node name="dodge" type="Label" parent="Bezel/ScreenControl/Content/Profile/Pages/Statistics/HSplitContainer/Primary/MarginContainer/attributes"]
+layout_mode = 2
+text = "Dodge: "
+
+[node name="value" type="Label" parent="Bezel/ScreenControl/Content/Profile/Pages/Statistics/HSplitContainer/Primary/MarginContainer/attributes/dodge"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -11.5
+offset_bottom = 11.5
+grow_horizontal = 0
+grow_vertical = 2
+text = "0"
+horizontal_alignment = 2
+
+[node name="armor" type="Label" parent="Bezel/ScreenControl/Content/Profile/Pages/Statistics/HSplitContainer/Primary/MarginContainer/attributes"]
+layout_mode = 2
+text = "Armor: "
+
+[node name="value" type="Label" parent="Bezel/ScreenControl/Content/Profile/Pages/Statistics/HSplitContainer/Primary/MarginContainer/attributes/armor"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -11.5
+offset_bottom = 11.5
+grow_horizontal = 0
+grow_vertical = 2
+text = "0"
+horizontal_alignment = 2
+
+[node name="Label" type="Label" parent="Bezel/ScreenControl/Content/Profile/Pages/Statistics/HSplitContainer/Primary"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 23.0
+grow_horizontal = 2
+size_flags_vertical = 0
+text = "Attributes"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Secondary" type="Control" parent="Bezel/ScreenControl/Content/Profile/Pages/Statistics/HSplitContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Bezel/ScreenControl/Content/Profile/Pages/Statistics/HSplitContainer/Secondary"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 23.0
+offset_bottom = -0.163208
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 12
+
+[node name="attributes" type="VBoxContainer" parent="Bezel/ScreenControl/Content/Profile/Pages/Statistics/HSplitContainer/Secondary/MarginContainer"]
+layout_mode = 2
+
+[node name="projectile_speed" type="Label" parent="Bezel/ScreenControl/Content/Profile/Pages/Statistics/HSplitContainer/Secondary/MarginContainer/attributes"]
+layout_mode = 2
+text = "Projectile Speed: "
+
+[node name="value" type="Label" parent="Bezel/ScreenControl/Content/Profile/Pages/Statistics/HSplitContainer/Secondary/MarginContainer/attributes/projectile_speed"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -11.5
+offset_bottom = 11.5
+grow_horizontal = 0
+grow_vertical = 2
+text = "0"
+horizontal_alignment = 2
+
+[node name="projectile" type="Label" parent="Bezel/ScreenControl/Content/Profile/Pages/Statistics/HSplitContainer/Secondary/MarginContainer/attributes"]
+layout_mode = 2
+text = "Projectiles: "
+
+[node name="value" type="Label" parent="Bezel/ScreenControl/Content/Profile/Pages/Statistics/HSplitContainer/Secondary/MarginContainer/attributes/projectile"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -11.5
+offset_bottom = 11.5
+grow_horizontal = 0
+grow_vertical = 2
+text = "0"
+horizontal_alignment = 2
+
+[node name="pierce" type="Label" parent="Bezel/ScreenControl/Content/Profile/Pages/Statistics/HSplitContainer/Secondary/MarginContainer/attributes"]
+layout_mode = 2
+text = "Pierce: "
+
+[node name="value" type="Label" parent="Bezel/ScreenControl/Content/Profile/Pages/Statistics/HSplitContainer/Secondary/MarginContainer/attributes/pierce"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -11.5
+offset_bottom = 11.5
+grow_horizontal = 0
+grow_vertical = 2
+text = "0"
+horizontal_alignment = 2
+
+[node name="bounce" type="Label" parent="Bezel/ScreenControl/Content/Profile/Pages/Statistics/HSplitContainer/Secondary/MarginContainer/attributes"]
+layout_mode = 2
+text = "Bounce: "
+
+[node name="value" type="Label" parent="Bezel/ScreenControl/Content/Profile/Pages/Statistics/HSplitContainer/Secondary/MarginContainer/attributes/bounce"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -11.5
+offset_bottom = 11.5
+grow_horizontal = 0
+grow_vertical = 2
+text = "0"
+horizontal_alignment = 2
+
+[node name="xp_bonus" type="Label" parent="Bezel/ScreenControl/Content/Profile/Pages/Statistics/HSplitContainer/Secondary/MarginContainer/attributes"]
+layout_mode = 2
+text = "XP Bonus: "
+
+[node name="value" type="Label" parent="Bezel/ScreenControl/Content/Profile/Pages/Statistics/HSplitContainer/Secondary/MarginContainer/attributes/xp_bonus"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -11.5
+offset_bottom = 11.5
+grow_horizontal = 0
+grow_vertical = 2
+text = "0"
+horizontal_alignment = 2
+
+[node name="revive" type="Label" parent="Bezel/ScreenControl/Content/Profile/Pages/Statistics/HSplitContainer/Secondary/MarginContainer/attributes"]
+layout_mode = 2
+text = "Revive: "
+
+[node name="value" type="Label" parent="Bezel/ScreenControl/Content/Profile/Pages/Statistics/HSplitContainer/Secondary/MarginContainer/attributes/revive"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -11.5
+offset_bottom = 11.5
+grow_horizontal = 0
+grow_vertical = 2
+text = "0"
+horizontal_alignment = 2
+
+[node name="block" type="Label" parent="Bezel/ScreenControl/Content/Profile/Pages/Statistics/HSplitContainer/Secondary/MarginContainer/attributes"]
+layout_mode = 2
+text = "Block: "
+
+[node name="value" type="Label" parent="Bezel/ScreenControl/Content/Profile/Pages/Statistics/HSplitContainer/Secondary/MarginContainer/attributes/block"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -11.5
+offset_bottom = 11.5
+grow_horizontal = 0
+grow_vertical = 2
+text = "0"
+horizontal_alignment = 2
+
+[node name="knockback" type="Label" parent="Bezel/ScreenControl/Content/Profile/Pages/Statistics/HSplitContainer/Secondary/MarginContainer/attributes"]
+layout_mode = 2
+text = "Knockback: "
+
+[node name="value" type="Label" parent="Bezel/ScreenControl/Content/Profile/Pages/Statistics/HSplitContainer/Secondary/MarginContainer/attributes/knockback"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -11.5
+offset_bottom = 11.5
+grow_horizontal = 0
+grow_vertical = 2
+text = "0"
+horizontal_alignment = 2
+
+[node name="Label" type="Label" parent="Bezel/ScreenControl/Content/Profile/Pages/Statistics/HSplitContainer/Secondary"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 23.0
+grow_horizontal = 2
+size_flags_vertical = 0
+text = "Attributes"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Biography" type="Control" parent="Bezel/ScreenControl/Content/Profile/Pages"]
+visible = false
+layout_mode = 2
+focus_mode = 1
+
+[node name="Achievements" type="Control" parent="Bezel/ScreenControl/Content/Profile/Pages"]
+visible = false
+layout_mode = 2
+focus_mode = 1
+
+[node name="Controls" type="Control" parent="Bezel/ScreenControl/Content/Profile"]
+layout_mode = 1
+anchor_left = 0.0169014
+anchor_top = 0.543081
+anchor_right = 0.287324
+anchor_bottom = 0.966057
+grow_vertical = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="Panel" type="Panel" parent="Bezel/ScreenControl/Content/Profile/Controls"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="MarginContainer" type="MarginContainer" parent="Bezel/ScreenControl/Content/Profile/Controls/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+metadata/_edit_use_anchors_ = true
+
+[node name="Panel" type="Panel" parent="Bezel/ScreenControl/Content/Profile/Controls/Panel/MarginContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Bezel/ScreenControl/Content/Profile/Controls/Panel/MarginContainer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="NextPage" type="Button" parent="Bezel/ScreenControl/Content/Profile/Controls/Panel/MarginContainer/Panel/VBoxContainer"]
+layout_mode = 2
+text = "Next Page"
+
+[node name="PreviosPage" type="Button" parent="Bezel/ScreenControl/Content/Profile/Controls/Panel/MarginContainer/Panel/VBoxContainer"]
+layout_mode = 2
+text = "Prev Page"
+
+[node name="NextStudent" type="Button" parent="Bezel/ScreenControl/Content/Profile/Controls/Panel/MarginContainer/Panel/VBoxContainer"]
+layout_mode = 2
+focus_mode = 0
+text = "Next Stuident"
+
+[node name="Close" type="Button" parent="Bezel/ScreenControl/Content/Profile/Controls/Panel/MarginContainer/Panel/VBoxContainer"]
+layout_mode = 2
+focus_mode = 0
+text = "Close"
+
+[connection signal="view_tablet" from="." to="." method="_on_view_tablet"]
+[connection signal="pressed" from="Bezel/ScreenControl/Content/Profile/Controls/Panel/MarginContainer/Panel/VBoxContainer/NextPage" to="." method="_on_next_page_pressed"]
+[connection signal="pressed" from="Bezel/ScreenControl/Content/Profile/Controls/Panel/MarginContainer/Panel/VBoxContainer/PreviosPage" to="." method="_on_previos_page_pressed"]
+[connection signal="pressed" from="Bezel/ScreenControl/Content/Profile/Controls/Panel/MarginContainer/Panel/VBoxContainer/NextStudent" to="." method="_on_next_student_pressed"]

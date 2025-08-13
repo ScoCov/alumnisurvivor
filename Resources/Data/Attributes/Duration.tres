@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Attribute" load_steps=2 format=3 uid="uid://cxxky3c0l03d6"]
+
+[ext_resource type="Script" path="res://Scripts/Abstract Classes/Attribute.gd" id="1_qdw1b"]
+
+[resource]
+script = ExtResource("1_qdw1b")
+name = "Duration"
+id = "ATTRIBUTE_DURATION"
+description = "Modifies the duration of an ability's lingering effects."
+value = 1.0
+min_limit = 0.05
+max_limit = 0.0
+min_limit_active = true
+max_limit_active = false

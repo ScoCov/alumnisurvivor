@@ -1,0 +1,109 @@
+[gd_scene load_steps=12 format=3 uid="uid://duawvciwr5oqu"]
+
+[ext_resource type="Script" path="res://Scenes/Debug.gd" id="1_638sf"]
+[ext_resource type="PackedScene" uid="uid://bfx5emdxf6bpk" path="res://Entities/StudentPlayer.tscn" id="1_hdf1b"]
+[ext_resource type="Resource" uid="uid://bmonc576e0861" path="res://Resources/Data/Items/RunningShoes.tres" id="2_t5d16"]
+[ext_resource type="Resource" uid="uid://bdyv3dp43ka7l" path="res://Resources/Data/Students/Student2.tres" id="3_0vj64"]
+[ext_resource type="Resource" uid="uid://csxnsb67w16ge" path="res://Resources/Data/Items/Watch.tres" id="3_odvvd"]
+[ext_resource type="PackedScene" uid="uid://cry3gb37tqlm0" path="res://Scenes/HUD/GameOverlay.tscn" id="4_t263k"]
+[ext_resource type="Texture2D" uid="uid://slw16wkvwpx" path="res://Resources/Image/Temp/LockIcon.png" id="4_ubowd"]
+[ext_resource type="PackedScene" uid="uid://b34bbmg8qnhvo" path="res://Scenes/HUD/DebugPause.tscn" id="8_t7cij"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ykqtt"]
+size = Vector2(1152, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eoc5k"]
+size = Vector2(20, 684)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gpgrm"]
+radius = 24.3311
+
+[node name="Debug" type="Node2D"]
+script = ExtResource("1_638sf")
+item1 = ExtResource("2_t5d16")
+item2 = ExtResource("3_odvvd")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0.81, 1, 1, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+offset_right = 568.0
+offset_bottom = 648.0
+color = Color(0.442911, 0.442911, 0.442911, 1)
+
+[node name="StudentPlayer" parent="." instance=ExtResource("1_hdf1b")]
+position = Vector2(566, 295)
+scale = Vector2(0.5, 0.5)
+student = ExtResource("3_0vj64")
+
+[node name="Camera2D" type="Camera2D" parent="StudentPlayer"]
+scale = Vector2(2, 2)
+
+[node name="NorthWall" type="StaticBody2D" parent="."]
+position = Vector2(-0.933533, -1.55836)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NorthWall"]
+position = Vector2(576.934, -8.44164)
+shape = SubResource("RectangleShape2D_ykqtt")
+
+[node name="SouthWall" type="StaticBody2D" parent="."]
+position = Vector2(-0.933533, -1.55836)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SouthWall"]
+position = Vector2(576.934, 657.558)
+shape = SubResource("RectangleShape2D_ykqtt")
+
+[node name="EastWall" type="StaticBody2D" parent="."]
+position = Vector2(1152.94, 2.23505)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EastWall"]
+position = Vector2(7.06323, 319.765)
+shape = SubResource("RectangleShape2D_eoc5k")
+
+[node name="WestWall" type="StaticBody2D" parent="."]
+position = Vector2(1152.94, 2.23505)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WestWall"]
+position = Vector2(-1160.94, 319.765)
+shape = SubResource("RectangleShape2D_eoc5k")
+
+[node name="ItemPickUp" type="Node2D" parent="."]
+position = Vector2(844, 294)
+scale = Vector2(0.5, 0.5)
+
+[node name="Area2D" type="Area2D" parent="ItemPickUp"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ItemPickUp/Area2D"]
+shape = SubResource("CircleShape2D_gpgrm")
+
+[node name="Sprite2D" type="Sprite2D" parent="ItemPickUp"]
+texture = ExtResource("4_ubowd")
+
+[node name="ItemPickUp2" type="Node2D" parent="."]
+position = Vector2(844, 416)
+scale = Vector2(0.5, 0.5)
+
+[node name="Area2D" type="Area2D" parent="ItemPickUp2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ItemPickUp2/Area2D"]
+shape = SubResource("CircleShape2D_gpgrm")
+
+[node name="Sprite2D" type="Sprite2D" parent="ItemPickUp2"]
+texture = ExtResource("4_ubowd")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="GameOverlay" parent="CanvasLayer" node_paths=PackedStringArray("player") instance=ExtResource("4_t263k")]
+player = NodePath("../../StudentPlayer")
+
+[node name="DebugPause" parent="CanvasLayer" node_paths=PackedStringArray("game_hud", "debug_player") instance=ExtResource("8_t7cij")]
+process_mode = 3
+visible = false
+game_hud = NodePath("../GameOverlay")
+debug_player = NodePath("../../StudentPlayer")
+
+[connection signal="body_entered" from="ItemPickUp/Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="ItemPickUp2/Area2D" to="." method="_on_area_2d_body_entered2"]

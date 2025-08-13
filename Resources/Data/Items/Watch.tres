@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="Item" load_steps=8 format=3 uid="uid://csxnsb67w16ge"]
+
+[ext_resource type="Resource" uid="uid://b4tkhcjsw15ux" path="res://Resources/Data/Attributes/Cooldown.tres" id="1_vlg3u"]
+[ext_resource type="Script" path="res://Scripts/Abstract Classes/Item/ItemBonus.gd" id="2_jvgb5"]
+[ext_resource type="Script" path="res://Scripts/Abstract Classes/Item/Item.gd" id="3_cm11e"]
+[ext_resource type="Resource" uid="uid://clct1lsc7c8iq" path="res://Resources/Data/Attributes/AttackSpeed.tres" id="3_dq2g1"]
+[ext_resource type="Texture2D" uid="uid://d12rqrbxf8t6q" path="res://Resources/Image/Temp/Items/pencil_32x32.png" id="4_tm404"]
+
+[sub_resource type="Resource" id="Resource_0ikqy"]
+script = ExtResource("2_jvgb5")
+attribute = ExtResource("1_vlg3u")
+start_value = 0.9
+growth_modifier = -0.05
+
+[sub_resource type="Resource" id="Resource_4ew0l"]
+script = ExtResource("2_jvgb5")
+attribute = ExtResource("3_dq2g1")
+start_value = 1.1
+growth_modifier = 0.1
+
+[resource]
+script = ExtResource("3_cm11e")
+item_name = "Watch"
+item_id = "ITEM_WATCH"
+item_description = "Your watch tells time, helping you manage your cooldowns better, at the cost of your damage output."
+tool_tip = "-5% to cooldown, -5% to damage"
+unlocked = false
+tags = Array[int]([])
+image = ExtResource("4_tm404")
+max_count = 0
+unique = false
+bonuses = Array[ExtResource("2_jvgb5")]([SubResource("Resource_0ikqy"), SubResource("Resource_4ew0l")])

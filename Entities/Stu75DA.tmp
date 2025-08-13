@@ -1,0 +1,90 @@
+[gd_scene load_steps=17 format=3 uid="uid://bfx5emdxf6bpk"]
+
+[ext_resource type="Script" path="res://Entities/Student_Player.gd" id="1_8mvqy"]
+[ext_resource type="Resource" uid="uid://ccg57vjn8xbc1" path="res://Resources/Data/Students/Student1.tres" id="2_1g6sg"]
+[ext_resource type="Script" path="res://Scripts/States/Player/PlayerIdle.gd" id="2_rh0d0"]
+[ext_resource type="Texture2D" uid="uid://tipd8jqpeh1b" path="res://Resources/Image/Temp/Greyknight_Doll.png" id="3_oyrxp"]
+[ext_resource type="Script" path="res://Scripts/States/StateMachine.gd" id="4_n0u7h"]
+[ext_resource type="Script" path="res://Scripts/States/Player/PlayerMoving.gd" id="4_oysit"]
+[ext_resource type="Script" path="res://Scripts/Component/HealthComponent.gd" id="6_1tbro"]
+[ext_resource type="PackedScene" uid="uid://f4gw0ao7eyh1" path="res://Abilities/Punch.tscn" id="6_3rrm3"]
+[ext_resource type="Script" path="res://Scripts/Component/MovementComponent.gd" id="7_qcbur"]
+[ext_resource type="Script" path="res://Scripts/Component/DamageComponent.gd" id="8_jym3i"]
+[ext_resource type="Script" path="res://Scripts/Component/CooldownComponent.gd" id="9_a5j4y"]
+[ext_resource type="Script" path="res://Scripts/Component/CriticalComponent.gd" id="10_gyg1b"]
+[ext_resource type="Script" path="res://Scripts/Component/DurationComponent.gd" id="11_foiru"]
+[ext_resource type="Script" path="res://Scripts/Component/AttackSpeedComponent.gd" id="12_uxvwl"]
+[ext_resource type="Script" path="res://Scripts/Component/RangeComponent.gd" id="14_gy5yj"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_oes4f"]
+radius = 64.0
+height = 198.0
+
+[node name="StudentPlayer" type="CharacterBody2D"]
+script = ExtResource("1_8mvqy")
+student = ExtResource("2_1g6sg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_oes4f")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("3_oyrxp")
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("player")]
+script = ExtResource("4_n0u7h")
+player = NodePath("..")
+
+[node name="PlayerIdle" type="Node" parent="StateMachine" node_paths=PackedStringArray("player")]
+script = ExtResource("2_rh0d0")
+player = NodePath("../..")
+
+[node name="PlayerMoving" type="Node" parent="StateMachine" node_paths=PackedStringArray("player")]
+script = ExtResource("4_oysit")
+player = NodePath("../..")
+
+[node name="Items" type="Node" parent="."]
+
+[node name="Attributes" type="Node" parent="."]
+
+[node name="Health" type="Node" parent="Attributes" node_paths=PackedStringArray("ENTITY")]
+script = ExtResource("6_1tbro")
+ENTITY = NodePath("../..")
+
+[node name="MovementSpeed" type="Node" parent="Attributes"]
+script = ExtResource("7_qcbur")
+
+[node name="Damage" type="Node" parent="Attributes"]
+script = ExtResource("8_jym3i")
+
+[node name="Cooldown" type="Node" parent="Attributes"]
+script = ExtResource("9_a5j4y")
+cooldown = 0.9
+
+[node name="Duration" type="Node" parent="Attributes"]
+script = ExtResource("11_foiru")
+
+[node name="Critical" type="Node" parent="Attributes"]
+script = ExtResource("10_gyg1b")
+
+[node name="AttackSpeed" type="Node" parent="Attributes"]
+script = ExtResource("12_uxvwl")
+
+[node name="Range" type="Node" parent="Attributes"]
+script = ExtResource("14_gy5yj")
+range = 100.0
+
+[node name="Abilities" type="Node2D" parent="."]
+metadata/_edit_lock_ = true
+
+[node name="Punch" parent="Abilities" node_paths=PackedStringArray("player_student") instance=ExtResource("6_3rrm3")]
+player_student = NodePath("../..")
+
+[node name="Outfit" type="Node2D" parent="."]
+
+[node name="Head" type="Marker2D" parent="Outfit"]
+position = Vector2(0, -54)
+
+[node name="ChestAndArms" type="Marker2D" parent="Outfit"]
+position = Vector2(0, 37)
+
+[node name="Sprite2D" type="Sprite2D" parent="Outfit/ChestAndArms"]

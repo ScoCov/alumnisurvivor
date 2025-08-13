@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Attribute" load_steps=2 format=3 uid="uid://b4tkhcjsw15ux"]
+
+[ext_resource type="Script" path="res://Scripts/Abstract Classes/Attribute.gd" id="1_mvrdx"]
+
+[resource]
+script = ExtResource("1_mvrdx")
+name = "Cooldown"
+id = "ATTRIBUTE_COOLDOWN"
+description = "Modifies the time between the activation of abilities."
+min_limit = 0.05
+max_limit = 0.0
+min_limit_active = true
+max_limit_active = false

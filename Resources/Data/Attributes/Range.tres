@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Attribute" load_steps=2 format=3 uid="uid://mno0drh8g3i8"]
+
+[ext_resource type="Script" path="res://Scripts/Abstract Classes/Attribute.gd" id="1_41a2q"]
+
+[resource]
+script = ExtResource("1_41a2q")
+name = "Range"
+id = "ATTRIBUTE_RANGE"
+description = "Alters the how far your abilities will travel or spread. If range is on a melee weapon its' effect will be half as effective."
+value = 100.0
+flat_or_percentage = "Flat"
+min_limit = 0.0
+max_limit = 0.0
+min_limit_active = false
+max_limit_active = false

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Attribute" load_steps=2 format=3 uid="uid://bmg5pkypsljug"]
+
+[ext_resource type="Script" path="res://Scripts/Abstract Classes/Attribute.gd" id="1_etoic"]
+
+[resource]
+script = ExtResource("1_etoic")
+name = "Critical Damage"
+id = "ATTRIBUTE_CRITICAL_DAMAGE"
+description = "Effects the damage amount from a critical hit."
+min_limit = 0.0
+max_limit = 0.0
+min_limit_active = false
+max_limit_active = false

@@ -1,0 +1,61 @@
+[gd_scene load_steps=7 format=3 uid="uid://dxs4mstvhwgv"]
+
+[ext_resource type="Script" path="res://Scripts/GameLogic.gd" id="1_ujiyw"]
+[ext_resource type="Script" path="res://Scenes/Maps/EnemyMananger.gd" id="2_28vsk"]
+[ext_resource type="PackedScene" uid="uid://bfx5emdxf6bpk" path="res://Entities/StudentPlayer.tscn" id="2_tt2uk"]
+[ext_resource type="PackedScene" uid="uid://cry3gb37tqlm0" path="res://Scenes/HUD/GameOverlay.tscn" id="3_e4hy1"]
+[ext_resource type="Texture2D" uid="uid://byby3mxqd478b" path="res://Resources/Image/Temp/Backgrounds/Desert.png" id="5_thx8d"]
+[ext_resource type="Texture2D" uid="uid://bpqhv26pjwr2h" path="res://Resources/Image/Temp/Backgrounds/Plains.png" id="6_klupb"]
+
+[node name="MapEntrance" type="Node2D"]
+
+[node name="Desert" type="Sprite2D" parent="."]
+position = Vector2(-720, 248)
+texture = ExtResource("5_thx8d")
+
+[node name="Plains" type="Sprite2D" parent="."]
+position = Vector2(1680, 248)
+texture = ExtResource("6_klupb")
+
+[node name="Plains2" type="Sprite2D" parent="."]
+position = Vector2(-720, -1104)
+texture = ExtResource("6_klupb")
+
+[node name="Desert2" type="Sprite2D" parent="."]
+position = Vector2(1680, -1104)
+texture = ExtResource("5_thx8d")
+
+[node name="GameLogic" type="Node" parent="." node_paths=PackedStringArray("player", "EnemySpawner", "gameTime")]
+script = ExtResource("1_ujiyw")
+player = NodePath("../StudentPlayer")
+EnemySpawner = NodePath("EnemyMananger")
+gameTime = NodePath("GameTimeLimit")
+
+[node name="EnemyMananger" type="Node" parent="GameLogic" node_paths=PackedStringArray("player", "spawn_timer")]
+script = ExtResource("2_28vsk")
+player = NodePath("../../StudentPlayer")
+spawn_timer = NodePath("../SpawnTimer")
+
+[node name="DifficultyModifiers" type="Node" parent="GameLogic"]
+
+[node name="WinCondition" type="Node" parent="GameLogic"]
+
+[node name="SpawnTimer" type="Timer" parent="GameLogic"]
+wait_time = 3.0
+autostart = true
+
+[node name="GameTimeLimit" type="Timer" parent="GameLogic"]
+wait_time = 30.0
+autostart = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="GameLogic"]
+
+[node name="GameOverlay" parent="GameLogic/CanvasLayer" node_paths=PackedStringArray("player", "timer") instance=ExtResource("3_e4hy1")]
+player = NodePath("../../../StudentPlayer")
+timer = NodePath("../../GameTimeLimit")
+
+[node name="StudentPlayer" parent="." instance=ExtResource("2_tt2uk")]
+position = Vector2(576, 320)
+student = null
+
+[node name="Camera2D" type="Camera2D" parent="StudentPlayer"]

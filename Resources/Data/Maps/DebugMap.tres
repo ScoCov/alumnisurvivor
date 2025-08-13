@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="MapBase" load_steps=3 format=3 uid="uid://bub7tmh3vho5u"]
+
+[ext_resource type="Resource" uid="uid://ctvbunsh15nw3" path="res://Resources/Data/Enemies/DebugEnemy.tres" id="1_fir3v"]
+[ext_resource type="Script" path="res://Scripts/Abstract Classes/Map.gd" id="2_vhas4"]
+
+[resource]
+script = ExtResource("2_vhas4")
+map_name = "Debug"
+map_id = "MAP_DEBUG"
+list_of_enemies = Array[Resource("res://Scripts/Abstract Classes/Enemy.gd")]([ExtResource("1_fir3v")])

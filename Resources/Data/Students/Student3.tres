@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="Student" load_steps=5 format=3 uid="uid://dm0b2ysjako7v"]
+
+[ext_resource type="Texture2D" uid="uid://bu4nhlg161ryi" path="res://Resources/Image/Temp/Purpleknight_Doll.png" id="1_bgvkd"]
+[ext_resource type="Texture2D" uid="uid://drohtv6sdlhoq" path="res://Resources/Image/Temp/PurpleKnight_Icon.png" id="2_qielo"]
+[ext_resource type="Texture2D" uid="uid://c2ldoxry2ns8u" path="res://Resources/Image/Temp/Greyknight_Portrait.png" id="3_7vtpm"]
+[ext_resource type="Script" path="res://Scripts/Abstract Classes/Student.gd" id="4_oap4c"]
+
+[resource]
+script = ExtResource("4_oap4c")
+student_name = "Alex"
+title_or_nickname = "Designated Hitter"
+primary_skill = "Movement Speed"
+secondary_skill = "Hitpoints"
+weakness_skill = "Critical Chance"
+starting_ability = "Thrash"
+unlocked = true
+tags = Array[int]([])
+icon = ExtResource("2_qielo")
+doll = ExtResource("1_bgvkd")
+avatar = ExtResource("3_7vtpm")

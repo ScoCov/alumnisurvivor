@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Attribute" load_steps=2 format=3 uid="uid://mxet0tdgrlnh"]
+
+[ext_resource type="Script" path="res://Scripts/Abstract Classes/Attribute.gd" id="1_5pleh"]
+
+[resource]
+script = ExtResource("1_5pleh")
+name = "Knockback"
+id = "ATTRIBUTE_KNOCKBACK"
+description = "Effects the distance abilities with a knockback effect."
+value = 0.0
+flat_or_percentage = "Flat"
+min_limit = 0.0
+max_limit = 0.0
+min_limit_active = false
+max_limit_active = false

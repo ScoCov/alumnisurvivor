@@ -1,0 +1,117 @@
+[gd_scene load_steps=4 format=3 uid="uid://b22a3vft51r0w"]
+
+[ext_resource type="Script" path="res://Scenes/GameMenu.gd" id="1_g2yf6"]
+[ext_resource type="PackedScene" uid="uid://ddieonrosc10e" path="res://Scenes/GameMenus/MenuTablet.tscn" id="2_rk0ml"]
+[ext_resource type="Script" path="res://Entities/Students/Conrad.gd" id="3_43jhl"]
+
+[node name="GameMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_g2yf6")
+
+[node name="VSplitContainer" type="VSplitContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+split_offset = 558
+dragger_visibility = 2
+
+[node name="Map" type="Control" parent="VSplitContainer"]
+layout_mode = 2
+metadata/_edit_lock_ = true
+
+[node name="ColorRect" type="ColorRect" parent="VSplitContainer/Map"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0687983, 0.0687983, 0.0687983, 1)
+metadata/_edit_lock_ = true
+
+[node name="Control" type="Control" parent="VSplitContainer/Map"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="MenuTablet" parent="VSplitContainer/Map/Control" node_paths=PackedStringArray("student") instance=ExtResource("2_rk0ml")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -370.5
+offset_top = -208.0
+offset_right = 370.5
+offset_bottom = 208.0
+student = NodePath("../../../../Students/STUDENT_CONRAD")
+
+[node name="Options" type="Control" parent="VSplitContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VSplitContainer/Options"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -153.5
+offset_top = -20.0
+offset_right = 153.5
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Button1" type="Button" parent="VSplitContainer/Options/HBoxContainer"]
+layout_mode = 2
+text = "Student"
+
+[node name="Button2" type="Button" parent="VSplitContainer/Options/HBoxContainer"]
+layout_mode = 2
+text = "Besty"
+
+[node name="Button3" type="Button" parent="VSplitContainer/Options/HBoxContainer"]
+layout_mode = 2
+text = "Weapon"
+
+[node name="Button4" type="Button" parent="VSplitContainer/Options/HBoxContainer"]
+layout_mode = 2
+text = "Map"
+
+[node name="Button5" type="Button" parent="VSplitContainer/Options/HBoxContainer"]
+layout_mode = 2
+text = "Ready
+"
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.01
+anchor_top = 0.012
+anchor_right = 0.05
+anchor_bottom = 0.061
+offset_left = 12.0
+offset_top = 12.0
+text = "Back"
+
+[node name="Students" type="Node" parent="."]
+
+[node name="STUDENT_CONRAD" type="Node" parent="Students"]
+script = ExtResource("3_43jhl")
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

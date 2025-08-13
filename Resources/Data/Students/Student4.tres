@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="Student" load_steps=5 format=3 uid="uid://bro1iqhp3a16b"]
+
+[ext_resource type="Texture2D" uid="uid://bccfvv0g1mh67" path="res://Resources/Image/Temp/RedKnight_Doll.png" id="1_a3san"]
+[ext_resource type="Texture2D" uid="uid://redjducuw2r6" path="res://Resources/Image/Temp/Redknight_Icon.png" id="2_alp6q"]
+[ext_resource type="Texture2D" uid="uid://c2ldoxry2ns8u" path="res://Resources/Image/Temp/Greyknight_Portrait.png" id="3_kc5xf"]
+[ext_resource type="Script" path="res://Scripts/Abstract Classes/Student.gd" id="4_8drja"]
+
+[resource]
+script = ExtResource("4_8drja")
+student_name = "Jean"
+title_or_nickname = "Goofball"
+primary_skill = "Cooldown"
+secondary_skill = "Critical Chance"
+weakness_skill = "Hitpoints"
+starting_ability = "Sing"
+unlocked = true
+tags = Array[int]([])
+icon = ExtResource("2_alp6q")
+doll = ExtResource("1_a3san")
+avatar = ExtResource("3_kc5xf")
