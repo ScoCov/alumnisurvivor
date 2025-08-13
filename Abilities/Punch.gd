@@ -14,7 +14,8 @@ func _process(_delta):
 		$'Marker2D'.look_at(get_global_mouse_position())
 		
 func on_active():
-	
+	## TODO: Extract this code and place inside a Stragey. That Stragey Class will
+	## consist of this code and will have the same methods as this has.
 	if hitbox.disabled:
 		hitbox.disabled = false
 	var bonus_range: float = 0.0
