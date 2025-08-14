@@ -16,7 +16,7 @@ func _ready():
 				return header.get_node("Info/Control/VBoxContainer/"+path)
 			"texture":
 				return header.get_node("Info/Image/"+path)
-	hdr.call("Sprite2D").texture = student.icon
+	hdr.call("Sprite2D", "texture").texture = student.icon
 	hdr.call("Name").text = student.student_name
 	hdr.call("Nickname").text = student.title_or_nickname
 	
