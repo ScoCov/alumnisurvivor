@@ -24,7 +24,8 @@ func _physics_process(_delta):
 	pass
 	
 func add_ability(_ability: Ability):
-	$'Abilities'.add_child(_ability)
+	pass
+	#$'Abilities'.add_child(_ability)
 	
 #func take_damage(damage_dealing_stragedy: DamageBase):
 	## Instead of having the enemies have a player detection collision check, have the player simple have an

@@ -57,8 +57,6 @@ var ABILITIES: Array[Ability]
 #endregion
 var ATTRIBUTES: Array[Attribute]
 
-var _CONFIGURATION:= ConfigFile.new()
-
 
 #region NOTE:
 ## Tags will be applied to various objects, concepts, and anything we need to associated something
@@ -68,19 +66,13 @@ var _CONFIGURATION:= ConfigFile.new()
 #endregion
 enum tag {Elite, Boss, Normal, Ranged, Tank, Player, Besty, Enemy, Band, Drama, Sports, Nerd, Popular, Outcast, Debug}
 
-func _init() -> void:
-	_CONFIGURATION.load("res://env.cfg")
-
-## Use the _ready function to initialize the STUDENT_ROSTER and any other collection of data.
 func _ready():
-	#var student_files = DirAccess.get_files_at("res://Resources/Data/Students/") ## The folder that has all the Students
-	#load_objects("res://Resources/Data/Students/", STUDENT_ROSTER)
-	load_objects(_CONFIGURATION.get_value("files", "student_resrouce_directory"), STUDENT_ROSTER)
-	load_objects("res://Resources/Data/Attributes/", ATTRIBUTES)
+	var cfg:= ConfigFile.new()
+	load_objects(Configuration.get_dir("student",cfg), STUDENT_ROSTER)
+	load_objects(Configuration.get_dir("attribute",cfg), ATTRIBUTES)
 	if len(STUDENT_ROSTER) > 1: ## If there's at least two students in the roster assign default students.
 		SELECTED_STUDENT = STUDENT_ROSTER[0]
 		SELECTED_BESTY = STUDENT_ROSTER[1]
-	
 	
 func load_objects(_dir: String, variable: Variant):
 	var files = DirAccess.get_files_at(_dir) ## The folder that has all the Students
