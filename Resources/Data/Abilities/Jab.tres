@@ -1,7 +1,6 @@
-[gd_resource type="Resource" script_class="Ability" load_steps=3 format=3 uid="uid://digbb08e6x1t3"]
+[gd_resource type="Resource" script_class="Ability" load_steps=2 format=3 uid="uid://digbb08e6x1t3"]
 
 [ext_resource type="Script" path="res://Scripts/Abstract Classes/Ability.gd" id="1_j14dw"]
-[ext_resource type="Texture2D" uid="uid://dv8qcv103yp3e" path="res://Resources/Image/Temp/Arrow_Menu_01.png" id="1_yv5vs"]
 
 [resource]
 script = ExtResource("1_j14dw")
@@ -15,5 +14,4 @@ attack_speed = 100.0
 range = 100.0
 attack_type = "None"
 damage_type = "None"
-range_type = "None"
-menu_image = ExtResource("1_yv5vs")
+range_type = "Range"

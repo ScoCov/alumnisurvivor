@@ -1,0 +1,37 @@
+[gd_scene load_steps=8 format=3 uid="uid://by6qs7b8iifs0"]
+
+[ext_resource type="Script" path="res://Entities/WeaponEntity.gd" id="1_dlakk"]
+[ext_resource type="Texture2D" uid="uid://evvlxxf5qy7d" path="res://Resources/Image/Temp/Arrow_Menu_02.png" id="1_ngutx"]
+[ext_resource type="Script" path="res://Scripts/States/StateMachine.gd" id="2_w2nyg"]
+[ext_resource type="Script" path="res://Scripts/States/Abilities/AbilityReady.gd" id="3_pmbid"]
+[ext_resource type="Script" path="res://Scripts/States/Abilities/AbilityRecover.gd" id="4_q1duv"]
+[ext_resource type="Script" path="res://Scripts/States/Abilities/AbilityCooldown.gd" id="5_3uam3"]
+[ext_resource type="Script" path="res://Scripts/States/Abilities/AbilityActive.gd" id="6_p2s4v"]
+
+[node name="WeaponEntity" type="Node2D"]
+script = ExtResource("1_dlakk")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Marker2D" type="Marker2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Marker2D"]
+texture = ExtResource("1_ngutx")
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("2_w2nyg")
+initial_state = NodePath("AbilityReady")
+
+[node name="AbilityRecover" type="Node" parent="StateMachine"]
+script = ExtResource("4_q1duv")
+
+[node name="AbilityCooldown" type="Node" parent="StateMachine"]
+script = ExtResource("5_3uam3")
+
+[node name="AbilityActive" type="Node" parent="StateMachine"]
+script = ExtResource("6_p2s4v")
+
+[node name="AbilityReady" type="Node" parent="StateMachine"]
+script = ExtResource("3_pmbid")
+
+[node name="CooldownTimer" type="Timer" parent="."]
