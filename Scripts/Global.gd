@@ -68,7 +68,9 @@ enum tag {Elite, Boss, Normal, Ranged, Tank, Player, Besty, Enemy, Band, Drama, 
 
 func _ready():
 	var cfg:= ConfigFile.new()
+	@warning_ignore("static_called_on_instance")
 	load_objects(Configuration.get_dir("student",cfg), STUDENT_ROSTER)
+	@warning_ignore("static_called_on_instance")
 	load_objects(Configuration.get_dir("attribute",cfg), ATTRIBUTES)
 	if len(STUDENT_ROSTER) > 1: ## If there's at least two students in the roster assign default students.
 		SELECTED_STUDENT = STUDENT_ROSTER[0]
@@ -78,7 +80,6 @@ func load_objects(_dir: String, variable: Variant):
 	var files = DirAccess.get_files_at(_dir) ## The folder that has all the Students
 	for file  in files: ## Iterate through the folder for each Student in it and add that student to the roster.
 		variable.append(load(_dir + file))
-
 
 ## Use this method, instead of calling SELECTED_[Student/Besty] directly to have
 ## some validation controls.

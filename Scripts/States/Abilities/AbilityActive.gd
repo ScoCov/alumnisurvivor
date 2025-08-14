@@ -15,6 +15,6 @@ func update(_delta) -> void:
 	
 ##	Call every physics tick which can be seperate from the frames being drawn.
 func physics_update(_delta)-> void:
-	if action.call():
+	if action.call(_delta):
 		Transitioned.emit(self, "AbilityRecover")
 	

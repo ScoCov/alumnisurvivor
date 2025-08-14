@@ -1,9 +1,11 @@
 extends AbilityState
 class_name AbilityStateCooldown
 
+@export var timer: Timer
+
 ##	Call when transitioning to this state
 func enter():
-	pass
+	timer.start()
 	
 ##	Call when leaving this state
 func exit() -> void:

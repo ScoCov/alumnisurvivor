@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bfx5emdxf6bpk"]
+[gd_scene load_steps=12 format=3 uid="uid://bfx5emdxf6bpk"]
 
 [ext_resource type="Script" path="res://Entities/StudentPlayer.gd" id="1_8mvqy"]
 [ext_resource type="Resource" uid="uid://ccg57vjn8xbc1" path="res://Resources/Data/Students/Student1.tres" id="2_1g6sg"]
@@ -8,7 +8,6 @@
 [ext_resource type="Script" path="res://Scripts/States/AttributesMachine.gd" id="4_di272"]
 [ext_resource type="Script" path="res://Scripts/States/StateMachine.gd" id="4_n0u7h"]
 [ext_resource type="Script" path="res://Scripts/States/Player/PlayerMoving.gd" id="4_oysit"]
-[ext_resource type="Script" path="res://Scripts/Component/HealthComponent.gd" id="6_1tbro"]
 [ext_resource type="Script" path="res://Scripts/Component/MovementComponent.gd" id="7_qcbur"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_oes4f"]
@@ -34,10 +33,6 @@ script = ExtResource("4_algj6")
 
 [node name="Stats" type="Node" parent="."]
 script = ExtResource("4_di272")
-
-[node name="Health" type="Node" parent="Stats"]
-script = ExtResource("6_1tbro")
-base_value = 10.0
 
 [node name="MovementSpeed" type="Node" parent="Stats"]
 script = ExtResource("7_qcbur")

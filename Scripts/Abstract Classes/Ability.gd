@@ -15,14 +15,14 @@ extends Resource
 @export_category("Stats")
 ## Damage the ability will do per instance of damage dealt. [Default = 0]
 @export var damage: float = 0
-## In ms (miliseconds) - Time in between attacks. [Default = 100]
-@export var cooldown: float = 100
+## In seconds - Time in between attacks. [Default = 1]
+@export var cooldown: float = 1
 ## This is the movement speed of the object that the ability will use. This in effect
-## will speed up the attack animation itself, but not the time between attacks. [Default = 100]
-@export var attack_speed: float = 100 
+## will speed up the attack animation itself, but not the time between attacks. [Default = 25]
+@export var attack_speed: float = 25
 ## Determines the distance at which the move can either travel, in the case 
 ## of the projectile, or the area of effect for an AOE Ability. [Default = 100]
-@export var range: float = 100 
+@export var attack_range: float = 100 
 
 @export_group("Attack Meta")
 ## Determines the type of AttackTypeStragety should be used to create move effect. [Default = None]

@@ -18,14 +18,13 @@ func _init():
 	pass
 	
 func _process(_delta):
+	if has_node("WeaponEntity"):
+		(get_node("WeaponEntity").get_node("Marker2D") as Marker2D).look_at(get_global_mouse_position())
 	pass
 	
 func _physics_process(_delta):
 	pass
 	
-func add_ability(_ability: Ability):
-	pass
-	#$'Abilities'.add_child(_ability)
 	
 #func take_damage(damage_dealing_stragedy: DamageBase):
 	## Instead of having the enemies have a player detection collision check, have the player simple have an
@@ -45,7 +44,3 @@ func add_ability(_ability: Ability):
 func _on_enemy_detection_body_entered(body):
 	if body is EnemyEntity: #or Projectile
 		print('Enemy')
-		#take_damage(body.attack())
-	#if body is Projectile:
-		#take_damage(body.attack())
-		#pass

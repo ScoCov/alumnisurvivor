@@ -1,15 +1,19 @@
-[gd_scene load_steps=8 format=3 uid="uid://by6qs7b8iifs0"]
+[gd_scene load_steps=10 format=3 uid="uid://by6qs7b8iifs0"]
 
 [ext_resource type="Script" path="res://Entities/WeaponEntity.gd" id="1_dlakk"]
 [ext_resource type="Texture2D" uid="uid://evvlxxf5qy7d" path="res://Resources/Image/Temp/Arrow_Menu_02.png" id="1_ngutx"]
+[ext_resource type="Resource" uid="uid://digbb08e6x1t3" path="res://Resources/Data/Abilities/Jab.tres" id="2_u5yeh"]
 [ext_resource type="Script" path="res://Scripts/States/StateMachine.gd" id="2_w2nyg"]
 [ext_resource type="Script" path="res://Scripts/States/Abilities/AbilityReady.gd" id="3_pmbid"]
 [ext_resource type="Script" path="res://Scripts/States/Abilities/AbilityRecover.gd" id="4_q1duv"]
 [ext_resource type="Script" path="res://Scripts/States/Abilities/AbilityCooldown.gd" id="5_3uam3"]
 [ext_resource type="Script" path="res://Scripts/States/Abilities/AbilityActive.gd" id="6_p2s4v"]
+[ext_resource type="Script" path="res://Scripts/Strategy/AttackTypes/Thrust.gd" id="10_53632"]
 
-[node name="WeaponEntity" type="Node2D"]
+[node name="WeaponEntity" type="Node2D" node_paths=PackedStringArray("attack_type")]
 script = ExtResource("1_dlakk")
+ability = ExtResource("2_u5yeh")
+attack_type = NodePath("AttackType/StrategyThrust")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
@@ -25,8 +29,9 @@ initial_state = NodePath("AbilityReady")
 [node name="AbilityRecover" type="Node" parent="StateMachine"]
 script = ExtResource("4_q1duv")
 
-[node name="AbilityCooldown" type="Node" parent="StateMachine"]
+[node name="AbilityCooldown" type="Node" parent="StateMachine" node_paths=PackedStringArray("timer")]
 script = ExtResource("5_3uam3")
+timer = NodePath("../../CooldownTimer")
 
 [node name="AbilityActive" type="Node" parent="StateMachine"]
 script = ExtResource("6_p2s4v")
@@ -35,3 +40,17 @@ script = ExtResource("6_p2s4v")
 script = ExtResource("3_pmbid")
 
 [node name="CooldownTimer" type="Timer" parent="."]
+
+[node name="Label" type="Label" parent="."]
+offset_left = -16.0
+offset_top = 31.0
+offset_right = 24.0
+offset_bottom = 54.0
+metadata/_edit_use_anchors_ = true
+
+[node name="AttackType" type="Node" parent="."]
+
+[node name="StrategyThrust" type="Node" parent="AttackType"]
+script = ExtResource("10_53632")
+
+[connection signal="timeout" from="CooldownTimer" to="." method="cooldown_timeout"]
