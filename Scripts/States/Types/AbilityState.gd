@@ -1,6 +1,8 @@
 class_name AbilityState
 extends State
 
+@export var ability: Ability
+
 ##	"Override"
 func enter():
 	pass
@@ -10,9 +12,9 @@ func exit() -> void:
 	pass
 
 ##	"Override"
-func update(_delta: float, action: Callable = func(): pass) -> void:
+func update(_delta) -> void:
 	pass
 
 ##	"Override"
-func physics_update(_delta: float, action: Callable = func(): pass)->  void:
+func physics_update(_delta)->  void:
 	pass

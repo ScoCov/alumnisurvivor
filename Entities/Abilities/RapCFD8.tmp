@@ -1,0 +1,38 @@
+[gd_scene load_steps=4 format=3 uid="uid://c3ar2sftollau"]
+
+[ext_resource type="PackedScene" uid="uid://c54jg6hm5awpj" path="res://Entities/Ability.tscn" id="1_0eape"]
+[ext_resource type="Script" path="res://Entities/Abilities/RapidPunch.gd" id="1_hxxdv"]
+[ext_resource type="Texture2D" uid="uid://evvlxxf5qy7d" path="res://Resources/Image/Temp/Arrow_Menu_02.png" id="3_l536y"]
+
+[node name="Rapid Punch" instance=ExtResource("1_0eape")]
+script = ExtResource("1_hxxdv")
+ability_name = "Rapid Punch"
+display_name = "Throwing Hands"
+
+[node name="Camera2D" type="Camera2D" parent="." index="0"]
+
+[node name="Ready" parent="StateMachine" index="0" node_paths=PackedStringArray("ability")]
+ability = NodePath("../..")
+
+[node name="Active" parent="StateMachine" index="1" node_paths=PackedStringArray("ability")]
+ability = NodePath("../..")
+
+[node name="Cooldown" parent="StateMachine" index="2" node_paths=PackedStringArray("ability")]
+ability = NodePath("../..")
+
+[node name="Recovery" parent="StateMachine" index="3" node_paths=PackedStringArray("ability")]
+ability = NodePath("../..")
+
+[node name="Composition" type="Node" parent="." index="2"]
+
+[node name="Sprite" type="Sprite2D" parent="." index="3"]
+texture = ExtResource("3_l536y")
+
+[node name="Panel" type="Panel" parent="." index="4"]
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true

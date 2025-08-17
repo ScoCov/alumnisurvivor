@@ -1,0 +1,64 @@
+[gd_scene load_steps=14 format=3 uid="uid://c7llokkgcmykg"]
+
+[ext_resource type="Script" path="res://Entities/Abilities/HeavyPunch.gd" id="1_xstwo"]
+[ext_resource type="Script" path="res://Scripts/States/StateMachine.gd" id="2_tecol"]
+[ext_resource type="Script" path="res://Scripts/States/Abilities/AbilityReady.gd" id="3_nh06a"]
+[ext_resource type="Script" path="res://Scripts/States/Abilities/AbilityActive.gd" id="4_nrkx4"]
+[ext_resource type="Script" path="res://Scripts/States/Abilities/AbilityCooldown.gd" id="5_a8cqx"]
+[ext_resource type="Script" path="res://Scripts/States/Abilities/AbilityRecovery.gd" id="6_et5a5"]
+[ext_resource type="Script" path="res://Scripts/Component/AttackSpeedComponent.gd" id="7_thnhj"]
+[ext_resource type="Script" path="res://Scripts/Component/CooldownComponent.gd" id="8_51lye"]
+[ext_resource type="Script" path="res://Scripts/Component/DamageComponent.gd" id="9_fox8w"]
+[ext_resource type="Script" path="res://Scripts/Component/CriticalChanceComponent.gd" id="10_7mruh"]
+[ext_resource type="Script" path="res://Scripts/Component/KnockbackComponent.gd" id="11_cy5vl"]
+[ext_resource type="Script" path="res://Scripts/Component/RangeComponent.gd" id="12_xn4xr"]
+[ext_resource type="Texture2D" uid="uid://evvlxxf5qy7d" path="res://Resources/Image/Temp/Arrow_Menu_02.png" id="13_5h5hd"]
+
+[node name="HeavyPunch" type="Node2D"]
+script = ExtResource("1_xstwo")
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("2_tecol")
+initial_state = NodePath("Ready")
+
+[node name="Ready" type="Node" parent="StateMachine"]
+script = ExtResource("3_nh06a")
+
+[node name="Active" type="Node" parent="StateMachine"]
+script = ExtResource("4_nrkx4")
+
+[node name="Cooldown" type="Node" parent="StateMachine"]
+script = ExtResource("5_a8cqx")
+
+[node name="Recovery" type="Node" parent="StateMachine"]
+script = ExtResource("6_et5a5")
+
+[node name="Composition" type="Node" parent="."]
+
+[node name="AttackSpeed" type="Node" parent="Composition"]
+script = ExtResource("7_thnhj")
+base_value = 200.0
+
+[node name="Cooldown" type="Node" parent="Composition"]
+script = ExtResource("8_51lye")
+base_value = 1.0
+
+[node name="Damage" type="Node" parent="Composition"]
+script = ExtResource("9_fox8w")
+base_value = 5.0
+
+[node name="CriticalChance" type="Node" parent="Composition"]
+script = ExtResource("10_7mruh")
+base_value = 0.5
+
+[node name="Knockback" type="Node" parent="Composition"]
+script = ExtResource("11_cy5vl")
+
+[node name="Range" type="Node" parent="Composition"]
+script = ExtResource("12_xn4xr")
+base_value = 75.0
+
+[node name="Pivot" type="Marker2D" parent="."]
+
+[node name="Sprite" type="Sprite2D" parent="Pivot"]
+texture = ExtResource("13_5h5hd")

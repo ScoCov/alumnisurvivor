@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bfx5emdxf6bpk"]
+[gd_scene load_steps=14 format=3 uid="uid://bfx5emdxf6bpk"]
 
 [ext_resource type="Script" path="res://Entities/StudentPlayer.gd" id="1_8mvqy"]
 [ext_resource type="Resource" uid="uid://ccg57vjn8xbc1" path="res://Resources/Data/Students/Student1.tres" id="2_1g6sg"]
@@ -9,6 +9,8 @@
 [ext_resource type="Script" path="res://Scripts/States/StateMachine.gd" id="4_n0u7h"]
 [ext_resource type="Script" path="res://Scripts/States/Player/PlayerMoving.gd" id="4_oysit"]
 [ext_resource type="Script" path="res://Scripts/Component/MovementComponent.gd" id="7_qcbur"]
+[ext_resource type="PackedScene" uid="uid://c7llokkgcmykg" path="res://Entities/Abilities/HeavyPunch.tscn" id="10_ad1bp"]
+[ext_resource type="PackedScene" uid="uid://c3ar2sftollau" path="res://Entities/Abilities/RapidPunch.tscn" id="10_bjd4s"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_oes4f"]
 radius = 64.0
@@ -17,9 +19,6 @@ height = 192.0
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mt6sa"]
 radius = 56.0
 height = 176.0
-
-[sub_resource type="SeparationRayShape2D" id="SeparationRayShape2D_6v1ym"]
-length = 150.0
 
 [node name="StudentPlayer" type="CharacterBody2D"]
 script = ExtResource("1_8mvqy")
@@ -79,11 +78,9 @@ shape = SubResource("CapsuleShape2D_mt6sa")
 
 [node name="AbilitySlot1" type="Marker2D" parent="."]
 
-[node name="Area2D" type="Area2D" parent="AbilitySlot1"]
+[node name="HeavyPunch" parent="AbilitySlot1" instance=ExtResource("10_ad1bp")]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AbilitySlot1/Area2D"]
-rotation = -1.5708
-shape = SubResource("SeparationRayShape2D_6v1ym")
+[node name="Rapid Punch" parent="AbilitySlot1" instance=ExtResource("10_bjd4s")]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 

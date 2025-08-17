@@ -4,12 +4,9 @@ class_name GameOverlay
 @export var player: StudentPlayer
 @export var timer: Timer
 const MAX_TIME_LIMIT: int = 30 #in seconds
-var weap_ent = preload("res://Entities/WeaponEntity.tscn")
 
 func _ready():
-	var new_weapon = weap_ent.instantiate()
-	player.add_child(new_weapon)
-	
+	pass
 
 func _process(_delta):
 	update_health()

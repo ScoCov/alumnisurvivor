@@ -1,5 +1,5 @@
 extends AbilityState
-class_name AbilityStateActive
+class_name AbilityStateRecovery
 
 ##	Call when transitioning to this state
 func enter():
@@ -11,10 +11,9 @@ func exit() -> void:
 
 ##	Call every frame drawn
 func update(_delta: float) -> void:
-	pass 
-	
+	pass
+
 ##	Call every physics tick which can be seperate from the frames being drawn.
 func physics_update(_delta: float)-> void:
-	if (get_parent().get_parent()).on_active(_delta):
-		Transitioned.emit(self, "Recovery")
-	pass
+	if (get_parent().get_parent() ).on_recovery(_delta):
+		Transitioned.emit(self, "Cooldown")

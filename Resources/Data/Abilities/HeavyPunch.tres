@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="AbilityResource" load_steps=2 format=3 uid="uid://4im7wneeetbr"]
+
+[ext_resource type="Script" path="res://Scripts/Abstract Classes/AbilityResource.gd" id="1_mr0xs"]
+
+[resource]
+script = ExtResource("1_mr0xs")
+ability_name = "Heavy Punch"
+display_name = "Haymaker"
+description = "More Stuff"
+tags = Array[int]([])

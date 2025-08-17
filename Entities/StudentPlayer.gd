@@ -19,10 +19,9 @@ func _init():
 	
 func _process(_delta):
 	$AbilitySlot1.look_at(get_global_mouse_position())
-		pass
+	pass
 	
 func _physics_process(_delta):
-	
 	pass
 	
 	
