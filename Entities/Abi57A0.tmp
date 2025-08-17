@@ -1,0 +1,42 @@
+[gd_scene load_steps=9 format=3 uid="uid://bjqy4s1xwifwr"]
+
+[ext_resource type="Script" path="res://Entities/AbilityContainer.gd" id="1_mmkgs"]
+[ext_resource type="Script" path="res://Scripts/States/StateMachine.gd" id="2_uvrgd"]
+[ext_resource type="Script" path="res://Scripts/States/Abilities/AbilityActive.gd" id="3_0kslh"]
+[ext_resource type="Script" path="res://Scripts/States/Abilities/AbilityCooldown.gd" id="4_6ax16"]
+[ext_resource type="Script" path="res://Scripts/States/Abilities/AbilityReady.gd" id="5_yuo38"]
+[ext_resource type="Script" path="res://Scripts/States/Abilities/AbilityRecover.gd" id="6_4hfd5"]
+[ext_resource type="Texture2D" uid="uid://evvlxxf5qy7d" path="res://Resources/Image/Temp/Arrow_Menu_02.png" id="7_otx5i"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_eggr4"]
+
+[node name="AbilityContainer" type="Node2D"]
+script = ExtResource("1_mmkgs")
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("2_uvrgd")
+initial_state = NodePath("AbilityStateReady")
+
+[node name="AbilityStateActive" type="Node" parent="StateMachine"]
+script = ExtResource("3_0kslh")
+
+[node name="AbilityStateCooldown" type="Node" parent="StateMachine"]
+script = ExtResource("4_6ax16")
+
+[node name="AbilityStateReady" type="Node" parent="StateMachine"]
+script = ExtResource("5_yuo38")
+
+[node name="AbilityStateRecover" type="Node" parent="StateMachine"]
+script = ExtResource("6_4hfd5")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_eggr4")
+debug_color = Color(0.807155, 0.414602, 3.85046e-07, 0.42)
+
+[node name="SpriteContainer" type="Marker2D" parent="."]
+
+[node name="Sprite" type="Sprite2D" parent="SpriteContainer"]
+scale = Vector2(0.5625, 0.5625)
+texture = ExtResource("7_otx5i")

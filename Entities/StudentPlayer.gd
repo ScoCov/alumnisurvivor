@@ -18,11 +18,11 @@ func _init():
 	pass
 	
 func _process(_delta):
-	if has_node("WeaponEntity"):
-		(get_node("WeaponEntity").get_node("Marker2D") as Marker2D).look_at(get_global_mouse_position())
-	pass
+	$AbilitySlot1.look_at(get_global_mouse_position())
+		pass
 	
 func _physics_process(_delta):
+	
 	pass
 	
 	

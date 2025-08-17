@@ -10,11 +10,13 @@ func exit() -> void:
 	pass
 
 ##	Call every frame drawn
-func update(_delta) -> void:
+func update(_delta: float, action: Callable = func(): pass) -> void:
+	if action.call(_delta):
+		Transitioned.emit(self, "Recover")
+	else: 
+		print("Active Action is not ready to transition yet.")
 	pass 
 	
 ##	Call every physics tick which can be seperate from the frames being drawn.
-func physics_update(_delta)-> void:
-	if action.call(_delta):
-		Transitioned.emit(self, "AbilityRecover")
-	
+func physics_update(_delta: float, action: Callable = func(): pass)-> void:
+	pass

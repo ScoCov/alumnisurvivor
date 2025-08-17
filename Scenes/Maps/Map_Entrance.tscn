@@ -58,4 +58,4 @@ timer = NodePath("../../GameTimeLimit")
 position = Vector2(576, 320)
 student = null
 
-[node name="Camera2D" type="Camera2D" parent="StudentPlayer"]
+[node name="Camera2D2" type="Camera2D" parent="StudentPlayer"]

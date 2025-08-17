@@ -1,20 +1,18 @@
 class_name AbilityState
 extends State
 
-@export var action: Callable
-
-##	Call when transitioning to this state
+##	"Override"
 func enter():
 	pass
 	
-##	Call when leaving this state
+##	"Override"
 func exit() -> void:
 	pass
 
-##	Call every frame drawn
-func update(_delta) -> void:
+##	"Override"
+func update(_delta: float, action: Callable = func(): pass) -> void:
 	pass
 
-##	Call every physics tick which can be seperate from the frames being drawn.
-func physics_update(_delta)-> void:
+##	"Override"
+func physics_update(_delta: float, action: Callable = func(): pass)->  void:
 	pass

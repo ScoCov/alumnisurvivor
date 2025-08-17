@@ -11,9 +11,9 @@ func exit() -> void:
 
 ##	Call every frame drawn
 func update(_delta) -> void:
-	pass
+	if action.call(_delta):
+		Transitioned.emit(self, "AbilityCooldown")
 ##	Call every physics tick which can be seperate from the frames being drawn.
 
 func physics_update(_delta)-> void:
-	if action.call(_delta):
-		Transitioned.emit(self, "AbilityCooldown")
+	pass
