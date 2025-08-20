@@ -1,15 +1,11 @@
 class_name AbilityThrowBaseball
 extends Ability
 
-
 var cooldown_count_down: float = 1
 var packed_projectile: PackedScene = preload("res://Entities/Projectile.tscn")
 
 func _init():
 	ability = load("res://Resources/Data/Abilities/ThrowBaseball.tres")
-	
-func _ready():
-	pass 
 	
 func on_ready():
 	cooldown_count_down = $'Composition/Cooldown'.base_value
@@ -17,10 +13,10 @@ func on_ready():
 	
 func on_active(_delta):
 	var new_projectile = packed_projectile.instantiate()
+	var mouse_pos:= get_global_mouse_position()
 	new_projectile.source_entity = player
-	new_projectile.target_direction = (
-		player.position.direction_to(get_global_mouse_position()) if player 
-		else Vector2().direction_to(get_global_mouse_position()))
+	new_projectile.target_direction = (player.position.direction_to(mouse_pos) if player 
+		else Vector2().direction_to(mouse_pos))
 	if player && player.global_projectile_container:
 		if player.global_projectile_container.get_child_count() < 10:
 			player.global_projectile_container.add_child(new_projectile)

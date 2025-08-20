@@ -16,6 +16,10 @@ extends Node
 ##
 #endregion
 
+#region Obtain-From
+## https://www.youtube.com/watch?v=ow_Lum-Agbs "Finite State Machines in Godot 4 in Under 10 Minutes"
+#endregion
+
 ##	Start with an initial state. Can be assigned via the editor.
 @export var initial_state: State
 

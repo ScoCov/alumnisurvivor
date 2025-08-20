@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://caukgai13lvy0"]
+[gd_scene load_steps=11 format=3 uid="uid://caukgai13lvy0"]
 
 [ext_resource type="Script" path="res://Entities/Projectile.gd" id="1_fqaei"]
 [ext_resource type="Script" path="res://Scripts/Component/AttackSpeedComponent.gd" id="2_27tav"]
@@ -10,6 +10,10 @@
 [ext_resource type="Texture2D" uid="uid://evvlxxf5qy7d" path="res://Resources/Image/Temp/Arrow_Menu_02.png" id="8_7ykm4"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5vfki"]
+radius = 1.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ecsqj"]
+radius = 16.0
 
 [node name="Projectile" type="CharacterBody2D"]
 collision_layer = 0
@@ -51,3 +55,10 @@ wait_time = 0.75
 [node name="SpeedIndicator" type="Label" parent="."]
 offset_right = 40.0
 offset_bottom = 23.0
+
+[node name="HitBox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+shape = SubResource("CircleShape2D_ecsqj")

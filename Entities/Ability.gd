@@ -3,8 +3,9 @@ extends Node2D
 
 
 #NOTE - TO SELF: Please always check for the object - do not assume it's there.
-@export var ability: AbilityResource
+var ability: AbilityResource
 @export var player: StudentPlayer
+
 	
 func _process(_delta):
 	if $StateMachine and $StateMachine.current_state:

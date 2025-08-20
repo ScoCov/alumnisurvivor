@@ -4,7 +4,7 @@ extends Node
 #endregion
 
 @export var player: StudentPlayer
-@export var EnemySpawner: Node
+@export var enemy_spawner: EnemySpawner
 @export var gameTime: Timer
 
 func _ready() -> void:

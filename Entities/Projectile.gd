@@ -34,6 +34,15 @@ func _ready():
 	$'LifeTimer'.wait_time = $Composition/Duration.base_value
 	$'LifeTimer'.connect("timeout", life_over)
 	$'LifeTimer'.start()
+	if source_entity and source_entity is StudentPlayer:
+		$HitBox.body_entered.connect(hit_enemy)
+		$HitBox.collision_mask = 2
+		$HitBox.collision_layer = 2
+	if source_entity and source_entity is EnemyEntity:
+		$HitBox.body_entered.connect(hit_player) 
+		$HitBox.collision_mask = 1
+		$HitBox.collision_layer = 1
+		
 
 func _process(_delta):
 	if velocity == Vector2(): ## If moving don't redirect or adjust velocity.
@@ -49,3 +58,22 @@ func _process(_delta):
 	
 func life_over():
 	queue_free()
+	
+func hit_player(body: StudentPlayer):
+	if pierce_count == 0 and bounce_count == 0:
+		body.queue_free() # Deal Damage
+		queue_free()
+	elif pierce_count > 0:
+		pierce_count -= 1
+	elif bounce_count > 0:
+		bounce_count -= 1
+	
+func hit_enemy(body: EnemyEntity):
+	if pierce_count == 0 and bounce_count == 0:
+		body.queue_free() # Deal Damage
+		queue_free()
+	elif pierce_count > 0:
+		pierce_count -= 1
+	elif bounce_count > 0:
+		bounce_count -= 1
+	
