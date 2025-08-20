@@ -4,10 +4,10 @@ class_name StudentPlayer
 ## Import a Student Resource to obtain unique data.
 @export var student: Student
 @export var besty: Student
+@export var global_projectile_container: Node
 
 @onready var item_list: ItemManager = $Items
 @onready var stats: Stats = $Stats
-
 
 func _ready():
 	$'Sprite2D'.texture = student.doll
@@ -42,4 +42,5 @@ func _physics_process(_delta):
 
 func _on_enemy_detection_body_entered(body):
 	if body is EnemyEntity: #or Projectile
+		body.queue_free()
 		print('Enemy')

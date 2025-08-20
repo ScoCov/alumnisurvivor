@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="AbilityResource" load_steps=2 format=3 uid="uid://dfowrpgu5d1qf"]
+
+[ext_resource type="Script" path="res://Scripts/Abstract Classes/AbilityResource.gd" id="1_taymx"]
+
+[resource]
+script = ExtResource("1_taymx")
+ability_name = ""
+display_name = ""
+description = ""
+tags = Array[int]([])

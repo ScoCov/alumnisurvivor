@@ -48,14 +48,16 @@ autostart = true
 wait_time = 30.0
 autostart = true
 
+[node name="ProjtectileContainer" type="Node" parent="GameLogic"]
+
 [node name="CanvasLayer" type="CanvasLayer" parent="GameLogic"]
 
 [node name="GameOverlay" parent="GameLogic/CanvasLayer" node_paths=PackedStringArray("player", "timer") instance=ExtResource("3_e4hy1")]
 player = NodePath("../../../StudentPlayer")
 timer = NodePath("../../GameTimeLimit")
 
-[node name="StudentPlayer" parent="." instance=ExtResource("2_tt2uk")]
+[node name="StudentPlayer" parent="." node_paths=PackedStringArray("global_projectile_container") instance=ExtResource("2_tt2uk")]
 position = Vector2(576, 320)
-student = null
+global_projectile_container = NodePath("../GameLogic/ProjtectileContainer")
 
 [node name="Camera2D2" type="Camera2D" parent="StudentPlayer"]
