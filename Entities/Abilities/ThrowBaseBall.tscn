@@ -36,7 +36,7 @@ script = ExtResource("6_3wor1")
 
 [node name="AttackSpeed" type="Node" parent="Composition"]
 script = ExtResource("7_xh27i")
-base_value = 200.0
+base_value = 1.0
 
 [node name="Cooldown" type="Node" parent="Composition"]
 script = ExtResource("8_vj5a4")

@@ -46,6 +46,7 @@ base_value = 1.2
 texture = ExtResource("8_7ykm4")
 
 [node name="LifeTimer" type="Timer" parent="."]
+wait_time = 0.75
 
 [node name="SpeedIndicator" type="Label" parent="."]
 offset_right = 40.0

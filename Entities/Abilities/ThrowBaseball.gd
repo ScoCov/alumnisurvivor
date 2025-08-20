@@ -5,10 +5,12 @@ extends Ability
 var cooldown_count_down: float = 1
 var packed_projectile: PackedScene = preload("res://Entities/Projectile.tscn")
 
+func _init():
+	ability = load("res://Resources/Data/Abilities/ThrowBaseball.tres")
+	
 func _ready():
-	cooldown_count_down = $'Composition/Cooldown'.base_value
-	ability = load("res://Resources/Data/Abilities/ThrowBaseball.tres")	
-
+	pass 
+	
 func on_ready():
 	cooldown_count_down = $'Composition/Cooldown'.base_value
 	return true
@@ -16,7 +18,9 @@ func on_ready():
 func on_active(_delta):
 	var new_projectile = packed_projectile.instantiate()
 	new_projectile.source_entity = player
-	new_projectile.target_direction = player.position.direction_to(get_global_mouse_position()) 
+	new_projectile.target_direction = (
+		player.position.direction_to(get_global_mouse_position()) if player 
+		else Vector2().direction_to(get_global_mouse_position()))
 	if player && player.global_projectile_container:
 		if player.global_projectile_container.get_child_count() < 10:
 			player.global_projectile_container.add_child(new_projectile)
@@ -31,8 +35,7 @@ func on_recovery(_delta):
 	return true
 
 func on_cooldown(_delta):
-	if cooldown_count_down > 0: 
-		cooldown_count_down -= 1 * _delta
-	else:
+	if cooldown_count_down <= 0:
 		return true
+	cooldown_count_down -= 1 * _delta
 	return false
