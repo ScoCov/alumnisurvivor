@@ -7,7 +7,6 @@ extends CharacterBody2D
 @export var source_entity: Node2D
 ## Intended to be the ability of a Player, or a basic Enemy_Attack Class (TO BE MADE)
 @export var parent_ability: Ability
-@export var tags: Array[Global.tag]
 @export_group("Targets")
 #@export var target_position: Vector2 #NOTE: May need in future
 ## Direction to the target. If left null, this will target the Global Mouse Position.
@@ -42,6 +41,7 @@ func _ready():
 		$HitBox.body_entered.connect(hit_player) 
 		$HitBox.collision_mask = 1
 		$HitBox.collision_layer = 1
+
 		
 
 func _process(_delta):

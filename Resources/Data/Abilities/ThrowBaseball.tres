@@ -1,10 +1,12 @@
-[gd_resource type="Resource" script_class="AbilityResource" load_steps=2 format=3 uid="uid://dfowrpgu5d1qf"]
+[gd_resource type="Resource" script_class="AbilityResource" load_steps=3 format=3 uid="uid://dfowrpgu5d1qf"]
 
 [ext_resource type="Script" path="res://Scripts/Abstract Classes/AbilityResource.gd" id="1_taymx"]
+[ext_resource type="Texture2D" uid="uid://c8a3geuxo1j8m" path="res://Resources/Image/Temp/BaseBall.png" id="1_yklwj"]
 
 [resource]
 script = ExtResource("1_taymx")
-ability_name = ""
-display_name = ""
+ability_name = "Throw Baseball"
+display_name = "Fastball"
 description = ""
 tags = Array[int]([])
+menu_image = ExtResource("1_yklwj")

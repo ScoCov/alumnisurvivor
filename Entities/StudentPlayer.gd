@@ -1,6 +1,8 @@
 extends CharacterBody2D
 class_name StudentPlayer
 
+signal take_damage
+
 ## Import a Student Resource to obtain unique data.
 @export var student: Student
 @export var besty: Student
@@ -19,6 +21,3 @@ func _ready():
 func _process(_delta):
 	$AbilitySlot1.look_at(get_global_mouse_position())
 	
-func _on_enemy_detection_body_entered(body):
-	if body is EnemyEntity: #or Projectile
-		body.queue_free()

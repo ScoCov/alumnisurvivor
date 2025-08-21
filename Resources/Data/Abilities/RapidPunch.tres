@@ -1,5 +1,6 @@
-[gd_resource type="Resource" script_class="AbilityResource" load_steps=2 format=3 uid="uid://b1wm1fxdwvncb"]
+[gd_resource type="Resource" script_class="AbilityResource" load_steps=3 format=3 uid="uid://b1wm1fxdwvncb"]
 
+[ext_resource type="Texture2D" uid="uid://7bpk56ikowy5" path="res://Resources/Image/Temp/fist_temp.png" id="1_7p3bs"]
 [ext_resource type="Script" path="res://Scripts/Abstract Classes/AbilityResource.gd" id="1_n16wc"]
 
 [resource]
@@ -8,3 +9,4 @@ ability_name = ""
 display_name = ""
 description = ""
 tags = Array[int]([])
+menu_image = ExtResource("1_7p3bs")

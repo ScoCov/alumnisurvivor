@@ -22,8 +22,7 @@ func physics_update(_delta):
 	if !enemy or !enemy.player: # Sentinel Check, if no player, exit function with warning.
 		assert(enemy != null or enemy.player != null, "Enemy/Player cannot be null.")
 		 
-	enemy.find_child('AnimationPlayer').play("moving")
 	var direction = enemy.position.direction_to(enemy.player.position)
-	enemy.velocity = direction * enemy.stats.attributes["ATTRIBUTE_MOVEMENT_SPEED"].value
+	enemy.velocity = direction * enemy.get_node("Stats").attributes["ATTRIBUTE_MOVEMENT_SPEED"].value
 	enemy.move_and_slide()
 		

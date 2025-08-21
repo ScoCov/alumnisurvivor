@@ -4,7 +4,9 @@ extends Ability
 var cooldown_count_down: float = 0
 
 func _ready():
-	ability = load("res://Resources/Data/Abilities/HeavyPunch.tres")	
+	ability = load("res://Resources/Data/Abilities/HeavyPunch.tres")
+	$Pivot/Sprite.texture = ability.menu_image
+	($Pivot/Sprite as Sprite2D).rotate(0.90)
 
 func on_ready():
 	var pivot = $Pivot as Marker2D

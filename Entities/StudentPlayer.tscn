@@ -65,13 +65,13 @@ shape = SubResource("CapsuleShape2D_mt6sa")
 
 [node name="AbilitySlot1" type="Marker2D" parent="."]
 
-[node name="Rapid Punch" parent="AbilitySlot1" node_paths=PackedStringArray("player") instance=ExtResource("10_bjd4s")]
-player = NodePath("../..")
-
 [node name="HeavyPunch" parent="AbilitySlot1" node_paths=PackedStringArray("player") instance=ExtResource("10_ad1bp")]
 player = NodePath("../..")
 
 [node name="ThrowBaseball" parent="AbilitySlot1" node_paths=PackedStringArray("player") instance=ExtResource("13_43llx")]
 player = NodePath("../..")
+
+[node name="Rapid Punch" parent="." node_paths=PackedStringArray("player") instance=ExtResource("10_bjd4s")]
+player = NodePath("..")
 
 [connection signal="body_entered" from="EnemyDetection" to="." method="_on_enemy_detection_body_entered"]

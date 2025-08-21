@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="EnemyBase" load_steps=3 format=3 uid="uid://ctvbunsh15nw3"]
 
-[ext_resource type="Script" path="res://Scripts/Abstract Classes/Enemy.gd" id="1_388ap"]
+[ext_resource type="Script" path="res://Scripts/Abstract Classes/EnemyResource.gd" id="1_388ap"]
 [ext_resource type="Texture2D" uid="uid://diks4x6brrsfm" path="res://Resources/Image/Temp/Orc.png" id="1_hgf4y"]
 
 [resource]

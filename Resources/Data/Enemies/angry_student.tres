@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="EnemyResource" load_steps=3 format=3 uid="uid://di2650m15gkxw"]
+
+[ext_resource type="Texture2D" uid="uid://diks4x6brrsfm" path="res://Resources/Image/Temp/Orc.png" id="1_gcqvw"]
+[ext_resource type="Script" path="res://Scripts/Abstract Classes/EnemyResource.gd" id="1_m5l6m"]
+
+[resource]
+script = ExtResource("1_m5l6m")
+name = "Angry Student"
+id = "ENEMY_WEAK_STUDENT"
+description = ""
+meta_tags = Array[int]([2])
+combat_tags = Array[int]([2])
+image = ExtResource("1_gcqvw")
+experience_group = ""

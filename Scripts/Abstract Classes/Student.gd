@@ -16,14 +16,16 @@ var secondary_skill: String
 var weakness_skill: String
 ## Each Student will start with an preassigned ability, ala Vampire Survivor. 
 @export var starting_ability: String
-@export var unlocked: bool = true
 @export_group("Tags")
-@export var tags: Array[Global.tag]
+@export var unlocked: bool = true
+@export var student_tags: Array[Global.student_tag]
+@export var meta_tags: Array[Global.meta_tag]
+@export var combat_tags: Array[Global.combat_tag]
 
 @export_group("Images")
 ## Uses this texture in menus
 @export var icon: Texture = preload("res://Resources/Image/Temp/Greyknight_Icon.png")
-## In-game sprite
+## In-game sprite - This should be multiple frames later for now, a signle image will be okay.
 @export var doll: Texture = preload("res://Resources/Image/Temp/Greyknight_Doll.png")
 ## Detailed Image showed during dialogue
 @export var avatar: Texture = preload("res://Resources/Image/Temp/Greyknight_Portrait.png")

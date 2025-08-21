@@ -4,7 +4,8 @@ extends Ability
 var cooldown_count_down: float = 0
 
 func _ready():
-	ability = load("res://Resources/Data/Abilities/RapidPunch.tres")	
+	ability = load("res://Resources/Data/Abilities/RapidPunch.tres")
+	$Sprite.texture = ability.menu_image
 
 func on_ready():
 	cooldown_count_down = $Composition/Cooldown.base_value

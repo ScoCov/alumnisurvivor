@@ -1,0 +1,54 @@
+[gd_scene load_steps=10 format=3 uid="uid://sx54v6kb7rhm"]
+
+[ext_resource type="Script" path="res://Entities/EnemyEntity.gd" id="1_8fefi"]
+[ext_resource type="Script" path="res://Scripts/States/AttributesMachine.gd" id="3_0cx1r"]
+[ext_resource type="Script" path="res://Scripts/Component/MovementComponent.gd" id="4_ams5p"]
+[ext_resource type="Script" path="res://Scripts/Component/HealthComponent.gd" id="5_4qos5"]
+[ext_resource type="Script" path="res://Scripts/Component/DamageComponent.gd" id="6_u336o"]
+[ext_resource type="Script" path="res://Scripts/States/StateMachine.gd" id="7_8ynyw"]
+[ext_resource type="Script" path="res://Scripts/States/Enemy/EnemyIdle.gd" id="8_xpe1r"]
+[ext_resource type="Script" path="res://Scripts/States/Enemy/EnemyMoving.gd" id="9_fa2t0"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_j2ygn"]
+radius = 28.0
+height = 96.0
+
+[node name="EnemyUnit" type="CharacterBody2D"]
+scale = Vector2(0.5, 0.5)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_8fefi")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+
+[node name="Hitbox" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_j2ygn")
+debug_color = Color(1, 0, 0, 0.419608)
+
+[node name="Stats" type="Node" parent="."]
+script = ExtResource("3_0cx1r")
+
+[node name="MovementSpeed" type="Node" parent="Stats"]
+script = ExtResource("4_ams5p")
+base_value = 65.0
+
+[node name="Health" type="Node" parent="Stats"]
+script = ExtResource("5_4qos5")
+base_value = 10.0
+
+[node name="Damage" type="Node" parent="Stats"]
+script = ExtResource("6_u336o")
+base_value = 1.0
+
+[node name="State Machine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("7_8ynyw")
+initial_state = NodePath("EnemyMoving")
+
+[node name="EnemyIdle" type="Node" parent="State Machine" node_paths=PackedStringArray("enemy")]
+script = ExtResource("8_xpe1r")
+enemy = NodePath("../..")
+
+[node name="EnemyMoving" type="Node" parent="State Machine" node_paths=PackedStringArray("enemy")]
+script = ExtResource("9_fa2t0")
+enemy = NodePath("../..")

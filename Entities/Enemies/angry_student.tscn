@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://nyy7petgj01a"]
+
+[ext_resource type="PackedScene" uid="uid://sx54v6kb7rhm" path="res://Entities/EnemyEntity.tscn" id="1_pp5ke"]
+[ext_resource type="Script" path="res://Entities/Enemies/angry_student.gd" id="2_k6vxk"]
+
+[node name="AngryStudent" instance=ExtResource("1_pp5ke")]
+script = ExtResource("2_k6vxk")
+
+[node name="MovementSpeed" parent="Stats" index="0"]
+base_value = 100.0

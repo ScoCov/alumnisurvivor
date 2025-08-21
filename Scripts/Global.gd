@@ -64,7 +64,12 @@ var ATTRIBUTES: Array[Attribute]
 ## Example: If a Player has a "Drama" tag, they are likely to see to Items or Abilities that share the
 ## "Drama" tag.
 #endregion
-enum tag {Elite, Boss, Normal, Ranged, Tank, Player, Besty, Enemy, Band, Drama, Sports, Nerd, Popular, Outcast, Debug}
+#enum tag {Ranged, Tank, Player, Besty, Enemy, Band, Drama, Sports, Nerd, Popular, Outcast, Debug}
+enum meta_tag {Player, Besty, Enemy, Debug}
+enum student_tag {New_Kid, Thespian, Musician, Athlete, Studious, Deliquent}
+enum type_tag {Sports, Baseball, Basketball, Football, Arts, Singing, Painting, Acting, Music, Chior, Jazz, Rock, HipHop, Pop, Study, Science, Engineering, Math, Technology, Clothing, Jewlery, Stationary}
+enum enemy_tag {Elite, Boss, Normal, Weak, Heavy}
+enum combat_tag {Ranged, Tank, Melee, Glass_Cannon, Balanced, Fast}
 
 func _ready():
 	var cfg:= ConfigFile.new()

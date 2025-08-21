@@ -14,13 +14,15 @@ extends Resource
 @export var unlocked: bool = false
 
 @export_group("Tags")
-@export var tags: Array[Global.tag]
+@export var meta_tags: Array[Global.meta_tag]
+@export var type_tags: Array[Global.type_tag]
 
 @export_group("Images")
 ## This will be displayed when the player is given options to choose from. It will also show up
 ## in the collections log as the image a player can click on to see the detail information page.
-#@export var item_type #I want there to be tags to associate with items
 @export var image: Texture
+## This is planned to be able to accept a sheet of sprits, multiple sprite frames, or a single image.
+@export var in_game_image: Texture
 @export_group("Count")
 ## The maximum number that an Item can be stacked. If 0, there is no limit.
 @export var max_count: int = 0

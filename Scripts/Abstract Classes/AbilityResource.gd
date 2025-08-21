@@ -10,8 +10,8 @@ extends Resource
 
 @export_group("Tags")
 ## Global tags associating the ability with specific concepts through out the game.
-@export var tags: Array[Global.tag]
-
+@export var meta_tags: Array[Global.meta_tag]
+@export var type_tags: Array[Global.meta_tag]
 
 @export_group("Images")
 ## This is what will be shown outside gameplay, this will be a simple static image of the object
