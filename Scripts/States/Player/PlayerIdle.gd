@@ -1,7 +1,7 @@
 extends State
 class_name PlayerIdle
 
-@export var player: StudentPlayer
+@export var player: StudentEntity
 
 ##	Call when transitioning to this state
 func enter():
@@ -12,7 +12,7 @@ func exit() -> void:
 	pass
 
 func update(_delta):
-	if player.velocity != Vector2() or Input.get_vector("move_left","move_right","move_up","move_down") != Vector2():
+	if Input.get_vector("move_left","move_right","move_up","move_down"):
 		Transitioned.emit(self, "PlayerMoving")
 			
 func physics_update(_delta):

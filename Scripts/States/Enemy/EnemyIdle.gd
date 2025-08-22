@@ -2,7 +2,6 @@ extends State
 class_name EnemyIdle
 
 @export var enemy: EnemyEntity
-@export var player: StudentPlayer
 
 ##	Call when transitioning to this state
 func enter():
@@ -13,7 +12,7 @@ func exit() -> void:
 	pass
 
 func update(_delta):
-	if player:
+	if enemy.player:
 		Transitioned.emit(self, "EnemyMoving")
 			
 func physics_update(_delta):

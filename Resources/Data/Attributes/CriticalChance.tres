@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Attribute" load_steps=2 format=3 uid="uid://daw6jacc8mg1s"]
 
-[ext_resource type="Script" path="res://Scripts/Abstract Classes/Attribute.gd" id="1_3247a"]
+[ext_resource type="Script" path="res://Scripts/Abstract Classes/Resource/AttributeResource.gd" id="1_3247a"]
 
 [resource]
 script = ExtResource("1_3247a")

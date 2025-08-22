@@ -3,8 +3,9 @@ extends Node2D
 
 
 #NOTE - TO SELF: Please always check for the object - do not assume it's there.
-var ability: AbilityResource
 @export var player: StudentPlayer
+var ability: AbilityResource
+var target: Vector2
 
 	
 func _process(_delta):

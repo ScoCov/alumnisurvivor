@@ -2,7 +2,7 @@ extends Control
 class_name StudentPage
 
 
-@export var student: Student
+@export var student: StudentResource
 @onready var information_page = $Body/MarginContainer/Content/TabContainer/Information/MarginContainer/VBoxContainer
 @onready var header = $Body/MarginContainer/Content
 
@@ -18,14 +18,14 @@ func _ready():
 				return header.get_node("Info/Image/"+path)
 	hdr.call("Sprite2D", "texture").texture = student.icon
 	hdr.call("Name").text = student.student_name
-	hdr.call("Nickname").text = student.title_or_nickname
+	hdr.call("Nickname").text = str(student.student_tags)
 	
 	var info_page = func info_page(target,value) -> void: 
 		information_page.get_node(target+"/Label").text = value
-	info_page.call("Primary", student.primary_skill)
-	info_page.call("Secondary", student.secondary_skill)
-	info_page.call("Weakness", student.weakness_skill)
-	info_page.call("Ability", student.starting_ability)
+	info_page.call("Primary", student.primary.resource_name)
+	info_page.call("Secondary", student.secondary.name)
+	info_page.call("Weakness", student.weakness.name)
+	info_page.call("Ability", student.starting_ability.ability_name)
 	
 	if student == Global.SELECTED_STUDENT:
 		hdr.call("SelectedAs").text = "Player"
@@ -38,13 +38,12 @@ func update():
 		#student = load("res://Resources/Data/Students/Student1.tres")
 	header.get_node("Info/Image/Sprite2D").texture = student.icon
 	header.get_node("Info/Control/VBoxContainer/Name").text = student.student_name
-	header.get_node("Info/Control/VBoxContainer/Nickname").text = student.title_or_nickname
-	
-	information_page.get_node("Primary/Label").text = student.primary_skill
-	information_page.get_node("Secondary/Label").text = student.secondary_skill
-	information_page.get_node("Weakness/Label").text = student.weakness_skill
-	information_page.get_node("Ability/Label").text = student.starting_ability
+	information_page.get_node("Primary/Label").text = student.primary.name
+	information_page.get_node("Secondary/Label").text = student.secondary.name
+	information_page.get_node("Weakness/Label").text = student.weakness.name
+	information_page.get_node("Ability/Label").text = student.starting_ability.ability_name
 	header.get_node("Info/Control/VBoxContainer/SelectedAs").text =  ""
+	
 	if student == Global.SELECTED_STUDENT:
 		header.get_node("Info/Control/VBoxContainer/SelectedAs").text = "Player"
 		

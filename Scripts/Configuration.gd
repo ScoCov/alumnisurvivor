@@ -12,11 +12,7 @@ static func get_dir(target_dir: String, _cfg: ConfigFile = null) -> String:
 		err_msg += "%s " % dir
 	assert(target_dir in acceptable_directories, err_msg + " (You gave: '%s')" % target_dir)
 	target_dir.to_lower()
-	var cfg: ConfigFile
-	if _cfg == null:
-		cfg = ConfigFile.new() 
-	else:
-		cfg = _cfg
+	var cfg:= ConfigFile.new() 
 	cfg.load("res://env.cfg")
 	return cfg.get_value("files", target_dir+"_resource_directory")
 	

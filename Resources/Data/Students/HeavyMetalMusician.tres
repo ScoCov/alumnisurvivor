@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="StudentResource" load_steps=8 format=3 uid="uid://dm0b2ysjako7v"]
+
+[ext_resource type="Texture2D" uid="uid://bu4nhlg161ryi" path="res://Resources/Image/Temp/Purpleknight_Doll.png" id="1_bgvkd"]
+[ext_resource type="Resource" uid="uid://gl46emysxfo3" path="res://Resources/Data/Attributes/Damage.tres" id="2_cnaux"]
+[ext_resource type="Texture2D" uid="uid://drohtv6sdlhoq" path="res://Resources/Image/Temp/PurpleKnight_Icon.png" id="2_qielo"]
+[ext_resource type="Resource" uid="uid://mxet0tdgrlnh" path="res://Resources/Data/Attributes/Knockback.tres" id="4_jbyk6"]
+[ext_resource type="Script" path="res://Scripts/Abstract Classes/Resource/StudentResource.gd" id="4_oap4c"]
+[ext_resource type="Resource" uid="uid://4im7wneeetbr" path="res://Resources/Data/Abilities/HeavyPunch.tres" id="5_6k6ad"]
+[ext_resource type="Resource" uid="uid://mno0drh8g3i8" path="res://Resources/Data/Attributes/Range.tres" id="6_pcv8m"]
+
+[resource]
+script = ExtResource("4_oap4c")
+student_name = "Randy E. Ventra"
+id = "HeavyMetalMusician"
+scene_path = "res://Entities/Students/HeavyMetalMusician.tscn"
+primary = ExtResource("2_cnaux")
+secondary = ExtResource("4_jbyk6")
+weakness = ExtResource("6_pcv8m")
+starting_ability = ExtResource("5_6k6ad")
+icon = ExtResource("2_qielo")
+doll = ExtResource("1_bgvkd")
+unlocked = true
+student_tags = Array[int]([2])
+meta_tags = Array[int]([0, 1])
+combat_tags = Array[int]([2])

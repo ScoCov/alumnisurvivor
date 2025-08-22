@@ -2,7 +2,7 @@
 
 [ext_resource type="Resource" uid="uid://b4tkhcjsw15ux" path="res://Resources/Data/Attributes/Cooldown.tres" id="1_vlg3u"]
 [ext_resource type="Script" path="res://Scripts/Abstract Classes/Item/ItemBonus.gd" id="2_jvgb5"]
-[ext_resource type="Script" path="res://Scripts/Abstract Classes/Item/Item.gd" id="3_cm11e"]
+[ext_resource type="Script" path="res://Scripts/Abstract Classes/Resource/ItemResource.gd" id="3_cm11e"]
 [ext_resource type="Resource" uid="uid://clct1lsc7c8iq" path="res://Resources/Data/Attributes/AttackSpeed.tres" id="3_dq2g1"]
 [ext_resource type="Texture2D" uid="uid://d12rqrbxf8t6q" path="res://Resources/Image/Temp/Items/pencil_32x32.png" id="4_tm404"]
 

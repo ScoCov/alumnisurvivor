@@ -1,8 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://dxs4mstvhwgv"]
+[gd_scene load_steps=6 format=3 uid="uid://dxs4mstvhwgv"]
 
 [ext_resource type="Script" path="res://Scripts/GameLogic.gd" id="1_ujiyw"]
 [ext_resource type="Script" path="res://Scripts/EnemySpawner.gd" id="2_28vsk"]
-[ext_resource type="PackedScene" uid="uid://bfx5emdxf6bpk" path="res://Entities/StudentPlayer.tscn" id="2_tt2uk"]
 [ext_resource type="PackedScene" uid="uid://cry3gb37tqlm0" path="res://Scenes/HUD/GameOverlay.tscn" id="3_e4hy1"]
 [ext_resource type="Texture2D" uid="uid://byby3mxqd478b" path="res://Resources/Image/Temp/Backgrounds/Desert.png" id="5_thx8d"]
 [ext_resource type="Texture2D" uid="uid://bpqhv26pjwr2h" path="res://Resources/Image/Temp/Backgrounds/Plains.png" id="6_klupb"]
@@ -25,15 +24,14 @@ texture = ExtResource("6_klupb")
 position = Vector2(1680, -1104)
 texture = ExtResource("5_thx8d")
 
-[node name="GameLogic" type="Node" parent="." node_paths=PackedStringArray("player", "enemy_spawner", "gameTime")]
+[node name="GameLogic" type="Node" parent="." node_paths=PackedStringArray("enemy_spawner", "spawn_point", "gameTime")]
 script = ExtResource("1_ujiyw")
-player = NodePath("../StudentPlayer")
 enemy_spawner = NodePath("EnemySpawner")
+spawn_point = NodePath("../SpawnPoint")
 gameTime = NodePath("GameTimeLimit")
 
-[node name="EnemySpawner" type="Node" parent="GameLogic" node_paths=PackedStringArray("player", "spawn_timer")]
+[node name="EnemySpawner" type="Node" parent="GameLogic" node_paths=PackedStringArray("spawn_timer")]
 script = ExtResource("2_28vsk")
-player = NodePath("../../StudentPlayer")
 spawn_timer = NodePath("../SpawnTimer")
 
 [node name="DifficultyModifiers" type="Node" parent="GameLogic"]
@@ -51,12 +49,8 @@ autostart = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="GameLogic"]
 
-[node name="GameOverlay" parent="GameLogic/CanvasLayer" node_paths=PackedStringArray("player", "timer") instance=ExtResource("3_e4hy1")]
-player = NodePath("../../../StudentPlayer")
+[node name="GameOverlay" parent="GameLogic/CanvasLayer" node_paths=PackedStringArray("timer") instance=ExtResource("3_e4hy1")]
 timer = NodePath("../../GameTimeLimit")
 
-[node name="StudentPlayer" parent="." node_paths=PackedStringArray("global_projectile_container") instance=ExtResource("2_tt2uk")]
-position = Vector2(576, 320)
-global_projectile_container = NodePath("../GameLogic/ProjtectileContainer")
-
-[node name="Camera2D2" type="Camera2D" parent="StudentPlayer"]
+[node name="SpawnPoint" type="Node2D" parent="."]
+position = Vector2(520, 304)

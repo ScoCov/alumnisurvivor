@@ -5,7 +5,7 @@ signal count_changed
 
 const MAXIMUM_STACK = 999
 
-@export var item: Item 
+@export var item: ItemResource 
 @export_range(0,MAXIMUM_STACK) var count: int = 0 : 
 	set(value):
 		var limit: int = MAXIMUM_STACK ## 'Unlimited'

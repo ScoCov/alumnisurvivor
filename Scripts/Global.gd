@@ -25,14 +25,19 @@ extends Node
 ## so that the number, and the Students themselves, don't have to be hard-coded in or manually discovered
 ## down-the-line.
 #endregion
-var STUDENT_ROSTER: Array[Student]
+var STUDENT_ROSTER: Array[StudentResource]
+
+#region NOTE:
+## 
+#endregion
+var ENEMY_ROSTER: Array[EnemyResource]
 
 #region NOTE:
 ## SELECTED_STUDENT is how we control which Student that is currently selected by
 ## the player to be used as the 'main character' or playable characer. This is used
 ## to create continuity across the menus and game.
 #endregion
-var SELECTED_STUDENT: Student
+var SELECTED_STUDENT: StudentResource
 
 #region NOTE:
 ## SELECTED_BESTY is the same thing as SELECTED_STUDENT but for the Besty.
@@ -40,22 +45,22 @@ var SELECTED_STUDENT: Student
 ## talk to eachother throughout the menus. And as well as know who will be playing
 ## next.
 #endregion
-var SELECTED_BESTY: Student
+var SELECTED_BESTY: StudentResource
 
 #region NOTE:
 ##
 #endregion
-var ITEM_COLLECTION: Array[Item]
+var ITEM_COLLECTION: Array[ItemResource]
 
 #region NOTE:
 ##
 #endregion
-var ABILITIES: Array[Ability]
+var ABILITIES: Array[AbilityResource]
 
 #region NOTE:
 ##
 #endregion
-var ATTRIBUTES: Array[Attribute]
+var ATTRIBUTES: Array[AttributeResource]
 
 
 #region NOTE:
@@ -67,16 +72,20 @@ var ATTRIBUTES: Array[Attribute]
 #enum tag {Ranged, Tank, Player, Besty, Enemy, Band, Drama, Sports, Nerd, Popular, Outcast, Debug}
 enum meta_tag {Player, Besty, Enemy, Debug}
 enum student_tag {New_Kid, Thespian, Musician, Athlete, Studious, Deliquent}
-enum type_tag {Sports, Baseball, Basketball, Football, Arts, Singing, Painting, Acting, Music, Chior, Jazz, Rock, HipHop, Pop, Study, Science, Engineering, Math, Technology, Clothing, Jewlery, Stationary}
+enum item_tag {Sports, Fitness, Popularity, Technology, Clothing, Jewlery, }
 enum enemy_tag {Elite, Boss, Normal, Weak, Heavy}
-enum combat_tag {Ranged, Tank, Melee, Glass_Cannon, Balanced, Fast}
+enum combat_tag {Ranged, Tank, Melee, Glass_Cannon, Balanced, Fast, }
+enum attack_tag {Unarmed, Weapon, Sound, Fire, Shock, Cold}
 
 func _ready():
-	var cfg:= ConfigFile.new()
 	@warning_ignore("static_called_on_instance")
-	load_objects(Configuration.get_dir("student",cfg), STUDENT_ROSTER)
+	load_objects(Configuration.get_dir("student"), STUDENT_ROSTER)
 	@warning_ignore("static_called_on_instance")
-	load_objects(Configuration.get_dir("attribute",cfg), ATTRIBUTES)
+	load_objects(Configuration.get_dir("attribute"), ATTRIBUTES)
+	@warning_ignore("static_called_on_instance")
+	load_objects(Configuration.get_dir("enemy"), ENEMY_ROSTER)
+	@warning_ignore("static_called_on_instance")
+	load_objects(Configuration.get_dir("ability"), ABILITIES)
 	if len(STUDENT_ROSTER) > 1: ## If there's at least two students in the roster assign default students.
 		SELECTED_STUDENT = STUDENT_ROSTER[0]
 		SELECTED_BESTY = STUDENT_ROSTER[1]
@@ -88,7 +97,7 @@ func load_objects(_dir: String, variable: Variant):
 
 ## Use this method, instead of calling SELECTED_[Student/Besty] directly to have
 ## some validation controls.
-func change_selected(player_or_besty: String, _student: Student):
+func change_selected(player_or_besty: String, _student: StudentResource):
 	assert(player_or_besty.to_lower() in ["player", "besty"],
 	"change_selected must have a value of %s or %s" % ["player", "besty"])
 	match player_or_besty:

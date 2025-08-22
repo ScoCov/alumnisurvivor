@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="StudentResource" load_steps=8 format=3 uid="uid://ccg57vjn8xbc1"]
+
+[ext_resource type="Texture2D" uid="uid://duqddqpavxn5v" path="res://Resources/Image/Temp/Blueknight_Doll.png" id="1_s42a8"]
+[ext_resource type="Texture2D" uid="uid://dsh1r7dkli2ty" path="res://Resources/Image/Temp/Blueknight_Icon.png" id="2_bwjf6"]
+[ext_resource type="Resource" uid="uid://b7lj25emughbo" path="res://Resources/Data/Attributes/MovementSpeed.tres" id="4_b2fcx"]
+[ext_resource type="Resource" uid="uid://b1wm1fxdwvncb" path="res://Resources/Data/Abilities/RapidPunch.tres" id="5_0t28p"]
+[ext_resource type="Script" path="res://Scripts/Abstract Classes/Resource/StudentResource.gd" id="5_c1br1"]
+[ext_resource type="Resource" uid="uid://cxxky3c0l03d6" path="res://Resources/Data/Attributes/Duration.tres" id="6_1rtqn"]
+[ext_resource type="Resource" uid="uid://b4tkhcjsw15ux" path="res://Resources/Data/Attributes/Cooldown.tres" id="8_1je6v"]
+
+[resource]
+script = ExtResource("5_c1br1")
+student_name = "Conrad"
+id = "NewKid"
+scene_path = "res://Entities/Students/NewKid.tscn"
+primary = ExtResource("4_b2fcx")
+secondary = ExtResource("6_1rtqn")
+weakness = ExtResource("8_1je6v")
+starting_ability = ExtResource("5_0t28p")
+icon = ExtResource("2_bwjf6")
+doll = ExtResource("1_s42a8")
+unlocked = true
+student_tags = Array[int]([0])
+meta_tags = Array[int]([0, 1])
+combat_tags = Array[int]([4])

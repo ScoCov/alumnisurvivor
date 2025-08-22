@@ -8,7 +8,7 @@ var attributes: Dictionary
 ## Add a given Item to the ItemManager in the form of an ItemStack. If the Item (and ItemStack) already exists,
 ## this function will then increase that ItemStack's count by 1. 
 ## This function will also return a Dictionary of {Item: item_stack.item.item_name, Count: item_stack.count}
-func add_item(item: Item):
+func add_item(item: ItemResource):
 	## Check the ItemManager's children to see if any of them have an ItemStack that contains the given Item.
 	var extant_item: bool = get_children().any(func(item_stack): return item_stack.item.item_name == item.item_name)
 
@@ -39,7 +39,7 @@ func modify_attributes():
 	
 	for item_stack in get_children():
 		if item_stack is ItemStack:
-			var item:= item_stack.item as Item
+			var item:= item_stack.item as ItemResource
 			if not item:
 				return false
 				

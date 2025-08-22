@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="EnemyResource" load_steps=2 format=3 uid="uid://bm1qff6yqs7dd"]
+
+[ext_resource type="Script" path="res://Scripts/Abstract Classes/Resource/EnemyResource.gd" id="1_b5jbk"]
+
+[resource]
+script = ExtResource("1_b5jbk")
+name = "Bully"
+id = "EnemyBully"
+enemy_scene_path = "res://Entities/Enemies/Bully.tscn"
+description = ""
+meta_tags = Array[int]([2])
+combat_tags = Array[int]([2, 1])
+experience_group = ""

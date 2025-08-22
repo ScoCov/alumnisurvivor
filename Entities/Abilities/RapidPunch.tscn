@@ -1,66 +1,24 @@
-[gd_scene load_steps=14 format=3 uid="uid://c3ar2sftollau"]
+[gd_scene load_steps=5 format=3 uid="uid://cci4ia1qe1s8n"]
 
-[ext_resource type="Script" path="res://Entities/Abilities/RapidPunch.gd" id="1_hxxdv"]
-[ext_resource type="Script" path="res://Scripts/States/StateMachine.gd" id="2_5ymj6"]
-[ext_resource type="Script" path="res://Scripts/Component/AttackSpeedComponent.gd" id="3_ffrw2"]
-[ext_resource type="Texture2D" uid="uid://evvlxxf5qy7d" path="res://Resources/Image/Temp/Arrow_Menu_02.png" id="3_l536y"]
-[ext_resource type="Script" path="res://Scripts/States/Abilities/AbilityReady.gd" id="3_t5kiu"]
-[ext_resource type="Script" path="res://Scripts/Component/CooldownComponent.gd" id="4_0vipf"]
-[ext_resource type="Script" path="res://Scripts/States/Abilities/AbilityActive.gd" id="4_hh2nc"]
-[ext_resource type="Script" path="res://Scripts/States/Abilities/AbilityCooldown.gd" id="5_20iqa"]
-[ext_resource type="Script" path="res://Scripts/Component/DamageComponent.gd" id="5_hui5t"]
-[ext_resource type="Script" path="res://Scripts/Component/CriticalChanceComponent.gd" id="6_ba6he"]
-[ext_resource type="Script" path="res://Scripts/States/Abilities/AbilityRecovery.gd" id="6_e8x2s"]
-[ext_resource type="Script" path="res://Scripts/Component/KnockbackComponent.gd" id="7_bhtdh"]
-[ext_resource type="Script" path="res://Scripts/Component/RangeComponent.gd" id="8_wrvhd"]
+[ext_resource type="PackedScene" uid="uid://c54jg6hm5awpj" path="res://Entities/Ability.tscn" id="1_8jhnd"]
+[ext_resource type="Script" path="res://Entities/Abilities/RapidPunch.gd" id="2_alj54"]
+[ext_resource type="Texture2D" uid="uid://7bpk56ikowy5" path="res://Resources/Image/Temp/fist_temp.png" id="3_qwudb"]
 
-[node name="RapidPunch" type="Node2D"]
-script = ExtResource("1_hxxdv")
+[sub_resource type="CircleShape2D" id="CircleShape2D_fory4"]
 
-[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
-script = ExtResource("2_5ymj6")
-initial_state = NodePath("Ready")
+[node name="RapidPunch" instance=ExtResource("1_8jhnd")]
+script = ExtResource("2_alj54")
 
-[node name="Ready" type="Node" parent="StateMachine" node_paths=PackedStringArray("ability")]
-script = ExtResource("3_t5kiu")
-ability = NodePath("../..")
+[node name="DirectionContainer" type="Marker2D" parent="." index="2"]
 
-[node name="Active" type="Node" parent="StateMachine" node_paths=PackedStringArray("ability")]
-script = ExtResource("4_hh2nc")
-ability = NodePath("../..")
+[node name="ImageContainer" type="Node2D" parent="DirectionContainer" index="0"]
 
-[node name="Cooldown" type="Node" parent="StateMachine" node_paths=PackedStringArray("ability")]
-script = ExtResource("5_20iqa")
-ability = NodePath("../..")
+[node name="Sprite2D" type="Sprite2D" parent="DirectionContainer/ImageContainer" index="0"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_qwudb")
 
-[node name="Recovery" type="Node" parent="StateMachine" node_paths=PackedStringArray("ability")]
-script = ExtResource("6_e8x2s")
-ability = NodePath("../..")
+[node name="Hitbox" type="Area2D" parent="DirectionContainer/ImageContainer" index="1"]
 
-[node name="Composition" type="Node" parent="."]
-
-[node name="AttackSpeed" type="Node" parent="Composition"]
-script = ExtResource("3_ffrw2")
-base_value = 200.0
-
-[node name="Cooldown" type="Node" parent="Composition"]
-script = ExtResource("4_0vipf")
-base_value = 1.0
-
-[node name="Damage" type="Node" parent="Composition"]
-script = ExtResource("5_hui5t")
-base_value = 5.0
-
-[node name="CriticalChance" type="Node" parent="Composition"]
-script = ExtResource("6_ba6he")
-base_value = 0.5
-
-[node name="Knockback" type="Node" parent="Composition"]
-script = ExtResource("7_bhtdh")
-
-[node name="Range" type="Node" parent="Composition"]
-script = ExtResource("8_wrvhd")
-base_value = 75.0
-
-[node name="Sprite" type="Sprite2D" parent="."]
-texture = ExtResource("3_l536y")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DirectionContainer/ImageContainer/Hitbox" index="0"]
+shape = SubResource("CircleShape2D_fory4")
+debug_color = Color(0.744844, 0.736286, 0.124803, 0.42)

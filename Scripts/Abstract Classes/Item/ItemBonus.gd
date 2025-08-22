@@ -3,7 +3,7 @@ extends Resource
 
 ## Give the name of the attribute you want to modify.
 ## TODO: Say SpecialEffect (may change) to add odd abilities, instead of just stat modifications
-@export var attribute: Attribute
+@export var attribute: AttributeResource
 ## This is the value given when the player has a single stack of this item.
 @export var start_value: float
 ## This is the value that grows with the number of items in a stack

@@ -1,4 +1,4 @@
-class_name Item
+class_name ItemResource
 extends Resource
 
 
@@ -15,7 +15,7 @@ extends Resource
 
 @export_group("Tags")
 @export var meta_tags: Array[Global.meta_tag]
-@export var type_tags: Array[Global.type_tag]
+@export var item_tags: Array[Global.item_tag]
 
 @export_group("Images")
 ## This will be displayed when the player is given options to choose from. It will also show up

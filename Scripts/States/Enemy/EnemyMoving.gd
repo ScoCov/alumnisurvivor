@@ -2,7 +2,6 @@ extends State
 class_name EnemyMoving
 
 @export var enemy: EnemyEntity
-@export var player: StudentPlayer
 
 const DEFAULT_MOVEMENT_SPEED: float = 100
 
@@ -15,14 +14,13 @@ func exit() -> void:
 	pass
 
 func update(_delta):
-	if enemy.velocity == Vector2():
-		Transitioned.emit(self, "PlayerIdle")
+	if enemy.velocity == Vector2() or not enemy.player:
+		Transitioned.emit(self, "EnemyIdle")
 		
 func physics_update(_delta):
-	if !enemy or !enemy.player: # Sentinel Check, if no player, exit function with warning.
-		assert(enemy != null or enemy.player != null, "Enemy/Player cannot be null.")
-		 
-	var direction = enemy.position.direction_to(enemy.player.position)
-	enemy.velocity = direction * enemy.get_node("Stats").attributes["ATTRIBUTE_MOVEMENT_SPEED"].value
+	if not enemy.player:
+		return # Sentinel Check, if no player, exit function with warning.
+	var direction = enemy.position.direction_to(enemy.player.get_parent().position + enemy.player.position) 
+	enemy.velocity = (direction * $"../../Stats/MovementSpeed".value if $"../../Stats/MovementSpeed" else DEFAULT_MOVEMENT_SPEED )
 	enemy.move_and_slide()
 		

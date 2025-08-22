@@ -1,7 +1,7 @@
 extends Control
 class_name GameOverlay
 
-@export var player: StudentPlayer
+@export var player: StudentEntity
 @export var timer: Timer
 const MAX_TIME_LIMIT: int = 30 #in seconds
 

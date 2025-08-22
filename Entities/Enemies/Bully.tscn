@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://bs23e1pf5iwk2"]
+
+[ext_resource type="PackedScene" uid="uid://sx54v6kb7rhm" path="res://Entities/EnemyEntity.tscn" id="1_n0ryf"]
+[ext_resource type="Script" path="res://Entities/Enemies/Bully.gd" id="2_dlpl7"]
+[ext_resource type="Resource" uid="uid://bm1qff6yqs7dd" path="res://Resources/Data/Enemies/Bully.tres" id="3_cij55"]
+[ext_resource type="Texture2D" uid="uid://cdt3o6gvvl4qr" path="res://Resources/Image/Temp/MegaOrc.png" id="4_vhggw"]
+
+[node name="Bully" instance=ExtResource("1_n0ryf")]
+script = ExtResource("2_dlpl7")
+resource = ExtResource("3_cij55")
+
+[node name="Sprite" parent="." index="0"]
+texture = ExtResource("4_vhggw")
+
+[node name="Hitbox" parent="." index="1"]
+scale = Vector2(1.5, 1.5)
+
+[node name="MovementSpeed" parent="Stats" index="0"]
+base_value = 50.0

@@ -1,0 +1,52 @@
+[gd_scene load_steps=9 format=3 uid="uid://v1phrdf8cdqg"]
+
+[ext_resource type="Script" path="res://Entities/StudentEntity.gd" id="1_cijec"]
+[ext_resource type="Script" path="res://Scripts/Component/HealthComponent.gd" id="2_e3u2s"]
+[ext_resource type="Script" path="res://Scripts/Component/MovementComponent.gd" id="3_1dsc0"]
+[ext_resource type="Script" path="res://Scripts/States/StateMachine.gd" id="4_jbidu"]
+[ext_resource type="Script" path="res://Scripts/States/Player/PlayerIdle.gd" id="5_vaka8"]
+[ext_resource type="Script" path="res://Scripts/States/Player/PlayerMoving.gd" id="6_ivuk0"]
+[ext_resource type="Texture2D" uid="uid://tipd8jqpeh1b" path="res://Resources/Image/Temp/Greyknight_Doll.png" id="7_xli4a"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bj2gu"]
+radius = 64.0
+
+[node name="StudentEntity" type="CharacterBody2D"]
+script = ExtResource("1_cijec")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_bj2gu")
+
+[node name="Composition" type="Node" parent="."]
+
+[node name="Health" type="Node" parent="Composition"]
+script = ExtResource("2_e3u2s")
+base_value = 10.0
+
+[node name="MovementSpeed" type="Node" parent="Composition"]
+script = ExtResource("3_1dsc0")
+base_value = 5000.0
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("4_jbidu")
+initial_state = NodePath("PlayerIdle")
+
+[node name="PlayerIdle" type="Node" parent="StateMachine" node_paths=PackedStringArray("player")]
+script = ExtResource("5_vaka8")
+player = NodePath("../..")
+
+[node name="PlayerMoving" type="Node" parent="StateMachine" node_paths=PackedStringArray("player_test")]
+script = ExtResource("6_ivuk0")
+player_test = NodePath("../..")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+scale = Vector2(0.88, 0.88)
+texture = ExtResource("7_xli4a")
+
+[node name="Ability1" type="Node2D" parent="."]
+
+[node name="Ability2" type="Node2D" parent="."]
+
+[node name="Ability3" type="Node2D" parent="."]
+
+[node name="Ability4" type="Node2D" parent="."]

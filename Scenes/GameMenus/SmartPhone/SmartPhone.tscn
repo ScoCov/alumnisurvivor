@@ -2,10 +2,10 @@
 
 [ext_resource type="PackedScene" uid="uid://d0wxojv08v7sg" path="res://Scenes/GameMenus/SmartPhone/StudentPage.tscn" id="1_4tbll"]
 [ext_resource type="Script" path="res://Scenes/GameMenus/SmartPhone/SmartPhone.gd" id="1_wxg0g"]
-[ext_resource type="Resource" uid="uid://ccg57vjn8xbc1" path="res://Resources/Data/Students/Student1.tres" id="2_fco7q"]
-[ext_resource type="Resource" uid="uid://bdyv3dp43ka7l" path="res://Resources/Data/Students/Student2.tres" id="3_r0vmy"]
-[ext_resource type="Resource" uid="uid://dm0b2ysjako7v" path="res://Resources/Data/Students/Student3.tres" id="4_71s5i"]
-[ext_resource type="Resource" uid="uid://bro1iqhp3a16b" path="res://Resources/Data/Students/Student4.tres" id="5_q87da"]
+[ext_resource type="Resource" uid="uid://ccg57vjn8xbc1" path="res://Resources/Data/Students/NewKid.tres" id="2_fco7q"]
+[ext_resource type="Resource" uid="uid://bdyv3dp43ka7l" path="res://Resources/Data/Students/Athlete.tres" id="3_r0vmy"]
+[ext_resource type="Resource" uid="uid://dm0b2ysjako7v" path="res://Resources/Data/Students/HeavyMetalMusician.tres" id="4_71s5i"]
+[ext_resource type="Resource" uid="uid://bro1iqhp3a16b" path="res://Resources/Data/Students/ProudGenius.tres" id="5_q87da"]
 [ext_resource type="Texture2D" uid="uid://rf8puwoorg01" path="res://Resources/Image/Temp/Arrow_Menu_03.png" id="7_06t6a"]
 [ext_resource type="Texture2D" uid="uid://dv8qcv103yp3e" path="res://Resources/Image/Temp/Arrow_Menu_01.png" id="8_ynmpa"]
 

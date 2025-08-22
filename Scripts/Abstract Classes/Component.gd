@@ -29,6 +29,6 @@ var value: float:
 ## If custom limitations on an attribute need to be applied, add the attribute and its' limitations
 ## to this variable. Otherwise, the custom Attribute+Component classes will automatically assign their
 ## appropriate attribute.
-@export var attribute: Attribute
+@export var attribute: AttributeResource
 
 

@@ -1,4 +1,4 @@
-class_name Attribute
+class_name AttributeResource
 extends Resource
 
 ## Name to be used and displayed
