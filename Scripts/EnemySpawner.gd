@@ -28,14 +28,14 @@ var list_of_available_enemies: Array[EnemyResource] = Global.ENEMY_ROSTER
 var loaded_enemies: Array[PackedScene]
 
 func _ready() -> void:
-	#list_of_available_enemies.append(load("res://Resources/Data/Enemies/angry_student.tres"))
 	spawn_timer.timeout.connect(spawn_enemy)
 	spawn_timer.start()
 	
 func spawn_enemy() -> void:
 	if ENEMY_MAX_COUNT <= get_child_count():
 		return 
-	var rand_index: int = randi_range(0,len(list_of_available_enemies) - 1)
+	## TODO: I need to create the logic for determining what kind of enemy to spawn.
+	var rand_index: int = randi_range(0,len(list_of_available_enemies) - 1 )
 	var new_enemy_scene = load(list_of_available_enemies[rand_index].enemy_scene_path)
 	var new_enemy_entity: EnemyEntity = new_enemy_scene.instantiate()
 	new_enemy_entity.player = player
