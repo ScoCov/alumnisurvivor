@@ -21,7 +21,21 @@ func _ready():
 		$Ability1.add_child(new_ability)
 		
 func _process(_delta):
-	$Label.text = "Enemy Inside Bubble Count: (%s)" % str(len(_enemy_refs))
+	##TODO: I need to migrate the modulation into another class to clean up the actions here.
+	## potentially, I can create the imagined 'Health State' StateMachine. That may also help
+	## manage a lot more than just the color modulator - but everything to do with health.
+	if invulnerable or ($Composition/Health.current_health / $Composition/Health.max_health) <= 0.25 :
+		var color = (Color(1, 0, 0, .7) if 
+			($Composition/Health.current_health / $Composition/Health.max_health) <= 0.25 
+			else Color(1, .5, .5, .7) )
+				
+		if ceili($'InvulTimer'.time_left * 10) % 2 == 0:
+			$Sprite.self_modulate = color
+		else:
+			$Sprite.self_modulate = Color(1, 1, 1, 1)
+	else:
+		$Sprite.self_modulate = Color(1, 1, 1, 1)
+		
 	if not invulnerable and len(_enemy_refs) > 0:
 		take_damage.emit(_enemy_refs[0])
 

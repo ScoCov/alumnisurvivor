@@ -9,7 +9,7 @@
 [ext_resource type="Script" path="res://Scripts/States/Enemy/EnemyMoving.gd" id="9_fa2t0"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_j4ubh"]
-radius = 32.0
+radius = 34.0
 
 [node name="EnemyEntity" type="CharacterBody2D"]
 scale = Vector2(0.5, 0.5)

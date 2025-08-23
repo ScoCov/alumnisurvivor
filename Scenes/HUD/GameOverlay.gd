@@ -21,8 +21,9 @@ func _process(_delta):
 
 func update_health() -> void:
 	if not player: return
-	$Control/Control/VBoxContainer/Health/Label.text = "%s/%s" % [player.get_node("Composition/Health").current_health , player.get_node("Composition/Health").max_health  ]
-	
+	$Control/Control/VBoxContainer/Health/Label.text = "%s / %s" % [player.get_node("Composition/Health").current_health , player.get_node("Composition/Health").max_health  ]
+	$Control/Control/VBoxContainer/Health.value = player.get_node("Composition/Health").current_health
+	$Control/Control/VBoxContainer/Health.max_value = player.get_node("Composition/Health").max_health
 func update_win_condition()->void:
 	if timer:
 		$WinConditions/ProgressBar.max_value = timer.wait_time
