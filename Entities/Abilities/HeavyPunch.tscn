@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://u43gaq3mwpgv"]
+
+[ext_resource type="PackedScene" uid="uid://c54jg6hm5awpj" path="res://Entities/Ability.tscn" id="1_anbvf"]
+[ext_resource type="Script" path="res://Entities/Abilities/HeavyPunch.gd" id="2_fedr2"]
+
+[node name="HeavyPunch" instance=ExtResource("1_anbvf")]
+script = ExtResource("2_fedr2")

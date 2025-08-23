@@ -10,13 +10,13 @@
 script = ExtResource("2_alj54")
 
 [node name="AttackSpeed" parent="Composition" index="0"]
-base_value = 5000.0
+base_value = 1500.0
 
 [node name="Cooldown" parent="Composition" index="1"]
 base_value = 1.1
 
 [node name="Range" parent="Composition" index="5"]
-base_value = 550.0
+base_value = 200.0
 
 [node name="DirectionContainer" type="Marker2D" parent="." index="2"]
 

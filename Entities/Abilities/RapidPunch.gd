@@ -13,7 +13,7 @@ func on_ready():
 	
 ## Called when the ability is active phase
 func on_active(_delta):
-
+	$DirectionContainer/ImageContainer/Hitbox.monitoring = true
 	if $DirectionContainer/ImageContainer.position.x < $Composition/Range.value:
 		$DirectionContainer/ImageContainer.position.x += $Composition/AttackSpeed.value * _delta
 	else:
@@ -22,6 +22,7 @@ func on_active(_delta):
 		
 ## Called to have the 
 func on_recovery(_delta):
+	$DirectionContainer/ImageContainer/Hitbox.monitoring = false
 	if $DirectionContainer/ImageContainer.position.x > 0:
 		$DirectionContainer/ImageContainer.position.x -= $Composition/AttackSpeed.value * _delta
 	else:
@@ -30,7 +31,6 @@ func on_recovery(_delta):
 
 ## Called when the weapon is not doing anything and is waiting for the cooldown timer to complete.	
 func on_cooldown(_delta):
-	print("Cooldown: %s" % str(cooldown_count))
 	if target: 
 		$'$DirectionContainer'.look_at(target)
 	else:
@@ -51,5 +51,4 @@ func on_exit():
 
 func _on_hitbox_body_entered(body):
 	if body is EnemyEntity:
-		print("Hit Enemy")
-		body.emit_signal("death")
+		body.emit_signal("take_damage", $Composition/Damage.value, self)

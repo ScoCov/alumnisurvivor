@@ -24,7 +24,6 @@ func on_active(_delta):
 		new_projectile.position = Vector2()
 		add_child(new_projectile)
 		return true
-	return false
 	
 func on_recovery(_delta):
 	return true
