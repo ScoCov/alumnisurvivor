@@ -49,13 +49,6 @@ base_value = 1.2
 [node name="HeroDollTestSize" type="Sprite2D" parent="."]
 texture = ExtResource("8_7ykm4")
 
-[node name="LifeTimer" type="Timer" parent="."]
-wait_time = 0.75
-
-[node name="SpeedIndicator" type="Label" parent="."]
-offset_right = 40.0
-offset_bottom = 23.0
-
 [node name="HitBox" type="Area2D" parent="."]
 collision_layer = 0
 collision_mask = 0

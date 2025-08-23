@@ -51,3 +51,6 @@ script = ExtResource("9_fa2t0")
 enemy = NodePath("../..")
 
 [node name="Marker2D" type="Marker2D" parent="."]
+
+[connection signal="death" from="." to="." method="_on_death"]
+[connection signal="take_damage" from="." to="." method="_on_take_damage"]

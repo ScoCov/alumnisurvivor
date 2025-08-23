@@ -21,6 +21,6 @@ func physics_update(_delta):
 	if not enemy.player:
 		return # Sentinel Check, if no player, exit function with warning.
 	var direction = enemy.position.direction_to(enemy.player.get_parent().position + enemy.player.position) 
-	enemy.velocity = (direction * $"../../Stats/MovementSpeed".value if $"../../Stats/MovementSpeed" else DEFAULT_MOVEMENT_SPEED )
+	enemy.velocity = (direction * enemy.get_node("Composition/MovementSpeed").value ) * _delta
 	enemy.move_and_slide()
 		

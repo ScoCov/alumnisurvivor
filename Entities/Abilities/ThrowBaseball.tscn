@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://ctrffj8db28nh"]
+
+[ext_resource type="PackedScene" uid="uid://c54jg6hm5awpj" path="res://Entities/Ability.tscn" id="1_q3b83"]
+[ext_resource type="Script" path="res://Entities/Abilities/ThrowBaseball.gd" id="2_1kb3h"]
+
+[node name="ThrowBaseball" instance=ExtResource("1_q3b83")]
+script = ExtResource("2_1kb3h")
+
+[node name="AttackSpeed" parent="Composition" index="0"]
+base_value = 225.0
+
+[node name="Range" parent="Composition" index="5"]
+base_value = 350.0

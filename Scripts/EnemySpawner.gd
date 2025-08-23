@@ -5,7 +5,7 @@ extends Node
 @export var player: StudentEntity
 @export var spawn_timer: Timer ## TEST
 
-const ENEMY_MAX_COUNT: int = 10
+const ENEMY_MAX_COUNT: int = 30
 const ENEMY_ELITE_MAX_COUNT: int = 2
 #const ENEMY_UNIT_SCENE = preload("res://Entities/EnemyEntity.tscn")
 const ENEMY_SPAWN_DISTANCE_MAX: float = 400
@@ -37,7 +37,8 @@ func spawn_enemy() -> void:
 		return 
 	var rand_index: int = randi_range(0,len(list_of_available_enemies) - 1)
 	var new_enemy_scene = load(list_of_available_enemies[rand_index].enemy_scene_path)
-	var new_enemy_entity = new_enemy_scene.instantiate()
+	var new_enemy_entity: EnemyEntity = new_enemy_scene.instantiate()
 	new_enemy_entity.player = player
 	new_enemy_entity.spawner_ref = self
+	new_enemy_entity.position = (player.get_parent().position + player.position) + Vector2(randf_range(-ENEMY_SPAWN_DISTANCE_MAX,ENEMY_SPAWN_DISTANCE_MAX), randf_range(-ENEMY_SPAWN_DISTANCE_MAX,ENEMY_SPAWN_DISTANCE_MAX))
 	add_child(new_enemy_entity)

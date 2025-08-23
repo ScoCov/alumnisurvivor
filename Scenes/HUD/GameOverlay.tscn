@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://cry3gb37tqlm0"]
+[gd_scene load_steps=5 format=3 uid="uid://cry3gb37tqlm0"]
 
 [ext_resource type="Script" path="res://Scenes/HUD/GameOverlay.gd" id="1_pakjy"]
+[ext_resource type="Texture2D" uid="uid://bhx4cm4a2l2hi" path="res://Resources/Image/Temp/Greyknight_Icon.png" id="2_un2x6"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wk7wg"]
 bg_color = Color(0.197937, 0.197937, 0.197937, 1)
@@ -29,11 +30,12 @@ offset_bottom = 128.0
 [node name="Label" type="Label" parent="Control"]
 layout_mode = 1
 anchors_preset = -1
+anchor_left = 0.328125
+anchor_top = 0.179688
 anchor_right = 1.0
-anchor_bottom = 0.179688
+anchor_bottom = 0.359375
 grow_horizontal = 2
 text = "Student_Name"
-horizontal_alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="Control" type="Control" parent="Control"]
@@ -108,13 +110,16 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="Image/CenterPoint"]
+position = Vector2(2.09808e-05, -22.5)
+scale = Vector2(0.820313, 0.828125)
+texture = ExtResource("2_un2x6")
 
 [node name="WinConditions" type="Control" parent="."]
 layout_mode = 1
 anchor_left = 0.340278
 anchor_top = 0.0354938
 anchor_right = 0.66059
-anchor_bottom = 0.155864
+anchor_bottom = 0.0756173
 grow_horizontal = 2
 metadata/_edit_use_anchors_ = true
 

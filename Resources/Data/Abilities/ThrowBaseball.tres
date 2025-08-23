@@ -7,6 +7,7 @@
 script = ExtResource("1_taymx")
 ability_name = "Throw Baseball"
 display_name = "Fastball"
+id = "ThrowBaseball"
 description = ""
 meta_tags = Array[int]([])
 type_tags = Array[int]([])

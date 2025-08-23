@@ -6,6 +6,8 @@ extends Resource
 @export var ability_name: String
 ## Name to show the player
 @export var display_name: String
+## Name of file
+@export var id: String
 @export_multiline var description: String
 
 @export_group("Tags")

@@ -18,6 +18,7 @@ func _ready() -> void:
 	if not player: 
 		return 
 	if player:
+		$CanvasLayer/GameOverlay.player = player
 		enemy_spawner.player = player
 		player.global_projectile_container = enemy_spawner
 		var new_camera:= Camera2D.new()

@@ -1,10 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://nyy7petgj01a"]
+[gd_scene load_steps=5 format=3 uid="uid://nyy7petgj01a"]
 
 [ext_resource type="PackedScene" uid="uid://sx54v6kb7rhm" path="res://Entities/EnemyEntity.tscn" id="1_ey4id"]
 [ext_resource type="Script" path="res://Entities/Enemies/AngryStudent.gd" id="2_tl1wh"]
 [ext_resource type="Texture2D" uid="uid://diks4x6brrsfm" path="res://Resources/Image/Temp/Orc.png" id="3_a088u"]
 [ext_resource type="Resource" uid="uid://di2650m15gkxw" path="res://Resources/Data/Enemies/AngryStudent.tres" id="3_mqcui"]
-[ext_resource type="Texture2D" uid="uid://evvlxxf5qy7d" path="res://Resources/Image/Temp/Arrow_Menu_02.png" id="5_n58it"]
 
 [node name="AngryStudent" instance=ExtResource("1_ey4id")]
 script = ExtResource("2_tl1wh")
@@ -13,15 +12,5 @@ resource = ExtResource("3_mqcui")
 [node name="Sprite" parent="." index="0"]
 texture = ExtResource("3_a088u")
 
-[node name="MovementSpeed" parent="Stats" index="0"]
-base_value = 75.0
-
-[node name="Label" type="Label" parent="." index="4"]
-offset_left = -72.0
-offset_top = -74.0
-offset_right = 72.0
-offset_bottom = -51.0
-
-[node name="ArrowMenu02" type="Sprite2D" parent="Marker2D" index="0"]
-position = Vector2(4, 2)
-texture = ExtResource("5_n58it")
+[node name="MovementSpeed" parent="Composition" index="0"]
+base_value = 1500.0

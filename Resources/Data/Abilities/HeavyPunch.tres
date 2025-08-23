@@ -7,6 +7,7 @@
 script = ExtResource("1_mr0xs")
 ability_name = "Heavy Punch"
 display_name = "Haymaker"
+id = "HeavyPunch"
 description = "More Stuff"
 meta_tags = Array[int]([])
 type_tags = Array[int]([])

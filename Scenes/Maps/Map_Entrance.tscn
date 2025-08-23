@@ -42,7 +42,7 @@ spawn_timer = NodePath("../SpawnTimer")
 autostart = true
 
 [node name="GameTimeLimit" type="Timer" parent="GameLogic"]
-wait_time = 30.0
+wait_time = 300.0
 autostart = true
 
 [node name="ProjtectileContainer" type="Node" parent="GameLogic"]
