@@ -30,9 +30,10 @@ enemy_spawner = NodePath("EnemySpawner")
 spawn_point = NodePath("../SpawnPoint")
 gameTime = NodePath("GameTimeLimit")
 
-[node name="EnemySpawner" type="Node" parent="GameLogic" node_paths=PackedStringArray("spawn_timer")]
+[node name="EnemySpawner" type="Node" parent="GameLogic" node_paths=PackedStringArray("spawn_timer", "experience_container_ref")]
 script = ExtResource("2_28vsk")
 spawn_timer = NodePath("../SpawnTimer")
+experience_container_ref = NodePath("../ExperienceContainer")
 
 [node name="DifficultyModifiers" type="Node" parent="GameLogic"]
 
@@ -46,6 +47,8 @@ wait_time = 300.0
 autostart = true
 
 [node name="ProjtectileContainer" type="Node" parent="GameLogic"]
+
+[node name="ExperienceContainer" type="Node" parent="GameLogic"]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="GameLogic"]
 

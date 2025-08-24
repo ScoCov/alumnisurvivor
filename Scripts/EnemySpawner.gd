@@ -23,6 +23,8 @@ var _min: float:
 	get:
 		return ENEMY_SPAWN_DISTANCE_MIN
 
+@export var experience_container_ref: Node
+
 ## Get this list from the map data.
 var list_of_available_enemies: Array[EnemyResource] = Global.ENEMY_ROSTER
 var loaded_enemies: Array[PackedScene]

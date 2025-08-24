@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://70ke3haoym61"]
+
+[ext_resource type="Script" path="res://Entities/ExperienceEntity.gd" id="1_ayadj"]
+[ext_resource type="Texture2D" uid="uid://c1gog1eekkhxw" path="res://Resources/Image/Temp/XP_Node.png" id="2_84kht"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_isdue"]
+size = Vector2(32, 32)
+
+[node name="ExperienceEntity" type="Node2D"]
+script = ExtResource("1_ayadj")
+
+[node name="XpNode" type="Sprite2D" parent="."]
+texture = ExtResource("2_84kht")
+
+[node name="PlayerDetection" type="Area2D" parent="."]
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetection"]
+shape = SubResource("RectangleShape2D_isdue")
+debug_color = Color(0, 0.633918, 0.435024, 0.42)

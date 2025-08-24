@@ -7,15 +7,10 @@ extends Resource
 @export var enemy_scene_path: String
 @export_multiline var description: String
 
-@export_category("Combat")
-
-
-
 @export_group("Tags")
 @export var meta_tags: Array[Global.meta_tag]
 @export var combat_tags: Array[Global.combat_tag]
 
 @export_group("Images")
 @export var image: Texture
-
-@export_enum("None", "Low", "Medium", "High", "Special") var experience_group: String
+@export_enum("None", "Low", "Medium", "High", "Unique") var experience_group: String

@@ -25,14 +25,16 @@ func _process(_delta):
 	## potentially, I can create the imagined 'Health State' StateMachine. That may also help
 	## manage a lot more than just the color modulator - but everything to do with health.
 	if invulnerable or ($Composition/Health.current_health / $Composition/Health.max_health) <= 0.25 :
-		var color = (Color(1, 0, 0, .5) if 
-			($Composition/Health.current_health / $Composition/Health.max_health) <= 0.25 
-			else Color(1, .5, .5, .95) )
-				
-		if ceili($'InvulTimer'.time_left * 10) % 2 == 0:
-			$Sprite.self_modulate = color
-		else:
-			$Sprite.self_modulate = Color(1, 1, 1, 1)
+		## Flash color, normal hit damage should be a red that is fairly opaque. 
+		## When criticially injured, the color is a deeper red and notably flashing the characer.
+		## NOTE: I would like to add a limit on the critically injured flashing 
+		## 		and maybe have it sustain a modulation after the fact.
+		var color = (Color(1, 0, 0, .5) 
+			if ($Composition/Health.current_health / $Composition/Health.max_health) <= 0.25 
+			else Color(1, .5, .5, .80) )
+		$Sprite.self_modulate = (color 
+			if ceili($'InvulTimer'.time_left * 10) % 2 == 0 
+			else Color(1, 1, 1, 1))
 	else:
 		$Sprite.self_modulate = Color(1, 1, 1, 1)
 		
@@ -52,7 +54,6 @@ func _on_death():
 	
 func _change_scene():
 	get_tree().change_scene_to_file("res://Scenes/GameMenus/GameMenu.tscn")
-
 
 func _on_invul_timer_timeout():
 	invulnerable = false
