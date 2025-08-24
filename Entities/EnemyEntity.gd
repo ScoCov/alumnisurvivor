@@ -20,10 +20,7 @@ func _physics_process(_delta):
 		death.emit()
 
 func _on_death():
-	var xp_node: ExperienceEntity = _xp_node_scene.instantiate()
-	xp_node.position = position
-	xp_node.rank = resource.experience_group
-	spawner_ref.experience_container_ref.add_child(xp_node)
+	call_deferred("spawn_xp")
 	queue_free()
 
 func _on_take_damage(damage_amount: float, _source: Variant = null):
@@ -32,3 +29,8 @@ func _on_take_damage(damage_amount: float, _source: Variant = null):
 	if $Composition/Health.current_health < 1:
 		death.emit()
 
+func spawn_xp():
+	var xp_node: ExperienceEntity = _xp_node_scene.instantiate()
+	xp_node.position = position
+	xp_node.rank = resource.experience_group
+	spawner_ref.experience_container_ref.add_child(xp_node)

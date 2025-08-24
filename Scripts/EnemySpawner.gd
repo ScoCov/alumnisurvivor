@@ -42,5 +42,6 @@ func spawn_enemy() -> void:
 	var new_enemy_entity: EnemyEntity = new_enemy_scene.instantiate()
 	new_enemy_entity.player = player
 	new_enemy_entity.spawner_ref = self
-	new_enemy_entity.position = (player.get_parent().position + player.position) + Vector2(randf_range(-ENEMY_SPAWN_DISTANCE_MAX,ENEMY_SPAWN_DISTANCE_MAX), randf_range(-ENEMY_SPAWN_DISTANCE_MAX,ENEMY_SPAWN_DISTANCE_MAX))
+	#new_enemy_entity.position = (player.get_parent().position + player.position) + Vector2(randf_range(-ENEMY_SPAWN_DISTANCE_MAX,ENEMY_SPAWN_DISTANCE_MAX), randf_range(-ENEMY_SPAWN_DISTANCE_MAX,ENEMY_SPAWN_DISTANCE_MAX))
+	new_enemy_entity.position = (player.position) + Vector2(randf_range(-ENEMY_SPAWN_DISTANCE_MAX,ENEMY_SPAWN_DISTANCE_MAX), randf_range(-ENEMY_SPAWN_DISTANCE_MAX,ENEMY_SPAWN_DISTANCE_MAX))
 	add_child(new_enemy_entity)

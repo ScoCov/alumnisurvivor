@@ -12,7 +12,8 @@ func exit() -> void:
 	pass
 
 func update(_delta):
-	if enemy.player and enemy.position.distance_to(enemy.player.get_parent().position + enemy.player.position) >= enemy.player_distance_min:
+	#if enemy.player and enemy.position.distance_to(enemy.player.get_parent().position + enemy.player.position) >= enemy.player_distance_min:
+	if enemy.player and enemy.position.distance_to(enemy.player.position) >= enemy.player_distance_min:
 		Transitioned.emit(self, "EnemyMoving")
 			
 func physics_update(_delta):

@@ -15,7 +15,8 @@ func on_active(_delta):
 	var new_projectile: Projectile =  projectile_scene.instantiate()
 	new_projectile.source_entity = player
 	new_projectile.parent_ability = self
-	new_projectile.position = player.position + player.get_parent().position
+	#new_projectile.position = player.position + player.get_parent().position
+	new_projectile.position = player.position 
 	new_projectile.target_direction = self.position.direction_to(get_local_mouse_position())
 	if player:
 		player.global_projectile_container.add_child(new_projectile)

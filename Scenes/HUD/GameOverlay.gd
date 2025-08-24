@@ -17,13 +17,21 @@ func _ready():
 
 func _process(_delta):
 	update_health()
+	update_experience()
 	update_win_condition()
+
+func update_experience():
+	$Control/Control/VBoxContainer/Experience.value = player.current_xp
+	$Control/Control/VBoxContainer/Experience.max_value =  player.next_level_xp
+	$Control/Control/VBoxContainer/Experience/Label.text = "(Lvl. %s) %s / %s" % [str(player.level), str(player.current_xp),str(player.next_level_xp)]
 
 func update_health() -> void:
 	if not player: return
 	$Control/Control/VBoxContainer/Health/Label.text = "%s / %s" % [player.get_node("Composition/Health").current_health , player.get_node("Composition/Health").max_health  ]
 	$Control/Control/VBoxContainer/Health.value = player.get_node("Composition/Health").current_health
 	$Control/Control/VBoxContainer/Health.max_value = player.get_node("Composition/Health").max_health
+	
+	
 func update_win_condition()->void:
 	if timer:
 		$WinConditions/ProgressBar.max_value = timer.wait_time

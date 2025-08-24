@@ -11,6 +11,17 @@ var global_projectile_container: Node
 var invulnerable: bool = false
 var _enemy_refs: Array[EnemyEntity]
 
+##TODO: Export Experience Handling to its' own class. 
+var current_xp: float
+var level: int = 1
+var _starting_next_level: float = 10000
+var next_level_xp: float:
+	set(value):
+		pass
+	get: 
+		return ceil(level * log(_starting_next_level))
+
+
 func _ready():
 	if student:
 		$Sprite.texture = student.doll
@@ -66,3 +77,21 @@ func _on_enemy_detection_body_entered(body):
 
 func _on_enemy_detection_body_exited(body):
 	_enemy_refs.remove_at(_enemy_refs.find(body))
+
+func experience_detection_entered(experience_node):
+	if experience_node is ExperienceEntity:
+		experience_node.target_player = self
+		experience_node.chase = true
+
+func experience_detection_exit(experience_node):
+	if experience_node is ExperienceEntity:
+		experience_node.chase = false
+	
+
+func experience_collector(experience_node):
+	if experience_node is ExperienceEntity:
+		current_xp += experience_node.xp
+		if current_xp >= next_level_xp:
+			current_xp = 0
+			level += 1
+		experience_node.queue_free()
