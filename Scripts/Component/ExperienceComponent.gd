@@ -1,5 +1,7 @@
-class_name ExperienceResource
-extends Resource
+class_name ExperienceComponent
+extends Node
+
+signal level_up
 
 @export var level: int = 1
 ## Increase growth of xp required to level. [log(xp_growth)]
@@ -11,6 +13,7 @@ extends Resource
 		if current_xp >= next_level_xp:
 			current_xp -= next_level_xp
 			level += 1
+			level_up.emit()
 
 ## Used purely for its' getter. This will return a log value using the xp_growth.
 var next_level_xp: float:

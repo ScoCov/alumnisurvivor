@@ -1,19 +1,12 @@
-[gd_scene load_steps=14 format=3 uid="uid://v1phrdf8cdqg"]
+[gd_scene load_steps=12 format=3 uid="uid://v1phrdf8cdqg"]
 
 [ext_resource type="Script" path="res://Entities/StudentEntity.gd" id="1_cijec"]
 [ext_resource type="Script" path="res://Scripts/Component/HealthComponent.gd" id="2_e3u2s"]
-[ext_resource type="Script" path="res://Scripts/Abstract Classes/Resource/ExperienceResource.gd" id="2_pk4pm"]
 [ext_resource type="Script" path="res://Scripts/Component/MovementComponent.gd" id="3_1dsc0"]
 [ext_resource type="Script" path="res://Scripts/States/StateMachine.gd" id="4_jbidu"]
 [ext_resource type="Script" path="res://Scripts/States/Player/PlayerIdle.gd" id="5_vaka8"]
 [ext_resource type="Script" path="res://Scripts/States/Player/PlayerMoving.gd" id="6_ivuk0"]
 [ext_resource type="Texture2D" uid="uid://tipd8jqpeh1b" path="res://Resources/Image/Temp/Greyknight_Doll.png" id="7_xli4a"]
-
-[sub_resource type="Resource" id="Resource_ebg5s"]
-script = ExtResource("2_pk4pm")
-level = 1
-xp_growth = 100
-current_xp = 0.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bj2gu"]
 radius = 24.0
@@ -29,7 +22,6 @@ radius = 150.0
 [node name="StudentEntity" type="CharacterBody2D"]
 slide_on_ceiling = false
 script = ExtResource("1_cijec")
-experience = SubResource("Resource_ebg5s")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_bj2gu")

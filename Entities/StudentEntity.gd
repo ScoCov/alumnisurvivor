@@ -5,14 +5,13 @@ signal take_damage
 signal death
 
 @export var student: StudentResource
-@export var experience: ExperienceResource 
+@export var game_logic: GameLogic
 var global_projectile_container: Node
 var invulnerable: bool = false
 var _enemy_refs: Array[EnemyEntity]
 
 func _ready():
 	if not student: return
-	experience = ExperienceResource.new()
 	$Sprite.texture = student.doll
 	var ability_packed_scene = load("res://Entities/Abilities/%s.tscn" % student.starting_ability.id)
 	var new_ability = ability_packed_scene.instantiate()
@@ -67,5 +66,6 @@ func experience_detection_exit(experience_node):
 
 func experience_collector(experience_node):
 	if not experience_node is ExperienceEntity: return  ## If it isn't ExperienceEntity exit
-	experience.gain_xp(experience_node.xp) 
+	if get_parent():
+		get_parent().experience.gain_xp(experience_node.xp) 
 	experience_node.queue_free() ## Destroy XP Node

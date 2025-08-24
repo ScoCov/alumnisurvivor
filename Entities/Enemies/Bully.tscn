@@ -14,3 +14,6 @@ texture = ExtResource("4_vhggw")
 
 [node name="Health" parent="Composition" index="1"]
 base_value = 15.0
+
+[node name="Damage" parent="Composition" index="2"]
+base_value = 3.0

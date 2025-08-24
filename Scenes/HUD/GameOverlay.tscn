@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://cry3gb37tqlm0"]
+[gd_scene load_steps=6 format=3 uid="uid://cry3gb37tqlm0"]
 
 [ext_resource type="Script" path="res://Scenes/HUD/GameOverlay.gd" id="1_pakjy"]
 [ext_resource type="Texture2D" uid="uid://bhx4cm4a2l2hi" path="res://Resources/Image/Temp/Greyknight_Icon.png" id="2_un2x6"]
@@ -8,6 +8,13 @@ bg_color = Color(0.197937, 0.197937, 0.197937, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0nyyx"]
 bg_color = Color(1, 0, 0, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pvh76"]
+bg_color = Color(0, 1, 1, 1)
 border_width_left = 3
 border_width_top = 3
 border_width_right = 3
@@ -79,6 +86,8 @@ horizontal_alignment = 1
 [node name="Experience" type="ProgressBar" parent="Control/Control/VBoxContainer"]
 custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_wk7wg")
+theme_override_styles/fill = SubResource("StyleBoxFlat_pvh76")
 show_percentage = false
 
 [node name="Label" type="Label" parent="Control/Control/VBoxContainer/Experience"]
