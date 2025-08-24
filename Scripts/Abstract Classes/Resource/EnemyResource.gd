@@ -5,6 +5,7 @@ extends Resource
 @export var name: String
 @export var id: String
 @export var enemy_scene_path: String
+@export_enum("None", "Low", "Medium", "High", "Unique") var experience_group: String = "Low"
 @export_multiline var description: String
 
 @export_group("Tags")
@@ -13,4 +14,3 @@ extends Resource
 
 @export_group("Images")
 @export var image: Texture
-@export_enum("None", "Low", "Medium", "High", "Unique") var experience_group: String

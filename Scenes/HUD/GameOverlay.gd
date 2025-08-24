@@ -21,9 +21,9 @@ func _process(_delta):
 	update_win_condition()
 
 func update_experience():
-	$Control/Control/VBoxContainer/Experience.value = player.current_xp
-	$Control/Control/VBoxContainer/Experience.max_value =  player.next_level_xp
-	$Control/Control/VBoxContainer/Experience/Label.text = "(Lvl. %s) %s / %s" % [str(player.level), str(player.current_xp),str(player.next_level_xp)]
+	$Control/Control/VBoxContainer/Experience.value = player.experience.current_xp
+	$Control/Control/VBoxContainer/Experience.max_value =  player.experience.next_level_xp
+	$Control/Control/VBoxContainer/Experience/Label.text = "(Lvl. %s) %s / %s" % [str(player.experience.level), str(player.experience.current_xp),str(player.experience.next_level_xp)]
 
 func update_health() -> void:
 	if not player: return

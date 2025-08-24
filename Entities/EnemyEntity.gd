@@ -16,9 +16,8 @@ var _xp_node_scene: PackedScene = preload("res://Entities/ExperienceEntity.tscn"
 @export var player_disntance_max: float = 500
 
 func _physics_process(_delta):
-	if $Composition/Health.current_health < 1:
-		death.emit()
-
+	pass
+	
 func _on_death():
 	call_deferred("spawn_xp")
 	queue_free()

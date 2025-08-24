@@ -5,45 +5,23 @@ signal take_damage
 signal death
 
 @export var student: StudentResource
-#var besty: StudentResource
-## Import a Student Resource to obtain unique data.
+@export var experience: ExperienceResource 
 var global_projectile_container: Node
 var invulnerable: bool = false
 var _enemy_refs: Array[EnemyEntity]
 
-##TODO: Export Experience Handling to its' own class. 
-var current_xp: float
-var level: int = 1
-var _starting_next_level: float = 10000
-var next_level_xp: float:
-	set(value):
-		pass
-	get: 
-		return ceil(level * log(_starting_next_level))
-
-
 func _ready():
-	if student:
-		$Sprite.texture = student.doll
-		var ability = student.starting_ability.id
-		var ability_packed_scene = load("res://Entities/Abilities/%s.tscn" % ability)
-		var new_ability = ability_packed_scene.instantiate()
-		new_ability.player = self
-		$Ability1.add_child(new_ability)
+	if not student: return
+	experience = ExperienceResource.new()
+	$Sprite.texture = student.doll
+	var ability_packed_scene = load("res://Entities/Abilities/%s.tscn" % student.starting_ability.id)
+	var new_ability = ability_packed_scene.instantiate()
+	new_ability.player = self
+	$Ability1.add_child(new_ability)
 		
 func _process(_delta):
-	##TODO: I need to migrate the modulation into another class to clean up the actions here.
-	## potentially, I can create the imagined 'Health State' StateMachine. That may also help
-	## manage a lot more than just the color modulator - but everything to do with health.
-	if invulnerable or ($Composition/Health.current_health / $Composition/Health.max_health) <= 0.25 :
-		## Flash color, normal hit damage should be a red that is fairly opaque. 
-		## When criticially injured, the color is a deeper red and notably flashing the characer.
-		## NOTE: I would like to add a limit on the critically injured flashing 
-		## 		and maybe have it sustain a modulation after the fact.
-		var color = (Color(1, 0, 0, .5) 
-			if ($Composition/Health.current_health / $Composition/Health.max_health) <= 0.25 
-			else Color(1, .5, .5, .80) )
-		$Sprite.self_modulate = (color 
+	if invulnerable:
+		$Sprite.self_modulate = (Color(1, .5, .5, .80) 
 			if ceili($'InvulTimer'.time_left * 10) % 2 == 0 
 			else Color(1, 1, 1, 1))
 	else:
@@ -57,8 +35,8 @@ func _on_take_damage(enemy: EnemyEntity):
 		$Composition/Health.current_health -= enemy.get_node("Composition/Damage").value
 		invulnerable = true
 		$InvulTimer.start()
-	if $Composition/Health.current_health < 1:
-		death.emit()
+		if $Composition/Health.current_health < 1:
+			death.emit()
 		
 func _on_death():
 	call_deferred("_change_scene")
@@ -79,19 +57,15 @@ func _on_enemy_detection_body_exited(body):
 	_enemy_refs.remove_at(_enemy_refs.find(body))
 
 func experience_detection_entered(experience_node):
-	if experience_node is ExperienceEntity:
-		experience_node.target_player = self
-		experience_node.chase = true
+	if not experience_node is ExperienceEntity: return
+	experience_node.target_player = self
+	experience_node.chase = true
 
 func experience_detection_exit(experience_node):
-	if experience_node is ExperienceEntity:
-		experience_node.chase = false
-	
+	if not experience_node is ExperienceEntity: return
+	experience_node.chase = false
 
 func experience_collector(experience_node):
-	if experience_node is ExperienceEntity:
-		current_xp += experience_node.xp
-		if current_xp >= next_level_xp:
-			current_xp = 0
-			level += 1
-		experience_node.queue_free()
+	if not experience_node is ExperienceEntity: return  ## If it isn't ExperienceEntity exit
+	experience.gain_xp(experience_node.xp) 
+	experience_node.queue_free() ## Destroy XP Node
