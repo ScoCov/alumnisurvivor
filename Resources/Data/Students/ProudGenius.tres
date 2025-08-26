@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://bccfvv0g1mh67" path="res://Resources/Image/Temp/RedKnight_Doll.png" id="1_a3san"]
 [ext_resource type="Texture2D" uid="uid://redjducuw2r6" path="res://Resources/Image/Temp/Redknight_Icon.png" id="2_alp6q"]
 [ext_resource type="Resource" uid="uid://cxxky3c0l03d6" path="res://Resources/Data/Attributes/Duration.tres" id="2_wufli"]
-[ext_resource type="Script" path="res://Scripts/Abstract Classes/Resource/StudentResource.gd" id="4_8drja"]
+[ext_resource type="Script" uid="uid://40jgn8mckuc1" path="res://Scripts/Abstract Classes/Resource/StudentResource.gd" id="4_8drja"]
 [ext_resource type="Resource" uid="uid://b4tkhcjsw15ux" path="res://Resources/Data/Attributes/Cooldown.tres" id="4_wfr34"]
 [ext_resource type="Resource" uid="uid://dfowrpgu5d1qf" path="res://Resources/Data/Abilities/ThrowBaseball.tres" id="5_gtn4p"]
 [ext_resource type="Resource" uid="uid://gl46emysxfo3" path="res://Resources/Data/Attributes/Damage.tres" id="6_qaehr"]

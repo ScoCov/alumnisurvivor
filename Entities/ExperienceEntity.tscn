@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://70ke3haoym61"]
 
-[ext_resource type="Script" path="res://Entities/ExperienceEntity.gd" id="1_ayadj"]
+[ext_resource type="Script" uid="uid://byfdtw6xrejl4" path="res://Entities/ExperienceEntity.gd" id="1_ayadj"]
 [ext_resource type="Texture2D" uid="uid://c1gog1eekkhxw" path="res://Resources/Image/Temp/XP_Node.png" id="2_84kht"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_isdue"]

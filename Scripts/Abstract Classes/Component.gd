@@ -30,5 +30,3 @@ var value: float:
 ## to this variable. Otherwise, the custom Attribute+Component classes will automatically assign their
 ## appropriate attribute.
 @export var attribute: AttributeResource
-
-

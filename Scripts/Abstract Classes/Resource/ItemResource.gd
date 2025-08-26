@@ -30,6 +30,3 @@ extends Resource
 @export var unique: bool = false
 @export_category("Modifications")
 @export var bonuses: Array[ItemBonus]
-
-
-

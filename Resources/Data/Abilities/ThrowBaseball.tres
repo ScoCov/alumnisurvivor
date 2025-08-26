@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="AbilityResource" load_steps=3 format=3 uid="uid://dfowrpgu5d1qf"]
 
-[ext_resource type="Script" path="res://Scripts/Abstract Classes/Resource/AbilityResource.gd" id="1_taymx"]
+[ext_resource type="Script" uid="uid://b1ad1mp4224b3" path="res://Scripts/Abstract Classes/Resource/AbilityResource.gd" id="1_taymx"]
 [ext_resource type="Texture2D" uid="uid://c8a3geuxo1j8m" path="res://Resources/Image/Temp/BaseBall.png" id="1_yklwj"]
 
 [resource]

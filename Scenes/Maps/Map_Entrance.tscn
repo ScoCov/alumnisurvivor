@@ -1,9 +1,9 @@
 [gd_scene load_steps=8 format=3 uid="uid://dxs4mstvhwgv"]
 
-[ext_resource type="Script" path="res://Scripts/GameLogic.gd" id="1_ujiyw"]
-[ext_resource type="Script" path="res://Scripts/EnemySpawner.gd" id="2_28vsk"]
+[ext_resource type="Script" uid="uid://dy7n5gmkswm47" path="res://Scripts/GameLogic.gd" id="1_ujiyw"]
+[ext_resource type="Script" uid="uid://bpvvqn6dmugp5" path="res://Scripts/EnemySpawner.gd" id="2_28vsk"]
 [ext_resource type="PackedScene" uid="uid://cry3gb37tqlm0" path="res://Scenes/HUD/GameOverlay.tscn" id="3_e4hy1"]
-[ext_resource type="Script" path="res://Scripts/Component/ExperienceComponent.gd" id="5_5vfkf"]
+[ext_resource type="Script" uid="uid://djkkswc2cexv8" path="res://Scripts/Component/ExperienceComponent.gd" id="5_5vfkf"]
 [ext_resource type="Texture2D" uid="uid://byby3mxqd478b" path="res://Resources/Image/Temp/Backgrounds/Desert.png" id="5_thx8d"]
 [ext_resource type="Texture2D" uid="uid://bpqhv26pjwr2h" path="res://Resources/Image/Temp/Backgrounds/Plains.png" id="6_klupb"]
 [ext_resource type="PackedScene" uid="uid://b34bbmg8qnhvo" path="res://Scenes/HUD/Pause.tscn" id="7_jwasw"]

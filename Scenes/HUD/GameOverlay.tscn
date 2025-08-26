@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://cry3gb37tqlm0"]
 
-[ext_resource type="Script" path="res://Scenes/HUD/GameOverlay.gd" id="1_pakjy"]
+[ext_resource type="Script" uid="uid://bojlurhd6fuft" path="res://Scenes/HUD/GameOverlay.gd" id="1_pakjy"]
 [ext_resource type="Texture2D" uid="uid://bhx4cm4a2l2hi" path="res://Resources/Image/Temp/Greyknight_Icon.png" id="2_un2x6"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wk7wg"]

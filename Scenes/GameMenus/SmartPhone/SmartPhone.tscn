@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://blgex2m84vfk7"]
 
 [ext_resource type="PackedScene" uid="uid://d0wxojv08v7sg" path="res://Scenes/GameMenus/SmartPhone/StudentPage.tscn" id="1_4tbll"]
-[ext_resource type="Script" path="res://Scenes/GameMenus/SmartPhone/SmartPhone.gd" id="1_wxg0g"]
+[ext_resource type="Script" uid="uid://bprg1cxqvxmke" path="res://Scenes/GameMenus/SmartPhone/SmartPhone.gd" id="1_wxg0g"]
 [ext_resource type="Resource" uid="uid://ccg57vjn8xbc1" path="res://Resources/Data/Students/NewKid.tres" id="2_fco7q"]
 [ext_resource type="Resource" uid="uid://bdyv3dp43ka7l" path="res://Resources/Data/Students/Athlete.tres" id="3_r0vmy"]
 [ext_resource type="Resource" uid="uid://dm0b2ysjako7v" path="res://Resources/Data/Students/HeavyMetalMusician.tres" id="4_71s5i"]

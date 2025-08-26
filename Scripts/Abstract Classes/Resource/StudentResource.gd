@@ -4,7 +4,6 @@ extends Resource
 @export_category("Meta Data")
 ## Displayed everywhere the student will appear
 @export var student_name: String = "STUDENT_NAME" ## In-game_name
-#@export var title_or_nickname: String = ""
 ## Name used in filesystem
 @export var id: String = ""
 ## TODO - Figure out a way not not require this manual insert.

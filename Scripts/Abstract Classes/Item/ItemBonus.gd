@@ -9,4 +9,3 @@ extends Resource
 ## This is the value that grows with the number of items in a stack
 @export var growth_modifier: float
 ## We will need an alternative "Strategy" for the non-attribute effects.
-

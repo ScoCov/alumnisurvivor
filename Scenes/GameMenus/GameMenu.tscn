@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://sol5e8du87vj"]
 
-[ext_resource type="Script" path="res://Scenes/GameMenus/GameMenu.gd" id="1_furap"]
+[ext_resource type="Script" uid="uid://be1n210v7st6g" path="res://Scenes/GameMenus/GameMenu.gd" id="1_furap"]
 [ext_resource type="Texture2D" uid="uid://dhqg2vtkg7jd" path="res://Resources/Image/School_Map_TEMPORARY.png" id="2_haiyr"]
 [ext_resource type="PackedScene" uid="uid://blgex2m84vfk7" path="res://Scenes/GameMenus/SmartPhone/SmartPhone.tscn" id="2_oe7do"]
 

@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="OutfitPiece" load_steps=3 format=3 uid="uid://d2xasvf1ysxyp"]
 
-[ext_resource type="Script" path="res://Scripts/Abstract Classes/Outfits/OutfitPiece.gd" id="1_0nd8r"]
+[ext_resource type="Script" uid="uid://db3qv1p1kh5m5" path="res://Scripts/Abstract Classes/Outfits/OutfitPiece.gd" id="1_0nd8r"]
 [ext_resource type="Texture2D" uid="uid://c8tfmmed011q5" path="res://Resources/Image/Temp/Outfit_icon.png" id="1_wm7ej"]
 
 [resource]

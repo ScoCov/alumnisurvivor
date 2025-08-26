@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://ce1ckmhilhba0"]
+
+[ext_resource type="PackedScene" uid="uid://v1phrdf8cdqg" path="res://Entities/StudentEntity.tscn" id="1_o64vo"]
+[ext_resource type="Script" uid="uid://c3mqcqi6fknx7" path="res://Entities/Students/PopularKid.gd" id="2_l1iw8"]
+
+[node name="PopularKid" instance=ExtResource("1_o64vo")]
+script = ExtResource("2_l1iw8")

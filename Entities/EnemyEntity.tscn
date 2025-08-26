@@ -1,12 +1,12 @@
 [gd_scene load_steps=9 format=3 uid="uid://sx54v6kb7rhm"]
 
-[ext_resource type="Script" path="res://Entities/EnemyEntity.gd" id="1_8fefi"]
-[ext_resource type="Script" path="res://Scripts/Component/MovementComponent.gd" id="4_ams5p"]
-[ext_resource type="Script" path="res://Scripts/Component/HealthComponent.gd" id="5_4qos5"]
-[ext_resource type="Script" path="res://Scripts/Component/DamageComponent.gd" id="6_u336o"]
-[ext_resource type="Script" path="res://Scripts/States/StateMachine.gd" id="7_8ynyw"]
-[ext_resource type="Script" path="res://Scripts/States/Enemy/EnemyIdle.gd" id="8_xpe1r"]
-[ext_resource type="Script" path="res://Scripts/States/Enemy/EnemyMoving.gd" id="9_fa2t0"]
+[ext_resource type="Script" uid="uid://lumuid6cekqh" path="res://Entities/EnemyEntity.gd" id="1_8fefi"]
+[ext_resource type="Script" uid="uid://c7p233d8bepea" path="res://Scripts/Component/MovementComponent.gd" id="4_ams5p"]
+[ext_resource type="Script" uid="uid://b61e3a07grfgy" path="res://Scripts/Component/HealthComponent.gd" id="5_4qos5"]
+[ext_resource type="Script" uid="uid://ctrb8ov6gpaok" path="res://Scripts/Component/DamageComponent.gd" id="6_u336o"]
+[ext_resource type="Script" uid="uid://t3mlm4ybio8c" path="res://Scripts/States/StateMachine.gd" id="7_8ynyw"]
+[ext_resource type="Script" uid="uid://btdoexa3kq5si" path="res://Scripts/States/Enemy/EnemyIdle.gd" id="8_xpe1r"]
+[ext_resource type="Script" uid="uid://b16cr35r6uor" path="res://Scripts/States/Enemy/EnemyMoving.gd" id="9_fa2t0"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_j4ubh"]
 radius = 34.0

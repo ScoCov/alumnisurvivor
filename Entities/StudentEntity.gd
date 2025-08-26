@@ -59,6 +59,7 @@ func experience_detection_entered(experience_node):
 	if not experience_node is ExperienceEntity: return
 	experience_node.target_player = self
 	experience_node.chase = true
+	experience_node.chase = true
 
 func experience_detection_exit(experience_node):
 	if not experience_node is ExperienceEntity: return

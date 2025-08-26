@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://b34bbmg8qnhvo"]
 
-[ext_resource type="Script" path="res://Scenes/HUD/Pause.gd" id="1_njtet"]
+[ext_resource type="Script" uid="uid://b0dnwtj1rj3m4" path="res://Scenes/HUD/Pause.gd" id="1_njtet"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5ssmn"]
 draw_center = false

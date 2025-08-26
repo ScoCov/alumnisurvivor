@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://nyy7petgj01a"]
 
 [ext_resource type="PackedScene" uid="uid://sx54v6kb7rhm" path="res://Entities/EnemyEntity.tscn" id="1_ey4id"]
-[ext_resource type="Script" path="res://Entities/Enemies/AngryStudent.gd" id="2_tl1wh"]
+[ext_resource type="Script" uid="uid://4tcf3vc501ab" path="res://Entities/Enemies/AngryStudent.gd" id="2_tl1wh"]
 [ext_resource type="Texture2D" uid="uid://diks4x6brrsfm" path="res://Resources/Image/Temp/Orc.png" id="3_a088u"]
 [ext_resource type="Resource" uid="uid://di2650m15gkxw" path="res://Resources/Data/Enemies/AngryStudent.tres" id="3_mqcui"]
 

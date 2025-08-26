@@ -17,4 +17,3 @@ static func get_dir(target_dir: String, _cfg: ConfigFile = null) -> String:
 	return cfg.get_value("files", target_dir+"_resource_directory")
 	
 	
-

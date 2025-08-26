@@ -22,4 +22,3 @@ func _on_collection_pressed():
 
 func _on_settings_pressed():
 	page.emit_signal("page_type_changed", "Settings")
-

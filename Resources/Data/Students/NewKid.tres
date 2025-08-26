@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dsh1r7dkli2ty" path="res://Resources/Image/Temp/Blueknight_Icon.png" id="2_bwjf6"]
 [ext_resource type="Resource" uid="uid://b7lj25emughbo" path="res://Resources/Data/Attributes/MovementSpeed.tres" id="4_b2fcx"]
 [ext_resource type="Resource" uid="uid://b1wm1fxdwvncb" path="res://Resources/Data/Abilities/RapidPunch.tres" id="5_0t28p"]
-[ext_resource type="Script" path="res://Scripts/Abstract Classes/Resource/StudentResource.gd" id="5_c1br1"]
+[ext_resource type="Script" uid="uid://40jgn8mckuc1" path="res://Scripts/Abstract Classes/Resource/StudentResource.gd" id="5_c1br1"]
 [ext_resource type="Resource" uid="uid://cxxky3c0l03d6" path="res://Resources/Data/Attributes/Duration.tres" id="6_1rtqn"]
 [ext_resource type="Resource" uid="uid://b4tkhcjsw15ux" path="res://Resources/Data/Attributes/Cooldown.tres" id="8_1je6v"]
 

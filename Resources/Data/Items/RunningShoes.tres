@@ -1,8 +1,8 @@
-[gd_resource type="Resource" script_class="Item" load_steps=8 format=3 uid="uid://bmonc576e0861"]
+[gd_resource type="Resource" script_class="ItemResource" load_steps=8 format=3 uid="uid://bmonc576e0861"]
 
-[ext_resource type="Script" path="res://Scripts/Abstract Classes/Resource/ItemResource.gd" id="1_bqs6b"]
+[ext_resource type="Script" uid="uid://4pylfu4f1res" path="res://Scripts/Abstract Classes/Resource/ItemResource.gd" id="1_bqs6b"]
 [ext_resource type="Resource" uid="uid://b7lj25emughbo" path="res://Resources/Data/Attributes/MovementSpeed.tres" id="1_wdtyp"]
-[ext_resource type="Script" path="res://Scripts/Abstract Classes/Item/ItemBonus.gd" id="2_cxtko"]
+[ext_resource type="Script" uid="uid://dipwxgdjv64sc" path="res://Scripts/Abstract Classes/Item/ItemBonus.gd" id="2_cxtko"]
 [ext_resource type="Resource" uid="uid://mno0drh8g3i8" path="res://Resources/Data/Attributes/Range.tres" id="3_kjyb7"]
 [ext_resource type="Texture2D" uid="uid://y2eb8r33otgp" path="res://Resources/Image/Temp/Items/shoe_32x32.png" id="4_hb58f"]
 
@@ -25,7 +25,8 @@ item_id = "ITEM_RUNNING_SHOES"
 item_description = "With these babies, you'll run faster than everyone else!"
 tool_tip = "Increases "
 unlocked = true
-tags = Array[int]([])
+meta_tags = Array[int]([])
+item_tags = Array[int]([])
 image = ExtResource("4_hb58f")
 max_count = 0
 unique = false

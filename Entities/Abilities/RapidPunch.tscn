@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://cci4ia1qe1s8n"]
 
 [ext_resource type="PackedScene" uid="uid://c54jg6hm5awpj" path="res://Entities/Ability.tscn" id="1_8jhnd"]
-[ext_resource type="Script" path="res://Entities/Abilities/RapidPunch.gd" id="2_alj54"]
+[ext_resource type="Script" uid="uid://bbe2l432sd0sj" path="res://Entities/Abilities/RapidPunch.gd" id="2_alj54"]
 [ext_resource type="Texture2D" uid="uid://7bpk56ikowy5" path="res://Resources/Image/Temp/fist_temp.png" id="3_qwudb"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fory4"]

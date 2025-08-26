@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://4hyvyieem3j3" path="res://Resources/Image/Temp/Greenknight_Doll.png" id="1_pdwn6"]
 [ext_resource type="Texture2D" uid="uid://dmmv0lqydjy3j" path="res://Resources/Image/Temp/Greenknight_Icon.png" id="2_63tfl"]
 [ext_resource type="Resource" uid="uid://clct1lsc7c8iq" path="res://Resources/Data/Attributes/AttackSpeed.tres" id="3_ikxlo"]
-[ext_resource type="Script" path="res://Scripts/Abstract Classes/Resource/StudentResource.gd" id="4_qytsq"]
+[ext_resource type="Script" uid="uid://40jgn8mckuc1" path="res://Scripts/Abstract Classes/Resource/StudentResource.gd" id="4_qytsq"]
 [ext_resource type="Resource" uid="uid://b7lj25emughbo" path="res://Resources/Data/Attributes/MovementSpeed.tres" id="5_pptk4"]
 [ext_resource type="Resource" uid="uid://dfowrpgu5d1qf" path="res://Resources/Data/Abilities/ThrowBaseball.tres" id="6_ioml7"]
 [ext_resource type="Resource" uid="uid://b4tkhcjsw15ux" path="res://Resources/Data/Attributes/Cooldown.tres" id="7_goxmy"]
