@@ -1,15 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://b34bbmg8qnhvo"]
+[gd_scene load_steps=2 format=3 uid="uid://b34bbmg8qnhvo"]
 
 [ext_resource type="Script" uid="uid://b0dnwtj1rj3m4" path="res://Scenes/HUD/Pause.gd" id="1_njtet"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5ssmn"]
-draw_center = false
-border_width_left = 3
-border_width_top = 3
-border_width_right = 3
-border_width_bottom = 3
-
-[node name="DebugPause" type="Control"]
+[node name="Pause Menu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -29,131 +22,67 @@ grow_vertical = 2
 metadata/_edit_use_anchors_ = true
 metadata/_edit_lock_ = true
 
-[node name="Player Info" type="Control" parent="."]
-layout_mode = 1
-anchor_left = 0.0807292
-anchor_top = 0.115741
-anchor_right = 0.37066
-anchor_bottom = 0.319444
-metadata/_edit_use_anchors_ = true
-
-[node name="Panel" type="Panel" parent="Player Info"]
+[node name="CenterContainer" type="CenterContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_5ssmn")
 
-[node name="MarginContainer" type="MarginContainer" parent="Player Info/Panel"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 12
-theme_override_constants/margin_top = 12
-theme_override_constants/margin_right = 12
-theme_override_constants/margin_bottom = 12
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Player Info/Panel/MarginContainer"]
+[node name="Panel" type="Panel" parent="CenterContainer"]
+custom_minimum_size = Vector2(200, 240)
 layout_mode = 2
 
-[node name="StudentName" type="Label" parent="Player Info/Panel/MarginContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="CenterContainer/Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -100.0
+offset_right = 100.0
+offset_bottom = 23.0
+grow_horizontal = 2
+text = "Pause Menu"
+horizontal_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 23.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 14
+theme_override_constants/margin_right = 14
+theme_override_constants/margin_bottom = 14
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/Panel/MarginContainer"]
 layout_mode = 2
-text = "Student:"
+theme_override_constants/separation = 8
+alignment = 2
 
-[node name="Value" type="Label" parent="Player Info/Panel/MarginContainer/VBoxContainer/StudentName"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "STUDENT_NAME"
-horizontal_alignment = 2
-
-[node name="Primary Strength" type="Label" parent="Player Info/Panel/MarginContainer/VBoxContainer"]
+[node name="Resume" type="Button" parent="CenterContainer/Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "Primary Strength:"
+text = "Resume"
 
-[node name="Value" type="Label" parent="Player Info/Panel/MarginContainer/VBoxContainer/Primary Strength"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "PRIMARY"
-horizontal_alignment = 2
-
-[node name="Secondary Strength" type="Label" parent="Player Info/Panel/MarginContainer/VBoxContainer"]
+[node name="Stats" type="Button" parent="CenterContainer/Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "Secondary Strength:"
+text = "Run Statistics"
 
-[node name="Value" type="Label" parent="Player Info/Panel/MarginContainer/VBoxContainer/Secondary Strength"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "SECONDARY"
-horizontal_alignment = 2
-
-[node name="Weakness" type="Label" parent="Player Info/Panel/MarginContainer/VBoxContainer"]
+[node name="Settings" type="Button" parent="CenterContainer/Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "Weakness:"
+text = "Settings"
 
-[node name="Value" type="Label" parent="Player Info/Panel/MarginContainer/VBoxContainer/Weakness"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "WEAKNESS"
-horizontal_alignment = 2
-
-[node name="Item Info" type="Control" parent="."]
-layout_mode = 1
-anchor_left = 0.0807292
-anchor_top = 0.444444
-anchor_right = 0.37066
-anchor_bottom = 0.648148
-metadata/_edit_use_anchors_ = true
-
-[node name="Panel" type="Panel" parent="Item Info"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_5ssmn")
-
-[node name="MarginContainer" type="MarginContainer" parent="Item Info/Panel"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 12
-theme_override_constants/margin_top = 12
-theme_override_constants/margin_right = 12
-theme_override_constants/margin_bottom = 12
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Item Info/Panel/MarginContainer"]
+[node name="Main Menu" type="Button" parent="CenterContainer/Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
+text = "Main Menu"
 
-[node name="Label" type="Label" parent="Item Info"]
-layout_mode = 1
-anchors_preset = -1
-anchor_top = -0.166664
-anchor_right = 0.131736
-anchor_bottom = 0.00757783
-text = "Items"
-metadata/_edit_use_anchors_ = true
+[node name="Quit" type="Button" parent="CenterContainer/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Quit"
+
+[connection signal="pressed" from="CenterContainer/Panel/MarginContainer/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="CenterContainer/Panel/MarginContainer/VBoxContainer/Main Menu" to="." method="_on_main_menu_pressed"]
+[connection signal="pressed" from="CenterContainer/Panel/MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]

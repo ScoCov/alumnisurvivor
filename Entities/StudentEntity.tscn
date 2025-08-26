@@ -1,6 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://v1phrdf8cdqg"]
+[gd_scene load_steps=13 format=3 uid="uid://v1phrdf8cdqg"]
 
 [ext_resource type="Script" uid="uid://d0tuntxkjee38" path="res://Entities/StudentEntity.gd" id="1_cijec"]
+[ext_resource type="Script" uid="uid://djkkswc2cexv8" path="res://Scripts/Component/ExperienceComponent.gd" id="2_5mbnf"]
 [ext_resource type="Script" uid="uid://b61e3a07grfgy" path="res://Scripts/Component/HealthComponent.gd" id="2_e3u2s"]
 [ext_resource type="Script" uid="uid://c7p233d8bepea" path="res://Scripts/Component/MovementComponent.gd" id="3_1dsc0"]
 [ext_resource type="Script" uid="uid://t3mlm4ybio8c" path="res://Scripts/States/StateMachine.gd" id="4_jbidu"]
@@ -94,6 +95,9 @@ collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ExperienceCollector"]
 shape = SubResource("CircleShape2D_muuk5")
+
+[node name="Experience" type="Node" parent="."]
+script = ExtResource("2_5mbnf")
 
 [connection signal="death" from="." to="." method="_on_death"]
 [connection signal="take_damage" from="." to="." method="_on_take_damage"]
