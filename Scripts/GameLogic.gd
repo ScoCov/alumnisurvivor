@@ -18,6 +18,7 @@ func _ready() -> void:
 	var student_packed_scene = load(Global.SELECTED_STUDENT.scene_path)
 	player = student_packed_scene.instantiate()
 	canvas_layer.get_node("GameOverlay").player = player
+	canvas_layer.get_node("LevelUp").player = player
 	enemy_spawner.player = player
 	player.global_projectile_container = enemy_spawner
 	var new_camera:= Camera2D.new()

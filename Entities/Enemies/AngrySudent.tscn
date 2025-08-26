@@ -10,6 +10,7 @@ script = ExtResource("2_tl1wh")
 resource = ExtResource("3_mqcui")
 
 [node name="Sprite" parent="." index="0"]
+self_modulate = Color(1, 1, 1, 1)
 texture = ExtResource("3_a088u")
 
 [node name="MovementSpeed" parent="Composition" index="0"]

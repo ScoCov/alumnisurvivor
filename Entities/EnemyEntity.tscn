@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://sx54v6kb7rhm"]
+[gd_scene load_steps=12 format=3 uid="uid://sx54v6kb7rhm"]
 
 [ext_resource type="Script" uid="uid://lumuid6cekqh" path="res://Entities/EnemyEntity.gd" id="1_8fefi"]
 [ext_resource type="Script" uid="uid://c7p233d8bepea" path="res://Scripts/Component/MovementComponent.gd" id="4_ams5p"]
@@ -10,6 +10,43 @@
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_j4ubh"]
 radius = 34.0
+
+[sub_resource type="Animation" id="Animation_vw180"]
+resource_name = "taken_damage"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [Color(0.529412, 0, 0, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_s08hw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_x1c3y"]
+_data = {
+&"RESET": SubResource("Animation_s08hw"),
+&"taken_damage": SubResource("Animation_vw180")
+}
 
 [node name="EnemyEntity" type="CharacterBody2D"]
 scale = Vector2(0.5, 0.5)
@@ -53,6 +90,11 @@ script = ExtResource("9_fa2t0")
 enemy = NodePath("../..")
 
 [node name="Marker2D" type="Marker2D" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_x1c3y")
+}
 
 [connection signal="death" from="." to="." method="_on_death"]
 [connection signal="take_damage" from="." to="." method="_on_take_damage"]

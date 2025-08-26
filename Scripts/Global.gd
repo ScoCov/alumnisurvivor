@@ -86,6 +86,8 @@ func _ready():
 	load_objects(Configuration.get_dir("enemy"), ENEMY_ROSTER)
 	@warning_ignore("static_called_on_instance")
 	load_objects(Configuration.get_dir("ability"), ABILITIES)
+	@warning_ignore("static_called_on_instance")
+	load_objects(Configuration.get_dir("item"), ITEM_COLLECTION)
 	if len(STUDENT_ROSTER) > 1: ## If there's at least two students in the roster assign default students.
 		SELECTED_STUDENT = STUDENT_ROSTER[0]
 		SELECTED_BESTY = STUDENT_ROSTER[1]

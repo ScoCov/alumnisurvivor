@@ -23,8 +23,12 @@ func _on_death():
 	queue_free()
 
 func _on_take_damage(damage_amount: float, _source: Variant = null):
+	var start_hp = $Composition/Health.current_health
 	if damage_amount >= 1:
 		$Composition/Health.current_health -= damage_amount
+		
+	if start_hp != $Composition/Health.current_health:
+		$AnimationPlayer.play("taken_damage")
 	if $Composition/Health.current_health < 1:
 		death.emit()
 
