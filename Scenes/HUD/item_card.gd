@@ -12,3 +12,19 @@ func _ready():
 		var new_label:= Label.new()
 		new_label.text = "- %s + %s" % [bonus.attribute.name, str(bonus.start_value)] 
 		$Content/Details/MarginContainer/Panel/MarginContainer/VBoxContainer.add_child(new_label)
+
+func _on_button_pressed():
+	grab_focus()
+
+func _on_get_item_focus_entered():
+	grab_focus()
+
+func _on_get_item_focus_exited():
+	release_focus()
+
+func _on_focus_entered():
+	$"Focus Border".visible = true
+
+
+func _on_focus_exited():
+	$"Focus Border".visible = false

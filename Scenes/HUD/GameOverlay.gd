@@ -11,6 +11,7 @@ class_name GameOverlay
 @export var timer: Timer
 @export var game_logic: GameLogic
 const MAX_TIME_LIMIT: int = 300 #in seconds
+var hud_item_scene = preload("res://Scenes/HUD/hud_item.tscn")
 
 func _ready():
 	pass
@@ -20,6 +21,7 @@ func _process(_delta):
 	update_health()
 	update_experience()
 	update_win_condition()
+	update_items()
 
 func update_experience():
 	$Control/Control/VBoxContainer/Experience.value = player.experience.current_xp
@@ -39,3 +41,14 @@ func update_win_condition()->void:
 	if timer:
 		$WinConditions/ProgressBar.max_value = timer.wait_time
 		$WinConditions/ProgressBar.value = timer.time_left
+
+func update_items() -> void:
+	if player.items.get_child_count() == $Items/GridContainer.get_child_count(): return
+	for item_stack: ItemStack in player.items.get_children():
+		if not $Items/GridContainer.get_children().any(func(node): return node.item_stack == item_stack):
+			var new_hud_item:= hud_item_scene.instantiate()
+			new_hud_item.item_stack = item_stack
+			new_hud_item.update()
+			$Items/GridContainer.add_child(new_hud_item)
+		else:
+			$Items/GridContainer.get_children().filter(func(node): return node.item_stack == item_stack)[0].update()

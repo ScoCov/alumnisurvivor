@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://blcaqgqqkl30a"]
+
+[ext_resource type="Script" uid="uid://bsh0yhpltgqna" path="res://Scenes/HUD/hud_item.gd" id="1_s1o6o"]
+[ext_resource type="Texture2D" uid="uid://slw16wkvwpx" path="res://Resources/Image/Temp/LockIcon.png" id="2_ie7gv"]
+
+[node name="HudItem" type="Control"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 3
+anchor_right = 0.0434028
+anchor_bottom = 0.0771605
+script = ExtResource("1_s1o6o")
+metadata/_edit_use_anchors_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.78125, 0.78125)
+texture = ExtResource("2_ie7gv")
+centered = false
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+text = "[b]X0[/b]
+"

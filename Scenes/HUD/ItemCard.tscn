@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://mj6ewfm1nlht"]
+[gd_scene load_steps=6 format=3 uid="uid://mj6ewfm1nlht"]
 
 [ext_resource type="Script" uid="uid://lwxapit2wdep" path="res://Scenes/HUD/item_card.gd" id="1_5vt1k"]
 [ext_resource type="Texture2D" uid="uid://slw16wkvwpx" path="res://Resources/Image/Temp/LockIcon.png" id="2_fifsb"]
@@ -9,6 +9,17 @@ bg_color = Color(0.314316, 0.314316, 0.314316, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_npynq"]
 bg_color = Color(0.314316, 0.314316, 0.314316, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5vt1k"]
+draw_center = false
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 1
+
 [node name="ItemCard" type="Control"]
 custom_minimum_size = Vector2(250, 400)
 layout_mode = 3
@@ -16,6 +27,7 @@ anchor_right = 0.217014
 anchor_bottom = 0.617284
 grow_horizontal = 2
 grow_vertical = 2
+focus_mode = 2
 script = ExtResource("1_5vt1k")
 metadata/_edit_use_anchors_ = true
 
@@ -115,3 +127,29 @@ theme_override_constants/margin_bottom = 8
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Content/Details/MarginContainer/Panel/MarginContainer"]
 layout_mode = 2
+
+[node name="GetItem" type="Button" parent="."]
+layout_mode = 0
+anchor_left = 0.404
+anchor_top = 1.0325
+anchor_right = 0.564
+anchor_bottom = 1.11
+focus_mode = 0
+text = "Pick"
+metadata/_edit_use_anchors_ = true
+
+[node name="Focus Border" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_5vt1k")
+
+[connection signal="focus_entered" from="." to="." method="_on_focus_entered"]
+[connection signal="focus_exited" from="." to="." method="_on_focus_exited"]
+[connection signal="focus_entered" from="GetItem" to="." method="_on_get_item_focus_entered"]
+[connection signal="focus_exited" from="GetItem" to="." method="_on_get_item_focus_exited"]
+[connection signal="pressed" from="GetItem" to="." method="_on_button_pressed"]
