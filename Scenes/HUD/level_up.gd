@@ -23,12 +23,11 @@ func visibility_change(is_paused: bool):
 		game_logic.hideshow_container_children("EnemySpawner", !is_paused)
 		game_logic.hideshow_container_children("ExperienceContainer", !is_paused)
 		game_logic.hideshow_container_children("ProjectileContainer", !is_paused)
-		$Panel/MarginContainer/HBoxContainer/Upgrade1.get_child(0).text = Global.ITEM_COLLECTION[0].item_name
-		$Panel/MarginContainer/HBoxContainer/Upgrade2.get_child(0).text = Global.ITEM_COLLECTION[1].item_name
-		$Panel/MarginContainer/HBoxContainer/Upgrade3.get_child(0).text = Global.ITEM_COLLECTION[2].item_name
-		$Panel/MarginContainer/HBoxContainer/Upgrade1.get_child(1).texture = Global.ITEM_COLLECTION[0].image
-		$Panel/MarginContainer/HBoxContainer/Upgrade2.get_child(1).texture = Global.ITEM_COLLECTION[1].image
-		$Panel/MarginContainer/HBoxContainer/Upgrade3.get_child(1).texture = Global.ITEM_COLLECTION[2].image
+	$Panel/MarginContainer/HBoxContainer.get_node("ItemCard").item = Global.ITEM_COLLECTION[randi_range(0, $Panel/MarginContainer/HBoxContainer.get_child_count() -1)]
+	$Panel/MarginContainer/HBoxContainer.get_node("ItemCard2").item = Global.ITEM_COLLECTION[randi_range(0, $Panel/MarginContainer/HBoxContainer.get_child_count() -1)]
+	$Panel/MarginContainer/HBoxContainer.get_node("ItemCard3").item = Global.ITEM_COLLECTION[randi_range(0, $Panel/MarginContainer/HBoxContainer.get_child_count() -1)]
+	$Panel/MarginContainer/HBoxContainer.get_node("ItemCard4").item = Global.ITEM_COLLECTION[randi_range(0, $Panel/MarginContainer/HBoxContainer.get_child_count() -1)]
+		
 func _on_button_pressed():
 	_is_paused = false
 

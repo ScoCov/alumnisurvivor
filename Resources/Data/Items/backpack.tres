@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="ItemResource" load_steps=6 format=3 uid="uid://kewotco332pw"]
+
+[ext_resource type="Script" uid="uid://dipwxgdjv64sc" path="res://Scripts/Abstract Classes/Item/ItemBonus.gd" id="1_nsyuq"]
+[ext_resource type="Resource" uid="uid://de4ke6fjbvt45" path="res://Resources/Data/Attributes/Health.tres" id="2_d8mul"]
+[ext_resource type="Texture2D" uid="uid://slw16wkvwpx" path="res://Resources/Image/Temp/LockIcon.png" id="3_jl6tm"]
+[ext_resource type="Script" uid="uid://4pylfu4f1res" path="res://Scripts/Abstract Classes/Resource/ItemResource.gd" id="4_uby4l"]
+
+[sub_resource type="Resource" id="Resource_5qa2o"]
+script = ExtResource("1_nsyuq")
+attribute = ExtResource("2_d8mul")
+start_value = 5.0
+growth_modifier = 0.0
+metadata/_custom_type_script = "uid://dipwxgdjv64sc"
+
+[resource]
+script = ExtResource("4_uby4l")
+item_name = "Backpack"
+item_id = "backpack"
+item_description = ""
+tool_tip = ""
+unlocked = true
+meta_tags = Array[int]([])
+item_tags = Array[int]([])
+image = ExtResource("3_jl6tm")
+max_count = 0
+unique = false
+bonuses = Array[ExtResource("1_nsyuq")]([SubResource("Resource_5qa2o"), null])
+metadata/_custom_type_script = "uid://4pylfu4f1res"

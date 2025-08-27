@@ -1,0 +1,117 @@
+[gd_scene load_steps=5 format=3 uid="uid://mj6ewfm1nlht"]
+
+[ext_resource type="Script" uid="uid://lwxapit2wdep" path="res://Scenes/HUD/item_card.gd" id="1_5vt1k"]
+[ext_resource type="Texture2D" uid="uid://slw16wkvwpx" path="res://Resources/Image/Temp/LockIcon.png" id="2_fifsb"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kx8si"]
+bg_color = Color(0.314316, 0.314316, 0.314316, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_npynq"]
+bg_color = Color(0.314316, 0.314316, 0.314316, 1)
+
+[node name="ItemCard" type="Control"]
+custom_minimum_size = Vector2(250, 400)
+layout_mode = 3
+anchor_right = 0.217014
+anchor_bottom = 0.617284
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_5vt1k")
+metadata/_edit_use_anchors_ = true
+
+[node name="Background" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 23.0
+grow_horizontal = 2
+text = "ITEM_NAME"
+horizontal_alignment = 1
+
+[node name="Content" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -377.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Image" type="Control" parent="Content"]
+anchors_preset = 0
+anchor_left = 0.188
+anchor_right = 0.788
+anchor_bottom = 0.397878
+metadata/_edit_use_anchors_ = true
+
+[node name="BackgroundImage" type="Panel" parent="Content/Image"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_kx8si")
+
+[node name="Center" type="CenterContainer" parent="Content/Image"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterPoint" type="Control" parent="Content/Image/Center"]
+layout_mode = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="Content/Image/Center/CenterPoint"]
+texture = ExtResource("2_fifsb")
+
+[node name="Details" type="Control" parent="Content"]
+layout_mode = 1
+anchor_top = 0.397878
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="MarginContainer" type="MarginContainer" parent="Content/Details"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="Panel" type="Panel" parent="Content/Details/MarginContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_npynq")
+
+[node name="MarginContainer" type="MarginContainer" parent="Content/Details/MarginContainer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Content/Details/MarginContainer/Panel/MarginContainer"]
+layout_mode = 2

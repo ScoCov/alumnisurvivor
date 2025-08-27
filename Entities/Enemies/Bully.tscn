@@ -10,7 +10,6 @@ script = ExtResource("2_dlpl7")
 resource = ExtResource("3_cij55")
 
 [node name="Sprite" parent="." index="0"]
-self_modulate = Color(1, 1, 1, 1)
 texture = ExtResource("4_vhggw")
 
 [node name="Health" parent="Composition" index="1"]

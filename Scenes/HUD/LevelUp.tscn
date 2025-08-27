@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://dic2fak63kfqn"]
+[gd_scene load_steps=4 format=3 uid="uid://dic2fak63kfqn"]
 
 [ext_resource type="Script" uid="uid://d1f6vefjm680x" path="res://Scenes/HUD/level_up.gd" id="1_ehihr"]
+[ext_resource type="PackedScene" uid="uid://mj6ewfm1nlht" path="res://Scenes/HUD/ItemCard.tscn" id="2_mrp3a"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ehihr"]
 bg_color = Color(0.401366, 0.639777, 0.72813, 1)
@@ -49,62 +50,17 @@ theme_override_constants/margin_right = 14
 layout_mode = 2
 alignment = 1
 
-[node name="Upgrade1" type="Panel" parent="Panel/MarginContainer/HBoxContainer"]
-custom_minimum_size = Vector2(250, 400)
+[node name="ItemCard" parent="Panel/MarginContainer/HBoxContainer" instance=ExtResource("2_mrp3a")]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="Panel/MarginContainer/HBoxContainer/Upgrade1"]
-layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_bottom = 23.0
-grow_horizontal = 2
-
-[node name="Sprite2D" type="Sprite2D" parent="Panel/MarginContainer/HBoxContainer/Upgrade1"]
-position = Vector2(119, 110)
-
-[node name="Upgrade2" type="Panel" parent="Panel/MarginContainer/HBoxContainer"]
-custom_minimum_size = Vector2(250, 400)
+[node name="ItemCard2" parent="Panel/MarginContainer/HBoxContainer" instance=ExtResource("2_mrp3a")]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="Panel/MarginContainer/HBoxContainer/Upgrade2"]
-layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_bottom = 23.0
-grow_horizontal = 2
-
-[node name="Sprite2D" type="Sprite2D" parent="Panel/MarginContainer/HBoxContainer/Upgrade2"]
-position = Vector2(120, 110)
-
-[node name="Upgrade3" type="Panel" parent="Panel/MarginContainer/HBoxContainer"]
-custom_minimum_size = Vector2(250, 400)
+[node name="ItemCard3" parent="Panel/MarginContainer/HBoxContainer" instance=ExtResource("2_mrp3a")]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="Panel/MarginContainer/HBoxContainer/Upgrade3"]
-layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_bottom = 23.0
-grow_horizontal = 2
-
-[node name="Sprite2D" type="Sprite2D" parent="Panel/MarginContainer/HBoxContainer/Upgrade3"]
-position = Vector2(125, 110)
-
-[node name="ExtraUpgrade" type="Panel" parent="Panel/MarginContainer/HBoxContainer"]
-visible = false
-custom_minimum_size = Vector2(250, 400)
+[node name="ItemCard4" parent="Panel/MarginContainer/HBoxContainer" instance=ExtResource("2_mrp3a")]
 layout_mode = 2
-
-[node name="Label" type="Label" parent="Panel/MarginContainer/HBoxContainer/ExtraUpgrade"]
-layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_bottom = 23.0
-grow_horizontal = 2
-
-[node name="Sprite2D" type="Sprite2D" parent="Panel/MarginContainer/HBoxContainer/ExtraUpgrade"]
-position = Vector2(-516, 110)
 
 [node name="Button" type="Button" parent="."]
 layout_mode = 1
