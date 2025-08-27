@@ -1,13 +1,20 @@
-[gd_scene load_steps=13 format=3 uid="uid://v1phrdf8cdqg"]
+[gd_scene load_steps=20 format=3 uid="uid://v1phrdf8cdqg"]
 
 [ext_resource type="Script" uid="uid://d0tuntxkjee38" path="res://Entities/StudentEntity.gd" id="1_cijec"]
 [ext_resource type="Script" uid="uid://djkkswc2cexv8" path="res://Scripts/Component/ExperienceComponent.gd" id="2_5mbnf"]
 [ext_resource type="Script" uid="uid://b61e3a07grfgy" path="res://Scripts/Component/HealthComponent.gd" id="2_e3u2s"]
 [ext_resource type="Script" uid="uid://c7p233d8bepea" path="res://Scripts/Component/MovementComponent.gd" id="3_1dsc0"]
+[ext_resource type="Script" uid="uid://7bb2hfqmjjse" path="res://Scripts/Component/AttackSpeedComponent.gd" id="4_el1nb"]
 [ext_resource type="Script" uid="uid://t3mlm4ybio8c" path="res://Scripts/States/StateMachine.gd" id="4_jbidu"]
+[ext_resource type="Script" uid="uid://c2pxvhg6bs4k7" path="res://Scripts/Component/CooldownComponent.gd" id="5_c5hdo"]
 [ext_resource type="Script" uid="uid://3kkssbssbwvs" path="res://Scripts/States/Player/PlayerIdle.gd" id="5_vaka8"]
+[ext_resource type="Script" uid="uid://ccsgji80asv7u" path="res://Scripts/Component/CriticalChanceComponent.gd" id="6_87ell"]
 [ext_resource type="Script" uid="uid://icw1is6pi6hp" path="res://Scripts/States/Player/PlayerMoving.gd" id="6_ivuk0"]
+[ext_resource type="Script" uid="uid://cdja3chlcwekg" path="res://Scripts/Component/KnockbackComponent.gd" id="7_iv6hm"]
 [ext_resource type="Texture2D" uid="uid://tipd8jqpeh1b" path="res://Resources/Image/Temp/Greyknight_Doll.png" id="7_xli4a"]
+[ext_resource type="Script" uid="uid://bli88oag0sqnf" path="res://Scripts/Component/RangeComponent.gd" id="8_gbsgn"]
+[ext_resource type="Script" uid="uid://cpwhsrq1ak3v5" path="res://Scripts/Abstract Classes/Item/ItemManager.gd" id="9_2jbb7"]
+[ext_resource type="Script" uid="uid://ctrb8ov6gpaok" path="res://Scripts/Component/DamageComponent.gd" id="9_71snr"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bj2gu"]
 radius = 24.0
@@ -36,6 +43,30 @@ base_value = 10.0
 [node name="MovementSpeed" type="Node" parent="Composition"]
 script = ExtResource("3_1dsc0")
 base_value = 5000.0
+
+[node name="AttackSpeedComponent" type="Node" parent="Composition"]
+script = ExtResource("4_el1nb")
+metadata/_custom_type_script = "uid://7bb2hfqmjjse"
+
+[node name="CooldownComponent" type="Node" parent="Composition"]
+script = ExtResource("5_c5hdo")
+metadata/_custom_type_script = "uid://c2pxvhg6bs4k7"
+
+[node name="CriticalComponent" type="Node" parent="Composition"]
+script = ExtResource("6_87ell")
+metadata/_custom_type_script = "uid://ccsgji80asv7u"
+
+[node name="KnockbackComponent" type="Node" parent="Composition"]
+script = ExtResource("7_iv6hm")
+metadata/_custom_type_script = "uid://cdja3chlcwekg"
+
+[node name="RangeComponent" type="Node" parent="Composition"]
+script = ExtResource("8_gbsgn")
+metadata/_custom_type_script = "uid://bli88oag0sqnf"
+
+[node name="DamageComponent" type="Node" parent="Composition"]
+script = ExtResource("9_71snr")
+metadata/_custom_type_script = "uid://ctrb8ov6gpaok"
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("4_jbidu")
@@ -98,6 +129,9 @@ shape = SubResource("CircleShape2D_muuk5")
 
 [node name="Experience" type="Node" parent="."]
 script = ExtResource("2_5mbnf")
+
+[node name="Items" type="Node" parent="."]
+script = ExtResource("9_2jbb7")
 
 [connection signal="death" from="." to="." method="_on_death"]
 [connection signal="take_damage" from="." to="." method="_on_take_damage"]

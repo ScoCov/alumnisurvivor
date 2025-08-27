@@ -21,6 +21,7 @@ var invulnerable: bool = false ## Used for invulnerability frames.
 var _enemy_refs: Array[EnemyEntity] ## Populate this with enemies that enter the enemy detection Area2D node.
 ## Makes the node, PlayerExperience, with the ExperienceComponent class, easier to access.
 @onready var experience: ExperienceComponent = $Experience
+@onready var items: ItemManager = $Items
 
 func _ready():
 	if not student: return ## if there isn't a student resource present, exit out of setup.
