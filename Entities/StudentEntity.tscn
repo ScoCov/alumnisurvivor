@@ -19,8 +19,9 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_bj2gu"]
 radius = 24.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_3jdoj"]
-radius = 48.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_el1nb"]
+radius = 32.0
+height = 120.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rkqoy"]
 radius = 150.0
@@ -99,7 +100,7 @@ collision_mask = 2
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyDetection"]
-shape = SubResource("CircleShape2D_3jdoj")
+shape = SubResource("CapsuleShape2D_el1nb")
 
 [node name="InvulTimer" type="Timer" parent="."]
 wait_time = 0.5

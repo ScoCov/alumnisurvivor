@@ -7,6 +7,7 @@ signal leveled_up
 @export var player: StudentEntity
 
 var item: ItemResource
+var ability: AbilityResource
 
 var _is_paused: bool:
 	set(value):
@@ -23,22 +24,33 @@ func _process(delta): ## This won't start processing until the game is paused.
 func visibility_change(is_paused: bool):
 	if player and not is_paused:
 		$Panel/Label.text = "Congratulations, %s! You are now level %s!" % [player.student.student_name, player.experience.level]
+		if player.experience.level % 3 != 0:
+			$Panel/MarginContainer/HBoxContainer.get_node("ItemCard").item = Global.ITEM_COLLECTION[randi_range(0, len(Global.ITEM_COLLECTION) -1)]
+			$Panel/MarginContainer/HBoxContainer.get_node("ItemCard2").item = Global.ITEM_COLLECTION[randi_range(0, len(Global.ITEM_COLLECTION) -1)]
+			$Panel/MarginContainer/HBoxContainer.get_node("ItemCard3").item = Global.ITEM_COLLECTION[randi_range(0, len(Global.ITEM_COLLECTION) -1)]
+			$Panel/MarginContainer/HBoxContainer.get_node("ItemCard4").item = Global.ITEM_COLLECTION[randi_range(0, len(Global.ITEM_COLLECTION) -1)]
+			$Panel/MarginContainer/HBoxContainer.get_node("ItemCard4").visible = false if randf_range(0,1) < 0.5 else true
+		elif player.experience.level % 3 == 0:
+			$Panel/MarginContainer/HBoxContainer.get_node("ItemCard").ability = Global.ABILITIES[randi_range(0, len(Global.ABILITIES) -1)]
+			$Panel/MarginContainer/HBoxContainer.get_node("ItemCard2").ability = Global.ABILITIES[randi_range(0, len(Global.ABILITIES) -1)]
+			$Panel/MarginContainer/HBoxContainer.get_node("ItemCard3").ability = Global.ABILITIES[randi_range(0, len(Global.ABILITIES) -1)]
+			$Panel/MarginContainer/HBoxContainer.get_node("ItemCard4").ability = Global.ABILITIES[randi_range(0, len(Global.ABILITIES) -1)]
+			$Panel/MarginContainer/HBoxContainer.get_node("ItemCard4").visible = false if randf_range(0,1) < 0.5 else true
 	if game_hud:
 		game_hud.visible = !is_paused ## Hides Game Hud
 	if game_logic: ## Hide parts of the game
 		game_logic.hideshow_container_children("EnemySpawner", !is_paused)
 		game_logic.hideshow_container_children("ExperienceContainer", !is_paused)
 		game_logic.hideshow_container_children("ProjectileContainer", !is_paused)
-	$Panel/MarginContainer/HBoxContainer.get_node("ItemCard").item = Global.ITEM_COLLECTION[randi_range(0, len(Global.ITEM_COLLECTION) -1)]
-	$Panel/MarginContainer/HBoxContainer.get_node("ItemCard2").item = Global.ITEM_COLLECTION[randi_range(0, len(Global.ITEM_COLLECTION) -1)]
-	$Panel/MarginContainer/HBoxContainer.get_node("ItemCard3").item = Global.ITEM_COLLECTION[randi_range(0, len(Global.ITEM_COLLECTION) -1)]
-	$Panel/MarginContainer/HBoxContainer.get_node("ItemCard4").item = Global.ITEM_COLLECTION[randi_range(0, len(Global.ITEM_COLLECTION) -1)]
-	$Panel/MarginContainer/HBoxContainer.get_node("ItemCard4").visible = false if randf_range(0,1) < 0.5 else true
-		
+	
+
 func _on_button_pressed():
-	print("Item being added: %s" % item.item_name)
-	player.items.add_item(item)
-	item = null
+	if item:
+		player.items.add_item(item)
+		item = null
+	elif ability:
+		##TODO: Add new Ability logic 
+		pass 
 	game_hud._on_update()
 	_is_paused = false
 
