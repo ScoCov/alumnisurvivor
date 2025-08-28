@@ -29,6 +29,7 @@ texture = ExtResource("5_thx8d")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="GameOverlay" parent="CanvasLayer" node_paths=PackedStringArray("timer", "game_logic") instance=ExtResource("3_e4hy1")]
+process_mode = 3
 timer = NodePath("../../GameLogic/GameTimeLimit")
 game_logic = NodePath("../../GameLogic")
 
@@ -44,11 +45,10 @@ visible = false
 game_hud = NodePath("../GameOverlay")
 game_logic = NodePath("../../GameLogic")
 
-[node name="GameLogic" type="Node" parent="." node_paths=PackedStringArray("enemy_spawner", "gameTime", "canvas_layer")]
+[node name="GameLogic" type="Node" parent="." node_paths=PackedStringArray("enemy_spawner", "canvas_layer")]
 script = ExtResource("1_ujiyw")
 enemy_spawner = NodePath("EnemySpawner")
 spawn_point = Vector2(480, 320)
-gameTime = NodePath("GameTimeLimit")
 canvas_layer = NodePath("../CanvasLayer")
 
 [node name="EnemySpawner" type="Node" parent="GameLogic" node_paths=PackedStringArray("spawn_timer", "experience_container_ref")]

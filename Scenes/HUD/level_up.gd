@@ -36,8 +36,10 @@ func visibility_change(is_paused: bool):
 	$Panel/MarginContainer/HBoxContainer.get_node("ItemCard4").visible = false if randf_range(0,1) < 0.5 else true
 		
 func _on_button_pressed():
+	print("Item being added: %s" % item.item_name)
 	player.items.add_item(item)
 	item = null
+	game_hud._on_update()
 	_is_paused = false
 
 func _on_visibility_changed():

@@ -8,7 +8,7 @@ extends Node
 @export var player: StudentEntity
 @export var enemy_spawner: EnemySpawner
 @export var spawn_point: Vector2 = Vector2()
-@export var gameTime: Timer
+@export var game_time: Timer
 @export var experience: ExperienceComponent
 @export var canvas_layer: CanvasLayer
 		
@@ -25,8 +25,10 @@ func _ready() -> void:
 	player.add_child(new_camera)
 	player.position = spawn_point
 	get_node("Player").add_child(player)
-	if gameTime != null:
-		gameTime.timeout.connect(func(): get_tree().change_scene_to_file("res://Scenes/GameMenus/GameMenu.tscn"))
+	canvas_layer.get_node("GameOverlay").update_items.emit()
+
+	if game_time != null:
+		game_time.timeout.connect(func(): get_tree().change_scene_to_file("res://Scenes/GameMenus/GameMenu.tscn"))
 
 func hideshow_container_children(container_name: String, _is_paused: bool):
 	for child in get_node(container_name).get_children():

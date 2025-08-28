@@ -9,6 +9,7 @@ signal item_stack_added
 func add_item(item: ItemResource) -> Dictionary:
 	## Check the ItemManager's children to see if any of them have an ItemStack that contains the given Item.
 	var extant_item: bool = get_children().any(func(item_stack): return item_stack.item == item)
+	print("Item is Extant: %s " % extant_item)
 	var item_stack: ItemStack
 	
 	## If extant_item then use that ItemStack, otherwise; make a new ItemStack with the appropriate item.
@@ -20,8 +21,8 @@ func add_item(item: ItemResource) -> Dictionary:
 	else:
 		item_stack = get_children().filter(func(_item_stack): return _item_stack.item.item_name == item.item_name)[0]
 		
-	
 	item_stack.count += 1 
+	print("Item stack: %s %s" % [item_stack.item.item_name, str(item_stack.count)])
 	item_stack.count_changed.emit()
 	return {"Item": item.item_name, "Count": item_stack.count} ## show the results of the additional item.
 	
