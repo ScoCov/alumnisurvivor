@@ -33,14 +33,14 @@ process_mode = 3
 timer = NodePath("../../GameLogic/GameTimeLimit")
 game_logic = NodePath("../../GameLogic")
 
-[node name="Pause" parent="CanvasLayer" node_paths=PackedStringArray("game_hud", "game_logic") instance=ExtResource("7_jwasw")]
-process_mode = 3
+[node name="LevelUp" parent="CanvasLayer" node_paths=PackedStringArray("game_hud", "game_logic") instance=ExtResource("5_7pf22")]
+process_mode = 2
 visible = false
 game_hud = NodePath("../GameOverlay")
 game_logic = NodePath("../../GameLogic")
 
-[node name="LevelUp" parent="CanvasLayer" node_paths=PackedStringArray("game_hud", "game_logic") instance=ExtResource("5_7pf22")]
-process_mode = 2
+[node name="Pause" parent="CanvasLayer" node_paths=PackedStringArray("game_hud", "game_logic") instance=ExtResource("7_jwasw")]
+process_mode = 3
 visible = false
 game_hud = NodePath("../GameOverlay")
 game_logic = NodePath("../../GameLogic")

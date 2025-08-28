@@ -7,8 +7,6 @@ signal low_health
 signal zero_health
 signal full_health
 
-# var health_state: HeathState
-
 var current_health: float 
 var max_health: float: 
 	set(health):

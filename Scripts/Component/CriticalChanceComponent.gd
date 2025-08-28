@@ -1,10 +1,9 @@
-class_name CriticalComponent
+class_name CriticalChanceComponent
 extends Component
 
-#const crticial_chance_attribute = preload()
+const crticial_chance_attribute = preload("res://Resources/Data/Attributes/CriticalChance.tres")
 
 
 func _init():
-	pass
-	#if not attribute:
-		#attribtute
+	if not attribute:
+		attribute = crticial_chance_attribute

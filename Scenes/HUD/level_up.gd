@@ -11,8 +11,10 @@ var ability: AbilityResource
 
 var _is_paused: bool:
 	set(value):
-		visible = value
+		visible = value and player.is_level_up
 		get_tree().paused = value
+
+
 	
 func _process(delta): ## This won't start processing until the game is paused.
 	_is_paused = get_tree().paused
@@ -52,7 +54,9 @@ func _on_button_pressed():
 		##TODO: Add new Ability logic 
 		pass 
 	game_hud._on_update()
+	player.is_level_up = false
 	_is_paused = false
+	
 
 func _on_visibility_changed():
 	visibility_change(_is_paused)

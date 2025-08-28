@@ -22,13 +22,16 @@ var _enemy_refs: Array[EnemyEntity] ## Populate this with enemies that enter the
 ## Makes the node, PlayerExperience, with the ExperienceComponent class, easier to access.
 @onready var experience: ExperienceComponent = $Experience
 @onready var items: ItemManager = $Items
+var is_level_up = false
 
 func _ready():
 	if not student: return ## if there isn't a student resource present, exit out of setup.
 	$Sprite.texture = student.doll ## TODO: NEEDS UPDATING ONCE MORE ASSETS ARE DEVELOPED -> The visuals
 	
 	## Assign Experience's level up logic
-	experience.level_up.connect(func(): get_tree().paused = true)
+	experience.level_up.connect(func(): 
+		is_level_up = true
+		get_tree().paused = true )
 	
 	## Load in the Student's given starting ability and 'equip' it. 
 	var ability_packed_scene = load("res://Entities/Abilities/%s.tscn" % student.starting_ability.id) 

@@ -26,7 +26,7 @@ func add_item(item: ItemResource) -> Dictionary:
 	item_stack.count += 1 
 	print("Item stack: %s %s" % [item_stack.item.item_name, str(item_stack.count)])
 	item_stack.count_changed.emit()
-	calculate_attributes(player)
+	calculate_attributes()
 	return {"Item": item.item_name, "Count": item_stack.count} ## show the results of the additional item.
 	
 	
@@ -41,14 +41,23 @@ func get_item_by_item_resource(item: ItemResource) -> ItemStack:
 
 ## When there's an update to any of the children (a new item or increased itemstack count) 
 ## will trigger the updating of the player's stats.
-func calculate_attributes(player: StudentEntity)-> void:
-	## For each ItemStack in the ItemManger, find if there's 
-	## a composition on the player that is effected by one of the 
-	## Item's ItemBonus. 
-	if not player:return
+func calculate_attributes()-> void:
+	## Each Item Bonus will effect a differnt attribute, or give a different function.
+	## Go through the items, get the item_bonuses, find the compositions on the player
+	## that matches a composition attribute. Then, on that composition, apply the 
+	## modded attribute to the player. 
+	if not player: return
+	for child in player.get_node("Composition").get_children():
+		child.clear()
 	for item_stack: ItemStack in get_children():
-		for attribute: Component in player.get_node("Composition").get_children():
-			for item_bonus: ItemBonus in item_stack.item.bonuses:
-				
-				if attribute.attribute.id == item_bonus.attribute.id:
-					print("WE GOT IT")
+		var item: ItemResource = item_stack.item
+		for bonus: ItemBonus in item.bonuses:
+			var player_attribute = player.get_node("Composition").get_children().filter(func(comp: Component):
+				return comp if comp.attribute.id == bonus.attribute.id else null)[0]
+			if player_attribute:
+				print("%s(before): %s + %s = %s" % [player_attribute.name, str(player_attribute.base_value), str(player_attribute.mod_value), str(player_attribute.value)])
+				var att_calc: AttributeCalculation = AddToMod.new(player, player_attribute)
+				att_calc.get_value(bonus, item_stack.count)
+				print("%s(after): %s + %s = %s" % [player_attribute.name, str(player_attribute.base_value), str(player_attribute.mod_value), str(player_attribute.value)])
+				continue
+	

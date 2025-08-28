@@ -4,7 +4,13 @@ extends Node
 
 ## Use to create minimum stats for a given enti y to function. This value should never be altered 
 ## after creation. Unless it is a specific effect to modifiy the base - which further logic will be needed.
-@export var base_value: float
+@export var base_value: float:
+	set(value):
+		base_value = value
+	get:
+		return base_value + base_mod
+
+var base_mod: float
 
 ## Value that is to be added on top of the base_value. If altering the entity's stats this is the value that new alteration should be assigned.
 var mod_value: float
@@ -30,3 +36,8 @@ var value: float:
 ## to this variable. Otherwise, the custom Attribute+Component classes will automatically assign their
 ## appropriate attribute.
 @export var attribute: AttributeResource
+
+
+func clear():
+	base_mod = 0
+	mod_value = 0
