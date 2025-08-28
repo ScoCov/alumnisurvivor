@@ -93,6 +93,7 @@ uppercase = true
 metadata/_edit_use_anchors_ = true
 
 [node name="Details" type="Panel" parent="Control"]
+self_modulate = Color(1, 1, 1, 0.431373)
 layout_mode = 1
 anchors_preset = -1
 anchor_top = 0.1875

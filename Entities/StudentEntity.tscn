@@ -131,8 +131,9 @@ shape = SubResource("CircleShape2D_muuk5")
 [node name="Experience" type="Node" parent="."]
 script = ExtResource("2_5mbnf")
 
-[node name="Items" type="Node" parent="."]
+[node name="Items" type="Node" parent="." node_paths=PackedStringArray("player")]
 script = ExtResource("9_2jbb7")
+player = NodePath("..")
 
 [connection signal="death" from="." to="." method="_on_death"]
 [connection signal="take_damage" from="." to="." method="_on_take_damage"]
