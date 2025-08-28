@@ -1,7 +1,7 @@
 extends Control
 class_name GameOverlay
 
-signal update_items
+signal update
 
 @export var player: StudentEntity:
 	set(value):
@@ -50,17 +50,15 @@ func _on_update():
 			## If there is a HudItem that already exists that contains a item_stack
 			if $Items/GridContainer.get_children().any(func(node): 
 				return node.item_stack.item.item_name == item_stack.item.item_name):
-				print("Found Hud Item with the Item: %s" % item_stack.item.item_name)
 				var hud_item: HudItem = $Items/GridContainer.get_children().filter(func(node): 
 					if node.item_stack.item.item_name == item_stack.item.item_name: return node)[0]
 				var hud_item_name = hud_item.item_stack.item.item_name
 				var item_stack_name = item_stack.item.item_name
-				if hud_item is HudItem and hud_item.has_signal("update_items"):
-					print("ItemStack %s %s" % [item_stack.item.item_name, item_stack.count])
-					hud_item.item_stack = item_stack
-					hud_item.emit_signal("update_items")
+				if hud_item is HudItem :
+					if hud_item.has_method("update"):
+						hud_item.item_stack = item_stack
+						hud_item.update()
 			else:
-				print("Did not find a Hud Item with the Item: %s" % item_stack.item.item_name)
 				var new_hud_item:= hud_item_scene.instantiate()
 				new_hud_item.item_stack = item_stack
 				$Items/GridContainer.add_child(new_hud_item)

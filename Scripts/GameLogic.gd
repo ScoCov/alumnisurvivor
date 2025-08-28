@@ -25,7 +25,7 @@ func _ready() -> void:
 	player.add_child(new_camera)
 	player.position = spawn_point
 	get_node("Player").add_child(player)
-	canvas_layer.get_node("GameOverlay").update_items.emit()
+	canvas_layer.get_node("GameOverlay").update.emit()
 
 	if game_time != null:
 		game_time.timeout.connect(func(): get_tree().change_scene_to_file("res://Scenes/GameMenus/GameMenu.tscn"))
