@@ -67,7 +67,7 @@ debug_color = Color(1, 0, 0, 0.419608)
 
 [node name="MovementSpeed" type="Node" parent="Composition"]
 script = ExtResource("4_ams5p")
-base_value = 1000.0
+base_value = 75.0
 
 [node name="Health" type="Node" parent="Composition"]
 script = ExtResource("5_4qos5")

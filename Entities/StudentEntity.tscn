@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://v1phrdf8cdqg"]
+[gd_scene load_steps=21 format=3 uid="uid://v1phrdf8cdqg"]
 
 [ext_resource type="Script" uid="uid://d0tuntxkjee38" path="res://Entities/StudentEntity.gd" id="1_cijec"]
 [ext_resource type="Script" uid="uid://djkkswc2cexv8" path="res://Scripts/Component/ExperienceComponent.gd" id="2_5mbnf"]
@@ -15,6 +15,7 @@
 [ext_resource type="Script" uid="uid://bli88oag0sqnf" path="res://Scripts/Component/RangeComponent.gd" id="8_gbsgn"]
 [ext_resource type="Script" uid="uid://cpwhsrq1ak3v5" path="res://Scripts/Abstract Classes/Item/ItemManager.gd" id="9_2jbb7"]
 [ext_resource type="Script" uid="uid://ctrb8ov6gpaok" path="res://Scripts/Component/DamageComponent.gd" id="9_71snr"]
+[ext_resource type="Script" uid="uid://clvlhjcomn2uj" path="res://Scripts/Component/DurationComponent.gd" id="10_c5hdo"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bj2gu"]
 radius = 24.0
@@ -43,7 +44,7 @@ base_value = 10.0
 
 [node name="MovementSpeed" type="Node" parent="Composition"]
 script = ExtResource("3_1dsc0")
-base_value = 5000.0
+base_value = 100.0
 
 [node name="AttackSpeed" type="Node" parent="Composition"]
 script = ExtResource("4_el1nb")
@@ -68,6 +69,10 @@ metadata/_custom_type_script = "uid://bli88oag0sqnf"
 [node name="Damage" type="Node" parent="Composition"]
 script = ExtResource("9_71snr")
 metadata/_custom_type_script = "uid://ctrb8ov6gpaok"
+
+[node name="Duration" type="Node" parent="Composition"]
+script = ExtResource("10_c5hdo")
+metadata/_custom_type_script = "uid://clvlhjcomn2uj"
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("4_jbidu")

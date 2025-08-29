@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://b34bbmg8qnhvo"]
+[gd_scene load_steps=3 format=3 uid="uid://b34bbmg8qnhvo"]
 
 [ext_resource type="Script" uid="uid://b0dnwtj1rj3m4" path="res://Scenes/HUD/Pause.gd" id="1_njtet"]
+[ext_resource type="PackedScene" uid="uid://wgsd3r1rfnpa" path="res://Scenes/HUD/PauseStats.tscn" id="2_ip0a6"]
 
 [node name="Pause Menu" type="Control"]
 layout_mode = 3
@@ -82,6 +83,16 @@ text = "Main Menu"
 [node name="Quit" type="Button" parent="CenterContainer/Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Quit"
+
+[node name="PauseStats" parent="." instance=ExtResource("2_ip0a6")]
+layout_mode = 1
+anchor_left = 0.0677083
+anchor_top = 0.114198
+anchor_right = 0.371528
+anchor_bottom = 0.885802
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 1
 
 [connection signal="pressed" from="CenterContainer/Panel/MarginContainer/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="CenterContainer/Panel/MarginContainer/VBoxContainer/Main Menu" to="." method="_on_main_menu_pressed"]

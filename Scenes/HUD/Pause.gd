@@ -11,6 +11,8 @@ var _is_paused: bool = false:
 		if game_hud:
 			game_hud.visible = !_is_paused ## Hides Game Hud
 		if game_logic: ## Hide parts of the game
+			$PauseStats.player = game_logic.player
+			$PauseStats.update()
 			game_logic.hideshow_container_children("EnemySpawner", !_is_paused)
 			game_logic.hideshow_container_children("ExperienceContainer", !_is_paused)
 			game_logic.hideshow_container_children("ProjectileContainer", !_is_paused)
@@ -18,6 +20,7 @@ var _is_paused: bool = false:
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("pause"): ## 'ESC' is the 'pause' action.
 		_is_paused = !_is_paused
+		
 		
 ## Resumes Game
 func _on_resume_pressed() -> void:

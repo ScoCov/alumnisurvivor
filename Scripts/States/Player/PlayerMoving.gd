@@ -20,7 +20,7 @@ func physics_update(_delta):
 	var directions:= Input.get_vector("move_left","move_right","move_up","move_down")
 	if player :
 		var adjusted_speed = player.get_node("Composition/MovementSpeed").value
-		player.velocity = (directions * (adjusted_speed * _delta)) 
+		player.velocity = directions * adjusted_speed
 		player.find_child("Sprite").flip_h = true if directions.x > 0 else false
 		player.move_and_slide()
 		

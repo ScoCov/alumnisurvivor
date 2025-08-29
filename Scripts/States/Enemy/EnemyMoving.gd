@@ -25,7 +25,7 @@ func physics_update(_delta):
 	var distance = enemy.position.distance_to(true_pos)
 	var direction = enemy.position.direction_to(true_pos) 
 	if distance > enemy.player_distance_min:
-		enemy.velocity = (direction * enemy.get_node("Composition/MovementSpeed").value ) * _delta
+		enemy.velocity = direction * enemy.get_node("Composition/MovementSpeed").value 
 	else: 
 		Transitioned.emit(self, "EnemyIdle")
 	enemy.move_and_slide()

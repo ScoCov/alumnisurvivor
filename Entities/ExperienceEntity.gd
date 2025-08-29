@@ -27,7 +27,7 @@ var chase: bool = false
 	
 func _physics_process(delta):
 	if not chase: return
-	var speed: float = (target_player.get_node("Composition/MovementSpeed").value * 0.75) * delta
+	var speed: float = (target_player.get_node("Composition/MovementSpeed").value * 1.1)
 	var direction: Vector2 = position.direction_to(target_player.position)
 	velocity = direction * speed 
 	move_and_slide() 

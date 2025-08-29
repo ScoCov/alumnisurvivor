@@ -53,8 +53,9 @@ func calculate_attributes()-> void:
 		var item: ItemResource = item_stack.item
 		for bonus: ItemBonus in item.bonuses:
 			var player_attribute = player.get_node("Composition").get_children().filter(func(comp: Component):
-				return comp if comp.attribute.id == bonus.attribute.id else null)[0]
+				return comp if comp.attribute.id == bonus.attribute.id else null)
 			if player_attribute:
+				player_attribute = player_attribute[0]
 				print("%s(before): %s + %s = %s" % [player_attribute.name, str(player_attribute.base_value), str(player_attribute.mod_value), str(player_attribute.value)])
 				var att_calc: AttributeCalculation = AddToMod.new(player, player_attribute)
 				att_calc.get_value(bonus, item_stack.count)
