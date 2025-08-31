@@ -102,7 +102,7 @@ anchor_bottom = 1.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_ie7gv")
 metadata/_edit_use_anchors_ = true
 
-[node name="ToolTip" type="Label" parent="Control/Details"]
+[node name="ToolTip" type="RichTextLabel" parent="Control/Details"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -113,8 +113,10 @@ offset_right = -8.0
 offset_bottom = -1.0
 grow_horizontal = 2
 grow_vertical = 2
+bbcode_enabled = true
 text = "Tool tip message that contains wraping"
-autowrap_mode = 2
+scroll_active = false
+shortcut_keys_enabled = false
 
 [connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
 [connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]

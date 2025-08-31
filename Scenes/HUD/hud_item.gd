@@ -10,7 +10,14 @@ func _ready():
 
 func _update_tool_tip():
 	$"Control/Item Name".text = item_stack.item.item_name
-	$Control/Details/ToolTip.text = item_stack.item.tool_tip
+	var message = ""
+	for item_bonus: ItemBonus in item_stack.item.bonuses:
+			var next_line: String = "" if message == "" else message + "\n"
+			message = ("%s%s: %s (+%s)" % 
+			[next_line, 
+			item_bonus.attribute.name, item_bonus.start_value, 
+			(item_bonus.growth_modifier * item_stack.count)])
+	$Control/Details/ToolTip.text = message
 	
 func update():
 	if item_stack:
