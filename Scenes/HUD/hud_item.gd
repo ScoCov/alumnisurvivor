@@ -13,7 +13,7 @@ func _update_tool_tip():
 	var message = ""
 	for item_bonus: ItemBonus in item_stack.item.bonuses:
 			var next_line: String = "" if message == "" else message + "\n"
-			message = ("%s%s: %s (+%s)" % 
+			message = ("%s%s: [color=green]%s[/color] (+%s)" % 
 			[next_line, 
 			item_bonus.attribute.name, item_bonus.start_value, 
 			(item_bonus.growth_modifier * item_stack.count)])
