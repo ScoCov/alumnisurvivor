@@ -16,6 +16,8 @@ signal death ## This will allow us to initiate death animations and logic.
 
 @export var student: StudentResource ## Basic data about the student stored elsewhere in a Resource file. 
 @export var game_logic: GameLogic  ## Every map should have a node of GameLogic made and applied with the script GameLogic.gd
+@export var health: HealthComponent
+
 var global_projectile_container: Node ## Easy way to pass this object down to Abiltiies so when they spawn objects they are independent of the user.
 var invulnerable: bool = false ## Used for invulnerability frames. 
 var _enemy_refs: Array[EnemyEntity] ## Populate this with enemies that enter the enemy detection Area2D node.
@@ -43,12 +45,12 @@ func _process(_delta):
 	## Flash player with a red overlay (self modulate) when they have been injured and invulnerability is active.
 	## TODO: When a Health State is created, move this function over to that.
 	if invulnerable: 
-		$Sprite.self_modulate = (Color(1, .5, .5, .80) 
+		$Sprite.self_modulate = (Color(1, .5, .5, 1) 
 			if ceili($'InvulTimer'.time_left * 10) % 2 == 0 
 			else Color(1, 1, 1, 1))
 	else:
 		$Sprite.self_modulate = Color(1, 1, 1, 1)
-	$Label.text = "Item Count: %s" % items.get_child_count()
+	$Label.text = "Health-State: %s" % health.get_child(0).current_state.name
 	## If Invulnerability is not active, allow damage. This will be from one source at random in the enemy_ref.
 	if not invulnerable and len(_enemy_refs) > 0: 
 		take_damage.emit(_enemy_refs[randi_range(0, len(_enemy_refs) - 1)])

@@ -9,7 +9,7 @@
 script = ExtResource("1_nsyuq")
 attribute = ExtResource("2_d8mul")
 start_value = 5.0
-growth_modifier = 0.0
+growth_modifier = 5.0
 metadata/_custom_type_script = "uid://dipwxgdjv64sc"
 
 [resource]
@@ -17,7 +17,7 @@ script = ExtResource("4_uby4l")
 item_name = "Backpack"
 item_id = "backpack"
 item_description = ""
-tool_tip = "Hello"
+tool_tip = ""
 unlocked = true
 meta_tags = Array[int]([])
 item_tags = Array[int]([])

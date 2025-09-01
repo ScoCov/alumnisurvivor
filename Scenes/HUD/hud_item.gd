@@ -13,17 +13,18 @@ func _update_tool_tip():
 	var message = ""
 	for item_bonus: ItemBonus in item_stack.item.bonuses:
 			var next_line: String = "" if message == "" else message + "\n"
-			message = ("%s%s: [color=green]%s[/color] (+%s)" % 
-			[next_line, 
-			item_bonus.attribute.name, item_bonus.start_value, 
-			(item_bonus.growth_modifier * item_stack.count)])
+			var starting_value = item_bonus.start_value
+			var mod_value = item_bonus.growth_modifier *( item_stack.count -1)
+			message = ("%s%s: [color=green]%s[/color] (+%s) = %s" % 
+				[next_line, item_bonus.attribute.name, starting_value, 
+				mod_value, starting_value + mod_value])
 	$Control/Details/ToolTip.text = message
 	
 func update():
 	if item_stack:
 		_update_tool_tip()
 		$Sprite2D.texture = item_stack.item.image
-		$RichTextLabel.text = "[b]X%s[/b]" % item_stack.count
+		$RichTextLabel.text = "[b]X%s[/b]" % item_stack.count 
 
 func _on_area_2d_mouse_entered() -> void:
 	$Control.visible =  true
