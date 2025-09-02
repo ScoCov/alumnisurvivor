@@ -12,11 +12,11 @@ resource = ExtResource("3_cij55")
 [node name="Sprite" parent="." index="0"]
 texture = ExtResource("4_vhggw")
 
-[node name="MovementSpeed" parent="Composition" index="0"]
-base_value = 50.0
-
-[node name="Health" parent="Composition" index="1"]
+[node name="Health" parent="Composition" index="0"]
 base_value = 15.0
 
-[node name="Damage" parent="Composition" index="2"]
+[node name="MovementSpeed" parent="Composition" index="1"]
+base_value = 50.0
+
+[node name="Damage" parent="Composition" index="7"]
 base_value = 3.0

@@ -38,7 +38,7 @@ func _ready():
 	## Load in the Student's given starting ability and 'equip' it. 
 	var ability_packed_scene = load("res://Entities/Abilities/%s.tscn" % student.starting_ability.id) 
 	var new_ability = ability_packed_scene.instantiate()
-	new_ability.player = self
+	new_ability.entity = self
 	$Ability1.add_child(new_ability)
 		
 func _process(_delta):
@@ -57,9 +57,13 @@ func _process(_delta):
 
 ## TODO: FIX - this will need it's parameter type to be updated so that players can interact with
 ## projectiles shot by enemies or from enviromental means. 
-func _on_take_damage(enemy: EnemyEntity):
-	if enemy and not invulnerable:
-		$Composition/Health.current_health -= enemy.get_node("Composition/Damage").value
+func _on_take_damage(entity: Variant):
+	if entity and entity is EnemyEntity and not invulnerable:
+		$Composition/Health.current_health -= entity.get_node("Composition/Damage").value
+		invulnerable = true
+		$InvulTimer.start()
+	if entity and entity is Projectile and not invulnerable:
+		health.current_health -= entity.get_node("Composition/Damage").value
 		invulnerable = true
 		$InvulTimer.start()
 			

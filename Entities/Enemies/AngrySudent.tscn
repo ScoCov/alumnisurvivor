@@ -11,3 +11,9 @@ resource = ExtResource("3_mqcui")
 
 [node name="Sprite" parent="." index="0"]
 texture = ExtResource("3_a088u")
+
+[node name="Health" parent="Composition" index="0"]
+base_value = 10.0
+
+[node name="MovementSpeed" parent="Composition" index="1"]
+base_value = 75.0

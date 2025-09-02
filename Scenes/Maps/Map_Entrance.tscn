@@ -51,9 +51,10 @@ enemy_spawner = NodePath("EnemySpawner")
 spawn_point = Vector2(480, 320)
 canvas_layer = NodePath("../CanvasLayer")
 
-[node name="EnemySpawner" type="Node" parent="GameLogic" node_paths=PackedStringArray("spawn_timer", "experience_container_ref")]
+[node name="EnemySpawner" type="Node" parent="GameLogic" node_paths=PackedStringArray("spawn_timer", "global_projectile_container", "experience_container_ref")]
 script = ExtResource("2_28vsk")
 spawn_timer = NodePath("../SpawnTimer")
+global_projectile_container = NodePath("../ProjectileContainer")
 experience_container_ref = NodePath("../ExperienceContainer")
 
 [node name="DifficultyModifiers" type="Node" parent="GameLogic"]

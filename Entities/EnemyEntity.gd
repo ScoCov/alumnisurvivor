@@ -7,7 +7,7 @@ signal take_damage
 var player: StudentEntity
 var spawner_ref: EnemySpawner
 var _xp_node_scene: PackedScene = preload("res://Entities/ExperienceEntity.tscn")
-@export var resource: EnemyResource
+@export var resource: EnemyResource 
 
 @export_group("Distance Modifiers")
 ## Used to determine how close an enemy will attempt to get.
@@ -15,9 +15,11 @@ var _xp_node_scene: PackedScene = preload("res://Entities/ExperienceEntity.tscn"
 ## Used to determine how far an enemy will attempt to flea the player.
 @export var player_disntance_max: float = 500
 
-
+## Define Enemy Movement Behavior.
 @onready var movement_type: EnemyMovementStyle = EnemyMovementStyle.load_movement_type(resource.move_style)
-	
+@onready var health = $Composition/Health
+var global_projectile_container: Node ## Easy way to pass this object down to Abiltiies so when they spawn objects they are independent of the user.
+
 func _physics_process(_delta):
 	pass
 	

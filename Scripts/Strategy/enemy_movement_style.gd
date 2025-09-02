@@ -12,4 +12,7 @@ static func load_movement_type(_type: EnemyMovementStyle.type) -> EnemyMovementS
 	match _type:
 		EnemyMovementStyle.type.Move_to_Player:
 			load_movement = EnemyMovementToPlayer.new()
+		EnemyMovementStyle.type.Avoid_Player:
+			load_movement = EnemyMovementAvoidPlayer.new()
+			
 	return load_movement
