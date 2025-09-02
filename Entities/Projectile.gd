@@ -24,15 +24,18 @@ extends CharacterBody2D
 @export var damage_package: float
 
 @export_category("Images")
-@export var sprite: Sprite2D
+
+@onready var sprite: Sprite2D = $HeroDollTestSize
 
 ##Private Data
 var _original_position: Vector2
 
 func _ready():
-	$Composition/AttackSpeed.base_value = parent_ability.get_node("Composition/AttackSpeed").value
-	$Composition/Range.base_value = parent_ability.get_node("Composition/Range").value
-	$Composition/Damage.base_value = parent_ability.get_node("Composition/Damage").value
+	sprite.texture = parent_ability.ability.menu_image
+	if parent_ability and parent_ability is Ability:
+		$Composition/AttackSpeed.base_value = parent_ability.get_node("Composition/AttackSpeed").value
+		$Composition/Range.base_value = parent_ability.get_node("Composition/Range").value
+		$Composition/Damage.base_value = parent_ability.get_node("Composition/Damage").value
 	if source_entity and source_entity is StudentEntity:
 		$HitBox.body_entered.connect(hit_enemy)
 		$HitBox.collision_mask = 2
@@ -66,7 +69,7 @@ func hit_player(body: StudentEntity):
 	elif bounce_count > 0:
 		bounce_count -= 1
 		
-	body.emit_signal("take_damage")
+	body.emit_signal("take_damage", self)
 	
 func hit_enemy(body: EnemyEntity):
 	if pierce_count == 0 and bounce_count == 0:

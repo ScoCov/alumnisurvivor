@@ -8,8 +8,8 @@
 [sub_resource type="Resource" id="Resource_0ikqy"]
 script = ExtResource("2_jvgb5")
 attribute = ExtResource("1_vlg3u")
-start_value = 0.1
-growth_modifier = 0.1
+start_value = -0.1
+growth_modifier = -0.05
 
 [resource]
 script = ExtResource("3_cm11e")

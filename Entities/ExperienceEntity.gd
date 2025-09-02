@@ -8,18 +8,18 @@ extends CharacterBody2D
 	get:
 		var multiplier: float = 1
 		match rank:
-			"None":
+			level.None:
 				multiplier = 0
-			"Low":
+			level.Low:
 				multiplier = 1
-			"Medium":
+			level.Medium:
 				multiplier = 1.5
-			"High":
+			level.High:
 				multiplier = 2
 		return xp * multiplier
 ## Assign the rank of the node to determine what the xp's value scaling will result in.
-@export_enum("None", "Low", "Medium", "High", "Unique" ) var rank: String
-
+@export var rank: level
+enum level {None, Low, Medium, High, Unique}
 
 ## If the Experience entity has a target player, then it will try and follow, if it doesn't then it will sit here.
 @export var target_player: StudentEntity

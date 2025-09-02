@@ -62,8 +62,6 @@ func _on_take_damage(enemy: EnemyEntity):
 		$Composition/Health.current_health -= enemy.get_node("Composition/Damage").value
 		invulnerable = true
 		$InvulTimer.start()
-		if $Composition/Health.current_health < 1:
-			death.emit()
 			
 ## Used to call another function in a que - to help the game not bungle up on itself.
 func _on_death(): 
@@ -109,7 +107,3 @@ func experience_collector(experience_node):
 	if not experience_node is ExperienceEntity: return  ## If it isn't ExperienceEntity exit
 	experience.gain_xp(experience_node.xp) 
 	experience_node.queue_free() ## Destroy XP Node
-
-func calculate_item_adjustments():
-	for item_stack: ItemStack in items.get_children():
-		print(str(item_stack))

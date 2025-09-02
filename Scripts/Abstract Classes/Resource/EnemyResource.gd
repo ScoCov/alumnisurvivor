@@ -5,7 +5,11 @@ extends Resource
 @export var name: String
 @export var id: String
 @export var enemy_scene_path: String
-@export_enum("None", "Low", "Medium", "High", "Unique") var experience_group: String = "Low"
+
+@export var move_style: EnemyMovementStyle.type
+
+#@export_enum("None", "Low", "Medium", "High", "Unique") var experience_group: String = "Low"
+@export var experience_group: ExperienceEntity.level
 @export_multiline var description: String
 
 @export_group("Tags")

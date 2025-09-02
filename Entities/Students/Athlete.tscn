@@ -9,4 +9,4 @@ script = ExtResource("2_2ixcy")
 student = ExtResource("2_8pjgw")
 
 [node name="Health" parent="Composition" index="0"]
-base_value = 10000.0
+base_value = 100.0

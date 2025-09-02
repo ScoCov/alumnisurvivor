@@ -9,7 +9,7 @@
 script = ExtResource("1_nsyuq")
 attribute = ExtResource("2_d8mul")
 start_value = 5.0
-growth_modifier = 5.0
+growth_modifier = 1.0
 metadata/_custom_type_script = "uid://dipwxgdjv64sc"
 
 [resource]

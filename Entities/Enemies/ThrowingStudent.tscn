@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://ca4yi5ycvgc6n"]
+
+[ext_resource type="PackedScene" uid="uid://sx54v6kb7rhm" path="res://Entities/EnemyEntity.tscn" id="1_t54uh"]
+[ext_resource type="Script" uid="uid://c1mbfyoe0q2cw" path="res://Entities/Enemies/throwing_student.gd" id="2_smcrj"]
+[ext_resource type="Texture2D" uid="uid://c4xfnl6081r5w" path="res://Resources/Image/Temp/GigaOrc.png" id="3_50ame"]
+
+[node name="ThrowingEnemy" instance=ExtResource("1_t54uh")]
+script = ExtResource("2_smcrj")
+
+[node name="Sprite" parent="." index="0"]
+position = Vector2(22, -14)
+scale = Vector2(0.564286, 0.646624)
+texture = ExtResource("3_50ame")
+
+[node name="MovementSpeed" parent="Composition" index="0"]
+base_value = 25.0
+
+[node name="Damage" parent="Composition" index="2"]
+base_value = 4.0

@@ -15,6 +15,9 @@ var _xp_node_scene: PackedScene = preload("res://Entities/ExperienceEntity.tscn"
 ## Used to determine how far an enemy will attempt to flea the player.
 @export var player_disntance_max: float = 500
 
+
+@onready var movement_type: EnemyMovementStyle = EnemyMovementStyle.load_movement_type(resource.move_style)
+	
 func _physics_process(_delta):
 	pass
 	

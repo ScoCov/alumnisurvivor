@@ -4,7 +4,8 @@ extends HealthState
 
 ##	Call when transitioning to this state
 func enter():
-	pass
+	if entity is StudentEntity:
+		entity.emit_signal("death")
 	
 ##	Call when leaving this state
 func exit() -> void:

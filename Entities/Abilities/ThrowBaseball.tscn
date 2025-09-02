@@ -9,8 +9,8 @@ script = ExtResource("2_1kb3h")
 [node name="AttackSpeed" parent="Composition" index="0"]
 base_value = 225.0
 
-[node name="Damage" parent="Composition" index="2"]
-base_value = 50.0
+[node name="Cooldown" parent="Composition" index="1"]
+base_value = 1.1
 
 [node name="Range" parent="Composition" index="5"]
 base_value = 350.0

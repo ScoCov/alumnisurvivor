@@ -8,7 +8,7 @@
 [sub_resource type="Resource" id="Resource_d13e0"]
 script = ExtResource("1_fh4sb")
 attribute = ExtResource("2_hvqnc")
-start_value = 25.0
+start_value = 50.0
 growth_modifier = 25.0
 metadata/_custom_type_script = "uid://dipwxgdjv64sc"
 

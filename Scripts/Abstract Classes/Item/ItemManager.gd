@@ -24,7 +24,7 @@ func add_item(item: ItemResource) -> Dictionary:
 		item_stack = get_children().filter(func(_item_stack): return _item_stack.item.item_name == item.item_name)[0]
 		
 	item_stack.count += 1 
-	print("Item stack: %s %s" % [item_stack.item.item_name, str(item_stack.count)])
+	#print("Item stack: %s %s" % [item_stack.item.item_name, str(item_stack.count)])
 	item_stack.count_changed.emit()
 	calculate_attributes()
 	return {"Item": item.item_name, "Count": item_stack.count} ## show the results of the additional item.
@@ -56,9 +56,7 @@ func calculate_attributes()-> void:
 				return comp if comp.attribute.id == bonus.attribute.id else null)
 			if player_attribute:
 				player_attribute = player_attribute[0]
-				print("%s(before): %s + %s = %s" % [player_attribute.name, str(player_attribute.base_value), str(player_attribute.mod_value), str(player_attribute.value)])
 				var att_calc: AttributeCalculation = AddToMod.new(player, player_attribute)
 				att_calc.get_value(bonus, item_stack.count)
-				print("%s(after): %s + %s = %s" % [player_attribute.name, str(player_attribute.base_value), str(player_attribute.mod_value), str(player_attribute.value)])
 				continue
 	
