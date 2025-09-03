@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://sx54v6kb7rhm"]
+[gd_scene load_steps=27 format=3 uid="uid://sx54v6kb7rhm"]
 
 [ext_resource type="Script" uid="uid://lumuid6cekqh" path="res://Entities/EnemyEntity.gd" id="1_8fefi"]
 [ext_resource type="Script" uid="uid://c384pkmf7xhlq" path="res://Scripts/States/Health/BarelyHurt.gd" id="4_0cdqt"]
@@ -21,6 +21,7 @@
 [ext_resource type="Script" uid="uid://bli88oag0sqnf" path="res://Scripts/Component/RangeComponent.gd" id="16_qhra1"]
 [ext_resource type="Script" uid="uid://clvlhjcomn2uj" path="res://Scripts/Component/DurationComponent.gd" id="18_ukcyk"]
 [ext_resource type="Script" uid="uid://b204l6p2m4x7q" path="res://Scripts/Component/pierce_component.gd" id="19_fo58l"]
+[ext_resource type="Script" uid="uid://cc308ow00fk4j" path="res://Scripts/Component/bounce_component.gd" id="20_w2qd5"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_j4ubh"]
 radius = 36.8782
@@ -157,6 +158,10 @@ metadata/_custom_type_script = "uid://clvlhjcomn2uj"
 [node name="Pierce" type="Node" parent="Composition"]
 script = ExtResource("19_fo58l")
 metadata/_custom_type_script = "uid://b204l6p2m4x7q"
+
+[node name="Bounce" type="Node" parent="Composition"]
+script = ExtResource("20_w2qd5")
+metadata/_custom_type_script = "uid://cc308ow00fk4j"
 
 [node name="State Machine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("7_8ynyw")

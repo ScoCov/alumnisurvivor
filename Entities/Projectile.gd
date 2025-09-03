@@ -41,12 +41,11 @@ func _ready():
 		$HitBox.collision_mask = 2
 		$HitBox.collision_layer = 2
 		pierce_count = $Composition/Pierce.value + source_entity.get_node("Composition/Pierce").value
+		bounce_count = $Composition/Bounce.value + source_entity.get_node("Composition/Bounce").value
 	if source_entity and source_entity is EnemyEntity:
 		$HitBox.body_entered.connect(hit_player) 
 		$HitBox.collision_mask = 1
 		$HitBox.collision_layer = 1
-
-		
 
 func _process(_delta):
 	if velocity == Vector2(): ## If moving don't redirect or adjust velocity.

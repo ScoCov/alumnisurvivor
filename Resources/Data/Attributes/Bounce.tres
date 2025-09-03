@@ -4,8 +4,8 @@
 
 [resource]
 script = ExtResource("1_ow8lp")
-name = ""
-id = ""
+name = "Bounce"
+id = "bounce"
 description = ""
 min_limit = 0.0
 max_limit = 0.0

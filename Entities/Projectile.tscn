@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://caukgai13lvy0"]
+[gd_scene load_steps=13 format=3 uid="uid://caukgai13lvy0"]
 
 [ext_resource type="Script" uid="uid://cf8ast10bbhr2" path="res://Entities/Projectile.gd" id="1_fqaei"]
 [ext_resource type="Script" uid="uid://7bb2hfqmjjse" path="res://Scripts/Component/AttackSpeedComponent.gd" id="2_27tav"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://clvlhjcomn2uj" path="res://Scripts/Component/DurationComponent.gd" id="7_wttw8"]
 [ext_resource type="Texture2D" uid="uid://evvlxxf5qy7d" path="res://Resources/Image/Temp/Arrow_Menu_02.png" id="8_7ykm4"]
 [ext_resource type="Script" uid="uid://b204l6p2m4x7q" path="res://Scripts/Component/pierce_component.gd" id="8_gabat"]
+[ext_resource type="Script" uid="uid://cc308ow00fk4j" path="res://Scripts/Component/bounce_component.gd" id="9_qe1xr"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5vfki"]
 radius = 1.0
@@ -51,12 +52,17 @@ base_value = 1.2
 script = ExtResource("8_gabat")
 metadata/_custom_type_script = "uid://b204l6p2m4x7q"
 
+[node name="Bounce" type="Node" parent="Composition"]
+script = ExtResource("9_qe1xr")
+metadata/_custom_type_script = "uid://cc308ow00fk4j"
+
 [node name="HeroDollTestSize" type="Sprite2D" parent="."]
 texture = ExtResource("8_7ykm4")
 
 [node name="HitBox" type="Area2D" parent="."]
 collision_layer = 0
 collision_mask = 0
+monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
 shape = SubResource("CircleShape2D_ecsqj")
