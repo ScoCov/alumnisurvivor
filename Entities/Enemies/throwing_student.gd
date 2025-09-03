@@ -6,3 +6,4 @@ func _ready():
 	new_ability.entity = self
 	new_ability.target_entity = player
 	add_child(new_ability)
+	

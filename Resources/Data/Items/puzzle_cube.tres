@@ -1,0 +1,36 @@
+[gd_resource type="Resource" script_class="ItemResource" load_steps=8 format=3 uid="uid://dvjithversos"]
+
+[ext_resource type="Script" uid="uid://dipwxgdjv64sc" path="res://Scripts/Abstract Classes/Item/ItemBonus.gd" id="1_m4k1q"]
+[ext_resource type="Resource" uid="uid://b4tkhcjsw15ux" path="res://Resources/Data/Attributes/Cooldown.tres" id="2_lrto8"]
+[ext_resource type="Resource" uid="uid://cxxky3c0l03d6" path="res://Resources/Data/Attributes/Duration.tres" id="3_0vady"]
+[ext_resource type="Texture2D" uid="uid://slw16wkvwpx" path="res://Resources/Image/Temp/LockIcon.png" id="4_mi1kn"]
+[ext_resource type="Script" uid="uid://4pylfu4f1res" path="res://Scripts/Abstract Classes/Resource/ItemResource.gd" id="5_dvtfq"]
+
+[sub_resource type="Resource" id="Resource_ab2u5"]
+script = ExtResource("1_m4k1q")
+attribute = ExtResource("2_lrto8")
+start_value = -0.1
+growth_modifier = -0.05
+metadata/_custom_type_script = "uid://dipwxgdjv64sc"
+
+[sub_resource type="Resource" id="Resource_qe8hv"]
+script = ExtResource("1_m4k1q")
+attribute = ExtResource("3_0vady")
+start_value = 0.2
+growth_modifier = 0.2
+metadata/_custom_type_script = "uid://dipwxgdjv64sc"
+
+[resource]
+script = ExtResource("5_dvtfq")
+item_name = "Puzzle Cube"
+item_id = "puzzle_cube"
+item_description = ""
+tool_tip = ""
+unlocked = false
+meta_tags = Array[int]([])
+item_tags = Array[int]([])
+image = ExtResource("4_mi1kn")
+max_count = 0
+unique = false
+bonuses = Array[ExtResource("1_m4k1q")]([SubResource("Resource_ab2u5"), SubResource("Resource_qe8hv")])
+metadata/_custom_type_script = "uid://4pylfu4f1res"

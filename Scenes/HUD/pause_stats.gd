@@ -4,9 +4,6 @@ extends Control
 @export var player: StudentEntity
 
 
-
-
-
 func update():
 	for attribute: Component in player.get_node("Composition").get_children():
 		var attribute_desired = $MarginContainer/Control/Content/VBoxContainer.get_children().filter( func(label): 

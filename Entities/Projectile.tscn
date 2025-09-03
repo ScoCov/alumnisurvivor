@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://caukgai13lvy0"]
+[gd_scene load_steps=12 format=3 uid="uid://caukgai13lvy0"]
 
 [ext_resource type="Script" uid="uid://cf8ast10bbhr2" path="res://Entities/Projectile.gd" id="1_fqaei"]
 [ext_resource type="Script" uid="uid://7bb2hfqmjjse" path="res://Scripts/Component/AttackSpeedComponent.gd" id="2_27tav"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://cdja3chlcwekg" path="res://Scripts/Component/KnockbackComponent.gd" id="6_lxums"]
 [ext_resource type="Script" uid="uid://clvlhjcomn2uj" path="res://Scripts/Component/DurationComponent.gd" id="7_wttw8"]
 [ext_resource type="Texture2D" uid="uid://evvlxxf5qy7d" path="res://Resources/Image/Temp/Arrow_Menu_02.png" id="8_7ykm4"]
+[ext_resource type="Script" uid="uid://b204l6p2m4x7q" path="res://Scripts/Component/pierce_component.gd" id="8_gabat"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5vfki"]
 radius = 1.0
@@ -45,6 +46,10 @@ script = ExtResource("6_lxums")
 [node name="Duration" type="Node" parent="Composition"]
 script = ExtResource("7_wttw8")
 base_value = 1.2
+
+[node name="Pierce" type="Node" parent="Composition"]
+script = ExtResource("8_gabat")
+metadata/_custom_type_script = "uid://b204l6p2m4x7q"
 
 [node name="HeroDollTestSize" type="Sprite2D" parent="."]
 texture = ExtResource("8_7ykm4")

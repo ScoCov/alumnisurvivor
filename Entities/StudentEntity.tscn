@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://v1phrdf8cdqg"]
+[gd_scene load_steps=29 format=3 uid="uid://v1phrdf8cdqg"]
 
 [ext_resource type="Script" uid="uid://d0tuntxkjee38" path="res://Entities/StudentEntity.gd" id="1_cijec"]
 [ext_resource type="Script" uid="uid://djkkswc2cexv8" path="res://Scripts/Component/ExperienceComponent.gd" id="2_5mbnf"]
@@ -23,6 +23,7 @@
 [ext_resource type="Script" uid="uid://dewaa6mmgmsaq" path="res://Scripts/States/Health/OverHealth.gd" id="9_gi4ri"]
 [ext_resource type="Script" uid="uid://hxcj02spua5a" path="res://Scripts/States/Health/VeryHurt.gd" id="10_1pn2y"]
 [ext_resource type="Script" uid="uid://clvlhjcomn2uj" path="res://Scripts/Component/DurationComponent.gd" id="10_c5hdo"]
+[ext_resource type="Script" uid="uid://b204l6p2m4x7q" path="res://Scripts/Component/pierce_component.gd" id="19_ysqvb"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bj2gu"]
 radius = 24.0
@@ -120,6 +121,10 @@ metadata/_custom_type_script = "uid://ctrb8ov6gpaok"
 [node name="Duration" type="Node" parent="Composition"]
 script = ExtResource("10_c5hdo")
 metadata/_custom_type_script = "uid://clvlhjcomn2uj"
+
+[node name="Pierce" type="Node" parent="Composition"]
+script = ExtResource("19_ysqvb")
+metadata/_custom_type_script = "uid://b204l6p2m4x7q"
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("4_jbidu")

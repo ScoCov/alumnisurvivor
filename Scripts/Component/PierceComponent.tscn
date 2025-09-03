@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://ec4a3vkfx6hl"]
+
+[ext_resource type="Script" uid="uid://b204l6p2m4x7q" path="res://Scripts/Component/pierce_component.gd" id="1_xg8rx"]
+
+[node name="PierceComponent" type="Node"]
+script = ExtResource("1_xg8rx")
+metadata/_custom_type_script = "uid://bll2lkcqu5cpf"

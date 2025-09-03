@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://c54jg6hm5awpj"]
+[gd_scene load_steps=14 format=3 uid="uid://c54jg6hm5awpj"]
 
 [ext_resource type="Script" uid="uid://slvimw8oji84" path="res://Entities/Ability.gd" id="1_s6svj"]
 [ext_resource type="Script" uid="uid://t3mlm4ybio8c" path="res://Scripts/States/StateMachine.gd" id="2_0daqa"]
@@ -12,6 +12,7 @@
 [ext_resource type="Script" uid="uid://ccsgji80asv7u" path="res://Scripts/Component/CriticalChanceComponent.gd" id="10_pg3ck"]
 [ext_resource type="Script" uid="uid://cdja3chlcwekg" path="res://Scripts/Component/KnockbackComponent.gd" id="11_qux3n"]
 [ext_resource type="Script" uid="uid://bli88oag0sqnf" path="res://Scripts/Component/RangeComponent.gd" id="12_j81bf"]
+[ext_resource type="Script" uid="uid://b204l6p2m4x7q" path="res://Scripts/Component/pierce_component.gd" id="13_4bsgi"]
 
 [node name="Ability" type="Node2D"]
 script = ExtResource("1_s6svj")
@@ -56,3 +57,7 @@ script = ExtResource("11_qux3n")
 [node name="Range" type="Node" parent="Composition"]
 script = ExtResource("12_j81bf")
 base_value = 75.0
+
+[node name="Pierce" type="Node" parent="Composition"]
+script = ExtResource("13_4bsgi")
+metadata/_custom_type_script = "uid://b204l6p2m4x7q"

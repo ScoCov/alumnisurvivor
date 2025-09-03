@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="AttributeResource" load_steps=2 format=3 uid="uid://cxlq71nn5t6fm"]
+
+[ext_resource type="Script" uid="uid://cfnxcuwnotvhw" path="res://Scripts/Abstract Classes/Resource/AttributeResource.gd" id="1_53qxs"]
+
+[resource]
+script = ExtResource("1_53qxs")
+name = "armor"
+id = "Armor"
+description = ""
+min_limit = 0.0
+max_limit = 0.0
+min_limit_active = false
+max_limit_active = false
+metadata/_custom_type_script = "uid://cfnxcuwnotvhw"

@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="ItemResource" load_steps=6 format=3 uid="uid://32j4us3xwwx7"]
+
+[ext_resource type="Script" uid="uid://dipwxgdjv64sc" path="res://Scripts/Abstract Classes/Item/ItemBonus.gd" id="1_f2kyw"]
+[ext_resource type="Script" uid="uid://4pylfu4f1res" path="res://Scripts/Abstract Classes/Resource/ItemResource.gd" id="2_7dllu"]
+[ext_resource type="Resource" uid="uid://de4ke6fjbvt45" path="res://Resources/Data/Attributes/Health.tres" id="2_qnrut"]
+[ext_resource type="Texture2D" uid="uid://slw16wkvwpx" path="res://Resources/Image/Temp/LockIcon.png" id="3_bpi7i"]
+
+[sub_resource type="Resource" id="Resource_srnlv"]
+script = ExtResource("1_f2kyw")
+attribute = ExtResource("2_qnrut")
+start_value = 5.0
+growth_modifier = 5.0
+metadata/_custom_type_script = "uid://dipwxgdjv64sc"
+
+[resource]
+script = ExtResource("2_7dllu")
+item_name = "Belt"
+item_id = "belt_leather"
+item_description = ""
+tool_tip = ""
+unlocked = false
+meta_tags = Array[int]([])
+item_tags = Array[int]([4])
+image = ExtResource("3_bpi7i")
+max_count = 0
+unique = false
+bonuses = Array[ExtResource("1_f2kyw")]([SubResource("Resource_srnlv")])
+metadata/_custom_type_script = "uid://4pylfu4f1res"
