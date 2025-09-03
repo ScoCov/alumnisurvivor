@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="ItemResource" load_steps=6 format=3 uid="uid://dxgt2rw4yn2lx"]
+
+[ext_resource type="Script" uid="uid://dipwxgdjv64sc" path="res://Scripts/Abstract Classes/Item/ItemBonus.gd" id="1_reore"]
+[ext_resource type="Resource" uid="uid://gl46emysxfo3" path="res://Resources/Data/Attributes/Damage.tres" id="2_11a57"]
+[ext_resource type="Script" uid="uid://4pylfu4f1res" path="res://Scripts/Abstract Classes/Resource/ItemResource.gd" id="2_epr6y"]
+[ext_resource type="Texture2D" uid="uid://slw16wkvwpx" path="res://Resources/Image/Temp/LockIcon.png" id="3_dxk8v"]
+
+[sub_resource type="Resource" id="Resource_hhpa4"]
+script = ExtResource("1_reore")
+attribute = ExtResource("2_11a57")
+start_value = 1.0
+growth_modifier = 1.0
+metadata/_custom_type_script = "uid://dipwxgdjv64sc"
+
+[resource]
+script = ExtResource("2_epr6y")
+item_name = "Ring"
+item_id = "ring_finger"
+item_description = ""
+tool_tip = ""
+unlocked = false
+meta_tags = Array[int]([0])
+item_tags = Array[int]([5])
+image = ExtResource("3_dxk8v")
+max_count = 0
+unique = false
+bonuses = Array[ExtResource("1_reore")]([SubResource("Resource_hhpa4")])
+metadata/_custom_type_script = "uid://4pylfu4f1res"
