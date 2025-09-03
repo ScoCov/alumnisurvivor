@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_53qxs")
-name = "armor"
+name = "Armor"
 id = "Armor"
 description = ""
 min_limit = 0.0

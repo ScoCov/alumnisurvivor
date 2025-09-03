@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="ItemResource" load_steps=6 format=3 uid="uid://bjcgdqbyy3tfx"]
+
+[ext_resource type="Script" uid="uid://dipwxgdjv64sc" path="res://Scripts/Abstract Classes/Item/ItemBonus.gd" id="1_btugc"]
+[ext_resource type="Resource" uid="uid://dvx88scshq1lb" path="res://Resources/Data/Attributes/PickupRange.tres" id="2_kv270"]
+[ext_resource type="Script" uid="uid://4pylfu4f1res" path="res://Scripts/Abstract Classes/Resource/ItemResource.gd" id="2_vnxro"]
+[ext_resource type="Texture2D" uid="uid://c8tfmmed011q5" path="res://Resources/Image/Temp/Outfit_icon.png" id="3_kv270"]
+
+[sub_resource type="Resource" id="Resource_pufcl"]
+script = ExtResource("1_btugc")
+attribute = ExtResource("2_kv270")
+start_value = 25.0
+growth_modifier = 25.0
+metadata/_custom_type_script = "uid://dipwxgdjv64sc"
+
+[resource]
+script = ExtResource("2_vnxro")
+item_name = "Wig"
+item_id = "wig_cosplay"
+item_description = ""
+tool_tip = ""
+unlocked = false
+meta_tags = Array[int]([])
+item_tags = Array[int]([])
+image = ExtResource("3_kv270")
+max_count = 0
+unique = false
+bonuses = Array[ExtResource("1_btugc")]([SubResource("Resource_pufcl")])
+metadata/_custom_type_script = "uid://4pylfu4f1res"

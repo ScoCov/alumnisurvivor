@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://ya3g53win3kt"]
+
+[ext_resource type="Script" uid="uid://d1qm26pgn370f" path="res://Scripts/Component/armor_component.gd" id="1_xxkxu"]
+
+[node name="ArmorComponent" type="Node"]
+script = ExtResource("1_xxkxu")
+metadata/_custom_type_script = "uid://bll2lkcqu5cpf"

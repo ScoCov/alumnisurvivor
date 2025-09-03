@@ -24,6 +24,8 @@ var _enemy_refs: Array[EnemyEntity] ## Populate this with enemies that enter the
 ## Makes the node, PlayerExperience, with the ExperienceComponent class, easier to access.
 @onready var experience: ExperienceComponent = $Experience
 @onready var items: ItemManager = $Items
+@onready var pick_up_detection: Area2D = $PickUpDetection
+
 var is_level_up = false
 
 func _ready():
@@ -34,7 +36,6 @@ func _ready():
 	experience.level_up.connect(func(): 
 		is_level_up = true
 		get_tree().paused = true )
-	
 	## Load in the Student's given starting ability and 'equip' it. 
 	var ability_packed_scene = load("res://Entities/Abilities/%s.tscn" % student.starting_ability.id) 
 	var new_ability = ability_packed_scene.instantiate()
@@ -54,6 +55,8 @@ func _process(_delta):
 	## If Invulnerability is not active, allow damage. This will be from one source at random in the enemy_ref.
 	if not invulnerable and len(_enemy_refs) > 0: 
 		take_damage.emit(_enemy_refs[randi_range(0, len(_enemy_refs) - 1)])
+	var collision_shape_2d: CollisionShape2D = $PickUpDetection/CollisionShape2D
+	collision_shape_2d.shape.radius = $Composition/PickupRange.value
 
 ## TODO: FIX - this will need it's parameter type to be updated so that players can interact with
 ## projectiles shot by enemies or from enviromental means. 

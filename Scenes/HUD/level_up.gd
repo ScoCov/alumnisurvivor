@@ -22,6 +22,7 @@ func _process(delta): ## This won't start processing until the game is paused.
 	for item_card in $Panel/MarginContainer/HBoxContainer.get_children():
 		if item_card.has_focus():
 			item = item_card.item
+
 	
 func visibility_change(is_paused: bool):
 	if player and not is_paused:
@@ -68,3 +69,13 @@ func _on_focus_entered():
 
 func _on_focus_exited():
 	pass # Replace with function body.
+
+
+func _on_reroll_pressed() -> void:
+	generate_random_items()
+
+func generate_random_items() -> void:
+	$Panel/MarginContainer/HBoxContainer.get_node("ItemCard").item = Global.ITEM_COLLECTION[randi_range(0, len(Global.ITEM_COLLECTION) -1)]
+	$Panel/MarginContainer/HBoxContainer.get_node("ItemCard2").item = Global.ITEM_COLLECTION[randi_range(0, len(Global.ITEM_COLLECTION) -1)]
+	$Panel/MarginContainer/HBoxContainer.get_node("ItemCard3").item = Global.ITEM_COLLECTION[randi_range(0, len(Global.ITEM_COLLECTION) -1)]
+	$Panel/MarginContainer/HBoxContainer.get_node("ItemCard4").item = Global.ITEM_COLLECTION[randi_range(0, len(Global.ITEM_COLLECTION) -1)]

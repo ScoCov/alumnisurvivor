@@ -4,8 +4,8 @@
 
 [resource]
 script = ExtResource("1_q6b1f")
-name = ""
-id = ""
+name = "Pickup Range"
+id = "PickupRange"
 description = ""
 min_limit = 0.0
 max_limit = 0.0

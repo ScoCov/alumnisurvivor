@@ -11,7 +11,6 @@ signal item_stack_added
 func add_item(item: ItemResource) -> Dictionary:
 	## Check the ItemManager's children to see if any of them have an ItemStack that contains the given Item.
 	var extant_item: bool = get_children().any(func(item_stack): return item_stack.item == item)
-	print("Item is Extant: %s " % extant_item)
 	var item_stack: ItemStack
 	
 	## If extant_item then use that ItemStack, otherwise; make a new ItemStack with the appropriate item.
@@ -48,7 +47,7 @@ func calculate_attributes()-> void:
 	## modded attribute to the player. 
 	if not player: return
 	for child in player.get_node("Composition").get_children():
-		child.clear()
+		child.clear() ## Clear out all of the Components
 	for item_stack: ItemStack in get_children():
 		var item: ItemResource = item_stack.item
 		for bonus: ItemBonus in item.bonuses:
@@ -58,5 +57,6 @@ func calculate_attributes()-> void:
 				player_attribute = player_attribute[0]
 				var att_calc: AttributeCalculation = AddToMod.new(player, player_attribute)
 				att_calc.get_value(bonus, item_stack.count)
+				print("player attribute: %s" % player_attribute.id)
 				continue
 	

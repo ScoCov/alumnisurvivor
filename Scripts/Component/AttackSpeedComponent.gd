@@ -1,9 +1,9 @@
-class_name PickupRangeComponent
+class_name AttackSpeedComponent
 extends Component
 
-const pickup_range = preload("res://Resources/Data/Attributes/PickupRange.tres")
+const attack_speed_scene = preload("res://Resources/Data/Attributes/AttackSpeed.tres")
 
 
 func _init():
 	if not attribute:
-		attribute = pickup_range
+		attribute = attack_speed_scene
