@@ -1,7 +1,7 @@
 class_name PickupRangeComponent
 extends Component
 
-const pickup_range_scene = preload("res://Resources/Data/Attributes/AttackSpeed.tres")
+const pickup_range_scene = preload("res://Resources/Data/Attributes/PickupRange.tres")
 
 
 func _init():

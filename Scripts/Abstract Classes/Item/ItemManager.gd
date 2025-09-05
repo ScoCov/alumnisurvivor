@@ -57,6 +57,8 @@ func calculate_attributes()-> void:
 				player_attribute = player_attribute[0]
 				var att_calc: AttributeCalculation = AddToMod.new(player, player_attribute)
 				att_calc.get_value(bonus, item_stack.count)
-				print("player attribute: %s" % player_attribute.id)
 				continue
+			print("bonus attribute attribute: %s" % bonus.attribute.id, bonus.attribute.name)
+			for child in player.get_node("Composition").get_children():
+				print("%s | %s" % [child.name, child.attribute.id])
 	
