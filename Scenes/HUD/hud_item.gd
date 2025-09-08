@@ -13,11 +13,11 @@ func _update_tool_tip():
 	var message = ""
 	for item_bonus: ItemBonus in item_stack.item.bonuses:
 			var next_line: String = "" if message == "" else message + "\n"
-			var starting_value = item_bonus.start_value
-			var mod_value = item_bonus.growth_modifier *( item_stack.count -1)
+			var initial_value = item_bonus.initial_value
+			var mod_value = item_bonus.level_value *( item_stack.count -1)
 			message = ("%s%s: [color=green]%s[/color] (+%s) = %s" % 
-				[next_line, item_bonus.attribute.name, starting_value, 
-				mod_value, starting_value + mod_value])
+				[next_line, item_bonus.attribute.name, initial_value, 
+				mod_value, initial_value + mod_value])
 	$Control/Details/ToolTip.text = message
 	
 func update():

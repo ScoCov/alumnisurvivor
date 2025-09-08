@@ -40,14 +40,6 @@ var ENEMY_ROSTER: Array[EnemyResource]
 var SELECTED_STUDENT: StudentResource
 
 #region NOTE:
-## SELECTED_BESTY is the same thing as SELECTED_STUDENT but for the Besty.
-## By having these 'SELECTED_' variables we are able to have the Student and Besty
-## talk to eachother throughout the menus. And as well as know who will be playing
-## next.
-#endregion
-var SELECTED_BESTY: StudentResource
-
-#region NOTE:
 ##
 #endregion
 var ITEM_COLLECTION: Array[ItemResource]
@@ -82,6 +74,7 @@ func _ready():
 	load_objects(Configuration.get_dir("student"), STUDENT_ROSTER)
 	@warning_ignore("static_called_on_instance")
 	load_objects(Configuration.get_dir("attribute"), ATTRIBUTES)
+	#print(ATTRIBUTES.map(func(e): return e.name))
 	@warning_ignore("static_called_on_instance")
 	load_objects(Configuration.get_dir("enemy"), ENEMY_ROSTER)
 	@warning_ignore("static_called_on_instance")
@@ -90,28 +83,8 @@ func _ready():
 	load_objects(Configuration.get_dir("item"), ITEM_COLLECTION)
 	if len(STUDENT_ROSTER) > 1: ## If there's at least two students in the roster assign default students.
 		SELECTED_STUDENT = STUDENT_ROSTER[0]
-		SELECTED_BESTY = STUDENT_ROSTER[1]
 	
 func load_objects(_dir: String, variable: Variant):
 	var files = DirAccess.get_files_at(_dir) ## The folder that has all the Students
 	for file  in files: ## Iterate through the folder for each Student in it and add that student to the roster.
 		variable.append(load(_dir + file))
-
-## Use this method, instead of calling SELECTED_[Student/Besty] directly to have
-## some validation controls.
-func change_selected(player_or_besty: String, _student: StudentResource):
-	assert(player_or_besty.to_lower() in ["player", "besty"],
-	"change_selected must have a value of %s or %s" % ["player", "besty"])
-	match player_or_besty:
-		"player":
-			if SELECTED_BESTY in [_student]:
-				## If Student being assigned is also current Besty, assign current
-				## Student as the new Besty.
-				SELECTED_BESTY = SELECTED_STUDENT
-			SELECTED_STUDENT = _student
-		"besty":
-			if SELECTED_STUDENT in [_student]:
-				## If Student being assigned is also current Student, assign current
-				## Besty as the new Student
-				SELECTED_STUDENT = SELECTED_BESTY
-			SELECTED_BESTY = _student

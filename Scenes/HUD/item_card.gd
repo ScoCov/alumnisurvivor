@@ -22,9 +22,9 @@ func update():
 			$Content/Details/MarginContainer/Panel/MarginContainer/VBoxContainer.remove_child(child)
 			
 		for bonus: ItemBonus in item.bonuses:
-			if bonus == null: continue
+			if bonus == null or not bonus is ItemBonusAttribute: continue
 			var new_label:= Label.new()
-			new_label.text = "- %s + %s" % [bonus.attribute.name, str(bonus.start_value)] 
+			new_label.text = "- %s + %s" % [bonus.attribute.name, str(bonus.initial_value)] 
 			$Content/Details/MarginContainer/Panel/MarginContainer/VBoxContainer.add_child(new_label)
 	elif ability:
 		$Label.text = ability.ability_name

@@ -1,8 +1,6 @@
 [gd_scene load_steps=32 format=3 uid="uid://v1phrdf8cdqg"]
 
 [ext_resource type="Script" uid="uid://d0tuntxkjee38" path="res://Entities/StudentEntity.gd" id="1_cijec"]
-[ext_resource type="Script" uid="uid://djkkswc2cexv8" path="res://Scripts/Component/ExperienceComponent.gd" id="2_5mbnf"]
-[ext_resource type="Script" uid="uid://b61e3a07grfgy" path="res://Scripts/Component/HealthComponent.gd" id="2_e3u2s"]
 [ext_resource type="Script" uid="uid://c7p233d8bepea" path="res://Scripts/Component/MovementComponent.gd" id="3_1dsc0"]
 [ext_resource type="Script" uid="uid://7bb2hfqmjjse" path="res://Scripts/Component/AttackSpeedComponent.gd" id="4_el1nb"]
 [ext_resource type="Script" uid="uid://t3mlm4ybio8c" path="res://Scripts/States/StateMachine.gd" id="4_jbidu"]
@@ -18,7 +16,6 @@
 [ext_resource type="Script" uid="uid://4hpias2r4f70" path="res://Scripts/States/Health/Hurt.gd" id="7_y4755"]
 [ext_resource type="Script" uid="uid://cys3jqfaroho5" path="res://Scripts/States/Health/Dead.gd" id="8_dx2fw"]
 [ext_resource type="Script" uid="uid://bli88oag0sqnf" path="res://Scripts/Component/RangeComponent.gd" id="8_gbsgn"]
-[ext_resource type="Script" uid="uid://cpwhsrq1ak3v5" path="res://Scripts/Abstract Classes/Item/ItemManager.gd" id="9_2jbb7"]
 [ext_resource type="Script" uid="uid://ctrb8ov6gpaok" path="res://Scripts/Component/DamageComponent.gd" id="9_71snr"]
 [ext_resource type="Script" uid="uid://dewaa6mmgmsaq" path="res://Scripts/States/Health/OverHealth.gd" id="9_gi4ri"]
 [ext_resource type="Script" uid="uid://hxcj02spua5a" path="res://Scripts/States/Health/VeryHurt.gd" id="10_1pn2y"]
@@ -31,6 +28,43 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_bj2gu"]
 radius = 24.0
 
+[sub_resource type="GDScript" id="GDScript_w2qd5"]
+script/source = "class_name HealthComponent
+extends Component
+
+const health_attribute = preload(\"res://Resources/Data/Attributes/Health.tres\")
+
+signal dead # <= 0% health
+signal near_dead # <25% Health
+signal very_hurt # > 25% < 75%
+signal hurt # > 50% < 75% health
+signal barely_hurt # > 75% < 100%
+signal unharmed # == 100% health
+signal over_healed # > 100% health
+
+var current_health: float
+			
+			
+var max_health: float: 
+	set(health):
+		base_value = health if not 0.0 else 1.0
+	get:
+		return base_value + mod_value
+
+func _init():
+	if !attribute:
+		attribute = health_attribute
+
+func _ready():
+	current_health = base_value
+
+## Call this function when entity takes damage
+func take_damage(damage_value: float):
+	if current_health - damage_value <= 0:
+		return null ## If dead, simply exit, no need to calculate data.
+	current_health -= damage_value
+"
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_el1nb"]
 radius = 32.0
 height = 120.0
@@ -39,6 +73,100 @@ height = 120.0
 radius = 150.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_muuk5"]
+
+[sub_resource type="GDScript" id="GDScript_ysqvb"]
+script/source = "class_name ExperienceComponent
+extends Node
+
+signal level_up
+
+@export var level: int = 1
+## Increase growth of xp required to level. [log(xp_growth)]
+@export var xp_growth: int = 100
+
+@export var current_xp: float:
+	set(value):
+		current_xp = value
+		if current_xp >= next_level_xp:
+			current_xp -= next_level_xp
+			level += 1
+			level_up.emit()
+
+## Used purely for its' getter. This will return a log value using the xp_growth.
+var next_level_xp: float:
+	set(value): pass ## Do not let anyone set this value. It's caluclated.
+	get: 
+		return ceil(level * log(xp_growth))
+
+func gain_xp(experience_gain: float) -> void:
+	current_xp += experience_gain ## Add XP
+"
+
+[sub_resource type="GDScript" id="GDScript_b51hn"]
+script/source = "extends Node
+class_name ItemManager
+
+signal item_stack_added
+
+@export var player: StudentEntity
+
+## Add a given Item to the ItemManager in the form of an ItemStack. If the Item (and ItemStack) already exists,
+## this function will then increase that ItemStack's count by 1. 
+## This function will also return a Dictionary of {Item: item_stack.item.item_name, Count: item_stack.count}
+func add_item(item: ItemResource) -> Dictionary:
+	## Check the ItemManager's children to see if any of them have an ItemStack that contains the given Item.
+	var extant_item: bool = get_children().any(func(item_stack): return item_stack.item == item)
+	var item_stack: ItemStack
+	
+	## If extant_item then use that ItemStack, otherwise; make a new ItemStack with the appropriate item.
+	if not extant_item:
+		item_stack = ItemStack.new()
+		item_stack.item = item 
+		add_child(item_stack)
+		item_stack_added.emit()
+	else:
+		item_stack = get_children().filter(func(_item_stack): return _item_stack.item.item_name == item.item_name)[0]
+		
+	item_stack.count += 1 
+	#print(\"Item stack: %s %s\" % [item_stack.item.item_name, str(item_stack.count)])
+	item_stack.count_changed.emit()
+	calculate_attributes()
+	return {\"Item\": item.item_name, \"Count\": item_stack.count} ## show the results of the additional item.
+	
+	
+func get_item_by_name(item_name: String) -> ItemStack:
+	return get_children().filter(func(item_stack: ItemStack): return item_stack.item.item_name == item_name)[0]
+	
+func get_item_by_id(item_id: String) -> ItemStack:
+	return get_children().filter(func(item_stack: ItemStack): return item_stack.item.item_id == item_id)[0]
+	
+func get_item_by_item_resource(item: ItemResource) -> ItemStack:
+	return get_children().filter(func(item_stack: ItemStack): return item_stack.item == item)[0]
+
+## When there's an update to any of the children (a new item or increased itemstack count) 
+## will trigger the updating of the player's stats.
+func calculate_attributes()-> void:
+	## Each Item Bonus will effect a differnt attribute, or give a different function.
+	## Go through the items, get the item_bonuses, find the compositions on the player
+	## that matches a composition attribute. Then, on that composition, apply the 
+	## modded attribute to the player. 
+	if not player: return
+	for child in player.get_node(\"Composition\").get_children():
+		child.clear() ## Clear out all of the Components
+	for item_stack: ItemStack in get_children():
+		var item: ItemResource = item_stack.item
+		for bonus: ItemBonus in item.bonuses:
+			if bonus is ItemBonusAttribute:
+				var player_attribute = player.get_node(\"Composition\").get_children().filter(func(comp: Component):
+					return comp if comp.attribute.id == bonus.attribute.id else null)
+				if player_attribute:
+					player_attribute = player_attribute[0]
+					bonus.process_component(player_attribute, item_stack.count)
+					continue
+			else:
+				print(\"ItemBonusAbility\")
+	
+"
 
 [node name="StudentEntity" type="CharacterBody2D" node_paths=PackedStringArray("health")]
 slide_on_ceiling = false
@@ -50,47 +178,13 @@ shape = SubResource("CircleShape2D_bj2gu")
 
 [node name="Composition" type="Node" parent="."]
 
-[node name="Armor" type="Node" parent="Composition"]
-script = ExtResource("21_y4755")
-metadata/_custom_type_script = "uid://d1qm26pgn370f"
-
-[node name="AttackSpeed" type="Node" parent="Composition"]
-script = ExtResource("4_el1nb")
-metadata/_custom_type_script = "uid://7bb2hfqmjjse"
-
-[node name="Bounce" type="Node" parent="Composition"]
-script = ExtResource("20_b51hn")
-metadata/_custom_type_script = "uid://cc308ow00fk4j"
-
-[node name="Cooldown" type="Node" parent="Composition"]
-script = ExtResource("5_c5hdo")
-metadata/_custom_type_script = "uid://c2pxvhg6bs4k7"
-
-[node name="CriticalChance" type="Node" parent="Composition"]
-script = ExtResource("6_87ell")
-metadata/_custom_type_script = "uid://ccsgji80asv7u"
-
-[node name="Damage" type="Node" parent="Composition"]
-script = ExtResource("9_71snr")
-metadata/_custom_type_script = "uid://ctrb8ov6gpaok"
-
-[node name="Duration" type="Node" parent="Composition"]
-script = ExtResource("10_c5hdo")
-metadata/_custom_type_script = "uid://clvlhjcomn2uj"
-
 [node name="Health" type="Node" parent="Composition"]
-script = ExtResource("2_e3u2s")
+script = SubResource("GDScript_w2qd5")
 base_value = 10.0
-metadata/_custom_type_script = "uid://b61e3a07grfgy"
 
 [node name="StateMachine" type="Node" parent="Composition/Health" node_paths=PackedStringArray("initial_state")]
 script = ExtResource("4_jbidu")
 initial_state = NodePath("FullHealth")
-
-[node name="FullHealth" type="Node" parent="Composition/Health/StateMachine" node_paths=PackedStringArray("entity")]
-script = ExtResource("6_b51hn")
-entity = NodePath("../../../..")
-metadata/_custom_type_script = "uid://da332uoi8ujfa"
 
 [node name="BarelyHurt" type="Node" parent="Composition/Health/StateMachine" node_paths=PackedStringArray("entity")]
 script = ExtResource("4_kj4n1")
@@ -102,17 +196,22 @@ script = ExtResource("5_ysqvb")
 entity = NodePath("../../../..")
 metadata/_custom_type_script = "uid://dewrjlysa1v0t"
 
+[node name="FullHealth" type="Node" parent="Composition/Health/StateMachine" node_paths=PackedStringArray("entity")]
+script = ExtResource("6_b51hn")
+entity = NodePath("../../../..")
+metadata/_custom_type_script = "uid://da332uoi8ujfa"
+
 [node name="Hurt" type="Node" parent="Composition/Health/StateMachine" node_paths=PackedStringArray("entity")]
 script = ExtResource("7_y4755")
 entity = NodePath("../../../..")
 metadata/_custom_type_script = "uid://4hpias2r4f70"
 
-[node name="NearDeath" type="Node" parent="Composition/Health/StateMachine" node_paths=PackedStringArray("entity")]
+[node name="NearDead" type="Node" parent="Composition/Health/StateMachine" node_paths=PackedStringArray("entity")]
 script = ExtResource("8_dx2fw")
 entity = NodePath("../../../..")
 metadata/_custom_type_script = "uid://cys3jqfaroho5"
 
-[node name="OverHealed" type="Node" parent="Composition/Health/StateMachine" node_paths=PackedStringArray("entity")]
+[node name="OverHeath" type="Node" parent="Composition/Health/StateMachine" node_paths=PackedStringArray("entity")]
 script = ExtResource("9_gi4ri")
 entity = NodePath("../../../..")
 metadata/_custom_type_script = "uid://dewaa6mmgmsaq"
@@ -122,26 +221,53 @@ script = ExtResource("10_1pn2y")
 entity = NodePath("../../../..")
 metadata/_custom_type_script = "uid://hxcj02spua5a"
 
+[node name="MovementSpeed" type="Node" parent="Composition"]
+script = ExtResource("3_1dsc0")
+
+[node name="AttackSpeed" type="Node" parent="Composition"]
+script = ExtResource("4_el1nb")
+metadata/_custom_type_script = "uid://7bb2hfqmjjse"
+
+[node name="Cooldown" type="Node" parent="Composition"]
+script = ExtResource("5_c5hdo")
+metadata/_custom_type_script = "uid://c2pxvhg6bs4k7"
+
+[node name="CriticalChance" type="Node" parent="Composition"]
+script = ExtResource("6_87ell")
+metadata/_custom_type_script = "uid://ccsgji80asv7u"
+
 [node name="Knockback" type="Node" parent="Composition"]
 script = ExtResource("7_iv6hm")
 metadata/_custom_type_script = "uid://cdja3chlcwekg"
 
-[node name="MovementSpeed" type="Node" parent="Composition"]
-script = ExtResource("3_1dsc0")
-metadata/_custom_type_script = "uid://c7p233d8bepea"
+[node name="Range" type="Node" parent="Composition"]
+script = ExtResource("8_gbsgn")
+metadata/_custom_type_script = "uid://bli88oag0sqnf"
 
-[node name="PickupRange" type="Node" parent="Composition"]
-script = ExtResource("22_dx2fw")
-base_value = 150.0
-metadata/_custom_type_script = "uid://c25ybkxpj13cc"
+[node name="Damage" type="Node" parent="Composition"]
+script = ExtResource("9_71snr")
+metadata/_custom_type_script = "uid://ctrb8ov6gpaok"
+
+[node name="Duration" type="Node" parent="Composition"]
+script = ExtResource("10_c5hdo")
+metadata/_custom_type_script = "uid://clvlhjcomn2uj"
 
 [node name="Pierce" type="Node" parent="Composition"]
 script = ExtResource("19_ysqvb")
 metadata/_custom_type_script = "uid://b204l6p2m4x7q"
 
-[node name="Range" type="Node" parent="Composition"]
-script = ExtResource("8_gbsgn")
-metadata/_custom_type_script = "uid://bli88oag0sqnf"
+[node name="Bounce" type="Node" parent="Composition"]
+script = ExtResource("20_b51hn")
+metadata/_custom_type_script = "uid://cc308ow00fk4j"
+
+[node name="Armor" type="Node" parent="Composition"]
+script = ExtResource("21_y4755")
+metadata/_custom_type_script = "uid://d1qm26pgn370f"
+
+[node name="PickupRange" type="Node" parent="Composition"]
+script = ExtResource("22_dx2fw")
+base_value = 150.0
+metadata/_custom_type_script = "uid://c25ybkxpj13cc"
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("4_jbidu")
@@ -198,16 +324,16 @@ debug_color = Color(0.547395, 0.403254, 1, 0.42)
 [node name="ExperienceCollector" type="Area2D" parent="."]
 collision_layer = 0
 collision_mask = 4
-monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ExperienceCollector"]
 shape = SubResource("CircleShape2D_muuk5")
 
 [node name="Experience" type="Node" parent="."]
-script = ExtResource("2_5mbnf")
+script = SubResource("GDScript_ysqvb")
 
-[node name="Items" type="Node" parent="."]
-script = ExtResource("9_2jbb7")
+[node name="Items" type="Node" parent="." node_paths=PackedStringArray("player")]
+script = SubResource("GDScript_b51hn")
+player = NodePath("..")
 
 [node name="SubAbilities" type="Node2D" parent="."]
 

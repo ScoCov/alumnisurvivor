@@ -1,16 +1,19 @@
-[gd_resource type="Resource" script_class="ItemResource" load_steps=6 format=3 uid="uid://bc7xintrq7ppy"]
+[gd_resource type="Resource" script_class="ItemResource" load_steps=7 format=3 uid="uid://bc7xintrq7ppy"]
 
 [ext_resource type="Script" uid="uid://dipwxgdjv64sc" path="res://Scripts/Abstract Classes/Item/ItemBonus.gd" id="1_fh4sb"]
 [ext_resource type="Resource" uid="uid://mno0drh8g3i8" path="res://Resources/Data/Attributes/Range.tres" id="2_hvqnc"]
 [ext_resource type="Texture2D" uid="uid://c8a3geuxo1j8m" path="res://Resources/Image/Temp/BaseBall.png" id="3_7nuwy"]
+[ext_resource type="Script" uid="uid://cynxbgsviuomx" path="res://Scripts/Abstract Classes/Item/ItemBonusAttribute.gd" id="3_hvqnc"]
 [ext_resource type="Script" uid="uid://4pylfu4f1res" path="res://Scripts/Abstract Classes/Resource/ItemResource.gd" id="4_unhmf"]
 
-[sub_resource type="Resource" id="Resource_d13e0"]
-script = ExtResource("1_fh4sb")
+[sub_resource type="Resource" id="Resource_7nuwy"]
+script = ExtResource("3_hvqnc")
 attribute = ExtResource("2_hvqnc")
-start_value = 50.0
-growth_modifier = 25.0
-metadata/_custom_type_script = "uid://dipwxgdjv64sc"
+initial_value = 50.0
+level_value = 50.0
+type = 0
+target = 1
+metadata/_custom_type_script = "uid://cynxbgsviuomx"
 
 [resource]
 script = ExtResource("4_unhmf")
@@ -24,5 +27,5 @@ item_tags = Array[int]([])
 image = ExtResource("3_7nuwy")
 max_count = 0
 unique = false
-bonuses = Array[ExtResource("1_fh4sb")]([SubResource("Resource_d13e0")])
+bonuses = Array[ExtResource("1_fh4sb")]([SubResource("Resource_7nuwy")])
 metadata/_custom_type_script = "uid://4pylfu4f1res"

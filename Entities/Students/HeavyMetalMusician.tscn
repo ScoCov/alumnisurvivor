@@ -1,9 +1,0 @@
-[gd_scene load_steps=4 format=3 uid="uid://ca0gxlh0kfmui"]
-
-[ext_resource type="PackedScene" uid="uid://v1phrdf8cdqg" path="res://Entities/StudentEntity.tscn" id="1_1y0tl"]
-[ext_resource type="Resource" uid="uid://dm0b2ysjako7v" path="res://Resources/Data/Students/HeavyMetalMusician.tres" id="2_5fqem"]
-[ext_resource type="Script" uid="uid://csg0t5dw3fxfr" path="res://Entities/Students/HeavyMetalMusician.gd" id="2_v2jm4"]
-
-[node name="HeavyMetalMusician" instance=ExtResource("1_1y0tl")]
-script = ExtResource("2_v2jm4")
-student = ExtResource("2_5fqem")

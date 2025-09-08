@@ -14,11 +14,11 @@ position = Vector2(16, 0)
 scale = Vector2(0.310714, 0.331751)
 texture = ExtResource("3_50ame")
 
-[node name="MovementSpeed" parent="Composition" index="1"]
-base_value = 25.0
-
 [node name="Cooldown" parent="Composition" index="3"]
 base_value = 4.0
 
-[node name="Damage" parent="Composition" index="7"]
-base_value = 4.0
+[node name="Health" parent="Composition" index="7"]
+base_value = 1.0
+
+[node name="MovementSpeed" parent="Composition" index="9"]
+base_value = 25.0

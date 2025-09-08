@@ -6,8 +6,8 @@ signal update
 @export var player: StudentEntity:
 	set(value):
 		player = value
-		$Image/CenterPoint/Sprite2D.texture = player.student.icon
 		$Control/Label.text = player.student.student_name
+		$Image/CenterPoint/Sprite2D.texture = player.student.icon
 	get:
 		return player
 @export var timer: Timer

@@ -10,4 +10,11 @@ func update():
 			return attribute.name == label.name)
 		if attribute_desired:
 			attribute_desired = attribute_desired[0]
-			attribute_desired.get_child(0).text = " %s + %s = %s" % [str(attribute.base_value), str(attribute.mod_value), str(attribute.value)]
+			var color_string = "white"
+			if attribute.value < attribute.base_value:
+				color_string = "red"
+			elif  attribute.value > attribute.base_value:
+				color_string = "green"
+			attribute_desired.get_child(0).text = "[color=\"%s\"]%s[/color]" % [color_string, str(attribute.value)]
+			if attribute_desired.name == "MovementSpeed":
+				attribute_desired.get_child(0).text += " | %s" % str(player.DEFAULT_MOVEMENT_SPEED + (player.DEFAULT_MOVEMENT_SPEED * attribute.value))

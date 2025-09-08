@@ -1,24 +1,19 @@
-[gd_resource type="Resource" script_class="ItemResource" load_steps=8 format=3 uid="uid://bdnj1aafvy7p0"]
+[gd_resource type="Resource" script_class="ItemResource" load_steps=7 format=3 uid="uid://bdnj1aafvy7p0"]
 
 [ext_resource type="Script" uid="uid://dipwxgdjv64sc" path="res://Scripts/Abstract Classes/Item/ItemBonus.gd" id="1_uva0v"]
 [ext_resource type="Resource" uid="uid://de4ke6fjbvt45" path="res://Resources/Data/Attributes/Health.tres" id="2_ptlym"]
 [ext_resource type="Script" uid="uid://4pylfu4f1res" path="res://Scripts/Abstract Classes/Resource/ItemResource.gd" id="2_s0dq8"]
-[ext_resource type="Resource" uid="uid://cxlq71nn5t6fm" path="res://Resources/Data/Attributes/Armor.tres" id="3_7wnql"]
+[ext_resource type="Script" uid="uid://cynxbgsviuomx" path="res://Scripts/Abstract Classes/Item/ItemBonusAttribute.gd" id="3_7wnql"]
 [ext_resource type="Texture2D" uid="uid://c8tfmmed011q5" path="res://Resources/Image/Temp/Outfit_icon.png" id="4_7wnql"]
 
 [sub_resource type="Resource" id="Resource_jjj88"]
-script = ExtResource("1_uva0v")
+script = ExtResource("3_7wnql")
 attribute = ExtResource("2_ptlym")
-start_value = 1.0
-growth_modifier = 1.0
-metadata/_custom_type_script = "uid://dipwxgdjv64sc"
-
-[sub_resource type="Resource" id="Resource_geo0x"]
-script = ExtResource("1_uva0v")
-attribute = ExtResource("3_7wnql")
-start_value = 1.0
-growth_modifier = 1.0
-metadata/_custom_type_script = "uid://dipwxgdjv64sc"
+initial_value = 1.0
+level_value = 0.0
+type = 0
+target = 0
+metadata/_custom_type_script = "uid://cynxbgsviuomx"
 
 [resource]
 script = ExtResource("2_s0dq8")
@@ -32,5 +27,5 @@ item_tags = Array[int]([])
 image = ExtResource("4_7wnql")
 max_count = 0
 unique = false
-bonuses = Array[ExtResource("1_uva0v")]([SubResource("Resource_jjj88"), SubResource("Resource_geo0x")])
+bonuses = Array[ExtResource("1_uva0v")]([SubResource("Resource_jjj88")])
 metadata/_custom_type_script = "uid://4pylfu4f1res"

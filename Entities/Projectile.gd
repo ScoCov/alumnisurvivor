@@ -62,6 +62,7 @@ func life_over():
 	queue_free()
 	
 func hit_player(body: StudentEntity):
+	body.emit_signal("take_damage", self)
 	if pierce_count == 0 and bounce_count == 0:
 		life_over()
 	elif pierce_count > 0:
@@ -69,9 +70,9 @@ func hit_player(body: StudentEntity):
 	elif bounce_count > 0:
 		bounce_count -= 1
 		
-	body.emit_signal("take_damage", self)
 	
 func hit_enemy(body: EnemyEntity):
+	body.emit_signal("take_damage", $Composition/Damage.value, self)
 	if pierce_count == 0 and bounce_count == 0:
 		life_over()
 	elif pierce_count > 0:
@@ -91,4 +92,3 @@ func hit_enemy(body: EnemyEntity):
 				break
 		velocity = body.position.direction_to(_target) * $Composition/AttackSpeed.value
 		
-	body.emit_signal("take_damage", $Composition/Damage.value, self)

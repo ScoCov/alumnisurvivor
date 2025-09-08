@@ -8,4 +8,3 @@ class_name MapBase
 
 @export var map_name: String ## Name to Display
 @export var map_id: String ## ID to used to look up map
-@export var list_of_enemies: Array[EnemyBase] ## Contains the enemies to be spawned

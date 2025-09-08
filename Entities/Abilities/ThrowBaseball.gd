@@ -7,7 +7,7 @@ var target_location: Vector2
 func _ready():
 	ability = load("res://Resources/Data/Abilities/ThrowBaseball.tres")
 	cooldown_count = $Composition/Cooldown.value + (entity.get_node("Composition/Cooldown").value * $Composition/Cooldown.value)
-
+	
 func on_ready():
 	if cooldown_count <= 0:
 		cooldown_count = $Composition/Cooldown.value + (entity.get_node("Composition/Cooldown").value * $Composition/Cooldown.value)

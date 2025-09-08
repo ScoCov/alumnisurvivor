@@ -6,11 +6,14 @@
 [node name="ThrowBaseball" instance=ExtResource("1_q3b83")]
 script = ExtResource("2_1kb3h")
 
-[node name="AttackSpeed" parent="Composition" index="0"]
-base_value = 225.0
+[node name="AttackSpeed" parent="Composition" index="1"]
+base_value = 550.0
 
-[node name="Cooldown" parent="Composition" index="1"]
-base_value = 1.1
+[node name="Cooldown" parent="Composition" index="3"]
+base_value = 1.0
 
-[node name="Range" parent="Composition" index="5"]
+[node name="Damage" parent="Composition" index="5"]
+base_value = 10.0
+
+[node name="Range" parent="Composition" index="10"]
 base_value = 350.0

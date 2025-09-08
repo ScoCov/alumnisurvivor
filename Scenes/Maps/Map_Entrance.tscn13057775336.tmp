@@ -27,6 +27,25 @@ texture = ExtResource("6_klupb")
 position = Vector2(1680, -1104)
 texture = ExtResource("5_thx8d")
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="GameOverlay" parent="CanvasLayer" node_paths=PackedStringArray("timer", "game_logic") instance=ExtResource("3_e4hy1")]
+process_mode = 3
+timer = NodePath("../../GameLogic/GameTimeLimit")
+game_logic = NodePath("../../GameLogic")
+
+[node name="LevelUp" parent="CanvasLayer" node_paths=PackedStringArray("game_hud", "game_logic") instance=ExtResource("5_7pf22")]
+process_mode = 2
+visible = false
+game_hud = NodePath("../GameOverlay")
+game_logic = NodePath("../../GameLogic")
+
+[node name="Pause" parent="CanvasLayer" node_paths=PackedStringArray("game_hud", "game_logic") instance=ExtResource("7_jwasw")]
+process_mode = 3
+visible = false
+game_hud = NodePath("../GameOverlay")
+game_logic = NodePath("../../GameLogic")
+
 [node name="GameLogic" type="Node" parent="." node_paths=PackedStringArray("player", "enemy_spawner", "game_time", "canvas_layer")]
 script = ExtResource("1_ujiyw")
 player = NodePath("Player/StudentEntity")
@@ -34,9 +53,8 @@ enemy_spawner = NodePath("EnemySpawner")
 game_time = NodePath("GameTimeLimit")
 canvas_layer = NodePath("../CanvasLayer")
 
-[node name="EnemySpawner" type="Node" parent="GameLogic" node_paths=PackedStringArray("player", "spawn_timer", "global_projectile_container", "experience_container_ref")]
+[node name="EnemySpawner" type="Node" parent="GameLogic" node_paths=PackedStringArray("spawn_timer", "global_projectile_container", "experience_container_ref")]
 script = ExtResource("2_28vsk")
-player = NodePath("../Player/StudentEntity")
 spawn_timer = NodePath("../SpawnTimer")
 global_projectile_container = NodePath("../ProjectileContainer")
 experience_container_ref = NodePath("../ExperienceContainer")
@@ -58,30 +76,8 @@ autostart = true
 
 [node name="Player" type="Node" parent="GameLogic"]
 
-[node name="StudentEntity" parent="GameLogic/Player" node_paths=PackedStringArray("game_logic", "global_projectile_container") instance=ExtResource("8_c8ydw")]
+[node name="StudentEntity" parent="GameLogic/Player" node_paths=PackedStringArray("game_logic") instance=ExtResource("8_c8ydw")]
 position = Vector2(544, 336)
 game_logic = NodePath("../..")
-global_projectile_container = NodePath("../../ProjectileContainer")
 
 [node name="Camera2D" type="Camera2D" parent="GameLogic/Player/StudentEntity"]
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="GameOverlay" parent="CanvasLayer" node_paths=PackedStringArray("player", "timer", "game_logic") instance=ExtResource("3_e4hy1")]
-process_mode = 3
-player = NodePath("../../GameLogic/Player/StudentEntity")
-timer = NodePath("../../GameLogic/GameTimeLimit")
-game_logic = NodePath("../../GameLogic")
-
-[node name="LevelUp" parent="CanvasLayer" node_paths=PackedStringArray("game_hud", "game_logic", "player") instance=ExtResource("5_7pf22")]
-process_mode = 2
-visible = false
-game_hud = NodePath("../GameOverlay")
-game_logic = NodePath("../../GameLogic")
-player = NodePath("../../GameLogic/Player/StudentEntity")
-
-[node name="Pause" parent="CanvasLayer" node_paths=PackedStringArray("game_hud", "game_logic") instance=ExtResource("7_jwasw")]
-process_mode = 3
-visible = false
-game_hud = NodePath("../GameOverlay")
-game_logic = NodePath("../../GameLogic")

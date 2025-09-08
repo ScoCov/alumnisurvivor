@@ -1,16 +1,19 @@
-[gd_resource type="Resource" script_class="ItemResource" load_steps=6 format=3 uid="uid://dxgt2rw4yn2lx"]
+[gd_resource type="Resource" script_class="ItemResource" load_steps=7 format=3 uid="uid://dxgt2rw4yn2lx"]
 
 [ext_resource type="Script" uid="uid://dipwxgdjv64sc" path="res://Scripts/Abstract Classes/Item/ItemBonus.gd" id="1_reore"]
 [ext_resource type="Resource" uid="uid://gl46emysxfo3" path="res://Resources/Data/Attributes/Damage.tres" id="2_11a57"]
 [ext_resource type="Script" uid="uid://4pylfu4f1res" path="res://Scripts/Abstract Classes/Resource/ItemResource.gd" id="2_epr6y"]
 [ext_resource type="Texture2D" uid="uid://slw16wkvwpx" path="res://Resources/Image/Temp/LockIcon.png" id="3_dxk8v"]
+[ext_resource type="Script" uid="uid://cynxbgsviuomx" path="res://Scripts/Abstract Classes/Item/ItemBonusAttribute.gd" id="3_hhpa4"]
 
-[sub_resource type="Resource" id="Resource_hhpa4"]
-script = ExtResource("1_reore")
+[sub_resource type="Resource" id="Resource_445a0"]
+script = ExtResource("3_hhpa4")
 attribute = ExtResource("2_11a57")
-start_value = 2.0
-growth_modifier = 2.0
-metadata/_custom_type_script = "uid://dipwxgdjv64sc"
+initial_value = 0.1
+level_value = 0.1
+type = 0
+target = 1
+metadata/_custom_type_script = "uid://cynxbgsviuomx"
 
 [resource]
 script = ExtResource("2_epr6y")
@@ -24,5 +27,5 @@ item_tags = Array[int]([5])
 image = ExtResource("3_dxk8v")
 max_count = 0
 unique = false
-bonuses = Array[ExtResource("1_reore")]([SubResource("Resource_hhpa4")])
+bonuses = Array[ExtResource("1_reore")]([SubResource("Resource_445a0")])
 metadata/_custom_type_script = "uid://4pylfu4f1res"

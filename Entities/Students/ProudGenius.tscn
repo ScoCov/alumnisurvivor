@@ -1,9 +1,0 @@
-[gd_scene load_steps=4 format=3 uid="uid://dx3it24s46863"]
-
-[ext_resource type="PackedScene" uid="uid://v1phrdf8cdqg" path="res://Entities/StudentEntity.tscn" id="1_3lcv0"]
-[ext_resource type="Resource" uid="uid://bro1iqhp3a16b" path="res://Resources/Data/Students/ProudGenius.tres" id="2_ssmbp"]
-[ext_resource type="Script" uid="uid://bag8ymhtgt30t" path="res://Entities/Students/ProudGenius.gd" id="2_w140a"]
-
-[node name="ProudGenius" instance=ExtResource("1_3lcv0")]
-script = ExtResource("2_w140a")
-student = ExtResource("2_ssmbp")

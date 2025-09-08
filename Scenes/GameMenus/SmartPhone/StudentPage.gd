@@ -29,8 +29,7 @@ func _ready():
 	
 	if student == Global.SELECTED_STUDENT:
 		hdr.call("SelectedAs").text = "Player"
-	if student == Global.SELECTED_BESTY:
-		hdr.call("SelectedAs").text = "Besty"
+
 
 func update():
 	if not student:

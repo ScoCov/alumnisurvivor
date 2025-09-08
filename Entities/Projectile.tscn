@@ -1,15 +1,18 @@
-[gd_scene load_steps=13 format=3 uid="uid://caukgai13lvy0"]
+[gd_scene load_steps=16 format=3 uid="uid://caukgai13lvy0"]
 
 [ext_resource type="Script" uid="uid://cf8ast10bbhr2" path="res://Entities/Projectile.gd" id="1_fqaei"]
 [ext_resource type="Script" uid="uid://7bb2hfqmjjse" path="res://Scripts/Component/AttackSpeedComponent.gd" id="2_27tav"]
 [ext_resource type="Script" uid="uid://ctrb8ov6gpaok" path="res://Scripts/Component/DamageComponent.gd" id="3_an2dq"]
+[ext_resource type="Script" uid="uid://d1qm26pgn370f" path="res://Scripts/Component/armor_component.gd" id="3_bthhv"]
 [ext_resource type="Script" uid="uid://ccsgji80asv7u" path="res://Scripts/Component/CriticalChanceComponent.gd" id="4_ks67x"]
 [ext_resource type="Script" uid="uid://bli88oag0sqnf" path="res://Scripts/Component/RangeComponent.gd" id="5_apuhg"]
+[ext_resource type="Script" uid="uid://c2pxvhg6bs4k7" path="res://Scripts/Component/CooldownComponent.gd" id="6_elkfr"]
 [ext_resource type="Script" uid="uid://cdja3chlcwekg" path="res://Scripts/Component/KnockbackComponent.gd" id="6_lxums"]
 [ext_resource type="Script" uid="uid://clvlhjcomn2uj" path="res://Scripts/Component/DurationComponent.gd" id="7_wttw8"]
 [ext_resource type="Texture2D" uid="uid://evvlxxf5qy7d" path="res://Resources/Image/Temp/Arrow_Menu_02.png" id="8_7ykm4"]
 [ext_resource type="Script" uid="uid://b204l6p2m4x7q" path="res://Scripts/Component/pierce_component.gd" id="8_gabat"]
 [ext_resource type="Script" uid="uid://cc308ow00fk4j" path="res://Scripts/Component/bounce_component.gd" id="9_qe1xr"]
+[ext_resource type="Script" uid="uid://c7p233d8bepea" path="res://Scripts/Component/MovementComponent.gd" id="20_cwui3"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5vfki"]
 radius = 1.0
@@ -26,36 +29,6 @@ script = ExtResource("1_fqaei")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_5vfki")
 
-[node name="Composition" type="Node" parent="."]
-
-[node name="AttackSpeed" type="Node" parent="Composition"]
-script = ExtResource("2_27tav")
-base_value = 1000.0
-
-[node name="Damage" type="Node" parent="Composition"]
-script = ExtResource("3_an2dq")
-
-[node name="CriticalChance" type="Node" parent="Composition"]
-script = ExtResource("4_ks67x")
-
-[node name="Range" type="Node" parent="Composition"]
-script = ExtResource("5_apuhg")
-
-[node name="Knockback" type="Node" parent="Composition"]
-script = ExtResource("6_lxums")
-
-[node name="Duration" type="Node" parent="Composition"]
-script = ExtResource("7_wttw8")
-base_value = 1.2
-
-[node name="Pierce" type="Node" parent="Composition"]
-script = ExtResource("8_gabat")
-metadata/_custom_type_script = "uid://b204l6p2m4x7q"
-
-[node name="Bounce" type="Node" parent="Composition"]
-script = ExtResource("9_qe1xr")
-metadata/_custom_type_script = "uid://cc308ow00fk4j"
-
 [node name="HeroDollTestSize" type="Sprite2D" parent="."]
 texture = ExtResource("8_7ykm4")
 
@@ -66,3 +39,49 @@ monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
 shape = SubResource("CircleShape2D_ecsqj")
+
+[node name="Composition" type="Node" parent="."]
+
+[node name="Armor" type="Node" parent="Composition"]
+script = ExtResource("3_bthhv")
+metadata/_custom_type_script = "uid://d1qm26pgn370f"
+
+[node name="AttackSpeed" type="Node" parent="Composition"]
+script = ExtResource("2_27tav")
+metadata/_custom_type_script = "uid://7bb2hfqmjjse"
+
+[node name="Bounce" type="Node" parent="Composition"]
+script = ExtResource("9_qe1xr")
+metadata/_custom_type_script = "uid://cc308ow00fk4j"
+
+[node name="Cooldown" type="Node" parent="Composition"]
+script = ExtResource("6_elkfr")
+metadata/_custom_type_script = "uid://c2pxvhg6bs4k7"
+
+[node name="CriticalChance" type="Node" parent="Composition"]
+script = ExtResource("4_ks67x")
+metadata/_custom_type_script = "uid://ccsgji80asv7u"
+
+[node name="Damage" type="Node" parent="Composition"]
+script = ExtResource("3_an2dq")
+metadata/_custom_type_script = "uid://ctrb8ov6gpaok"
+
+[node name="Duration" type="Node" parent="Composition"]
+script = ExtResource("7_wttw8")
+metadata/_custom_type_script = "uid://clvlhjcomn2uj"
+
+[node name="Knockback" type="Node" parent="Composition"]
+script = ExtResource("6_lxums")
+metadata/_custom_type_script = "uid://cdja3chlcwekg"
+
+[node name="Movement" type="Node" parent="Composition"]
+script = ExtResource("20_cwui3")
+metadata/_custom_type_script = "uid://c7p233d8bepea"
+
+[node name="Pierce" type="Node" parent="Composition"]
+script = ExtResource("8_gabat")
+metadata/_custom_type_script = "uid://b204l6p2m4x7q"
+
+[node name="Range" type="Node" parent="Composition"]
+script = ExtResource("5_apuhg")
+metadata/_custom_type_script = "uid://bli88oag0sqnf"

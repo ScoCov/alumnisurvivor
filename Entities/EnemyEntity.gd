@@ -1,6 +1,8 @@
 extends CharacterBody2D
 class_name EnemyEntity
 
+const DEFAULT_MOVEMENT_SPEED: float = 150
+
 signal death
 signal take_damage
 

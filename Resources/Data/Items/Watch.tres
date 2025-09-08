@@ -1,15 +1,19 @@
-[gd_resource type="Resource" script_class="ItemResource" load_steps=6 format=3 uid="uid://csxnsb67w16ge"]
+[gd_resource type="Resource" script_class="ItemResource" load_steps=7 format=3 uid="uid://csxnsb67w16ge"]
 
-[ext_resource type="Resource" uid="uid://b4tkhcjsw15ux" path="res://Resources/Data/Attributes/Cooldown.tres" id="1_vlg3u"]
 [ext_resource type="Script" uid="uid://dipwxgdjv64sc" path="res://Scripts/Abstract Classes/Item/ItemBonus.gd" id="2_jvgb5"]
+[ext_resource type="Resource" uid="uid://gl46emysxfo3" path="res://Resources/Data/Attributes/Damage.tres" id="2_l20ah"]
 [ext_resource type="Script" uid="uid://4pylfu4f1res" path="res://Scripts/Abstract Classes/Resource/ItemResource.gd" id="3_cm11e"]
+[ext_resource type="Script" uid="uid://cynxbgsviuomx" path="res://Scripts/Abstract Classes/Item/ItemBonusAttribute.gd" id="3_iwvhh"]
 [ext_resource type="Texture2D" uid="uid://d12rqrbxf8t6q" path="res://Resources/Image/Temp/Items/pencil_32x32.png" id="4_tm404"]
 
-[sub_resource type="Resource" id="Resource_0ikqy"]
-script = ExtResource("2_jvgb5")
-attribute = ExtResource("1_vlg3u")
-start_value = -0.1
-growth_modifier = -0.05
+[sub_resource type="Resource" id="Resource_y3ooo"]
+script = ExtResource("3_iwvhh")
+attribute = ExtResource("2_l20ah")
+initial_value = 1.0
+level_value = 1.0
+type = 0
+target = 0
+metadata/_custom_type_script = "uid://cynxbgsviuomx"
 
 [resource]
 script = ExtResource("3_cm11e")
@@ -23,4 +27,4 @@ item_tags = Array[int]([])
 image = ExtResource("4_tm404")
 max_count = 0
 unique = false
-bonuses = Array[ExtResource("2_jvgb5")]([SubResource("Resource_0ikqy")])
+bonuses = Array[ExtResource("2_jvgb5")]([SubResource("Resource_y3ooo")])

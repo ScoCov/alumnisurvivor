@@ -51,14 +51,13 @@ func calculate_attributes()-> void:
 	for item_stack: ItemStack in get_children():
 		var item: ItemResource = item_stack.item
 		for bonus: ItemBonus in item.bonuses:
-			var player_attribute = player.get_node("Composition").get_children().filter(func(comp: Component):
-				return comp if comp.attribute.id == bonus.attribute.id else null)
-			if player_attribute:
-				player_attribute = player_attribute[0]
-				var att_calc: AttributeCalculation = AddToMod.new(player, player_attribute)
-				att_calc.get_value(bonus, item_stack.count)
-				continue
-			print("bonus attribute attribute: %s" % bonus.attribute.id, bonus.attribute.name)
-			for child in player.get_node("Composition").get_children():
-				print("%s | %s" % [child.name, child.attribute.id])
+			if bonus is ItemBonusAttribute:
+				var player_attribute = player.get_node("Composition").get_children().filter(func(comp: Component):
+					return comp if comp.attribute.id == bonus.attribute.id else null)
+				if player_attribute:
+					player_attribute = player_attribute[0]
+					bonus.process_component(player_attribute, item_stack.count)
+					continue
+			else:
+				print("ItemBonusAbility")
 	

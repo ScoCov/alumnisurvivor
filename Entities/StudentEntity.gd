@@ -11,27 +11,33 @@ extends CharacterBody2D
 ## will not rever to default values when this file is changes (and saved). 
 #endregion
 
+
 signal take_damage ## Call this to pass in a Damage_Carrier Clas [When made]
 signal death ## This will allow us to initiate death animations and logic. 
 
-@export var student: StudentResource ## Basic data about the student stored elsewhere in a Resource file. 
+const DEFAULT_MOVEMENT_SPEED: float = 150
+
 @export var game_logic: GameLogic  ## Every map should have a node of GameLogic made and applied with the script GameLogic.gd
 @export var health: HealthComponent
+@export var global_projectile_container: Node ## Easy way to pass this object down to Abiltiies so when they spawn objects they are independent of the user.
 
-var global_projectile_container: Node ## Easy way to pass this object down to Abiltiies so when they spawn objects they are independent of the user.
-var invulnerable: bool = false ## Used for invulnerability frames. 
-var _enemy_refs: Array[EnemyEntity] ## Populate this with enemies that enter the enemy detection Area2D node.
 ## Makes the node, PlayerExperience, with the ExperienceComponent class, easier to access.
 @onready var experience: ExperienceComponent = $Experience
 @onready var items: ItemManager = $Items
 @onready var pick_up_detection: Area2D = $PickUpDetection
+@onready var student: StudentResource = Global.SELECTED_STUDENT## Basic data about the student stored elsewhere in a Resource file. 
+@onready var health_state: HealthState = get_node("Composition/Health/StateMachine").current_state
 
+
+var _enemy_refs: Array[EnemyEntity] ## Populate this with enemies that enter the enemy detection Area2D node.
+var invulnerable: bool = false ## Used for invulnerability frames. 
 var is_level_up = false
 
-func _ready():
-	if not student: return ## if there isn't a student resource present, exit out of setup.
-	$Sprite.texture = student.doll ## TODO: NEEDS UPDATING ONCE MORE ASSETS ARE DEVELOPED -> The visuals
+func _init():
+	student = Global.SELECTED_STUDENT
 	
+func _ready():
+	student = Global.SELECTED_STUDENT
 	## Assign Experience's level up logic
 	experience.level_up.connect(func(): 
 		is_level_up = true
@@ -45,6 +51,7 @@ func _ready():
 func _process(_delta):
 	## Flash player with a red overlay (self modulate) when they have been injured and invulnerability is active.
 	## TODO: When a Health State is created, move this function over to that.
+	health_state = health.get_child(0).current_state
 	if invulnerable: 
 		$Sprite.self_modulate = (Color(1, .5, .5, 1) 
 			if ceili($'InvulTimer'.time_left * 10) % 2 == 0 
@@ -61,11 +68,12 @@ func _process(_delta):
 ## TODO: FIX - this will need it's parameter type to be updated so that players can interact with
 ## projectiles shot by enemies or from enviromental means. 
 func _on_take_damage(entity: Variant):
-	if entity and entity is EnemyEntity and not invulnerable:
+	if not entity or invulnerable: return
+	if entity is EnemyEntity:
 		$Composition/Health.current_health -= entity.get_node("Composition/Damage").value
 		invulnerable = true
 		$InvulTimer.start()
-	if entity and entity is Projectile and not invulnerable:
+	if entity is Projectile:
 		health.current_health -= entity.get_node("Composition/Damage").value
 		invulnerable = true
 		$InvulTimer.start()

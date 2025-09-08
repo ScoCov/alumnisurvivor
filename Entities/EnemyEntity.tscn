@@ -81,13 +81,47 @@ debug_color = Color(1, 0, 0, 0.419608)
 
 [node name="Composition" type="Node" parent="."]
 
+[node name="Armor" type="Node" parent="Composition"]
+script = ExtResource("21_43mea")
+metadata/_custom_type_script = "uid://d1qm26pgn370f"
+
+[node name="AttackSpeed" type="Node" parent="Composition"]
+script = ExtResource("12_kgr0r")
+metadata/_custom_type_script = "uid://7bb2hfqmjjse"
+
+[node name="Bounce" type="Node" parent="Composition"]
+script = ExtResource("20_w2qd5")
+metadata/_custom_type_script = "uid://cc308ow00fk4j"
+
+[node name="Cooldown" type="Node" parent="Composition"]
+script = ExtResource("13_nxri6")
+metadata/_custom_type_script = "uid://c2pxvhg6bs4k7"
+
+[node name="CriticalChance" type="Node" parent="Composition"]
+script = ExtResource("14_fb5bb")
+metadata/_custom_type_script = "uid://ccsgji80asv7u"
+
+[node name="Damage" type="Node" parent="Composition"]
+script = ExtResource("6_u336o")
+metadata/_custom_type_script = "uid://ctrb8ov6gpaok"
+
+[node name="Duration" type="Node" parent="Composition"]
+script = ExtResource("18_ukcyk")
+metadata/_custom_type_script = "uid://clvlhjcomn2uj"
+
 [node name="Health" type="Node" parent="Composition"]
 script = ExtResource("5_4qos5")
-base_value = 5.0
+base_value = 10.0
+metadata/_custom_type_script = "uid://b61e3a07grfgy"
 
 [node name="StateMachine" type="Node" parent="Composition/Health" node_paths=PackedStringArray("initial_state")]
 script = ExtResource("7_8ynyw")
 initial_state = NodePath("FullHealth")
+
+[node name="FullHealth" type="Node" parent="Composition/Health/StateMachine" node_paths=PackedStringArray("entity")]
+script = ExtResource("6_w2qd5")
+entity = NodePath("../../../..")
+metadata/_custom_type_script = "uid://da332uoi8ujfa"
 
 [node name="BarelyHurt" type="Node" parent="Composition/Health/StateMachine" node_paths=PackedStringArray("entity")]
 script = ExtResource("4_0cdqt")
@@ -99,22 +133,17 @@ script = ExtResource("5_fo58l")
 entity = NodePath("../../../..")
 metadata/_custom_type_script = "uid://dewrjlysa1v0t"
 
-[node name="FullHealth" type="Node" parent="Composition/Health/StateMachine" node_paths=PackedStringArray("entity")]
-script = ExtResource("6_w2qd5")
-entity = NodePath("../../../..")
-metadata/_custom_type_script = "uid://da332uoi8ujfa"
-
 [node name="Hurt" type="Node" parent="Composition/Health/StateMachine" node_paths=PackedStringArray("entity")]
 script = ExtResource("7_43mea")
 entity = NodePath("../../../..")
 metadata/_custom_type_script = "uid://4hpias2r4f70"
 
-[node name="NearDead" type="Node" parent="Composition/Health/StateMachine" node_paths=PackedStringArray("entity")]
+[node name="NearDeath" type="Node" parent="Composition/Health/StateMachine" node_paths=PackedStringArray("entity")]
 script = ExtResource("8_r7j0c")
 entity = NodePath("../../../..")
 metadata/_custom_type_script = "uid://cys3jqfaroho5"
 
-[node name="OverHeath" type="Node" parent="Composition/Health/StateMachine" node_paths=PackedStringArray("entity")]
+[node name="OverHealed" type="Node" parent="Composition/Health/StateMachine" node_paths=PackedStringArray("entity")]
 script = ExtResource("9_n6ktw")
 entity = NodePath("../../../..")
 metadata/_custom_type_script = "uid://dewaa6mmgmsaq"
@@ -124,49 +153,21 @@ script = ExtResource("10_hn578")
 entity = NodePath("../../../..")
 metadata/_custom_type_script = "uid://hxcj02spua5a"
 
-[node name="MovementSpeed" type="Node" parent="Composition"]
-script = ExtResource("4_ams5p")
-base_value = 100.0
-
-[node name="AttackSpeed" type="Node" parent="Composition"]
-script = ExtResource("12_kgr0r")
-metadata/_custom_type_script = "uid://7bb2hfqmjjse"
-
-[node name="Cooldown" type="Node" parent="Composition"]
-script = ExtResource("13_nxri6")
-metadata/_custom_type_script = "uid://c2pxvhg6bs4k7"
-
-[node name="CriticalChance" type="Node" parent="Composition"]
-script = ExtResource("14_fb5bb")
-metadata/_custom_type_script = "uid://ccsgji80asv7u"
-
 [node name="Knockback" type="Node" parent="Composition"]
 script = ExtResource("15_njxvj")
 metadata/_custom_type_script = "uid://cdja3chlcwekg"
 
-[node name="Range" type="Node" parent="Composition"]
-script = ExtResource("16_qhra1")
-metadata/_custom_type_script = "uid://bli88oag0sqnf"
-
-[node name="Damage" type="Node" parent="Composition"]
-script = ExtResource("6_u336o")
-metadata/_custom_type_script = "uid://ctrb8ov6gpaok"
-
-[node name="Duration" type="Node" parent="Composition"]
-script = ExtResource("18_ukcyk")
-metadata/_custom_type_script = "uid://clvlhjcomn2uj"
+[node name="MovementSpeed" type="Node" parent="Composition"]
+script = ExtResource("4_ams5p")
+metadata/_custom_type_script = "uid://c7p233d8bepea"
 
 [node name="Pierce" type="Node" parent="Composition"]
 script = ExtResource("19_fo58l")
 metadata/_custom_type_script = "uid://b204l6p2m4x7q"
 
-[node name="Bounce" type="Node" parent="Composition"]
-script = ExtResource("20_w2qd5")
-metadata/_custom_type_script = "uid://cc308ow00fk4j"
-
-[node name="ArmorComponent" type="Node" parent="Composition"]
-script = ExtResource("21_43mea")
-metadata/_custom_type_script = "uid://d1qm26pgn370f"
+[node name="Range" type="Node" parent="Composition"]
+script = ExtResource("16_qhra1")
+metadata/_custom_type_script = "uid://bli88oag0sqnf"
 
 [node name="State Machine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("7_8ynyw")
