@@ -80,7 +80,7 @@ metadata/_custom_type_script = "uid://clvlhjcomn2uj"
 
 [node name="Health" type="Node" parent="Composition"]
 script = ExtResource("2_e3u2s")
-base_value = 10.0
+base_value = 10000.0
 metadata/_custom_type_script = "uid://b61e3a07grfgy"
 
 [node name="StateMachine" type="Node" parent="Composition/Health" node_paths=PackedStringArray("initial_state")]
@@ -207,8 +207,9 @@ shape = SubResource("CircleShape2D_muuk5")
 [node name="Experience" type="Node" parent="."]
 script = ExtResource("2_5mbnf")
 
-[node name="Items" type="Node" parent="."]
+[node name="Items" type="Node" parent="." node_paths=PackedStringArray("player")]
 script = ExtResource("9_2jbb7")
+player = NodePath("..")
 
 [node name="SubAbilities" type="Node2D" parent="."]
 

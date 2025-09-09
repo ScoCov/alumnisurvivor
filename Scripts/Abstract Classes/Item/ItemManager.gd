@@ -5,6 +5,9 @@ signal item_stack_added
 
 @export var player: StudentEntity
 
+func _ready():
+	assert(player, "There must be a player for the ItemManager to work.")
+
 ## Add a given Item to the ItemManager in the form of an ItemStack. If the Item (and ItemStack) already exists,
 ## this function will then increase that ItemStack's count by 1. 
 ## This function will also return a Dictionary of {Item: item_stack.item.item_name, Count: item_stack.count}
@@ -13,21 +16,21 @@ func add_item(item: ItemResource) -> Dictionary:
 	var extant_item: bool = get_children().any(func(item_stack): return item_stack.item == item)
 	var item_stack: ItemStack
 	
-	## If extant_item then use that ItemStack, otherwise; make a new ItemStack with the appropriate item.
+	## If the item is already an ItemStack, move to the next step;
+	## Otherwise, make a new ItemStack with the appropriate item.
 	if not extant_item:
 		item_stack = ItemStack.new()
 		item_stack.item = item 
 		add_child(item_stack)
 		item_stack_added.emit()
 	else:
-		item_stack = get_children().filter(func(_item_stack): return _item_stack.item.item_name == item.item_name)[0]
-		
+		item_stack = get_children().filter(func(_item_stack): 
+			return _item_stack.item.item_name == item.item_name)[0]
+	
 	item_stack.count += 1 
-	#print("Item stack: %s %s" % [item_stack.item.item_name, str(item_stack.count)])
 	item_stack.count_changed.emit()
 	calculate_attributes()
 	return {"Item": item.item_name, "Count": item_stack.count} ## show the results of the additional item.
-	
 	
 func get_item_by_name(item_name: String) -> ItemStack:
 	return get_children().filter(func(item_stack: ItemStack): return item_stack.item.item_name == item_name)[0]
@@ -45,12 +48,11 @@ func calculate_attributes()-> void:
 	## Go through the items, get the item_bonuses, find the compositions on the player
 	## that matches a composition attribute. Then, on that composition, apply the 
 	## modded attribute to the player. 
-	if not player: return
 	for child in player.get_node("Composition").get_children():
 		child.clear() ## Clear out all of the Components
 	for item_stack: ItemStack in get_children():
 		var item: ItemResource = item_stack.item
-		for bonus: ItemBonus in item.bonuses:
+		for bonus in item.bonuses:
 			if bonus is ItemBonusAttribute:
 				var player_attribute = player.get_node("Composition").get_children().filter(func(comp: Component):
 					return comp if comp.attribute.id == bonus.attribute.id else null)

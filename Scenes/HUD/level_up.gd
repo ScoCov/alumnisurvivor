@@ -13,8 +13,6 @@ var _is_paused: bool:
 	set(value):
 		visible = value and player.is_level_up
 		get_tree().paused = value
-
-
 	
 func _process(_delta): ## This won't start processing until the game is paused.
 	_is_paused = get_tree().paused
@@ -22,16 +20,12 @@ func _process(_delta): ## This won't start processing until the game is paused.
 	for item_card in $Panel/MarginContainer/HBoxContainer.get_children():
 		if item_card.has_focus():
 			item = item_card.item
-
 	
 func visibility_change(is_paused: bool):
 	if player and not is_paused:
 		$Panel/Label.text = "Congratulations, %s! You are now level %s!" % [player.student.student_name, player.experience.level]
 		if player.experience.level % 3 != 0:
-			$Panel/MarginContainer/HBoxContainer.get_node("ItemCard").item = Global.ITEM_COLLECTION[randi_range(0, len(Global.ITEM_COLLECTION) -1)]
-			$Panel/MarginContainer/HBoxContainer.get_node("ItemCard2").item = Global.ITEM_COLLECTION[randi_range(0, len(Global.ITEM_COLLECTION) -1)]
-			$Panel/MarginContainer/HBoxContainer.get_node("ItemCard3").item = Global.ITEM_COLLECTION[randi_range(0, len(Global.ITEM_COLLECTION) -1)]
-			$Panel/MarginContainer/HBoxContainer.get_node("ItemCard4").item = Global.ITEM_COLLECTION[randi_range(0, len(Global.ITEM_COLLECTION) -1)]
+			generate_random_items()
 			$Panel/MarginContainer/HBoxContainer.get_node("ItemCard4").visible = false if randf_range(0,1) < 0.5 else true
 		elif player.experience.level % 3 == 0:
 			$Panel/MarginContainer/HBoxContainer.get_node("ItemCard").ability = Global.ABILITIES[randi_range(0, len(Global.ABILITIES) -1)]
@@ -46,7 +40,6 @@ func visibility_change(is_paused: bool):
 		game_logic.hideshow_container_children("ExperienceContainer", !is_paused)
 		game_logic.hideshow_container_children("ProjectileContainer", !is_paused)
 	
-
 func _on_button_pressed():
 	if item:
 		player.items.add_item(item)
@@ -61,15 +54,6 @@ func _on_button_pressed():
 
 func _on_visibility_changed():
 	visibility_change(_is_paused)
-
-
-func _on_focus_entered():
-	pass # Replace with function body.
-
-
-func _on_focus_exited():
-	pass # Replace with function body.
-
 
 func _on_reroll_pressed() -> void:
 	generate_random_items()

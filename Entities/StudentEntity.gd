@@ -11,7 +11,6 @@ extends CharacterBody2D
 ## will not rever to default values when this file is changes (and saved). 
 #endregion
 
-
 signal take_damage ## Call this to pass in a Damage_Carrier Clas [When made]
 signal death ## This will allow us to initiate death animations and logic. 
 
@@ -27,7 +26,6 @@ const DEFAULT_MOVEMENT_SPEED: float = 150
 @onready var pick_up_detection: Area2D = $PickUpDetection
 @onready var student: StudentResource = Global.SELECTED_STUDENT## Basic data about the student stored elsewhere in a Resource file. 
 @onready var health_state: HealthState = get_node("Composition/Health/StateMachine").current_state
-
 
 var _enemy_refs: Array[EnemyEntity] ## Populate this with enemies that enter the enemy detection Area2D node.
 var invulnerable: bool = false ## Used for invulnerability frames. 
@@ -50,23 +48,19 @@ func _ready():
 		
 func _process(_delta):
 	## Flash player with a red overlay (self modulate) when they have been injured and invulnerability is active.
-	## TODO: When a Health State is created, move this function over to that.
-	#health_state = health.get_child(0).current_state
 	if invulnerable: 
 		$Sprite.self_modulate = (Color(1, .5, .5, 1) 
 			if ceili($'InvulTimer'.time_left * 10) % 2 == 0 
 			else Color(1, 1, 1, 1))
 	else:
 		$Sprite.self_modulate = Color(1, 1, 1, 1)
-	#$Label.text = "Health-State: %s" % health.get_child(0).current_state.name
+	#$Label.text = "Number of Unique Items: %s" % items.get_child_count()
 	## If Invulnerability is not active, allow damage. This will be from one source at random in the enemy_ref.
 	if not invulnerable and len(_enemy_refs) > 0: 
 		take_damage.emit(_enemy_refs[randi_range(0, len(_enemy_refs) - 1)])
 	var collision_shape_2d: CollisionShape2D = $PickUpDetection/CollisionShape2D
 	collision_shape_2d.shape.radius = $Composition/PickupRange.value
 
-## TODO: FIX - this will need it's parameter type to be updated so that players can interact with
-## projectiles shot by enemies or from enviromental means. 
 func _on_take_damage(entity: Variant):
 	if not entity or invulnerable: return
 	if entity is EnemyEntity:
@@ -77,7 +71,6 @@ func _on_take_damage(entity: Variant):
 		health.current_health -= entity.get_node("Composition/Damage").value
 		invulnerable = true
 		$InvulTimer.start()
-
 			
 ## Used to call another function in a que - to help the game not bungle up on itself.
 func _on_death(): 

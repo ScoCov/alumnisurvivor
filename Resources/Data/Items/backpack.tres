@@ -14,6 +14,8 @@ initial_value = 5.0
 level_value = 5.0
 type = 0
 target = 0
+data_type = 2
+better_value = 0
 metadata/_custom_type_script = "uid://cynxbgsviuomx"
 
 [sub_resource type="Resource" id="Resource_uby4l"]
@@ -23,6 +25,8 @@ initial_value = 5.0
 level_value = 5.0
 type = 1
 target = 1
+data_type = 1
+better_value = 0
 metadata/_custom_type_script = "uid://cynxbgsviuomx"
 
 [resource]
