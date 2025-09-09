@@ -17,6 +17,9 @@ texture = ExtResource("3_50ame")
 [node name="Cooldown" parent="Composition" index="3"]
 base_value = 4.0
 
+[node name="Damage" parent="Composition" index="5"]
+base_value = -9.0
+
 [node name="Health" parent="Composition" index="7"]
 base_value = 1.0
 

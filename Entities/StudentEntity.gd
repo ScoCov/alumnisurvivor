@@ -51,14 +51,14 @@ func _ready():
 func _process(_delta):
 	## Flash player with a red overlay (self modulate) when they have been injured and invulnerability is active.
 	## TODO: When a Health State is created, move this function over to that.
-	health_state = health.get_child(0).current_state
+	#health_state = health.get_child(0).current_state
 	if invulnerable: 
 		$Sprite.self_modulate = (Color(1, .5, .5, 1) 
 			if ceili($'InvulTimer'.time_left * 10) % 2 == 0 
 			else Color(1, 1, 1, 1))
 	else:
 		$Sprite.self_modulate = Color(1, 1, 1, 1)
-	$Label.text = "Health-State: %s" % health.get_child(0).current_state.name
+	#$Label.text = "Health-State: %s" % health.get_child(0).current_state.name
 	## If Invulnerability is not active, allow damage. This will be from one source at random in the enemy_ref.
 	if not invulnerable and len(_enemy_refs) > 0: 
 		take_damage.emit(_enemy_refs[randi_range(0, len(_enemy_refs) - 1)])
@@ -77,6 +77,7 @@ func _on_take_damage(entity: Variant):
 		health.current_health -= entity.get_node("Composition/Damage").value
 		invulnerable = true
 		$InvulTimer.start()
+
 			
 ## Used to call another function in a que - to help the game not bungle up on itself.
 func _on_death(): 

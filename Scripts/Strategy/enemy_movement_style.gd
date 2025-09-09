@@ -6,7 +6,6 @@ enum type {Move_to_Player, Circle_Player, Avoid_Player, Charge_Player, Maintain_
 func update(enemy: EnemyEntity, _delta: float):
 	pass
 
-
 static func load_movement_type(_type: EnemyMovementStyle.type) -> EnemyMovementStyle:
 	var load_movement: EnemyMovementStyle
 	match _type:

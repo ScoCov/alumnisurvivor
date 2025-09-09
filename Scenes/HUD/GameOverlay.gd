@@ -52,8 +52,8 @@ func _on_update():
 				return node.item_stack.item.item_name == item_stack.item.item_name):
 				var hud_item: HudItem = $Items/GridContainer.get_children().filter(func(node): 
 					if node.item_stack.item.item_name == item_stack.item.item_name: return node)[0]
-				var hud_item_name = hud_item.item_stack.item.item_name
-				var item_stack_name = item_stack.item.item_name
+				#var hud_item_name = hud_item.item_stack.item.item_name
+				#var item_stack_name = item_stack.item.item_name
 				if hud_item is HudItem :
 					if hud_item.has_method("update"):
 						hud_item.item_stack = item_stack

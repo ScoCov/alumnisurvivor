@@ -107,7 +107,7 @@ script = ExtResource("7_y4755")
 entity = NodePath("../../../..")
 metadata/_custom_type_script = "uid://4hpias2r4f70"
 
-[node name="NearDeath" type="Node" parent="Composition/Health/StateMachine" node_paths=PackedStringArray("entity")]
+[node name="NearDead" type="Node" parent="Composition/Health/StateMachine" node_paths=PackedStringArray("entity")]
 script = ExtResource("8_dx2fw")
 entity = NodePath("../../../..")
 metadata/_custom_type_script = "uid://cys3jqfaroho5"
@@ -141,6 +141,7 @@ metadata/_custom_type_script = "uid://b204l6p2m4x7q"
 
 [node name="Range" type="Node" parent="Composition"]
 script = ExtResource("8_gbsgn")
+base_value = 150.0
 metadata/_custom_type_script = "uid://bli88oag0sqnf"
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]

@@ -18,8 +18,7 @@ func _ready() -> void:
 	canvas_layer.get_node("GameOverlay").update.emit()
 	if game_time != null:
 		game_time.timeout.connect(game_over)
-	if player.health_state is DeadState:
-		game_over()
+
 
 func hideshow_container_children(container_name: String, _is_paused: bool):
 	for child in get_node(container_name).get_children():

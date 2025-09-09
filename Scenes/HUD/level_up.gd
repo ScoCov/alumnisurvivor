@@ -16,7 +16,7 @@ var _is_paused: bool:
 
 
 	
-func _process(delta): ## This won't start processing until the game is paused.
+func _process(_delta): ## This won't start processing until the game is paused.
 	_is_paused = get_tree().paused
 	$Continue.disabled = item == null
 	for item_card in $Panel/MarginContainer/HBoxContainer.get_children():

@@ -1,6 +1,8 @@
 class_name ExperienceEntity
 extends CharacterBody2D
 
+const DEFAULT_MOVEMENT_SPEED = 255
+
 ## Assign the base level of XP this node will give. 
 @export var xp: float = 1:
 	set(value):
@@ -27,7 +29,6 @@ var chase: bool = false
 	
 func _physics_process(delta):
 	if not chase: return
-	var speed: float = (target_player.get_node("Composition/MovementSpeed").value * 1.1)
 	var direction: Vector2 = position.direction_to(target_player.position)
-	velocity = direction * speed 
+	velocity = direction * DEFAULT_MOVEMENT_SPEED 
 	move_and_slide() 
