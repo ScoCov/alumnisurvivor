@@ -1,9 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://dkvqbqcnfaa74"]
+[gd_scene load_steps=13 format=3 uid="uid://dkvqbqcnfaa74"]
 
 [ext_resource type="Script" uid="uid://b776i6soryfrc" path="res://Scenes/GameMenus/SafePlace/safe_place.gd" id="1_ii56i"]
 [ext_resource type="Texture2D" uid="uid://uw7obgkicgw8" path="res://Resources/Image/Temp/Safe-PlaceBackground.png" id="1_nspgc"]
 [ext_resource type="PackedScene" uid="uid://v1phrdf8cdqg" path="res://Entities/StudentEntity.tscn" id="2_hpx8o"]
 [ext_resource type="Texture2D" uid="uid://da1swhn4slxni" path="res://Resources/Image/Temp/Bookshelf.png" id="3_ii56i"]
+[ext_resource type="PackedScene" uid="uid://cy2ckv7h3sdsd" path="res://Scenes/GameMenus/SafePlace/collection log/collection_log.tscn" id="5_rllfs"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_suc3q"]
 
@@ -110,14 +111,14 @@ debug_color = Color(0.667266, 0.327884, 0.974481, 0.42)
 
 [node name="Node2D" type="Node2D" parent="."]
 
-[node name="Window" type="Window" parent="Node2D"]
+[node name="Exit" type="Window" parent="Node2D"]
 process_mode = 2
 title = "Exit?"
 initial_position = 1
 size = Vector2i(125, 75)
 visible = false
 
-[node name="Exit" type="HBoxContainer" parent="Node2D/Window"]
+[node name="Exit" type="HBoxContainer" parent="Node2D/Exit"]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -131,16 +132,27 @@ grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
-[node name="Yes" type="Button" parent="Node2D/Window/Exit"]
+[node name="Yes" type="Button" parent="Node2D/Exit/Exit"]
 layout_mode = 2
 text = "Yes"
 
-[node name="No" type="Button" parent="Node2D/Window/Exit"]
+[node name="No" type="Button" parent="Node2D/Exit/Exit"]
 layout_mode = 2
 text = "No
 "
 
+[node name="CollectionLog" type="Window" parent="Node2D"]
+process_mode = 2
+title = "Collection Log "
+initial_position = 1
+size = Vector2i(700, 450)
+visible = false
+
+[node name="CollectionLog" parent="Node2D/CollectionLog" instance=ExtResource("5_rllfs")]
+
 [connection signal="body_entered" from="Background/Bookshelf/InteractionArea" to="." method="_on_interaction_area_body_entered"]
 [connection signal="body_entered" from="ExitArea" to="." method="_on_exit_area_body_entered"]
-[connection signal="pressed" from="Node2D/Window/Exit/Yes" to="." method="_on_yes_pressed"]
-[connection signal="pressed" from="Node2D/Window/Exit/No" to="." method="_on_no_pressed"]
+[connection signal="pressed" from="Node2D/Exit/Exit/Yes" to="." method="_on_yes_pressed"]
+[connection signal="pressed" from="Node2D/Exit/Exit/No" to="." method="_on_no_pressed"]
+[connection signal="close_requested" from="Node2D/CollectionLog" to="." method="_on_collection_log_close_requested"]
+[connection signal="go_back_requested" from="Node2D/CollectionLog" to="." method="_on_collection_log_close_requested"]

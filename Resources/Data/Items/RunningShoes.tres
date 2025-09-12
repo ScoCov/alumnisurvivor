@@ -13,6 +13,8 @@ initial_value = 0.15
 level_value = 0.15
 type = 0
 target = 1
+data_type = 0
+better_value = 0
 metadata/_custom_type_script = "uid://cynxbgsviuomx"
 
 [resource]
