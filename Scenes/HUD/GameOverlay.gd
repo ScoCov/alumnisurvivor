@@ -15,9 +15,6 @@ signal update
 const MAX_TIME_LIMIT: int = 300 #in seconds
 var hud_item_scene = preload("res://Scenes/HUD/hud_item.tscn")
 
-func _ready():
-	pass
-	#if not player: return
 
 func _process(_delta):
 	update_health()

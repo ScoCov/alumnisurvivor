@@ -19,7 +19,7 @@ const DEFAULT_MOVEMENT_SPEED: float = 150
 @export var game_logic: GameLogic  ## Every map should have a node of GameLogic made and applied with the script GameLogic.gd
 @export var health: HealthComponent
 @export var global_projectile_container: Node ## Easy way to pass this object down to Abiltiies so when they spawn objects they are independent of the user.
-
+@export var in_combat: bool = false 
 ## Makes the node, PlayerExperience, with the ExperienceComponent class, easier to access.
 @onready var experience: ExperienceComponent = $Experience
 @onready var items: ItemManager = $Items
@@ -37,14 +37,16 @@ func _init():
 func _ready():
 	student = Global.SELECTED_STUDENT
 	## Assign Experience's level up logic
-	experience.level_up.connect(func(): 
-		is_level_up = true
-		get_tree().paused = true )
-	## Load in the Student's given starting ability and 'equip' it. 
-	var ability_packed_scene = load("res://Entities/Abilities/%s.tscn" % student.starting_ability.id) 
-	var new_ability = ability_packed_scene.instantiate()
-	new_ability.entity = self
-	$Ability1.add_child(new_ability)
+		
+	if in_combat:
+		## Load in the Student's given starting ability and 'equip' it. 
+		experience.level_up.connect(func(): 
+			is_level_up = true
+			get_tree().paused = true )
+		var ability_packed_scene = load("res://Entities/Abilities/%s.tscn" % student.starting_ability.id) 
+		var new_ability = ability_packed_scene.instantiate()
+		new_ability.entity = self
+		$Ability1.add_child(new_ability)
 		
 func _process(_delta):
 	## Flash player with a red overlay (self modulate) when they have been injured and invulnerability is active.

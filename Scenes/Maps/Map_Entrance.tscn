@@ -62,6 +62,7 @@ autostart = true
 position = Vector2(544, 336)
 game_logic = NodePath("../..")
 global_projectile_container = NodePath("../../ProjectileContainer")
+in_combat = true
 
 [node name="Camera2D" type="Camera2D" parent="GameLogic/Player/StudentEntity"]
 

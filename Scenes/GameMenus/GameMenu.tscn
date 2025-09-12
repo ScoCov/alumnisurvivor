@@ -1,10 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://sol5e8du87vj"]
+[gd_scene load_steps=3 format=3 uid="uid://sol5e8du87vj"]
 
 [ext_resource type="Script" uid="uid://be1n210v7st6g" path="res://Scenes/GameMenus/GameMenu.gd" id="1_furap"]
 [ext_resource type="Texture2D" uid="uid://dhqg2vtkg7jd" path="res://Resources/Image/School_Map_TEMPORARY.png" id="2_haiyr"]
-[ext_resource type="PackedScene" uid="uid://blgex2m84vfk7" path="res://Scenes/GameMenus/SmartPhone/SmartPhone.tscn" id="2_oe7do"]
 
 [node name="GameMenu" type="Control"]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -18,120 +18,35 @@ position = Vector2(576, 323.5)
 scale = Vector2(0.578894, 0.662921)
 texture = ExtResource("2_haiyr")
 
-[node name="SmartPhoneBtn" type="Button" parent="."]
-layout_mode = 0
-anchor_left = 0.0269097
-anchor_top = 0.435185
-anchor_right = 0.117188
-anchor_bottom = 0.483025
-text = "Smart Phone"
-metadata/_edit_use_anchors_ = true
-
-[node name="Football Field" type="Button" parent="."]
-layout_mode = 0
-offset_left = 893.0
-offset_top = 284.0
-offset_right = 967.0
-offset_bottom = 442.0
-text = "Football"
-
 [node name="MainMenu" type="Button" parent="."]
-layout_mode = 0
-offset_left = 1026.0
-offset_top = 25.0
-offset_right = 1122.0
-offset_bottom = 56.0
-text = "Main Menu"
-
-[node name="Classroom1" type="Button" parent="."]
-layout_mode = 0
-offset_left = 239.0
-offset_top = 125.0
-offset_right = 323.0
-offset_bottom = 236.0
-text = "Classroom"
-
-[node name="Entrance" type="Button" parent="."]
-layout_mode = 0
-offset_left = 532.0
-offset_top = 495.0
-offset_right = 622.0
-offset_bottom = 565.0
-text = "Entrance"
-
-[node name="ParkingLot" type="Button" parent="."]
-layout_mode = 0
-offset_left = 228.0
-offset_top = 515.0
-offset_right = 401.0
-offset_bottom = 605.0
-text = "Parkinglot"
-
-[node name="Office" type="Button" parent="."]
-layout_mode = 0
-offset_left = 583.0
-offset_top = 302.0
-offset_right = 743.0
-offset_bottom = 393.0
-text = "Office"
-
-[node name="Classroom2" type="Button" parent="."]
-layout_mode = 0
-offset_left = 381.0
-offset_top = 125.0
-offset_right = 484.0
-offset_bottom = 250.0
-text = "Classroom 2"
-
-[node name="BaseballDiamond" type="Button" parent="."]
-layout_mode = 0
-offset_left = 827.0
-offset_top = 125.0
-offset_right = 929.0
-offset_bottom = 236.0
-text = "Baseball Field"
-
-[node name="Theater" type="Button" parent="."]
-layout_mode = 0
-offset_left = 240.0
-offset_top = 333.0
-offset_right = 366.0
-offset_bottom = 419.0
-text = "Theater"
-
-[node name="SmartPhoneFocus" type="Panel" parent="."]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-metadata/_edit_use_anchors_ = true
-
-[node name="CenterContainer" type="CenterContainer" parent="SmartPhoneFocus"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="SmartPhone" parent="SmartPhoneFocus/CenterContainer" instance=ExtResource("2_oe7do")]
-layout_mode = 2
-
-[node name="Putaway" type="Button" parent="SmartPhoneFocus/CenterContainer/SmartPhone"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 1.04533
-anchor_top = 0.463333
-anchor_right = 1.28533
-anchor_bottom = 0.541667
-offset_right = 3.05176e-05
-text = "Put Away"
+anchor_left = 0.046875
+anchor_top = 0.415123
+anchor_right = 0.130208
+anchor_bottom = 0.462963
+text = "Main Menu"
 metadata/_edit_use_anchors_ = true
 
-[connection signal="pressed" from="SmartPhoneBtn" to="." method="_on_button_pressed"]
+[node name="AbandonedClassroom" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.046875
+anchor_top = 0.486111
+anchor_right = 0.130208
+anchor_bottom = 0.533951
+text = "Safe Place"
+metadata/_edit_use_anchors_ = true
+
+[node name="ClassRoom" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.207465
+anchor_top = 0.195988
+anchor_right = 0.278646
+anchor_bottom = 0.378086
+metadata/_edit_use_anchors_ = true
+
 [connection signal="pressed" from="MainMenu" to="." method="back_to_main_menu"]
-[connection signal="gui_input" from="Classroom1" to="." method="_on_classroom_1_gui_input"]
-[connection signal="pressed" from="SmartPhoneFocus/CenterContainer/SmartPhone/Putaway" to="." method="_on_putaway_pressed"]
+[connection signal="pressed" from="AbandonedClassroom" to="." method="_on_abandoned_classroom_pressed"]
+[connection signal="pressed" from="ClassRoom" to="." method="_on_class_room_pressed"]

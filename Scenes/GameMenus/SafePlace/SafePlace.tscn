@@ -1,0 +1,146 @@
+[gd_scene load_steps=12 format=3 uid="uid://dkvqbqcnfaa74"]
+
+[ext_resource type="Script" uid="uid://b776i6soryfrc" path="res://Scenes/GameMenus/SafePlace/safe_place.gd" id="1_ii56i"]
+[ext_resource type="Texture2D" uid="uid://uw7obgkicgw8" path="res://Resources/Image/Temp/Safe-PlaceBackground.png" id="1_nspgc"]
+[ext_resource type="PackedScene" uid="uid://v1phrdf8cdqg" path="res://Entities/StudentEntity.tscn" id="2_hpx8o"]
+[ext_resource type="Texture2D" uid="uid://da1swhn4slxni" path="res://Resources/Image/Temp/Bookshelf.png" id="3_ii56i"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_suc3q"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ur4xy"]
+size = Vector2(1156, 123)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hpx8o"]
+size = Vector2(1162, 67)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rllfs"]
+size = Vector2(128, 140)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fh6uv"]
+size = Vector2(128, 44)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ii56i"]
+size = Vector2(96, 480)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_suc3q"]
+size = Vector2(81, 25)
+
+[node name="SafePlace" type="Node2D"]
+script = ExtResource("1_ii56i")
+metadata/_edit_lock_ = true
+
+[node name="Background" type="Node2D" parent="."]
+metadata/_edit_lock_ = true
+
+[node name="Safe-placeBackground" type="Sprite2D" parent="Background"]
+texture = ExtResource("1_nspgc")
+centered = false
+metadata/_edit_lock_ = true
+
+[node name="WhiteboardWall" type="StaticBody2D" parent="Background"]
+physics_material_override = SubResource("PhysicsMaterial_suc3q")
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Background/WhiteboardWall"]
+position = Vector2(557, 61)
+shape = SubResource("RectangleShape2D_ur4xy")
+
+[node name="BottomWall" type="StaticBody2D" parent="Background"]
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Background/BottomWall"]
+position = Vector2(575, 634.5)
+shape = SubResource("RectangleShape2D_hpx8o")
+
+[node name="Bookshelf" type="Node2D" parent="Background"]
+metadata/_edit_lock_ = true
+
+[node name="Image" type="Sprite2D" parent="Background/Bookshelf"]
+position = Vector2(836, 92)
+texture = ExtResource("3_ii56i")
+metadata/_edit_lock_ = true
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Background/Bookshelf"]
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Background/Bookshelf/StaticBody2D"]
+position = Vector2(836, 80)
+shape = SubResource("RectangleShape2D_rllfs")
+
+[node name="InteractionArea" type="Area2D" parent="Background/Bookshelf"]
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Background/Bookshelf/InteractionArea"]
+position = Vector2(836, 172)
+shape = SubResource("RectangleShape2D_fh6uv")
+debug_color = Color(0.667266, 0.327884, 0.974481, 0.42)
+
+[node name="LeftWall" type="StaticBody2D" parent="Background"]
+position = Vector2(56.0992, 153.083)
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Background/LeftWall"]
+position = Vector2(-21.0992, 208.917)
+shape = SubResource("RectangleShape2D_ii56i")
+
+[node name="RightWall" type="StaticBody2D" parent="Background"]
+position = Vector2(56.0992, 153.083)
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Background/RightWall"]
+position = Vector2(1069.9, 208.917)
+shape = SubResource("RectangleShape2D_ii56i")
+
+[node name="FocusGround" type="Node2D" parent="."]
+
+[node name="StudentEntity" parent="FocusGround" instance=ExtResource("2_hpx8o")]
+position = Vector2(413, 280)
+scale = Vector2(0.7, 0.7)
+
+[node name="Foreground" type="Node2D" parent="."]
+metadata/_edit_lock_ = true
+
+[node name="ExitArea" type="Area2D" parent="."]
+position = Vector2(947.853, 145.501)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ExitArea"]
+position = Vector2(5.64728, -10.0008)
+shape = SubResource("RectangleShape2D_suc3q")
+debug_color = Color(0.667266, 0.327884, 0.974481, 0.42)
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="Window" type="Window" parent="Node2D"]
+process_mode = 2
+title = "Exit?"
+initial_position = 1
+size = Vector2i(125, 75)
+visible = false
+
+[node name="Exit" type="HBoxContainer" parent="Node2D/Window"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -35.0
+offset_top = -15.5
+offset_right = 35.0
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Yes" type="Button" parent="Node2D/Window/Exit"]
+layout_mode = 2
+text = "Yes"
+
+[node name="No" type="Button" parent="Node2D/Window/Exit"]
+layout_mode = 2
+text = "No
+"
+
+[connection signal="body_entered" from="Background/Bookshelf/InteractionArea" to="." method="_on_interaction_area_body_entered"]
+[connection signal="body_entered" from="ExitArea" to="." method="_on_exit_area_body_entered"]
+[connection signal="pressed" from="Node2D/Window/Exit/Yes" to="." method="_on_yes_pressed"]
+[connection signal="pressed" from="Node2D/Window/Exit/No" to="." method="_on_no_pressed"]
