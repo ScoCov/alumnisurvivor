@@ -58,11 +58,9 @@ autostart = true
 
 [node name="Player" type="Node" parent="GameLogic"]
 
-[node name="StudentEntity" parent="GameLogic/Player" node_paths=PackedStringArray("game_logic", "global_projectile_container") instance=ExtResource("8_c8ydw")]
+[node name="StudentEntity" parent="GameLogic/Player" node_paths=PackedStringArray("global_projectile_container") instance=ExtResource("8_c8ydw")]
 position = Vector2(544, 336)
-game_logic = NodePath("../..")
 global_projectile_container = NodePath("../../ProjectileContainer")
-in_combat = true
 
 [node name="Camera2D" type="Camera2D" parent="GameLogic/Player/StudentEntity"]
 

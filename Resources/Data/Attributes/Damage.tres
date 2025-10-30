@@ -1,12 +1,14 @@
 [gd_resource type="Resource" script_class="AttributeResource" load_steps=2 format=3 uid="uid://gl46emysxfo3"]
 
-[ext_resource type="Script" uid="uid://cfnxcuwnotvhw" path="res://Scripts/Abstract Classes/Resource/AttributeResource.gd" id="1_5gtmw"]
+[ext_resource type="Script" uid="uid://cfnxcuwnotvhw" path="res://Scripts/Abstract Classes/Resource/attribute_resource.gd" id="1_5gtmw"]
 
 [resource]
 script = ExtResource("1_5gtmw")
 name = "Damage"
-id = "ATTRIBUTE_DAMAGE"
+id = "damage"
+ordinal = 2
 description = "Modifies the damage done by abilities."
+value = 0.0
 min_limit = 0.0
 max_limit = 0.0
 min_limit_active = false

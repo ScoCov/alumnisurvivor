@@ -1,0 +1,103 @@
+[gd_scene load_steps=6 format=3 uid="uid://dlx6bgpsdi00e"]
+
+[ext_resource type="Script" uid="uid://cji2jl0yve25u" path="res://Scenes/GameMenus/menu_background.gd" id="1_5pns2"]
+[ext_resource type="Texture2D" uid="uid://dtcox1uymld8h" path="res://Resources/Image/Backgrounds/Background.Layer1.png" id="2_rcbes"]
+
+[sub_resource type="Animation" id="Animation_10dcw"]
+resource_name = "Background_Movement"
+length = 30.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Background_layer1:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 15, 30),
+"transitions": PackedFloat32Array(1, 1, 2.37841),
+"update": 0,
+"values": [0.0, 3.14159, 6.28319]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Background_layer1:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 8, 24, 30),
+"transitions": PackedFloat32Array(1, 0.554786, 0.63728, 2.92817),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 2), Vector2(2, 1), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_2iv56"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Background_layer1:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Background_layer1:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bfn6s"]
+_data = {
+&"Background_Movement": SubResource("Animation_10dcw"),
+&"RESET": SubResource("Animation_2iv56")
+}
+
+[node name="Menu Background" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_5pns2")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_bfn6s")
+}
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.266667, 0.192157, 0.439216, 1)
+
+[node name="Background_layer1" type="Sprite2D" parent="."]
+position = Vector2(-78, 0)
+texture = ExtResource("2_rcbes")
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

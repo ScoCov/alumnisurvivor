@@ -1,12 +1,14 @@
 [gd_resource type="Resource" script_class="AttributeResource" load_steps=2 format=3 uid="uid://cncenkxh7c6ry"]
 
-[ext_resource type="Script" uid="uid://cfnxcuwnotvhw" path="res://Scripts/Abstract Classes/Resource/AttributeResource.gd" id="1_xn2vr"]
+[ext_resource type="Script" uid="uid://cfnxcuwnotvhw" path="res://Scripts/Abstract Classes/Resource/attribute_resource.gd" id="1_xn2vr"]
 
 [resource]
 script = ExtResource("1_xn2vr")
 name = "Pierce"
 id = "pierce"
+ordinal = 5
 description = ""
+value = 0.0
 min_limit = 0.0
 max_limit = 0.0
 min_limit_active = false

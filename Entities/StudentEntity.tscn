@@ -1,35 +1,62 @@
-[gd_scene load_steps=32 format=3 uid="uid://v1phrdf8cdqg"]
+[gd_scene load_steps=28 format=3 uid="uid://v1phrdf8cdqg"]
 
 [ext_resource type="Script" uid="uid://d0tuntxkjee38" path="res://Entities/StudentEntity.gd" id="1_cijec"]
-[ext_resource type="Script" uid="uid://djkkswc2cexv8" path="res://Scripts/Component/ExperienceComponent.gd" id="2_5mbnf"]
-[ext_resource type="Script" uid="uid://b61e3a07grfgy" path="res://Scripts/Component/HealthComponent.gd" id="2_e3u2s"]
-[ext_resource type="Script" uid="uid://c7p233d8bepea" path="res://Scripts/Component/MovementComponent.gd" id="3_1dsc0"]
-[ext_resource type="Script" uid="uid://7bb2hfqmjjse" path="res://Scripts/Component/AttackSpeedComponent.gd" id="4_el1nb"]
+[ext_resource type="Resource" uid="uid://be7tvpc2v1d3i" path="res://Resources/Data/Students/Bully.tres" id="2_gbsgn"]
 [ext_resource type="Script" uid="uid://t3mlm4ybio8c" path="res://Scripts/States/StateMachine.gd" id="4_jbidu"]
-[ext_resource type="Script" uid="uid://c384pkmf7xhlq" path="res://Scripts/States/Health/BarelyHurt.gd" id="4_kj4n1"]
-[ext_resource type="Script" uid="uid://c2pxvhg6bs4k7" path="res://Scripts/Component/CooldownComponent.gd" id="5_c5hdo"]
-[ext_resource type="Script" uid="uid://3kkssbssbwvs" path="res://Scripts/States/Player/PlayerIdle.gd" id="5_vaka8"]
-[ext_resource type="Script" uid="uid://dewrjlysa1v0t" path="res://Scripts/States/Health/NearDead.gd" id="5_ysqvb"]
-[ext_resource type="Script" uid="uid://ccsgji80asv7u" path="res://Scripts/Component/CriticalChanceComponent.gd" id="6_87ell"]
-[ext_resource type="Script" uid="uid://da332uoi8ujfa" path="res://Scripts/States/Health/FullHealth.gd" id="6_b51hn"]
-[ext_resource type="Script" uid="uid://icw1is6pi6hp" path="res://Scripts/States/Player/PlayerMoving.gd" id="6_ivuk0"]
-[ext_resource type="Script" uid="uid://cdja3chlcwekg" path="res://Scripts/Component/KnockbackComponent.gd" id="7_iv6hm"]
-[ext_resource type="Texture2D" uid="uid://tipd8jqpeh1b" path="res://Resources/Image/Temp/Greyknight_Doll.png" id="7_xli4a"]
-[ext_resource type="Script" uid="uid://4hpias2r4f70" path="res://Scripts/States/Health/Hurt.gd" id="7_y4755"]
-[ext_resource type="Script" uid="uid://cys3jqfaroho5" path="res://Scripts/States/Health/Dead.gd" id="8_dx2fw"]
-[ext_resource type="Script" uid="uid://bli88oag0sqnf" path="res://Scripts/Component/RangeComponent.gd" id="8_gbsgn"]
+[ext_resource type="Script" uid="uid://c384pkmf7xhlq" path="res://Scripts/States/Health/barely_hurt.gd" id="4_kj4n1"]
+[ext_resource type="Script" uid="uid://3kkssbssbwvs" path="res://Scripts/States/Movement/Player/player_idle_state.gd" id="5_vaka8"]
+[ext_resource type="Script" uid="uid://dewrjlysa1v0t" path="res://Scripts/States/Health/near_death.gd" id="5_ysqvb"]
+[ext_resource type="Script" uid="uid://da332uoi8ujfa" path="res://Scripts/States/Health/full_health.gd" id="6_b51hn"]
+[ext_resource type="Script" uid="uid://icw1is6pi6hp" path="res://Scripts/States/Movement/Player/player_moving_state.gd" id="6_ivuk0"]
+[ext_resource type="Script" uid="uid://4hpias2r4f70" path="res://Scripts/States/Health/hurt.gd" id="7_y4755"]
+[ext_resource type="Script" uid="uid://cys3jqfaroho5" path="res://Scripts/States/Health/dead.gd" id="8_dx2fw"]
 [ext_resource type="Script" uid="uid://cpwhsrq1ak3v5" path="res://Scripts/Abstract Classes/Item/ItemManager.gd" id="9_2jbb7"]
-[ext_resource type="Script" uid="uid://ctrb8ov6gpaok" path="res://Scripts/Component/DamageComponent.gd" id="9_71snr"]
-[ext_resource type="Script" uid="uid://dewaa6mmgmsaq" path="res://Scripts/States/Health/OverHealth.gd" id="9_gi4ri"]
-[ext_resource type="Script" uid="uid://hxcj02spua5a" path="res://Scripts/States/Health/VeryHurt.gd" id="10_1pn2y"]
-[ext_resource type="Script" uid="uid://clvlhjcomn2uj" path="res://Scripts/Component/DurationComponent.gd" id="10_c5hdo"]
-[ext_resource type="Script" uid="uid://b204l6p2m4x7q" path="res://Scripts/Component/pierce_component.gd" id="19_ysqvb"]
-[ext_resource type="Script" uid="uid://cc308ow00fk4j" path="res://Scripts/Component/bounce_component.gd" id="20_b51hn"]
-[ext_resource type="Script" uid="uid://d1qm26pgn370f" path="res://Scripts/Component/armor_component.gd" id="21_y4755"]
-[ext_resource type="Script" uid="uid://c25ybkxpj13cc" path="res://Scripts/Component/PickupRangeComponent.gd" id="22_dx2fw"]
+[ext_resource type="Script" uid="uid://dewaa6mmgmsaq" path="res://Scripts/States/Health/over_health.gd" id="9_gi4ri"]
+[ext_resource type="Script" uid="uid://hxcj02spua5a" path="res://Scripts/States/Health/very_hurt.gd" id="10_1pn2y"]
+[ext_resource type="Texture2D" uid="uid://c0ebqy6ydav7u" path="res://Resources/Image/Student/Head/Hair/Hair_02.png" id="16_71snr"]
+[ext_resource type="Texture2D" uid="uid://dtt7h2na2opvb" path="res://Resources/Image/Student/Body/Student_Body.png" id="27_gi4ri"]
+[ext_resource type="Texture2D" uid="uid://ckyqn1o6hh0i1" path="res://Resources/Image/Student/Head/Head_beta_2.png" id="28_1pn2y"]
+[ext_resource type="Texture2D" uid="uid://cu7gd5fyxh3ti" path="res://Resources/Image/Temp/Mouth_01.png" id="29_1pn2y"]
+[ext_resource type="Texture2D" uid="uid://va580vf1m0o7" path="res://Resources/Image/Student/Head/Eyebrows/Eyebrows_01.png" id="30_hj61p"]
+[ext_resource type="Texture2D" uid="uid://b1pkn4viaktqf" path="res://Resources/Image/Student/Head/Eyes/Eyes_02.png" id="31_ngr5b"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bj2gu"]
-radius = 24.0
+radius = 31.0644
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_muuk5"]
+radius = 32.1403
+
+[sub_resource type="GDScript" id="GDScript_iv6hm"]
+script/source = "class_name ExperienceComponent
+extends Node
+
+signal level_up
+
+
+##TODO: I need to make it so that if multiple levels of XP is some how gained
+## all those levels are added as well, and not just the first. 
+@export var level: int = 1
+## Increase growth of xp required to level. [log(xp_growth)]
+@export var xp_growth: int = 100
+@export var points_to_spend: int = 0
+
+@export var current_xp: float:
+	set(value):
+		current_xp = value
+		if current_xp >= next_level_xp:
+			current_xp -= next_level_xp
+			level += 1
+			level_up.emit()
+
+## Used purely for its' getter. This will return a log value using the xp_growth.
+var next_level_xp: float:
+	set(value): pass ## Do not let anyone set this value. It's caluclated.
+	get: 
+		return ceil(level * log(xp_growth))
+
+func gain_xp(experience_gain: float) -> void:
+	current_xp += experience_gain ## Add XP
+"
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_el1nb"]
 radius = 32.0
@@ -38,146 +65,156 @@ height = 120.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_rkqoy"]
 radius = 150.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_muuk5"]
+[sub_resource type="Animation" id="Animation_1pn2y"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Head:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-15.7, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Head:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-35.4, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
 
-[node name="StudentEntity" type="CharacterBody2D" node_paths=PackedStringArray("health")]
+[sub_resource type="Animation" id="Animation_gi4ri"]
+resource_name = "walk"
+loop_mode = 1
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Head:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(-15.7, -0.25, 0, 0.25, 0, -15.7, -0.25, 0, 0.25, 0, -15.7, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5, 0.99)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Head:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(-35.4, -0.25, 0, 0.25, 0, -46, -0.25, 0, 0.25, 0, -36, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5, 0.99)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_876pq"]
+_data = {
+&"RESET": SubResource("Animation_1pn2y"),
+&"walk": SubResource("Animation_gi4ri")
+}
+
+[node name="StudentEntity" type="CharacterBody2D"]
 slide_on_ceiling = false
 script = ExtResource("1_cijec")
-health = NodePath("Composition/Health")
+student = ExtResource("2_gbsgn")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_bj2gu")
 
-[node name="Composition" type="Node" parent="."]
+[node name="Pickup Area" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+monitorable = false
 
-[node name="Armor" type="Node" parent="Composition"]
-script = ExtResource("21_y4755")
-metadata/_custom_type_script = "uid://d1qm26pgn370f"
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pickup Area"]
+shape = SubResource("CircleShape2D_muuk5")
+debug_color = Color(0.531881, 0.570475, 1.92523e-07, 0.42)
 
-[node name="AttackSpeed" type="Node" parent="Composition"]
-script = ExtResource("4_el1nb")
-metadata/_custom_type_script = "uid://7bb2hfqmjjse"
+[node name="Data" type="Node" parent="."]
 
-[node name="Bounce" type="Node" parent="Composition"]
-script = ExtResource("20_b51hn")
-metadata/_custom_type_script = "uid://cc308ow00fk4j"
+[node name="Modifiers" type="Node" parent="Data"]
 
-[node name="Cooldown" type="Node" parent="Composition"]
-script = ExtResource("5_c5hdo")
-metadata/_custom_type_script = "uid://c2pxvhg6bs4k7"
+[node name="Experience" type="Node" parent="Data"]
+script = SubResource("GDScript_iv6hm")
 
-[node name="CriticalChance" type="Node" parent="Composition"]
-script = ExtResource("6_87ell")
-metadata/_custom_type_script = "uid://ccsgji80asv7u"
+[node name="Items" type="Node" parent="Data" node_paths=PackedStringArray("player")]
+script = ExtResource("9_2jbb7")
+player = NodePath("../..")
 
-[node name="Damage" type="Node" parent="Composition"]
-script = ExtResource("9_71snr")
-metadata/_custom_type_script = "uid://ctrb8ov6gpaok"
+[node name="States" type="Node" parent="Data"]
 
-[node name="Duration" type="Node" parent="Composition"]
-script = ExtResource("10_c5hdo")
-metadata/_custom_type_script = "uid://clvlhjcomn2uj"
+[node name="Health" type="Node" parent="Data/States"]
 
-[node name="Health" type="Node" parent="Composition"]
-script = ExtResource("2_e3u2s")
-base_value = 10000.0
-metadata/_custom_type_script = "uid://b61e3a07grfgy"
-
-[node name="StateMachine" type="Node" parent="Composition/Health" node_paths=PackedStringArray("initial_state")]
+[node name="StateMachine" type="Node" parent="Data/States/Health" node_paths=PackedStringArray("initial_state")]
 script = ExtResource("4_jbidu")
-initial_state = NodePath("FullHealth")
+initial_state = NodePath("full_health")
 
-[node name="FullHealth" type="Node" parent="Composition/Health/StateMachine" node_paths=PackedStringArray("entity")]
+[node name="full_health" type="Node" parent="Data/States/Health/StateMachine" node_paths=PackedStringArray("entity")]
 script = ExtResource("6_b51hn")
-entity = NodePath("../../../..")
+entity = NodePath("../../../../..")
 metadata/_custom_type_script = "uid://da332uoi8ujfa"
 
-[node name="BarelyHurt" type="Node" parent="Composition/Health/StateMachine" node_paths=PackedStringArray("entity")]
+[node name="barely_hurt" type="Node" parent="Data/States/Health/StateMachine" node_paths=PackedStringArray("entity")]
 script = ExtResource("4_kj4n1")
-entity = NodePath("../../../..")
+entity = NodePath("../../../../..")
 metadata/_custom_type_script = "uid://c384pkmf7xhlq"
 
-[node name="Dead" type="Node" parent="Composition/Health/StateMachine" node_paths=PackedStringArray("entity")]
+[node name="near_death" type="Node" parent="Data/States/Health/StateMachine" node_paths=PackedStringArray("entity")]
 script = ExtResource("5_ysqvb")
-entity = NodePath("../../../..")
+entity = NodePath("../../../../..")
 metadata/_custom_type_script = "uid://dewrjlysa1v0t"
 
-[node name="Hurt" type="Node" parent="Composition/Health/StateMachine" node_paths=PackedStringArray("entity")]
+[node name="hurt" type="Node" parent="Data/States/Health/StateMachine" node_paths=PackedStringArray("entity")]
 script = ExtResource("7_y4755")
-entity = NodePath("../../../..")
+entity = NodePath("../../../../..")
 metadata/_custom_type_script = "uid://4hpias2r4f70"
 
-[node name="NearDead" type="Node" parent="Composition/Health/StateMachine" node_paths=PackedStringArray("entity")]
+[node name="dead" type="Node" parent="Data/States/Health/StateMachine" node_paths=PackedStringArray("entity")]
 script = ExtResource("8_dx2fw")
-entity = NodePath("../../../..")
+entity = NodePath("../../../../..")
 metadata/_custom_type_script = "uid://cys3jqfaroho5"
 
-[node name="OverHealed" type="Node" parent="Composition/Health/StateMachine" node_paths=PackedStringArray("entity")]
+[node name="over_health" type="Node" parent="Data/States/Health/StateMachine" node_paths=PackedStringArray("entity")]
 script = ExtResource("9_gi4ri")
-entity = NodePath("../../../..")
+entity = NodePath("../../../../..")
 metadata/_custom_type_script = "uid://dewaa6mmgmsaq"
 
-[node name="VeryHurt" type="Node" parent="Composition/Health/StateMachine" node_paths=PackedStringArray("entity")]
+[node name="very_hurt" type="Node" parent="Data/States/Health/StateMachine" node_paths=PackedStringArray("entity")]
 script = ExtResource("10_1pn2y")
-entity = NodePath("../../../..")
+entity = NodePath("../../../../..")
 metadata/_custom_type_script = "uid://hxcj02spua5a"
 
-[node name="Knockback" type="Node" parent="Composition"]
-script = ExtResource("7_iv6hm")
-metadata/_custom_type_script = "uid://cdja3chlcwekg"
+[node name="Movement" type="Node" parent="Data/States"]
 
-[node name="MovementSpeed" type="Node" parent="Composition"]
-script = ExtResource("3_1dsc0")
-metadata/_custom_type_script = "uid://c7p233d8bepea"
-
-[node name="PickupRange" type="Node" parent="Composition"]
-script = ExtResource("22_dx2fw")
-base_value = 150.0
-metadata/_custom_type_script = "uid://c25ybkxpj13cc"
-
-[node name="Pierce" type="Node" parent="Composition"]
-script = ExtResource("19_ysqvb")
-metadata/_custom_type_script = "uid://b204l6p2m4x7q"
-
-[node name="Range" type="Node" parent="Composition"]
-script = ExtResource("8_gbsgn")
-base_value = 150.0
-metadata/_custom_type_script = "uid://bli88oag0sqnf"
-
-[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+[node name="StateMachine" type="Node" parent="Data/States/Movement" node_paths=PackedStringArray("initial_state")]
 script = ExtResource("4_jbidu")
-initial_state = NodePath("PlayerIdle")
+initial_state = NodePath("idle")
 
-[node name="PlayerIdle" type="Node" parent="StateMachine" node_paths=PackedStringArray("player")]
+[node name="idle" type="Node" parent="Data/States/Movement/StateMachine" node_paths=PackedStringArray("entity")]
 script = ExtResource("5_vaka8")
-player = NodePath("../..")
+entity = NodePath("../../../../..")
 
-[node name="PlayerMoving" type="Node" parent="StateMachine" node_paths=PackedStringArray("player")]
+[node name="moving" type="Node" parent="Data/States/Movement/StateMachine" node_paths=PackedStringArray("player")]
 script = ExtResource("6_ivuk0")
-player = NodePath("../..")
+player = NodePath("../../../../..")
 
-[node name="Sprite" type="Sprite2D" parent="."]
-light_mask = 0
-scale = Vector2(0.88, 0.88)
-texture = ExtResource("7_xli4a")
+[node name="Abilities Active" type="Node2D" parent="."]
 
-[node name="Ability1" type="Node2D" parent="."]
+[node name="Abilities Passive" type="Node2D" parent="."]
 
-[node name="Ability2" type="Node2D" parent="."]
-
-[node name="Ability3" type="Node2D" parent="."]
-
-[node name="Ability4" type="Node2D" parent="."]
+[node name="Abilities Trigger" type="Node2D" parent="."]
 
 [node name="InvulTimer" type="Timer" parent="."]
 wait_time = 0.5
-
-[node name="Label" type="Label" parent="."]
-offset_left = -24.0
-offset_top = -128.0
-offset_right = 24.0
-offset_bottom = -105.0
-horizontal_alignment = 1
 
 [node name="EnemyDetection" type="Area2D" parent="."]
 collision_layer = 2
@@ -196,30 +233,55 @@ monitorable = false
 shape = SubResource("CircleShape2D_rkqoy")
 debug_color = Color(0.547395, 0.403254, 1, 0.42)
 
-[node name="ExperienceCollector" type="Area2D" parent="."]
-collision_layer = 0
-collision_mask = 4
-monitorable = false
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ExperienceCollector"]
-shape = SubResource("CircleShape2D_muuk5")
-
-[node name="Experience" type="Node" parent="."]
-script = ExtResource("2_5mbnf")
-
-[node name="Items" type="Node" parent="." node_paths=PackedStringArray("player")]
-script = ExtResource("9_2jbb7")
-player = NodePath("..")
-
 [node name="SubAbilities" type="Node2D" parent="."]
 
 [node name="BestyAbility" type="Node2D" parent="."]
 
+[node name="Visuals" type="Node2D" parent="."]
+position = Vector2(3, -36)
+scale = Vector2(0.22, 0.22)
+
+[node name="StudentBody" type="Sprite2D" parent="Visuals"]
+position = Vector2(-16, 255)
+texture = ExtResource("27_gi4ri")
+
+[node name="Head" type="Sprite2D" parent="Visuals"]
+position = Vector2(-15.7, -35.4)
+texture = ExtResource("28_1pn2y")
+
+[node name="Hair" type="Sprite2D" parent="Visuals/Head"]
+position = Vector2(-4.75454, 0)
+scale = Vector2(0.887784, 1)
+texture = ExtResource("16_71snr")
+
+[node name="Eyebrows" type="Sprite2D" parent="Visuals/Head"]
+position = Vector2(-1.90735e-06, 13.6364)
+texture = ExtResource("30_hj61p")
+
+[node name="Eyes" type="Sprite2D" parent="Visuals/Head"]
+position = Vector2(0, 22.7272)
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("31_ngr5b")
+
+[node name="Mouth" type="Sprite2D" parent="Visuals/Head"]
+z_index = 1
+position = Vector2(-1.5, 62)
+scale = Vector2(1.25, 1.25)
+texture = ExtResource("29_1pn2y")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Visuals"]
+libraries = {
+&"": SubResource("AnimationLibrary_876pq")
+}
+
+[node name="BodyLagTimer" type="Timer" parent="Visuals"]
+wait_time = 0.2
+
 [connection signal="death" from="." to="." method="_on_death"]
 [connection signal="take_damage" from="." to="." method="_on_take_damage"]
+[connection signal="body_entered" from="Pickup Area" to="." method="experience_collector"]
 [connection signal="timeout" from="InvulTimer" to="." method="_on_invul_timer_timeout"]
 [connection signal="body_entered" from="EnemyDetection" to="." method="_on_enemy_detection_body_entered"]
 [connection signal="body_exited" from="EnemyDetection" to="." method="_on_enemy_detection_body_exited"]
 [connection signal="body_entered" from="PickUpDetection" to="." method="experience_detection_entered"]
 [connection signal="body_exited" from="PickUpDetection" to="." method="experience_detection_exit"]
-[connection signal="body_entered" from="ExperienceCollector" to="." method="experience_collector"]

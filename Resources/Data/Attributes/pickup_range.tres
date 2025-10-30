@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="AttributeResource" load_steps=2 format=3 uid="uid://dvx88scshq1lb"]
+
+[ext_resource type="Script" uid="uid://cfnxcuwnotvhw" path="res://Scripts/Abstract Classes/Resource/attribute_resource.gd" id="1_523h5"]
+
+[resource]
+script = ExtResource("1_523h5")
+name = "Pickup Range"
+id = "pickup_range"
+ordinal = 5
+description = ""
+value = 0.0
+min_limit = 0.0
+max_limit = 0.0
+min_limit_active = false
+max_limit_active = false
+metadata/_custom_type_script = "uid://cfnxcuwnotvhw"

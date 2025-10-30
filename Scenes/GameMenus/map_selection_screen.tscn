@@ -1,0 +1,57 @@
+[gd_scene load_steps=3 format=3 uid="uid://ba64icrb136is"]
+
+[ext_resource type="Script" uid="uid://deo34nh0n0lmn" path="res://Scenes/GameMenus/map_selection_screen.gd" id="1_jpjye"]
+[ext_resource type="PackedScene" uid="uid://dlx6bgpsdi00e" path="res://Scenes/GameMenus/menu_background.tscn" id="2_fpf1l"]
+
+[node name="MapSelectionScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_jpjye")
+
+[node name="Menu Background" parent="." instance=ExtResource("2_fpf1l")]
+layout_mode = 1
+
+[node name="Back" type="Button" parent="."]
+layout_mode = 0
+anchor_left = 0.0130208
+anchor_top = 0.0231481
+anchor_right = 0.0598958
+anchor_bottom = 0.0709877
+text = "Back"
+metadata/_edit_use_anchors_ = true
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1024.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Control/MarginContainer"]
+layout_mode = 2
+follow_focus = true
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 2
+
+[node name="Maps" type="VBoxContainer" parent="Control/MarginContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 3
+alignment = 1
+
+[connection signal="pressed" from="Back" to="." method="_on_back_pressed"]

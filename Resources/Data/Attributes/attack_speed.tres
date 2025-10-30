@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="AttributeResource" load_steps=2 format=3 uid="uid://clct1lsc7c8iq"]
+
+[ext_resource type="Script" uid="uid://cfnxcuwnotvhw" path="res://Scripts/Abstract Classes/Resource/attribute_resource.gd" id="1_3lqxf"]
+
+[resource]
+script = ExtResource("1_3lqxf")
+name = "Attack Speed"
+id = "attack_speed"
+ordinal = 3
+description = "Controls Student's Health"
+value = 0.0
+min_limit = 0.0
+max_limit = 0.0
+min_limit_active = false
+max_limit_active = false

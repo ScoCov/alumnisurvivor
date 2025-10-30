@@ -5,11 +5,6 @@ extends Node
 ## Any constant that need to be repeatedly refered to will also be located in this file. 
 #endregion
 
-const resource_src: String = "res://Resources/"
-const data_src: String = "res://Resources/Data"
-const img_src: String = "res://Resource/Image"
-const music_src: String = "res://Resource/Music"
-const sfx_src: String = "res://Resource/SFX"
 
 func get_scalar_ratio_to_window(key: String, value: float):
 	assert( key.to_lower() == 'x' || 'y', "Key must be \'x\' or \'y\'.")

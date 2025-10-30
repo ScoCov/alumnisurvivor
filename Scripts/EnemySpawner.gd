@@ -31,7 +31,7 @@ var list_of_available_enemies: Array[EnemyResource] = Global.ENEMY_ROSTER
 var loaded_enemies: Array[PackedScene]
 
 func _ready() -> void:
-	spawn_timer.timeout.connect(spawn_enemy)
+	#spawn_timer.timeout.connect(spawn_enemy)
 	spawn_timer.start()
 	
 func spawn_enemy() -> void:

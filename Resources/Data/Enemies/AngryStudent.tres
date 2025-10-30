@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="EnemyResource" load_steps=3 format=3 uid="uid://di2650m15gkxw"]
 
 [ext_resource type="Texture2D" uid="uid://diks4x6brrsfm" path="res://Resources/Image/Temp/Orc.png" id="1_66y0s"]
-[ext_resource type="Script" uid="uid://ckklwqmrrbi60" path="res://Scripts/Abstract Classes/Resource/EnemyResource.gd" id="2_f4bs8"]
+[ext_resource type="Script" uid="uid://ckklwqmrrbi60" path="res://Scripts/Abstract Classes/Resource/enemy_resource.gd" id="2_f4bs8"]
 
 [resource]
 script = ExtResource("2_f4bs8")

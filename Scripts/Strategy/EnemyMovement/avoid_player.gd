@@ -1,5 +1,5 @@
 class_name EnemyMovementAvoidPlayer
-extends EnemyMovementStyle
+extends EnemyMovementStrategy
 
 
 func update(enemy: EnemyEntity, _delta: float):

@@ -1,12 +1,14 @@
 [gd_resource type="Resource" script_class="AttributeResource" load_steps=2 format=3 uid="uid://mno0drh8g3i8"]
 
-[ext_resource type="Script" uid="uid://cfnxcuwnotvhw" path="res://Scripts/Abstract Classes/Resource/AttributeResource.gd" id="1_41a2q"]
+[ext_resource type="Script" uid="uid://cfnxcuwnotvhw" path="res://Scripts/Abstract Classes/Resource/attribute_resource.gd" id="1_ehxt8"]
 
 [resource]
-script = ExtResource("1_41a2q")
+script = ExtResource("1_ehxt8")
 name = "Range"
-id = "ATTRIBUTE_RANGE"
+id = "range"
+ordinal = 4
 description = "Alters the how far your abilities will travel or spread. If range is on a melee weapon its' effect will be half as effective."
+value = 0.0
 min_limit = 0.0
 max_limit = 0.0
 min_limit_active = false

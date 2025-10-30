@@ -39,6 +39,10 @@ var ENEMY_ROSTER: Array[EnemyResource]
 #endregion
 var SELECTED_STUDENT: StudentResource
 
+var SELECTED_BESTY: StudentResource
+
+var SELECTED_MAP: Map_Resource
+
 #region NOTE:
 ##
 #endregion
@@ -54,37 +58,78 @@ var ABILITIES: Array[AbilityResource]
 #endregion
 var ATTRIBUTES: Array[AttributeResource]
 
+#region Note:
+##
+#endregion
+var MAPS: Array[Map_Resource]
+
+#region Note:
+##
+#endregion
+var load_mouths_array: Array[Variant]
+var MOUTHS: Array[Texture]
+var load_eyes_array: Array[Variant]
+var EYES: Array[Texture]
+var load_eyebrows_array: Array[Variant]
+var EYEBROWS: Array[Texture]
+var load_hair_array: Array[Variant]
+var HAIR: Array[Texture]
 
 #region NOTE:
 ## Tags will be applied to various objects, concepts, and anything we need to associated something
 ## with a group. These tags will be used eventually to help influence the drops that a player will see.
-## Example: If a Player has a "Drama" tag, they are likely to see to Items or Abilities that share the
-## "Drama" tag.
 #endregion
-#enum tag {Ranged, Tank, Player, Besty, Enemy, Band, Drama, Sports, Nerd, Popular, Outcast, Debug}
+
 enum meta_tag {Player, Besty, Enemy, Debug}
-enum student_tag {New_Kid, Thespian, Musician, Athlete, Studious, Deliquent}
+enum student_tag {Arts, Sciences, Sports, Socialite}
 enum item_tag {Sports, Fitness, Popularity, Technology, Clothing, Jewlery, }
-enum enemy_tag {Elite, Boss, Normal, Weak, Heavy}
-enum combat_tag {Ranged, Tank, Melee, Glass_Cannon, Balanced, Fast, }
-enum attack_tag {Unarmed, Weapon, Sound, Fire, Shock, Cold}
+enum enemy_tag {Elite, Boss, Normal, Weak, Heavy, Ranged, Charge_Up, Rush_Down}
+enum combat_tag { Ranged, Tank, Melee, Glass_Cannon, Balanced, Fast }
+enum attack_tag { Unarmed, Weapon, Sound, Fire, Shock, Cold }
+enum map_tag { Present, Past, Easy, Medium, Hard, Gimmick, Navigation }
 
 func _ready():
 	@warning_ignore("static_called_on_instance")
 	load_objects(Configuration.get_dir("student"), STUDENT_ROSTER)
 	@warning_ignore("static_called_on_instance")
 	load_objects(Configuration.get_dir("attribute"), ATTRIBUTES)
-	#print(ATTRIBUTES.map(func(e): return e.name))
 	@warning_ignore("static_called_on_instance")
 	load_objects(Configuration.get_dir("enemy"), ENEMY_ROSTER)
 	@warning_ignore("static_called_on_instance")
 	load_objects(Configuration.get_dir("ability"), ABILITIES)
 	@warning_ignore("static_called_on_instance")
 	load_objects(Configuration.get_dir("item"), ITEM_COLLECTION)
+	@warning_ignore("static_called_on_instance")
+	load_objects(Configuration.get_dir("mouth"), load_mouths_array)
+	@warning_ignore("static_called_on_instance")
+	load_objects(Configuration.get_dir("eyes"), load_eyes_array)
+	@warning_ignore("static_called_on_instance")
+	load_objects(Configuration.get_dir("eyebrows"), load_eyebrows_array)
+	@warning_ignore("static_called_on_instance")
+	load_objects(Configuration.get_dir("hair"), load_hair_array)
+	@warning_ignore("static_called_on_instance")
+	load_objects(Configuration.get_dir("map"), MAPS)
+	
+	## Load in the Images
+	load_textures(load_mouths_array, MOUTHS)
+	load_textures(load_eyes_array, EYES)
+	load_textures(load_eyebrows_array, EYEBROWS)
+	load_textures(load_hair_array, HAIR)
+	
+	## Sorting Sections
+	ATTRIBUTES.sort_custom(func(a,b): return a.ordinal < b.ordinal )
+	STUDENT_ROSTER.sort_custom(func(a,b): return a.ordinal > b.ordinal )
 	if len(STUDENT_ROSTER) > 1: ## If there's at least two students in the roster assign default students.
 		SELECTED_STUDENT = STUDENT_ROSTER[0]
+		SELECTED_BESTY = STUDENT_ROSTER[1]
+		
+func load_textures( array_to_load_from, variable_to_store_texture_set):
+	for path_item in array_to_load_from: ## Directly loading in images doesn't work, we need to filter out
+		var path = path_item.get_path()
+		variable_to_store_texture_set.append(load(path))
 	
 func load_objects(_dir: String, variable: Variant):
 	var files = DirAccess.get_files_at(_dir) ## The folder that has all the Students
 	for file  in files: ## Iterate through the folder for each Student in it and add that student to the roster.
-		variable.append(load(_dir + file))
+		if not ".import" in file: 
+			variable.append(load(_dir + file))

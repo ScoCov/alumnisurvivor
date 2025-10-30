@@ -1,0 +1,36 @@
+[gd_resource type="Resource" script_class="StudentResource" load_steps=6 format=3 uid="uid://dtywod7hdge6p"]
+
+[ext_resource type="Texture2D" uid="uid://doicw3e1bmkir" path="res://Resources/Image/Student/Head/Eyebrows/Eyebrows_02.png" id="1_agmfv"]
+[ext_resource type="Texture2D" uid="uid://b1pkn4viaktqf" path="res://Resources/Image/Student/Head/Eyes/Eyes_02.png" id="2_l2in4"]
+[ext_resource type="Texture2D" uid="uid://c0ebqy6ydav7u" path="res://Resources/Image/Student/Head/Hair/Hair_02.png" id="3_65s0y"]
+[ext_resource type="Texture2D" uid="uid://dodtenrfxir4x" path="res://Resources/Image/Student/Head/Mouth/Mouth_06.png" id="4_65s0y"]
+[ext_resource type="Script" uid="uid://40jgn8mckuc1" path="res://Scripts/Abstract Classes/Resource/student_resource.gd" id="5_7us53"]
+
+[resource]
+script = ExtResource("5_7us53")
+student_name = "Academic"
+file_name = "Academic"
+ordinal = 1
+health = 10.0
+armor = 0.0
+attack_speed = 1.0
+bounce = 0.0
+cooldown = 0.0
+critical_chance = 0.3
+critical_damage = 0.0
+damage = 0.0
+duration = 0.0
+knockback = 0.0
+dodge = 0.0
+movement_speed = 1.0
+pierce = 0.0
+pickup_range = 0.0
+range = 0.0
+hair = ExtResource("3_65s0y")
+eyebrows = ExtResource("1_agmfv")
+eyes = ExtResource("2_l2in4")
+mouth = ExtResource("4_65s0y")
+unlocked = true
+student_tags = Array[int]([3])
+meta_tags = Array[int]([])
+combat_tags = Array[int]([0])

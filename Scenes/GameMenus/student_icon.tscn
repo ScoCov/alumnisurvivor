@@ -1,0 +1,144 @@
+[gd_scene load_steps=12 format=3 uid="uid://dus2k8551fqf8"]
+
+[ext_resource type="Theme" uid="uid://dtoedfkuckej4" path="res://Resources/Image/UI/Themes/menu_theme.tres" id="1_gvwp4"]
+[ext_resource type="Script" uid="uid://c0s620s2lvujy" path="res://Scenes/GameMenus/student_icon.gd" id="1_notm7"]
+[ext_resource type="Resource" uid="uid://bqrarylfmicoh" path="res://Resources/Data/Students/Nerd.tres" id="2_fk38g"]
+[ext_resource type="Texture2D" uid="uid://ckyqn1o6hh0i1" path="res://Resources/Image/Student/Head/Head_beta_2.png" id="2_notm7"]
+[ext_resource type="Texture2D" uid="uid://va580vf1m0o7" path="res://Resources/Image/Student/Head/Eyebrows/Eyebrows_01.png" id="3_fk38g"]
+[ext_resource type="Texture2D" uid="uid://cfg4vqlg36ofq" path="res://Resources/Image/Student/Head/Hair/Hair_01.png" id="4_o4rpc"]
+[ext_resource type="Texture2D" uid="uid://b5dlojhwtpkpo" path="res://Resources/Image/Student/Head/Eyes/Eyes_01.png" id="5_6ynmj"]
+[ext_resource type="Texture2D" uid="uid://cnaemm3wrn3ka" path="res://Resources/Image/Student/Head/Mouth/Mouth_01.png" id="6_mv02y"]
+[ext_resource type="AudioStream" uid="uid://dmdfma2dtee3l" path="res://Resources/SFX/low_medium_beep.mp3" id="9_o4rpc"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fk38g"]
+draw_center = false
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0.96, 0.77856, 0.1824, 0.768627)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o4rpc"]
+bg_color = Color(0.0807834, 0.0807833, 0.0807833, 0.701961)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[node name="StudentIcon" type="Control"]
+clip_contents = true
+custom_minimum_size = Vector2(96, 128)
+layout_mode = 3
+anchor_right = 0.0555556
+anchor_bottom = 0.0987654
+offset_right = -64.0
+offset_bottom = -64.0
+focus_mode = 1
+mouse_default_cursor_shape = 2
+script = ExtResource("1_notm7")
+student = ExtResource("2_fk38g")
+metadata/_edit_use_anchors_ = true
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("1_gvwp4")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+mouse_force_pass_scroll_events = false
+
+[node name="HeadBeta2" type="Sprite2D" parent="Control"]
+scale = Vector2(0.33, 0.33)
+texture = ExtResource("2_notm7")
+
+[node name="Hair01" type="Sprite2D" parent="Control/HeadBeta2"]
+scale = Vector2(0.888, 1)
+texture = ExtResource("4_o4rpc")
+
+[node name="Eyebrows01" type="Sprite2D" parent="Control/HeadBeta2"]
+texture = ExtResource("3_fk38g")
+
+[node name="Eyes01" type="Sprite2D" parent="Control/HeadBeta2"]
+texture = ExtResource("5_6ynmj")
+
+[node name="Mouth01" type="Sprite2D" parent="Control/HeadBeta2"]
+position = Vector2(0, 50)
+texture = ExtResource("6_mv02y")
+
+[node name="Focus Border" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("1_gvwp4")
+theme_override_styles/panel = SubResource("StyleBoxFlat_fk38g")
+
+[node name="Disabled Filter" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("1_gvwp4")
+theme_override_styles/panel = SubResource("StyleBoxFlat_o4rpc")
+
+[node name="LowMediumBeep" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_o4rpc")
+volume_db = -5.0
+
+[node name="Selected as Student" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Selected as Student"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.332604
+anchor_right = 0.997638
+anchor_bottom = 0.332604
+offset_top = 23.9266
+offset_right = 0.226746
+offset_bottom = 46.9266
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.479966
+theme_override_colors/font_color = Color(1, 0, 0, 0.92549)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0.505344, 0.505344, 0.505344, 1)
+theme_override_constants/outline_size = 2
+text = "PLAYER!"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[connection signal="focus_entered" from="." to="." method="_on_focus_entered"]
+[connection signal="focus_exited" from="." to="." method="_on_focus_exited"]

@@ -1,5 +1,5 @@
 class_name EnemyMovementToPlayer
-extends EnemyMovementStyle
+extends EnemyMovementStrategy
 
 
 

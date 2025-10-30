@@ -21,6 +21,5 @@ const MAXIMUM_STACK = 999
 			limit = item.max_count
 		return clamp(count, 0, limit)
 
-
 func _to_string():
 	return "Item: %s (x%s) " % [item.item_name, count]

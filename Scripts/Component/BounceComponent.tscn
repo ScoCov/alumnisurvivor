@@ -1,7 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://dnnhvsvu5ggwx"]
-
-[ext_resource type="Script" uid="uid://cc308ow00fk4j" path="res://Scripts/Component/bounce_component.gd" id="1_ndj6n"]
-
-[node name="BounceComponent" type="Node"]
-script = ExtResource("1_ndj6n")
-metadata/_custom_type_script = "uid://bll2lkcqu5cpf"

@@ -18,7 +18,7 @@ var _xp_node_scene: PackedScene = preload("res://Entities/ExperienceEntity.tscn"
 @export var player_disntance_max: float = 500
 
 ## Define Enemy Movement Behavior.
-@onready var movement_type: EnemyMovementStyle = EnemyMovementStyle.load_movement_type(resource.move_style)
+@onready var movement_type: EnemyMovementStrategy = EnemyMovementStrategy.load_movement_type(resource.move_style)
 @onready var health = $Composition/Health
 var global_projectile_container: Node ## Easy way to pass this object down to Abiltiies so when they spawn objects they are independent of the user.
 

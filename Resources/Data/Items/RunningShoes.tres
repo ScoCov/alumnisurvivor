@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="ItemResource" load_steps=7 format=3 uid="uid://bmonc576e0861"]
 
-[ext_resource type="Script" uid="uid://4pylfu4f1res" path="res://Scripts/Abstract Classes/Resource/ItemResource.gd" id="1_bqs6b"]
-[ext_resource type="Resource" uid="uid://b7lj25emughbo" path="res://Resources/Data/Attributes/MovementSpeed.tres" id="1_wdtyp"]
+[ext_resource type="Script" uid="uid://4pylfu4f1res" path="res://Scripts/Abstract Classes/Resource/item_resource.gd" id="1_bqs6b"]
+[ext_resource type="Resource" uid="uid://b7lj25emughbo" path="res://Resources/Data/Attributes/movement_speed.tres" id="1_wdtyp"]
 [ext_resource type="Script" uid="uid://dipwxgdjv64sc" path="res://Scripts/Abstract Classes/Item/ItemBonus.gd" id="2_cxtko"]
 [ext_resource type="Script" uid="uid://cynxbgsviuomx" path="res://Scripts/Abstract Classes/Item/ItemBonusAttribute.gd" id="3_vdljf"]
 [ext_resource type="Texture2D" uid="uid://y2eb8r33otgp" path="res://Resources/Image/Temp/Items/shoe_32x32.png" id="4_hb58f"]

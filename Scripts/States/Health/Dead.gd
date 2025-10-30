@@ -1,4 +1,4 @@
-class_name NearDeadState
+class_name DeadState
 extends HealthState
 
 
@@ -13,9 +13,9 @@ func exit() -> void:
 ##	Call every frame drawn
 func update(_delta) -> void:
 	if entity.health.current_health < 1:
-		Transitioned.emit(self, "Dead")
+		Transitioned.emit(self, "dead")
 	elif entity.health.current_health / entity.health.max_health >= 0.25:
-		Transitioned.emit(self, "VeryHurt")
+		Transitioned.emit(self, "very_hurt")
 
 ##	Call every physics tick which can be seperate from the frames being drawn.
 func physics_update(_delta)-> void:

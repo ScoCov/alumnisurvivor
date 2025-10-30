@@ -7,14 +7,13 @@ signal update
 	set(value):
 		player = value
 		$Control/Label.text = player.student.student_name
-		$Image/CenterPoint/Sprite2D.texture = player.student.icon
+		#$Image/CenterPoint/Sprite2D.texture = player.student.icon
 	get:
 		return player
 @export var timer: Timer
 @export var game_logic: GameLogic
 const MAX_TIME_LIMIT: int = 300 #in seconds
 var hud_item_scene = preload("res://Scenes/HUD/hud_item.tscn")
-
 
 func _process(_delta):
 	update_health()
@@ -30,9 +29,9 @@ func update_experience():
 
 func update_health() -> void:
 	if not player: return
-	$Control/Control/VBoxContainer/Health/Label.text = "%s / %s" % [player.get_node("Composition/Health").current_health , player.get_node("Composition/Health").max_health  ]
-	$Control/Control/VBoxContainer/Health.value = player.get_node("Composition/Health").current_health
-	$Control/Control/VBoxContainer/Health.max_value = player.get_node("Composition/Health").max_health
+	$Control/Control/VBoxContainer/Health/Label.text = "%s / %s" % [player.health.current_health , player.health.max_health  ]
+	$Control/Control/VBoxContainer/Health.value = player.health.current_health
+	$Control/Control/VBoxContainer/Health.max_value = player.health.max_health
 	
 	
 func update_win_condition()->void:
