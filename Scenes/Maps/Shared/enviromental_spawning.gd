@@ -1,0 +1,16 @@
+extends Node2D
+
+const grass_sprite_texture:= preload("res://Resources/Image/Environment/grass_blades_01_32x32.png")
+const large_grass_packed_scene:= preload("res://Entities/Enviromental/large_grass.tscn")
+
+@export var spawn_area: Vector2
+
+func _ready():
+	for grass_sprite in 75:
+		#var new_sprite2d:= Sprite2D.new()
+		#new_sprite2d.texture = grass_sprite_texture
+		#new_sprite2d.y_sort_enabled = true
+		#new_sprite2d.position = Vector2(randf_range(0, spawn_area.x), randf_range(0, spawn_area.y))
+		var new_grass := large_grass_packed_scene.instantiate()
+		new_grass.position = Vector2(randf_range(0, spawn_area.x), randf_range(0, spawn_area.y))
+		add_child(new_grass)

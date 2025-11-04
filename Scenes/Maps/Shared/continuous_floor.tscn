@@ -1,0 +1,44 @@
+[gd_scene load_steps=7 format=3 uid="uid://bh2ur6pblyj8n"]
+
+[ext_resource type="Texture2D" uid="uid://ca37pmu5jk5pq" path="res://Resources/Image/Backgrounds/grass_floor_02_720x540.png" id="2_c740n"]
+[ext_resource type="Shader" uid="uid://cyjdmut1mcguy" path="res://Scenes/Maps/Shared/noise_generator_floor.tres" id="2_pqjnj"]
+[ext_resource type="Script" uid="uid://n3b37n1idxy4" path="res://Scenes/Maps/Shared/enviromental_spawning.gd" id="3_ssaib"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ssaib"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_pqjnj"]
+seamless = true
+normalize = false
+noise = SubResource("FastNoiseLite_ssaib")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_27dhq"]
+shader = ExtResource("2_pqjnj")
+shader_parameter/tex_frg_2 = SubResource("NoiseTexture2D_pqjnj")
+
+[node name="background_continuous_floor_grass" type="ParallaxBackground"]
+
+[node name="Grass Floor Layer" type="ParallaxLayer" parent="."]
+y_sort_enabled = true
+motion_mirroring = Vector2(1500, 750)
+
+[node name="GrassFloor" type="Sprite2D" parent="Grass Floor Layer"]
+position = Vector2(-112, -54)
+scale = Vector2(1.56667, 1.4037)
+texture = ExtResource("2_c740n")
+centered = false
+
+[node name="Noise Layer" type="ParallaxLayer" parent="."]
+motion_mirroring = Vector2(1500, 650)
+
+[node name="ColorRect" type="ColorRect" parent="Noise Layer"]
+material = SubResource("ShaderMaterial_27dhq")
+offset_right = 1500.0
+offset_bottom = 650.0
+
+[node name="Noise Layer2" type="ParallaxLayer" parent="."]
+motion_mirroring = Vector2(3000, 2500)
+
+[node name="Enviromental" type="Node2D" parent="Noise Layer2"]
+y_sort_enabled = true
+script = ExtResource("3_ssaib")
+spawn_area = Vector2(3000, 2500)

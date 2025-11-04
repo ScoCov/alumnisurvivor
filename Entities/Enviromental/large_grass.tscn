@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://d3xrtjtmsgoge"]
+
+[ext_resource type="Texture2D" uid="uid://dg6abqror4cc" path="res://Resources/Image/Environment/grass_blades_01_32x32.png" id="2_crro6"]
+
+[node name="LargeGrass" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="GrassBlades0164x64" type="Sprite2D" parent="."]
+texture = ExtResource("2_crro6")

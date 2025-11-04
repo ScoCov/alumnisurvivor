@@ -26,7 +26,7 @@ func populate_student_roster() -> void:
 
 func update_student_doll(student: StudentResource):
 	var attribute_container = $"Stats Menu/MarginContainer/VSplitContainer/ScrollContainer/Attributes"
-	student_entity.doll_update(student)
+	student_entity.student_update(student)
 	$"Doll Container/RichTextLabel".text = "%s" % student.student_name
 	for row in attribute_container.get_children():
 		row.queue_free()

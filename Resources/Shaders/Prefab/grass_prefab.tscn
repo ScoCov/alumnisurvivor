@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://cvi5bt5iauhy8"]
+
+[ext_resource type="Shader" uid="uid://cflq7qhfwpqp8" path="res://Resources/Shaders/grass.shader.gdshader" id="1_sl06p"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3jdme"]
+shader = ExtResource("1_sl06p")
+shader_parameter/detection_color = Color(1, 1, 1, 1)
+shader_parameter/detection_color_2 = Color(1, 1, 1, 1)
+shader_parameter/modify_color = Color(1, 0, 1, 1)
+shader_parameter/mix_intensity = 1.0
+shader_parameter/palette_size = 5.0
+shader_parameter/palette_step = 32.0
+
+[node name="ColorRect" type="ColorRect"]
+material = SubResource("ShaderMaterial_3jdme")
+offset_left = 72.0
+offset_top = -72.0
+offset_right = 112.0
+offset_bottom = -32.0

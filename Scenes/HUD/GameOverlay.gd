@@ -3,58 +3,65 @@ class_name GameOverlay
 
 signal update
 
+## Place the GameLogic's current active StudentEntity character. The player variable
+## will be use to update the health, experience, and many other aspects of the game ui. 
 @export var player: StudentEntity:
 	set(value):
 		player = value
-		$Control/Label.text = player.student.student_name
-		#$Image/CenterPoint/Sprite2D.texture = player.student.icon
 	get:
 		return player
+		
+## Assign the GameLogic's "Game Time" Timer to show how much time is left or has passed.
 @export var timer: Timer
-@export var game_logic: GameLogic
-const MAX_TIME_LIMIT: int = 300 #in seconds
-var hud_item_scene = preload("res://Scenes/HUD/hud_item.tscn")
 
+func _ready() -> void:
+	update_student_ui()
+
+##TODO: Need to replace the process updating constantly.
+## I can probably create a signal to update the ui.
 func _process(_delta):
-	update_health()
-	update_experience()
-	update_win_condition()
+	update_timer()
 
+## Update the visual and text-based aspects related to the Student and Besty 
+## that is currently assigned in the Global Script. [Global.SELECTED_STUDENT, 
+## Global.SELECTED_BESTY]
+func update_student_ui() -> void:
+	##Student
+	$"Control/Student Name".text = "Student: %s" % Global.SELECTED_STUDENT.student_name
+	$Image/Control/Student/Hair01.texture = Global.SELECTED_STUDENT.hair
+	$Image/Control/Student/Eyebrows01.texture = Global.SELECTED_STUDENT.eyebrows
+	$Image/Control/Student/Eyes01.texture = Global.SELECTED_STUDENT.eyes
+	$Image/Control/Student/Mouth01.texture = Global.SELECTED_STUDENT.mouth
+	##Besty
+	$"Control/Besty Name".text = "Besty: %s" % Global.SELECTED_BESTY.student_name
+	$Image/Control/Besty/Hair01.texture = Global.SELECTED_BESTY.hair
+	$Image/Control/Besty/Eyebrows01.texture = Global.SELECTED_BESTY.eyebrows
+	$Image/Control/Besty/Eyes01.texture = Global.SELECTED_BESTY.eyes
+	$Image/Control/Besty/Mouth01.texture = Global.SELECTED_BESTY.mouth
+
+
+
+##TODO: Need to update once StudentEntity is fully updated.
 func update_experience():
-	$Control/Control/VBoxContainer/Experience.value = player.experience.current_xp
-	$Control/Control/VBoxContainer/Experience.max_value =  player.experience.next_level_xp
-	$Control/Control/VBoxContainer/Experience/Label.text = "(Lvl. %s) %s / %s" % [str(player.experience.level), 
-																				str(player.experience.current_xp),
-																				str(player.experience.next_level_xp)]
-
-func update_health() -> void:
+	var experience_bar_text = $"Control/Control/VBoxContainer/Experience/Experience Bar Text"
+	experience_bar_text.text = "Error!" 
+	
 	if not player: return
-	$Control/Control/VBoxContainer/Health/Label.text = "%s / %s" % [player.health.current_health , player.health.max_health  ]
-	$Control/Control/VBoxContainer/Health.value = player.health.current_health
-	$Control/Control/VBoxContainer/Health.max_value = player.health.max_health
+	experience_bar_text.text = ("Level: %s\t\t\t%s needed to level up!" % 
+		[player.experience.level, 
+		str(player.experience.next_level_xp - player.experience.current_xp)])
+		
+##TODO: Need to update once StudentEntity is fully updated.
+func update_health() -> void:
+	var health_bar_text = $"Control/Control/VBoxContainer/Health/Health Bar Text"
+	health_bar_text.text = "Error!"
 	
-	
-func update_win_condition()->void:
+	if not player: return
+	health_bar_text.text =("%s / %s" % 
+	[player.health.current_health, player.health.max_health])
+
+## Updates the game time.
+func update_timer()->void:
 	if timer:
 		$WinConditions/ProgressBar.max_value = timer.wait_time
 		$WinConditions/ProgressBar.value = timer.time_left
-
-
-func _on_update():
-	if player:
-		for item_stack: ItemStack in player.items.get_children():
-			## If there is a HudItem that already exists that contains a item_stack
-			if $Items/GridContainer.get_children().any(func(node): 
-				return node.item_stack.item.item_name == item_stack.item.item_name):
-				var hud_item: HudItem = $Items/GridContainer.get_children().filter(func(node): 
-					if node.item_stack.item.item_name == item_stack.item.item_name: return node)[0]
-				#var hud_item_name = hud_item.item_stack.item.item_name
-				#var item_stack_name = item_stack.item.item_name
-				if hud_item is HudItem :
-					if hud_item.has_method("update"):
-						hud_item.item_stack = item_stack
-						hud_item.update()
-			else:
-				var new_hud_item:= hud_item_scene.instantiate()
-				new_hud_item.item_stack = item_stack
-				$Items/GridContainer.add_child(new_hud_item)

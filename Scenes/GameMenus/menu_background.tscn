@@ -70,6 +70,8 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -2.0
+offset_right = -2.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_5pns2")
@@ -97,7 +99,7 @@ grow_vertical = 2
 color = Color(0.266667, 0.192157, 0.439216, 1)
 
 [node name="Background_layer1" type="Sprite2D" parent="."]
-position = Vector2(-78, 0)
+position = Vector2(-384, -24)
 texture = ExtResource("2_rcbes")
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

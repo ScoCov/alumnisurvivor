@@ -1,0 +1,84 @@
+[gd_scene load_steps=9 format=3 uid="uid://dxs4mstvhwgv"]
+
+[ext_resource type="Script" uid="uid://tdi4enpef6wx" path="res://Scenes/Maps/temp.gd" id="1_8es3b"]
+[ext_resource type="Script" uid="uid://dy7n5gmkswm47" path="res://Scripts/GameLogic.gd" id="1_ujiyw"]
+[ext_resource type="Script" uid="uid://bpvvqn6dmugp5" path="res://Scripts/EnemySpawner.gd" id="2_28vsk"]
+[ext_resource type="PackedScene" uid="uid://cry3gb37tqlm0" path="res://Scenes/HUD/GameOverlay.tscn" id="3_e4hy1"]
+[ext_resource type="PackedScene" uid="uid://dic2fak63kfqn" path="res://Scenes/HUD/LevelUp.tscn" id="5_7pf22"]
+[ext_resource type="PackedScene" uid="uid://bh2ur6pblyj8n" path="res://Scenes/Maps/Shared/continuous_floor.tscn" id="7_c8ydw"]
+[ext_resource type="PackedScene" uid="uid://b34bbmg8qnhvo" path="res://Scenes/HUD/Pause.tscn" id="7_jwasw"]
+[ext_resource type="PackedScene" uid="uid://v1phrdf8cdqg" path="res://Entities/StudentEntity.tscn" id="8_c8ydw"]
+
+[node name="MapEntrance" type="Node2D"]
+script = ExtResource("1_8es3b")
+
+[node name="GameLogic" type="Node" parent="." node_paths=PackedStringArray("player", "enemy_spawner", "game_time", "canvas_layer")]
+script = ExtResource("1_ujiyw")
+player = NodePath("../Forgound Rendering Node/StudentEntity")
+enemy_spawner = NodePath("EnemySpawner")
+game_time = NodePath("GameTimeLimit")
+canvas_layer = NodePath("../CanvasLayer")
+
+[node name="EnemySpawner" type="Node" parent="GameLogic" node_paths=PackedStringArray("player", "spawn_timer", "global_projectile_container", "experience_container_ref")]
+script = ExtResource("2_28vsk")
+player = NodePath("../../Forgound Rendering Node/StudentEntity")
+spawn_timer = NodePath("../SpawnTimer")
+global_projectile_container = NodePath("../ProjectileContainer")
+experience_container_ref = NodePath("../ExperienceContainer")
+
+[node name="DifficultyModifiers" type="Node" parent="GameLogic"]
+
+[node name="WinCondition" type="Node" parent="GameLogic"]
+
+[node name="SpawnTimer" type="Timer" parent="GameLogic"]
+autostart = true
+
+[node name="GameTimeLimit" type="Timer" parent="GameLogic"]
+wait_time = 300.0
+autostart = true
+
+[node name="ProjectileContainer" type="Node" parent="GameLogic"]
+
+[node name="ExperienceContainer" type="Node" parent="GameLogic"]
+
+[node name="Player" type="Node" parent="GameLogic"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="GameOverlay" parent="CanvasLayer" node_paths=PackedStringArray("player", "timer", "game_logic") instance=ExtResource("3_e4hy1")]
+process_mode = 3
+y_sort_enabled = true
+player = NodePath("../../Forgound Rendering Node/StudentEntity")
+timer = NodePath("../../GameLogic/GameTimeLimit")
+game_logic = NodePath("../../GameLogic")
+
+[node name="LevelUp" parent="CanvasLayer" node_paths=PackedStringArray("game_hud", "game_logic", "player") instance=ExtResource("5_7pf22")]
+process_mode = 2
+visible = false
+game_hud = NodePath("../GameOverlay")
+game_logic = NodePath("../../GameLogic")
+player = NodePath("../../Forgound Rendering Node/StudentEntity")
+
+[node name="Pause" parent="CanvasLayer" node_paths=PackedStringArray("game_hud", "game_logic") instance=ExtResource("7_jwasw")]
+process_mode = 3
+visible = false
+game_hud = NodePath("../GameOverlay")
+game_logic = NodePath("../../GameLogic")
+
+[node name="ParallaxBackground" parent="CanvasLayer" instance=ExtResource("7_c8ydw")]
+visible = false
+
+[node name="ParallaxBackground2" parent="CanvasLayer" instance=ExtResource("7_c8ydw")]
+
+[node name="Forgound Rendering Node" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="StudentEntity" parent="Forgound Rendering Node" node_paths=PackedStringArray("global_projectile_container") instance=ExtResource("8_c8ydw")]
+position = Vector2(576, 324)
+movement = {
+"dash_speed": 1000,
+"movement_speed": 1000
+}
+global_projectile_container = NodePath("../../GameLogic/ProjectileContainer")
+
+[node name="Camera2D" type="Camera2D" parent="Forgound Rendering Node/StudentEntity"]

@@ -1,7 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://cry3gb37tqlm0"]
+[gd_scene load_steps=10 format=3 uid="uid://cry3gb37tqlm0"]
 
 [ext_resource type="Script" uid="uid://bojlurhd6fuft" path="res://Scenes/HUD/GameOverlay.gd" id="1_pakjy"]
-[ext_resource type="Texture2D" uid="uid://bhx4cm4a2l2hi" path="res://Resources/Image/Temp/Greyknight_Icon.png" id="2_un2x6"]
+[ext_resource type="Texture2D" uid="uid://ckyqn1o6hh0i1" path="res://Resources/Image/Student/Head/Head_beta_2.png" id="3_wvjy2"]
+[ext_resource type="Texture2D" uid="uid://cfg4vqlg36ofq" path="res://Resources/Image/Student/Head/Hair/Hair_01.png" id="4_2shl3"]
+[ext_resource type="Texture2D" uid="uid://va580vf1m0o7" path="res://Resources/Image/Student/Head/Eyebrows/Eyebrows_01.png" id="5_xilnj"]
+[ext_resource type="Texture2D" uid="uid://b5dlojhwtpkpo" path="res://Resources/Image/Student/Head/Eyes/Eyes_01.png" id="6_v0afp"]
+[ext_resource type="Texture2D" uid="uid://cnaemm3wrn3ka" path="res://Resources/Image/Student/Head/Mouth/Mouth_01.png" id="7_kue78"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wk7wg"]
 bg_color = Color(0.197937, 0.197937, 0.197937, 1)
@@ -35,7 +39,7 @@ anchors_preset = 0
 offset_right = 320.0
 offset_bottom = 128.0
 
-[node name="Label" type="Label" parent="Control"]
+[node name="Student Name" type="Label" parent="Control"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.328125
@@ -44,6 +48,21 @@ anchor_right = 1.0
 anchor_bottom = 0.359375
 grow_horizontal = 2
 text = "Student_Name"
+metadata/_edit_use_anchors_ = true
+
+[node name="Besty Name" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.118924
+anchor_top = 0.185185
+anchor_right = 0.277778
+anchor_bottom = 0.225309
+offset_left = 98.9444
+offset_top = 96.2963
+offset_right = 144.111
+offset_bottom = 114.16
+text = "Besty_Name"
+vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="Control" type="Control" parent="Control"]
@@ -73,15 +92,13 @@ theme_override_styles/background = SubResource("StyleBoxFlat_wk7wg")
 theme_override_styles/fill = SubResource("StyleBoxFlat_0nyyx")
 show_percentage = false
 
-[node name="Label" type="Label" parent="Control/Control/VBoxContainer/Health"]
+[node name="Health Bar Text" type="Label" parent="Control/Control/VBoxContainer/Health"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "0/0
-"
 horizontal_alignment = 1
 
 [node name="Experience" type="ProgressBar" parent="Control/Control/VBoxContainer"]
@@ -91,15 +108,13 @@ theme_override_styles/background = SubResource("StyleBoxFlat_wk7wg")
 theme_override_styles/fill = SubResource("StyleBoxFlat_pvh76")
 show_percentage = false
 
-[node name="Label" type="Label" parent="Control/Control/VBoxContainer/Experience"]
+[node name="Experience Bar Text" type="Label" parent="Control/Control/VBoxContainer/Experience"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "0/0
-"
 horizontal_alignment = 1
 
 [node name="Image" type="Control" parent="."]
@@ -109,7 +124,8 @@ anchor_right = 0.0911458
 anchor_bottom = 0.197531
 metadata/_edit_use_anchors_ = true
 
-[node name="CenterPoint" type="Control" parent="Image"]
+[node name="Control" type="Control" parent="Image"]
+y_sort_enabled = true
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -118,11 +134,45 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
+mouse_force_pass_scroll_events = false
 
-[node name="Sprite2D" type="Sprite2D" parent="Image/CenterPoint"]
-position = Vector2(2.09808e-05, -22.5)
-scale = Vector2(0.820313, 0.828125)
-texture = ExtResource("2_un2x6")
+[node name="Student" type="Sprite2D" parent="Image/Control"]
+scale = Vector2(0.33, 0.33)
+texture = ExtResource("3_wvjy2")
+
+[node name="Hair01" type="Sprite2D" parent="Image/Control/Student"]
+scale = Vector2(0.888, 1)
+texture = ExtResource("4_2shl3")
+
+[node name="Eyebrows01" type="Sprite2D" parent="Image/Control/Student"]
+texture = ExtResource("5_xilnj")
+
+[node name="Eyes01" type="Sprite2D" parent="Image/Control/Student"]
+texture = ExtResource("6_v0afp")
+
+[node name="Mouth01" type="Sprite2D" parent="Image/Control/Student"]
+position = Vector2(0, 50)
+texture = ExtResource("7_kue78")
+
+[node name="Besty" type="Sprite2D" parent="Image/Control"]
+position = Vector2(52.5, 52.5)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("3_wvjy2")
+
+[node name="Hair01" type="Sprite2D" parent="Image/Control/Besty"]
+scale = Vector2(0.888, 1)
+texture = ExtResource("4_2shl3")
+
+[node name="Eyebrows01" type="Sprite2D" parent="Image/Control/Besty"]
+texture = ExtResource("5_xilnj")
+
+[node name="Eyes01" type="Sprite2D" parent="Image/Control/Besty"]
+texture = ExtResource("6_v0afp")
+
+[node name="Mouth01" type="Sprite2D" parent="Image/Control/Besty"]
+position = Vector2(0, 50)
+texture = ExtResource("7_kue78")
 
 [node name="WinConditions" type="Control" parent="."]
 layout_mode = 1

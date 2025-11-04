@@ -33,11 +33,11 @@ enum _data_type { Float , Percentage, Int, String}
 @export var better_value: _better_value
 enum _better_value {High, Low, Zero}
 ## Pass a component that is to be processed, and the count of the ItemStack to calculate the appropriate values.
-func process_component(component: Component, count: int):
-	assert(count > 0, "ERROR: ItemBonusAttribute.process_component, requires a count of 1 or greater.")
-	var target_value = "base_mod" if target == _target.Base else "mod_value"
-	match type:
-		_type.Addition:
-			component[target_value] += initial_value + (level_value*(count-1))
-		_type.Subtraction:
-			component[target_value] -= initial_value + (level_value*(count-1))
+#func process_component(component: Component, count: int):
+	#assert(count > 0, "ERROR: ItemBonusAttribute.process_component, requires a count of 1 or greater.")
+	#var target_value = "base_mod" if target == _target.Base else "mod_value"
+	#match type:
+		#_type.Addition:
+			#component[target_value] += initial_value + (level_value*(count-1))
+		#_type.Subtraction:
+			#component[target_value] -= initial_value + (level_value*(count-1))

@@ -1,7 +1,7 @@
 class_name HealthState
 extends State
 
-@export var entity: CharacterBody2D
+@export var health_component: Health_Component
 
 ##	"Override"
 func enter():

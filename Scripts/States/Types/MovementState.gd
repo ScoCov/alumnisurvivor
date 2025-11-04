@@ -1,7 +1,7 @@
 class_name MovementState
 extends State
 
-@export var entity: CharacterBody2D
+@export var movement_comp : Movement_Component
 
 ##	"Override"
 func enter():

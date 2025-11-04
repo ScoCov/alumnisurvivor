@@ -1,7 +1,6 @@
-extends State
+extends MovementState
 class_name PlayerMovingState
 
-@export var player: StudentEntity
 
 const DEFAULT_MOVEMENT_SPEED: float = 100
 
@@ -17,6 +16,7 @@ func update(_delta):
 	var directions:= Input.get_vector("move_left","move_right","move_up","move_down")
 	if not directions:
 		Transitioned.emit(self, "idle")
+	var player = movement_comp.entity
 
 	## Animation
 	var head: Sprite2D = player.find_child("Head")
@@ -38,6 +38,7 @@ func update(_delta):
 func physics_update(_delta):
 	var directions:= Input.get_vector("move_left","move_right","move_up","move_down")
 	## Set Speed
-	player.velocity = directions * player.movement.movement_speed
+	var player = movement_comp.entity
+	player.velocity = directions * movement_comp.active_movement_speed
 	player.move_and_slide()
 	

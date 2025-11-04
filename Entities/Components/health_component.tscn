@@ -1,0 +1,58 @@
+[gd_scene load_steps=10 format=3 uid="uid://xy2guokl2776"]
+
+[ext_resource type="Script" uid="uid://bv4pqskusr4g7" path="res://Entities/Components/health_component.gd" id="1_bbh48"]
+[ext_resource type="Script" uid="uid://t3mlm4ybio8c" path="res://Scripts/States/StateMachine.gd" id="2_lr4gt"]
+[ext_resource type="Script" uid="uid://c384pkmf7xhlq" path="res://Scripts/States/Health/barely_hurt.gd" id="3_ebi66"]
+[ext_resource type="Script" uid="uid://cys3jqfaroho5" path="res://Scripts/States/Health/dead.gd" id="4_ino5e"]
+[ext_resource type="Script" uid="uid://da332uoi8ujfa" path="res://Scripts/States/Health/full_health.gd" id="5_t2ae7"]
+[ext_resource type="Script" uid="uid://4hpias2r4f70" path="res://Scripts/States/Health/hurt.gd" id="6_yo6iw"]
+[ext_resource type="Script" uid="uid://dewrjlysa1v0t" path="res://Scripts/States/Health/near_death.gd" id="7_mfpeg"]
+[ext_resource type="Script" uid="uid://dewaa6mmgmsaq" path="res://Scripts/States/Health/over_health.gd" id="8_8p04x"]
+[ext_resource type="Script" uid="uid://hxcj02spua5a" path="res://Scripts/States/Health/very_hurt.gd" id="9_tm8bc"]
+
+[node name="HealthComponent" type="Node"]
+script = ExtResource("1_bbh48")
+
+[node name="Statemachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("2_lr4gt")
+initial_state = NodePath("Full Health")
+
+[node name="Barely Hurt" type="Node" parent="Statemachine" node_paths=PackedStringArray("health_component")]
+script = ExtResource("3_ebi66")
+health_component = NodePath("../..")
+metadata/_custom_type_script = "uid://c384pkmf7xhlq"
+
+[node name="Dead" type="Node" parent="Statemachine" node_paths=PackedStringArray("health_component")]
+script = ExtResource("4_ino5e")
+health_component = NodePath("../..")
+metadata/_custom_type_script = "uid://cys3jqfaroho5"
+
+[node name="Full Health" type="Node" parent="Statemachine" node_paths=PackedStringArray("health_component")]
+script = ExtResource("5_t2ae7")
+health_component = NodePath("../..")
+metadata/_custom_type_script = "uid://da332uoi8ujfa"
+
+[node name="Hurt" type="Node" parent="Statemachine" node_paths=PackedStringArray("health_component")]
+script = ExtResource("6_yo6iw")
+health_component = NodePath("../..")
+metadata/_custom_type_script = "uid://4hpias2r4f70"
+
+[node name="Near Dead" type="Node" parent="Statemachine" node_paths=PackedStringArray("health_component")]
+script = ExtResource("7_mfpeg")
+health_component = NodePath("../..")
+metadata/_custom_type_script = "uid://dewrjlysa1v0t"
+
+[node name="Over Health" type="Node" parent="Statemachine" node_paths=PackedStringArray("health_component")]
+script = ExtResource("8_8p04x")
+health_component = NodePath("../..")
+metadata/_custom_type_script = "uid://dewaa6mmgmsaq"
+
+[node name="Very Hurt" type="Node" parent="Statemachine" node_paths=PackedStringArray("health_component")]
+script = ExtResource("9_tm8bc")
+health_component = NodePath("../..")
+metadata/_custom_type_script = "uid://hxcj02spua5a"
+
+[node name="Invulnerability Timer" type="Timer" parent="."]
+wait_time = 0.33
+
+[connection signal="timeout" from="Invulnerability Timer" to="." method="_on_invulnerability_timer_timeout"]

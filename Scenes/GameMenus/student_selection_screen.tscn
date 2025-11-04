@@ -166,7 +166,7 @@ grow_vertical = 2
 
 [node name="StudentEntity" parent="Doll Container/Center" instance=ExtResource("3_sh2fa")]
 scale = Vector2(1.2, 1.2)
-is_combat = false
+is_controllable = false
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Doll Container"]
 layout_mode = 1

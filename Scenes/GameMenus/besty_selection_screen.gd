@@ -12,7 +12,9 @@ func _ready():
 	populate_besty_data()
 	var list_of_besties = $MarginContainer/VSplitContainer/VBoxContainer/Students/MarginContainer/StudentGrid.get_children()
 	var filtered_list = list_of_besties.filter(func(e): return e.student != Global.SELECTED_STUDENT and e.student.unlocked)
-	filtered_list.sort_custom(func(a,b): return a.student.ordinal < b.student.ordinal )
+	filtered_list.sort_custom(
+		func(filtered_list_a,filtered_list_b): 
+			return filtered_list_a.student.ordinal < filtered_list_b.student.ordinal )
 	filtered_list[0].grab_focus()
 
 func populate_student_roster() -> void:

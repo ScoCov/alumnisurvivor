@@ -12,10 +12,10 @@ func exit() -> void:
 
 ##	Call every frame drawn
 func update(_delta) -> void:
-	if entity.health.current_health / entity.health.max_health >= 1:
-		Transitioned.emit(self, "full_health")
-	elif entity.health.current_health / entity.health.max_health < 0.75:
-		Transitioned.emit(self, "hurt")
+	if health_component.current_health / health_component.maximum_health >= 1:
+		Transitioned.emit(self, "Full Health")
+	elif health_component.current_health / health_component.maximum_health < 0.75:
+		Transitioned.emit(self, "Hurt")
 
 ##	Call every physics tick which can be seperate from the frames being drawn.
 func physics_update(_delta)-> void:

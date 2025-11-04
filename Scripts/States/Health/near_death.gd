@@ -4,7 +4,7 @@ extends HealthState
 
 ##	Call when transitioning to this state
 func enter():
-	entity.emit_signal("death")
+	pass
 	
 ##	Call when leaving this state
 func exit() -> void:
@@ -12,7 +12,10 @@ func exit() -> void:
 
 ##	Call every frame drawn
 func update(_delta) -> void:
-	pass
+	if health_component.current_health < 1:
+		Transitioned.emit(self, "Dead")
+	elif health_component.current_health / health_component.maximum_health > 0.25:
+		Transitioned.emit(self, "Very Hurt")
 
 ##	Call every physics tick which can be seperate from the frames being drawn.
 func physics_update(_delta)-> void:
