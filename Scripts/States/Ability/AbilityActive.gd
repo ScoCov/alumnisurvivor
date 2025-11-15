@@ -1,4 +1,4 @@
-extends AbilityState
+extends State
 class_name AbilityStateActive
 
 ##	Call when transitioning to this state

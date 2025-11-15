@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://xy2guokl2776"]
 
 [ext_resource type="Script" uid="uid://bv4pqskusr4g7" path="res://Entities/Components/health_component.gd" id="1_bbh48"]
-[ext_resource type="Script" uid="uid://t3mlm4ybio8c" path="res://Scripts/States/StateMachine.gd" id="2_lr4gt"]
+[ext_resource type="Script" uid="uid://t3mlm4ybio8c" path="res://Scripts/States/state_machine.gd" id="2_lr4gt"]
 [ext_resource type="Script" uid="uid://c384pkmf7xhlq" path="res://Scripts/States/Health/barely_hurt.gd" id="3_ebi66"]
 [ext_resource type="Script" uid="uid://cys3jqfaroho5" path="res://Scripts/States/Health/dead.gd" id="4_ino5e"]
 [ext_resource type="Script" uid="uid://da332uoi8ujfa" path="res://Scripts/States/Health/full_health.gd" id="5_t2ae7"]

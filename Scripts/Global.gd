@@ -79,14 +79,12 @@ var HAIR: Array[Texture]
 ## Tags will be applied to various objects, concepts, and anything we need to associated something
 ## with a group. These tags will be used eventually to help influence the drops that a player will see.
 #endregion
-
-enum meta_tag {Player, Besty, Enemy, Debug}
-enum student_tag {Arts, Sciences, Sports, Socialite}
-enum item_tag {Sports, Fitness, Popularity, Technology, Clothing, Jewlery, }
-enum enemy_tag {Elite, Boss, Normal, Weak, Heavy, Ranged, Charge_Up, Rush_Down}
-enum combat_tag { Ranged, Tank, Melee, Glass_Cannon, Balanced, Fast }
-enum attack_tag { Unarmed, Weapon, Sound, Fire, Shock, Cold }
-enum map_tag { Present, Past, Easy, Medium, Hard, Gimmick, Navigation }
+enum student_tag {Player, Besty, UNASSIGNED}
+enum group_tag {Athlete, Academic, Technologist, Trade_Skill, Socialite, Artist, Musician, None }
+enum enemy_tag {Elite, Boss, Normal, Weak, Strong, Ranged}
+enum attack_tag { Thrust, Swing, Slam, Wave, AoE, Beam, Single_Shot, Burst_Shot, Retaliation, Status_Effect }
+enum ability_type {Attack, Defense, Support, Other, None}
+enum damage_types { Blunt, Slashing, Piercing, Ego, Sonic, Fire, Cold, Acid, Shock}
 
 func _ready():
 	@warning_ignore("static_called_on_instance")

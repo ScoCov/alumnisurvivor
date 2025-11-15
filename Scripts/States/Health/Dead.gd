@@ -1,5 +1,5 @@
 class_name DeadState
-extends HealthState
+extends Health_State
 
 
 ##	Call when transitioning to this state

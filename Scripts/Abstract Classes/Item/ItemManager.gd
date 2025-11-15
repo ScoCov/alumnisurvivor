@@ -3,7 +3,7 @@ class_name ItemManager
 
 signal item_stack_added
 
-@export var player: StudentEntity
+@export var player: Student_Entity
 
 func _ready():
 	assert(player, "There must be a player for the ItemManager to work.")

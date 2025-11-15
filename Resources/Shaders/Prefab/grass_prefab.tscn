@@ -1,19 +1,39 @@
-[gd_scene load_steps=3 format=3 uid="uid://cvi5bt5iauhy8"]
+[gd_scene load_steps=5 format=3 uid="uid://cvi5bt5iauhy8"]
 
-[ext_resource type="Shader" uid="uid://cflq7qhfwpqp8" path="res://Resources/Shaders/grass.shader.gdshader" id="1_sl06p"]
+[ext_resource type="Shader" uid="uid://1xb00p74p4b0" path="res://Resources/Shaders/damage_taken.gdshader" id="1_n6vb4"]
+[ext_resource type="Texture2D" uid="uid://bambx8oylmvtd" path="res://Resources/Image/Enemies/enemy_01.png" id="2_n6vb4"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_3jdme"]
-shader = ExtResource("1_sl06p")
-shader_parameter/detection_color = Color(1, 1, 1, 1)
-shader_parameter/detection_color_2 = Color(1, 1, 1, 1)
-shader_parameter/modify_color = Color(1, 0, 1, 1)
-shader_parameter/mix_intensity = 1.0
-shader_parameter/palette_size = 5.0
-shader_parameter/palette_step = 32.0
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_n6vb4"]
+shader = ExtResource("1_n6vb4")
+shader_parameter/modify_color = Color(1, 0, 0, 1)
+shader_parameter/mix_intensity = 0.5
+shader_parameter/pulse = true
+shader_parameter/frequency = 7.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mwhtg"]
+shader = ExtResource("1_n6vb4")
+shader_parameter/modify_color = Color(1, 0, 0, 1)
+shader_parameter/mix_intensity = 0.5
+shader_parameter/pulse = true
+shader_parameter/frequency = 7.0
 
 [node name="ColorRect" type="ColorRect"]
-material = SubResource("ShaderMaterial_3jdme")
-offset_left = 72.0
-offset_top = -72.0
-offset_right = 112.0
-offset_bottom = -32.0
+material = SubResource("ShaderMaterial_n6vb4")
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 0, 1, 1)
+
+[node name="Enemy01" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_mwhtg")
+position = Vector2(100, 16)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_n6vb4")

@@ -1,0 +1,88 @@
+[gd_scene load_steps=9 format=3 uid="uid://dxs4mstvhwgv"]
+
+[ext_resource type="Script" uid="uid://dy7n5gmkswm47" path="res://Scripts/GameLogic.gd" id="1_ujiyw"]
+[ext_resource type="PackedScene" uid="uid://cry3gb37tqlm0" path="res://Scenes/HUD/GameOverlay.tscn" id="3_e4hy1"]
+[ext_resource type="Shader" uid="uid://1xb00p74p4b0" path="res://Resources/Shaders/damage_taken.gdshader" id="5_dobwi"]
+[ext_resource type="Script" uid="uid://cl3mognqkatcs" path="res://Scenes/Maps/damage_floor.gd" id="5_rkel5"]
+[ext_resource type="PackedScene" uid="uid://bh2ur6pblyj8n" path="res://Scenes/Maps/Shared/continuous_floor.tscn" id="7_c8ydw"]
+[ext_resource type="PackedScene" uid="uid://v1phrdf8cdqg" path="res://Entities/student_entity.tscn" id="8_c8ydw"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7pf22"]
+shader = ExtResource("5_dobwi")
+shader_parameter/modify_color = Color(1, 0, 0, 1)
+shader_parameter/mix_intensity = 0.5
+shader_parameter/pulse = false
+shader_parameter/frequency = 7.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dobwi"]
+radius = 29.1206
+
+[node name="MapEntrance" type="Node2D"]
+
+[node name="GameLogic" type="Node" parent="." node_paths=PackedStringArray("player", "game_time")]
+script = ExtResource("1_ujiyw")
+debug = true
+player = NodePath("../Forgound Rendering Node/StudentEntity")
+game_time = NodePath("GameTimeLimit")
+
+[node name="GameTimeLimit" type="Timer" parent="GameLogic"]
+wait_time = 300.0
+autostart = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="background_continuous_floor_grass" parent="CanvasLayer" instance=ExtResource("7_c8ydw")]
+
+[node name="GameOverlay" parent="CanvasLayer" node_paths=PackedStringArray("player", "timer") instance=ExtResource("3_e4hy1")]
+process_mode = 3
+z_index = 99
+y_sort_enabled = true
+player = NodePath("../../Forgound Rendering Node/StudentEntity")
+timer = NodePath("../../GameLogic/GameTimeLimit")
+
+[node name="Forgound Rendering Node" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="StudentEntity" parent="Forgound Rendering Node" instance=ExtResource("8_c8ydw")]
+material = SubResource("ShaderMaterial_7pf22")
+position = Vector2(576, 324)
+
+[node name="Camera2D" type="Camera2D" parent="Forgound Rendering Node/StudentEntity"]
+
+[node name="Damage" type="Area2D" parent="Forgound Rendering Node"]
+position = Vector2(877.881, 327.696)
+monitorable = false
+script = ExtResource("5_rkel5")
+damage_amount = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Forgound Rendering Node/Damage"]
+shape = SubResource("CircleShape2D_dobwi")
+
+[node name="ColorRect" type="ColorRect" parent="Forgound Rendering Node/Damage"]
+offset_left = -20.0
+offset_top = -22.0
+offset_right = 22.0
+offset_bottom = 22.0
+color = Color(1, 0.0117647, 0.0117647, 1)
+
+[node name="Heal" type="Area2D" parent="Forgound Rendering Node"]
+position = Vector2(877.881, 424.696)
+monitorable = false
+script = ExtResource("5_rkel5")
+heal = true
+damage_amount = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Forgound Rendering Node/Heal"]
+shape = SubResource("CircleShape2D_dobwi")
+
+[node name="ColorRect" type="ColorRect" parent="Forgound Rendering Node/Heal"]
+offset_left = -20.0
+offset_top = -22.0
+offset_right = 22.0
+offset_bottom = 22.0
+color = Color(0, 1, 1, 1)
+
+[connection signal="body_entered" from="Forgound Rendering Node/Damage" to="Forgound Rendering Node/Damage" method="_on_body_entered"]
+[connection signal="body_exited" from="Forgound Rendering Node/Damage" to="Forgound Rendering Node/Damage" method="_on_body_exited"]
+[connection signal="body_entered" from="Forgound Rendering Node/Heal" to="Forgound Rendering Node/Heal" method="_on_body_entered"]
+[connection signal="body_exited" from="Forgound Rendering Node/Heal" to="Forgound Rendering Node/Heal" method="_on_body_exited"]

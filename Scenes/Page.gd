@@ -4,6 +4,7 @@ extends Control
 ## 
 #endregion
 
+@warning_ignore("unused_signal")
 signal page_type_changed
 
 const _page_type_list: Array[String] = ["Title","Collection", "Settings"]

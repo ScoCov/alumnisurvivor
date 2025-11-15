@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://doicw3e1bmkir" path="res://Resources/Image/Student/Head/Eyebrows/Eyebrows_02.png" id="1_rwg6p"]
 [ext_resource type="Texture2D" uid="uid://drtm0nrjkj1on" path="res://Resources/Image/Student/Head/Eyes/Eyes_03.png" id="2_lleik"]
-[ext_resource type="Texture2D" uid="uid://cnaemm3wrn3ka" path="res://Resources/Image/Student/Head/Mouth/Mouth_01.png" id="3_lleik"]
+[ext_resource type="Texture2D" uid="uid://cr4jadxq3b6wj" path="res://Resources/Image/Student/Head/Mouth/Mouth_01.png" id="3_lleik"]
 [ext_resource type="Script" uid="uid://40jgn8mckuc1" path="res://Scripts/Abstract Classes/Resource/student_resource.gd" id="5_ml418"]
 
 [resource]
@@ -24,7 +24,7 @@ dodge = 0.0
 movement_speed = 1.0
 pierce = 0.0
 pickup_range = 0.0
-range = 0.0
+attack_range = 0.0
 eyebrows = ExtResource("1_rwg6p")
 eyes = ExtResource("2_lleik")
 mouth = ExtResource("3_lleik")

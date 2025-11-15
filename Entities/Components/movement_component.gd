@@ -9,21 +9,29 @@ extends Node
 ## movement, such the enemy movement stategies. 
 @export var player_controls: bool = false
 @export_category("Movement")
-@export var base_movement_speed: float = 100
-@export var dash_movement_percentage: float = 2.0
+@export var base_movement_speed: float = 120
+@export var dash_movement_percentage: float = 2.5
 @export var is_dash: bool = false:
 	set(value):
 		if value:
 			$"Dash Length Timer".start()
+			if entity:
+				entity.is_controllable = false
+		is_dash = value
 @export var active_movement_speed: float:
 	set(value):
 		pass
 	get:
-		## If state is not 'dashing' then return base_speed
-		## if state is dashing, return base + (base * dash_increase)
-		return (base_movement_speed * dash_movement_percentage 
-			if is_dash else base_movement_speed)
+		if is_dash:
+			return base_movement_speed * dash_movement_percentage
+		return base_movement_speed
+@export var dash_timer_length: float:
+	set(value):
+		$"Dash Length Timer".wait_time = value
+		dash_timer_length = value
 
+var last_movement_direction: Vector2
+		
 var active_state: State:
 	set(value):
 		pass
@@ -34,4 +42,8 @@ var active_state: State:
 
 
 func _on_dash_length_timer_timeout():
+	if entity:
+		entity.is_controllable = true
+	$"Dash Length Timer".stop()
+	entity.velocity *= 0
 	is_dash = false

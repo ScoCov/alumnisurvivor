@@ -1,9 +1,8 @@
-[gd_resource type="Resource" script_class="StudentResource" load_steps=6 format=3 uid="uid://l12kygxdsvpi"]
+[gd_resource type="Resource" script_class="StudentResource" load_steps=5 format=3 uid="uid://l12kygxdsvpi"]
 
 [ext_resource type="Texture2D" uid="uid://doicw3e1bmkir" path="res://Resources/Image/Student/Head/Eyebrows/Eyebrows_02.png" id="1_ucrg4"]
 [ext_resource type="Texture2D" uid="uid://b1pkn4viaktqf" path="res://Resources/Image/Student/Head/Eyes/Eyes_02.png" id="2_h4fue"]
 [ext_resource type="Texture2D" uid="uid://c0ebqy6ydav7u" path="res://Resources/Image/Student/Head/Hair/Hair_02.png" id="3_qlxkb"]
-[ext_resource type="Texture2D" uid="uid://cnaemm3wrn3ka" path="res://Resources/Image/Student/Head/Mouth/Mouth_01.png" id="4_ucrg4"]
 [ext_resource type="Script" uid="uid://40jgn8mckuc1" path="res://Scripts/Abstract Classes/Resource/student_resource.gd" id="5_p0ixe"]
 
 [resource]
@@ -25,12 +24,9 @@ dodge = 0.0
 movement_speed = 1.0
 pierce = 0.0
 pickup_range = 0.0
-range = 0.0
+attack_range = 0.0
 hair = ExtResource("3_qlxkb")
 eyebrows = ExtResource("1_ucrg4")
 eyes = ExtResource("2_h4fue")
-mouth = ExtResource("4_ucrg4")
 unlocked = true
 student_tags = Array[int]([3])
-meta_tags = Array[int]([])
-combat_tags = Array[int]([0])

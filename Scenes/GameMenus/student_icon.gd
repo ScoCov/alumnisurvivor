@@ -3,6 +3,7 @@ extends Control
 
 
 @export var student: StudentResource
+
 var disabled = false:
 	set(value):
 		$"Disabled Filter".visible = value

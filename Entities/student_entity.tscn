@@ -1,0 +1,137 @@
+[gd_scene load_steps=15 format=3 uid="uid://v1phrdf8cdqg"]
+
+[ext_resource type="Script" uid="uid://d0tuntxkjee38" path="res://Entities/student_entity.gd" id="1_cijec"]
+[ext_resource type="PackedScene" uid="uid://dysr53ibvwa8l" path="res://Entities/Components/movement_component.tscn" id="3_echn0"]
+[ext_resource type="PackedScene" uid="uid://xy2guokl2776" path="res://Entities/Components/health_component.tscn" id="3_goiee"]
+[ext_resource type="Texture2D" uid="uid://cr4jadxq3b6wj" path="res://Resources/Image/Student/Head/Mouth/Mouth_01.png" id="9_kt3lm"]
+[ext_resource type="Texture2D" uid="uid://c0ebqy6ydav7u" path="res://Resources/Image/Student/Head/Hair/Hair_02.png" id="16_71snr"]
+[ext_resource type="Texture2D" uid="uid://dtt7h2na2opvb" path="res://Resources/Image/Student/Body/Student_Body.png" id="27_gi4ri"]
+[ext_resource type="Texture2D" uid="uid://ckyqn1o6hh0i1" path="res://Resources/Image/Student/Head/Head_beta_2.png" id="28_1pn2y"]
+[ext_resource type="Texture2D" uid="uid://va580vf1m0o7" path="res://Resources/Image/Student/Head/Eyebrows/Eyebrows_01.png" id="30_hj61p"]
+[ext_resource type="Texture2D" uid="uid://b1pkn4viaktqf" path="res://Resources/Image/Student/Head/Eyes/Eyes_02.png" id="31_ngr5b"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bj2gu"]
+radius = 31.0644
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fkouh"]
+resource_local_to_scene = true
+
+[sub_resource type="Animation" id="Animation_1pn2y"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Head:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-15.7, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Head:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-35.4, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_gi4ri"]
+resource_name = "walk"
+loop_mode = 1
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Head:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(-15.7, -0.25, 0, 0.25, 0, -15.7, -0.25, 0, 0.25, 0, -15.7, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5, 0.99)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Head:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(-35.4, -0.25, 0, 0.25, 0, -46, -0.25, 0, 0.25, 0, -36, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5, 0.99)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_876pq"]
+_data = {
+&"RESET": SubResource("Animation_1pn2y"),
+&"walk": SubResource("Animation_gi4ri")
+}
+
+[node name="StudentEntity" type="CharacterBody2D"]
+y_sort_enabled = true
+slide_on_ceiling = false
+script = ExtResource("1_cijec")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_bj2gu")
+
+[node name="Stats" type="Node" parent="."]
+
+[node name="MovementComponent" parent="Stats" node_paths=PackedStringArray("entity") instance=ExtResource("3_echn0")]
+entity = NodePath("../..")
+player_controls = true
+
+[node name="HealthComponent" parent="Stats" instance=ExtResource("3_goiee")]
+maximum_health = 30
+current_health = 30
+
+[node name="Visuals" type="Node2D" parent="."]
+position = Vector2(3, -36)
+scale = Vector2(0.2, 0.2)
+
+[node name="StudentBody" type="Sprite2D" parent="Visuals"]
+y_sort_enabled = true
+material = SubResource("ShaderMaterial_fkouh")
+position = Vector2(-16, 255)
+texture = ExtResource("27_gi4ri")
+
+[node name="Head" type="Sprite2D" parent="Visuals"]
+position = Vector2(-15.7, -35.4)
+texture = ExtResource("28_1pn2y")
+
+[node name="Hair" type="Sprite2D" parent="Visuals/Head"]
+position = Vector2(-4.75454, 0)
+scale = Vector2(0.887784, 1)
+texture = ExtResource("16_71snr")
+
+[node name="Eyebrows" type="Sprite2D" parent="Visuals/Head"]
+position = Vector2(-1.90735e-06, 13.6364)
+texture = ExtResource("30_hj61p")
+
+[node name="Eyes" type="Sprite2D" parent="Visuals/Head"]
+position = Vector2(0, 22.7272)
+texture = ExtResource("31_ngr5b")
+
+[node name="Mouth" type="Sprite2D" parent="Visuals/Head"]
+position = Vector2(-1.5, 62)
+texture = ExtResource("9_kt3lm")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Visuals"]
+libraries = {
+&"": SubResource("AnimationLibrary_876pq")
+}
+
+[node name="BodyLagTimer" type="Timer" parent="Visuals"]
+wait_time = 0.2
+
+[node name="Label" type="Label" parent="."]
+offset_left = -49.0
+offset_top = -138.0
+offset_right = 50.0
+offset_bottom = -95.0

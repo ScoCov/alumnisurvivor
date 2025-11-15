@@ -31,7 +31,7 @@ extends Resource
 @export var movement_speed: float = 1.0
 @export var pierce: float = 0
 @export var pickup_range: float = 0
-@export var range: float = 0
+@export var attack_range: float = 0
 
 @export_group("Besty Bonuses")
 ### Increases growth of given stat, when selected as a Besty.
@@ -52,10 +52,6 @@ extends Resource
 @export var unlocked: bool = true
 ## Unique Tags associated direactly with Students.
 @export var student_tags: Array[Global.student_tag]
-## Unique Tags associated with information about the entity itself.
-@export var meta_tags: Array[Global.meta_tag]
-## Used to determine in-game combat related effects and the outcome of those effects.
-@export var combat_tags: Array[Global.combat_tag]
 
 func _to_string() -> String:
 	return ("Student: %s " % [student_name] )

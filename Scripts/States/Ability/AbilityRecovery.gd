@@ -1,4 +1,4 @@
-extends AbilityState
+extends State
 class_name AbilityStateRecovery
 
 ##	Call when transitioning to this state

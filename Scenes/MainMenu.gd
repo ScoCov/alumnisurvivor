@@ -7,7 +7,6 @@ extends Control
 
 @onready var page = $HSplitContainer/Content/Page
 
-
 func ready():
 	(find_child("Play") as Button).grab_focus()
 

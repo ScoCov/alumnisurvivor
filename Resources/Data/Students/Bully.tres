@@ -1,9 +1,9 @@
 [gd_resource type="Resource" script_class="StudentResource" load_steps=6 format=3 uid="uid://be7tvpc2v1d3i"]
 
-[ext_resource type="Texture2D" uid="uid://cvnmd4lm04a8n" path="res://Resources/Image/Student/Head/Eyebrows/Eyebrows_04.png" id="1_jauc0"]
+[ext_resource type="Texture2D" uid="uid://va580vf1m0o7" path="res://Resources/Image/Student/Head/Eyebrows/Eyebrows_01.png" id="1_jauc0"]
 [ext_resource type="Texture2D" uid="uid://drtm0nrjkj1on" path="res://Resources/Image/Student/Head/Eyes/Eyes_03.png" id="2_jauc0"]
-[ext_resource type="Texture2D" uid="uid://c0ebqy6ydav7u" path="res://Resources/Image/Student/Head/Hair/Hair_02.png" id="3_sr344"]
-[ext_resource type="Texture2D" uid="uid://dodtenrfxir4x" path="res://Resources/Image/Student/Head/Mouth/Mouth_06.png" id="4_g763a"]
+[ext_resource type="Texture2D" uid="uid://clnjw3cmm8oad" path="res://Resources/Image/Student/Head/Hair/Hair_03.png" id="3_de2bk"]
+[ext_resource type="Texture2D" uid="uid://disq0w1vwu68d" path="res://Resources/Image/Student/Head/Mouth/Mouth_05.png" id="4_sr344"]
 [ext_resource type="Script" uid="uid://40jgn8mckuc1" path="res://Scripts/Abstract Classes/Resource/student_resource.gd" id="5_2j0fg"]
 
 [resource]
@@ -25,12 +25,10 @@ dodge = 0.0
 movement_speed = 1.0
 pierce = 0.0
 pickup_range = 0.0
-range = 0.0
-hair = ExtResource("3_sr344")
+attack_range = 0.0
+hair = ExtResource("3_de2bk")
 eyebrows = ExtResource("1_jauc0")
 eyes = ExtResource("2_jauc0")
-mouth = ExtResource("4_g763a")
+mouth = ExtResource("4_sr344")
 unlocked = true
 student_tags = Array[int]([3])
-meta_tags = Array[int]([])
-combat_tags = Array[int]([0])

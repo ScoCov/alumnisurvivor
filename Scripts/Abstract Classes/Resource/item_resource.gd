@@ -14,9 +14,7 @@ extends Resource
 ## Is this Item available from the start of the game?
 @export var unlocked: bool = false
 
-@export_group("Tags")
-@export var meta_tags: Array[Global.meta_tag]
-@export var item_tags: Array[Global.item_tag]
+
 
 @export_group("Images")
 ## This will be displayed when the player is given options to choose from. It will also show up

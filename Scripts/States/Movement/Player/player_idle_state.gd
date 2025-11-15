@@ -1,4 +1,4 @@
-extends MovementState
+extends Movement_State
 class_name PlayerIdleState
 
 

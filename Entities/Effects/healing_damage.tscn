@@ -1,0 +1,45 @@
+[gd_scene load_steps=8 format=3 uid="uid://jbxpmitfobh3"]
+
+[ext_resource type="Texture2D" uid="uid://ckq1qdrtyp7jy" path="res://Resources/Image/Effects/positive_damage.png" id="1_1yj54"]
+[ext_resource type="Script" uid="uid://bj2l13i7j2qac" path="res://Entities/Effects/healing_damage.gd" id="2_6ksx4"]
+
+[sub_resource type="Curve" id="Curve_y1u5r"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.829412, 0), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Curve" id="Curve_7c1gr"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.870588, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_5k6uo"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.494118, 0.288708), 0.0, 0.0, 0, 0, Vector2(0.717647, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_xavqm"]
+curve_x = SubResource("Curve_y1u5r")
+curve_y = SubResource("Curve_7c1gr")
+curve_z = SubResource("Curve_5k6uo")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_7c1gr"]
+particle_flag_disable_z = true
+gravity = Vector3(0, 98, 0)
+scale_min = 2.0
+scale_max = 2.0
+scale_curve = SubResource("CurveXYZTexture_xavqm")
+turbulence_enabled = true
+turbulence_noise_strength = 20.0
+turbulence_noise_scale = 10.0
+turbulence_noise_speed_random = 4.0
+
+[node name="Healing Damage" type="GPUParticles2D"]
+emitting = false
+amount = 1
+texture = ExtResource("1_1yj54")
+lifetime = 1.47
+one_shot = true
+speed_scale = 1.9
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_7c1gr")
+script = ExtResource("2_6ksx4")
+
+[connection signal="finished" from="." to="." method="_on_finished"]

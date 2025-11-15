@@ -1,8 +1,11 @@
 class_name Health_Component
 extends Node
 
+@warning_ignore("unused_signal")
 signal damage_taken
+@warning_ignore("unused_signal")
 signal damage_negated
+@warning_ignore("unused_signal")
 signal damage_healed
 
 ## Allows cheats to be applied.
@@ -14,30 +17,22 @@ signal damage_healed
 ## Eventually, the player will have the option to increase this value.
 @export var maximum_health: int = 10;
 
-@export var current_health: int = 10:
-	set(value):
-		if invulnerable: pass
-		current_health = value
+@export var current_health: int = 10
 
+		
 ## This will behave as 'extra' health. If an ability allows to heal past maximum
 ## it will be stored in shield, and then shield will be taken from before health 
 ## has anything removed. 
 
-##NOTE - Idea: Should there be a mechanic that when the shield depletes the 
-## remaining damage roll into normal health? I feel having it get destroyed 
-## could add to imergent gameplay.
-@export var shield: int = 0:
-	set(value):
-		if invulnerable: pass
-		shield = value
+
 
 ## Percentage of how much health can be gained passed the maximum health. Default = 0.25 (25%)
-@export var over_shield_maximum: float = 0.25
-var shield_maximum_limit: int:
+@export var over_health_maximum: float = 0.25
+var overhealth_maximum_limit: int:
 	set(value):
 		pass
 	get:
-		return maximum_health * over_shield_maximum
+		return floor(maximum_health * over_health_maximum)
 
 ## Armor will be applied to a logarithmic function, to provide a value. log(armor) * 100
 @export var armor: int = 0;
@@ -58,10 +53,23 @@ var active_state: State:
 	set(value):
 		pass
 	get:
-		if has_node("StateMachine"):
-			return $StateMachine.initial_state
-		return active_state
+		if has_node("Statemachine"):
+			return ($Statemachine as State_Machine).current_state
+		return null
 
+func attempt_damage(_source: Variant, damage_dealt: float):
+	#print("%s: %s/%s" % [name, current_health, maximum_health])
+	if invulnerable: return
+	if damage_dealt < 0: ## if taken damage
+		damage_taken.emit()
+	elif damage_dealt > 0:
+		damage_healed.emit()
+	elif damage_dealt == 0:
+		damage_negated.emit()
+	current_health += floor(damage_dealt)
+	invulnerable = true
+	invulnerability_timer.start()
 
 func _on_invulnerability_timer_timeout():
+	invulnerability_timer.stop()
 	invulnerable = false

@@ -1,11 +1,12 @@
 extends Control
 class_name GameOverlay
 
+@warning_ignore("unused_signal")
 signal update
 
 ## Place the GameLogic's current active StudentEntity character. The player variable
 ## will be use to update the health, experience, and many other aspects of the game ui. 
-@export var player: StudentEntity:
+@export var player: Student_Entity:
 	set(value):
 		player = value
 	get:
@@ -21,6 +22,7 @@ func _ready() -> void:
 ## I can probably create a signal to update the ui.
 func _process(_delta):
 	update_timer()
+	update_health()
 
 ## Update the visual and text-based aspects related to the Student and Besty 
 ## that is currently assigned in the Global Script. [Global.SELECTED_STUDENT, 
@@ -57,8 +59,18 @@ func update_health() -> void:
 	health_bar_text.text = "Error!"
 	
 	if not player: return
+	$Control/Control/VBoxContainer/Health.value = player.health.current_health
+	$Control/Control/VBoxContainer/Health.max_value = player.health.maximum_health
+	if player.health.current_health as float / player.health.maximum_health > 1:
+		var new_stylebox:= StyleBoxFlat.new()
+		new_stylebox.bg_color = Color.ROYAL_BLUE
+		$Control/Control/VBoxContainer/Health.add_theme_stylebox_override("fill",new_stylebox )
+	else:
+		var new_stylebox:= StyleBoxFlat.new()
+		new_stylebox.bg_color = Color.RED
+		$Control/Control/VBoxContainer/Health.add_theme_stylebox_override("fill",new_stylebox )
 	health_bar_text.text =("%s / %s" % 
-	[player.health.current_health, player.health.max_health])
+	[player.health.current_health, player.health.maximum_health])
 
 ## Updates the game time.
 func update_timer()->void:

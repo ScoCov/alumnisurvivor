@@ -11,6 +11,7 @@ class_name State
 ##	creating a new state. 
 #endregion
 
+@warning_ignore("unused_signal")
 signal Transitioned ##	Used to specially tell Godot that this kind of action is taking place.
 
 ##	Call when transitioning to this state

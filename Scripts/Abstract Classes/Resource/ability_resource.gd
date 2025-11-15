@@ -27,11 +27,6 @@ var pickup_range: float = 0
 
 
 
-@export_group("Tags")
-## Global tags associating the ability with specific concepts through out the game.
-@export var meta_tags: Array[Global.meta_tag]
-@export var type_tags: Array[Global.meta_tag]
-
 @export_group("Images")
 ## This is what will be shown outside gameplay, this will be a simple static image of the object
 @export var menu_image: Texture 

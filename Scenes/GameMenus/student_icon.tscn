@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://va580vf1m0o7" path="res://Resources/Image/Student/Head/Eyebrows/Eyebrows_01.png" id="3_fk38g"]
 [ext_resource type="Texture2D" uid="uid://cfg4vqlg36ofq" path="res://Resources/Image/Student/Head/Hair/Hair_01.png" id="4_o4rpc"]
 [ext_resource type="Texture2D" uid="uid://b5dlojhwtpkpo" path="res://Resources/Image/Student/Head/Eyes/Eyes_01.png" id="5_6ynmj"]
-[ext_resource type="Texture2D" uid="uid://cnaemm3wrn3ka" path="res://Resources/Image/Student/Head/Mouth/Mouth_01.png" id="6_mv02y"]
+[ext_resource type="Texture2D" uid="uid://cr4jadxq3b6wj" path="res://Resources/Image/Student/Head/Mouth/Mouth_01.png" id="6_mv02y"]
 [ext_resource type="AudioStream" uid="uid://dmdfma2dtee3l" path="res://Resources/SFX/low_medium_beep.mp3" id="9_o4rpc"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fk38g"]

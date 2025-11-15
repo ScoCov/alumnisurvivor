@@ -13,4 +13,5 @@ func _ready():
 		#new_sprite2d.position = Vector2(randf_range(0, spawn_area.x), randf_range(0, spawn_area.y))
 		var new_grass := large_grass_packed_scene.instantiate()
 		new_grass.position = Vector2(randf_range(0, spawn_area.x), randf_range(0, spawn_area.y))
+		new_grass.set_instance_shader_parameter("time_offset", randf_range(-1.0, 1.0))
 		add_child(new_grass)

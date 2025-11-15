@@ -1,5 +1,5 @@
 class_name FullHealthState
-extends HealthState
+extends Health_State
 
 
 ##	Call when transitioning to this state
@@ -12,9 +12,9 @@ func exit() -> void:
 
 ##	Call every frame drawn
 func update(_delta) -> void:
-	if health_component.current_health / health_component.maximum_health < 1:
+	if health_component.current_health as float / health_component.maximum_health as float < 1:
 		Transitioned.emit(self, "Barely Hurt")
-	elif health_component.current_health / health_component.maximum_health > 1:
+	elif health_component.current_health as float / health_component.maximum_health as float > 1:
 		Transitioned.emit(self, "Over Health")
 
 ##	Call every physics tick which can be seperate from the frames being drawn.

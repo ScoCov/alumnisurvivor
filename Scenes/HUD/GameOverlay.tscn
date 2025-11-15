@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://cfg4vqlg36ofq" path="res://Resources/Image/Student/Head/Hair/Hair_01.png" id="4_2shl3"]
 [ext_resource type="Texture2D" uid="uid://va580vf1m0o7" path="res://Resources/Image/Student/Head/Eyebrows/Eyebrows_01.png" id="5_xilnj"]
 [ext_resource type="Texture2D" uid="uid://b5dlojhwtpkpo" path="res://Resources/Image/Student/Head/Eyes/Eyes_01.png" id="6_v0afp"]
-[ext_resource type="Texture2D" uid="uid://cnaemm3wrn3ka" path="res://Resources/Image/Student/Head/Mouth/Mouth_01.png" id="7_kue78"]
+[ext_resource type="Texture2D" uid="uid://cr4jadxq3b6wj" path="res://Resources/Image/Student/Head/Mouth/Mouth_01.png" id="7_kue78"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wk7wg"]
 bg_color = Color(0.197937, 0.197937, 0.197937, 1)

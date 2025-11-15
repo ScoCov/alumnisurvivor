@@ -31,7 +31,6 @@ func update_student_doll(student: StudentResource):
 	for row in attribute_container.get_children():
 		row.queue_free()
 	for attribute: AttributeResource in Global.ATTRIBUTES:
-		var temp = {"name": attribute.name, "id": attribute.id}
 		if not student[attribute.id] == null:
 			attribute_container.add_child(
 				create_stat_row(student, attribute))
