@@ -16,7 +16,7 @@ script = ExtResource("1_pl5he")
 shape = SubResource("CircleShape2D_us7kl")
 
 [node name="HealthComponent" parent="." instance=ExtResource("2_ghi0t")]
-invulnerability_time = 0.15
+invulnerability_time = 0.05
 
 [node name="EnemeyMovementComponent" parent="." node_paths=PackedStringArray("enemy_entity") instance=ExtResource("3_ghi0t")]
 enemy_entity = NodePath("..")

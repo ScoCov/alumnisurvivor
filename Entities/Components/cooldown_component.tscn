@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://mr7a7qra2mfh"]
+
+[node name="CooldownComponent" type="Node"]

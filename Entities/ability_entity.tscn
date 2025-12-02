@@ -1,0 +1,60 @@
+[gd_scene load_steps=10 format=3 uid="uid://17q6vmelqtud"]
+
+[ext_resource type="Script" uid="uid://gqwg5uj22upb" path="res://Entities/ability_entity.gd" id="1_nhuqi"]
+[ext_resource type="Resource" uid="uid://nkdai5p8xl50" path="res://Resources/Data/Abilities/catch_these_hands.tres" id="2_8rx7i"]
+[ext_resource type="Script" uid="uid://t3mlm4ybio8c" path="res://Scripts/States/state_machine.gd" id="4_c1mgw"]
+[ext_resource type="Script" uid="uid://dxflctocngquj" path="res://Scripts/States/Ability/AbilityCooldown.gd" id="5_kjxeg"]
+[ext_resource type="Script" uid="uid://dydaurl4tnt6i" path="res://Scripts/States/Ability/AbilityActive.gd" id="6_0j8dl"]
+[ext_resource type="Script" uid="uid://bgpw1jyinlpy" path="res://Scripts/States/Ability/AbilityReady.gd" id="7_fasrx"]
+[ext_resource type="Script" uid="uid://bb1ure7bwtit4" path="res://Scripts/States/Ability/AbilityRecovery.gd" id="8_axg6r"]
+[ext_resource type="PackedScene" uid="uid://ds2ghsi5y1k1o" path="res://Entities/Components/damage_component.tscn" id="9_bqk6a"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_k7kox"]
+radius = 100.0
+
+[node name="Ability_Entity" type="Node2D"]
+script = ExtResource("1_nhuqi")
+ability = ExtResource("2_8rx7i")
+
+[node name="Facing" type="Marker2D" parent="."]
+
+[node name="DetectionRange" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionRange"]
+shape = SubResource("CircleShape2D_k7kox")
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("4_c1mgw")
+initial_state = NodePath("Ready")
+
+[node name="Cooldown" type="Node" parent="StateMachine" node_paths=PackedStringArray("ability")]
+script = ExtResource("5_kjxeg")
+ability = NodePath("../..")
+metadata/_custom_type_script = "uid://dxflctocngquj"
+
+[node name="Active" type="Node" parent="StateMachine" node_paths=PackedStringArray("ability")]
+script = ExtResource("6_0j8dl")
+ability = NodePath("../..")
+metadata/_custom_type_script = "uid://dydaurl4tnt6i"
+
+[node name="Ready" type="Node" parent="StateMachine" node_paths=PackedStringArray("ability")]
+script = ExtResource("7_fasrx")
+ability = NodePath("../..")
+metadata/_custom_type_script = "uid://bgpw1jyinlpy"
+
+[node name="Recovery" type="Node" parent="StateMachine" node_paths=PackedStringArray("ability")]
+script = ExtResource("8_axg6r")
+ability = NodePath("../..")
+metadata/_custom_type_script = "uid://bb1ure7bwtit4"
+
+[node name="DamageComponent" parent="." instance=ExtResource("9_bqk6a")]
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[connection signal="body_entered" from="DetectionRange" to="." method="_on_detection_range_body_entered"]
+[connection signal="body_exited" from="DetectionRange" to="." method="_on_detection_range_body_exited"]

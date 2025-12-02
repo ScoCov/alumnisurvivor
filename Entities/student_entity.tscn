@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://v1phrdf8cdqg"]
+[gd_scene load_steps=16 format=3 uid="uid://v1phrdf8cdqg"]
 
 [ext_resource type="Script" uid="uid://d0tuntxkjee38" path="res://Entities/student_entity.gd" id="1_cijec"]
 [ext_resource type="PackedScene" uid="uid://dysr53ibvwa8l" path="res://Entities/Components/movement_component.tscn" id="3_echn0"]
@@ -73,6 +73,9 @@ _data = {
 &"walk": SubResource("Animation_gi4ri")
 }
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_kt3lm"]
+radius = 22.0907
+
 [node name="StudentEntity" type="CharacterBody2D"]
 y_sort_enabled = true
 slide_on_ceiling = false
@@ -135,3 +138,10 @@ offset_left = -49.0
 offset_top = -138.0
 offset_right = 50.0
 offset_bottom = -95.0
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("CircleShape2D_kt3lm")

@@ -1,0 +1,2 @@
+class_name Ability_Homerun
+extends Ability_Entity

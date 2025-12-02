@@ -21,6 +21,15 @@ func _ready() -> void:
 	player.student = Global.SELECTED_STUDENT
 	if game_time != null and not debug:
 		game_time.timeout.connect(game_over)
+		
+		
+func debug_mode():
+	var thing = $"../Forgound Rendering Node/Test"
+	var speed = 15
+	var freq = 0.5
+	var intensity = 1
+	thing.position.x += speed * get_process_delta_time()
+	thing.position.y = sin(log(thing.position.x) * freq) * intensity
 
 func game_over():
 	get_tree().change_scene_to_file("res://Scenes/MainMenu.tscn")

@@ -1,6 +1,7 @@
 extends State
 class_name AbilityStateCooldown
 
+@export var ability: Ability_Entity
 
 ##	Call when transitioning to this state
 func enter():
@@ -12,10 +13,10 @@ func exit() -> void:
 
 ##	Call every frame drawn
 func update(_delta: float) -> void:
+	if ability.on_cooldown():
+		Transitioned.emit(self, "Ready")
 	pass
 	
 ##	Call every physics tick which can be seperate from the frames being drawn.
 func physics_update(_delta: float)-> void:
-	if (get_parent().get_parent()).on_cooldown(_delta):
-		Transitioned.emit(self, "Ready")
 	pass

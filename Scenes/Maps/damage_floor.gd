@@ -5,6 +5,9 @@ extends Area2D
 @export var damage_amount: int = 1
 var entity: CharacterBody2D
 
+
+
+
 func _process(_delta):
 	if entity:
 		var damage: int = floor(damage_amount * (-1 if not heal else 1))

@@ -1,6 +1,8 @@
 extends State
 class_name AbilityStateActive
 
+@export var ability: Ability_Entity
+
 ##	Call when transitioning to this state
 func enter():
 	pass
@@ -11,10 +13,10 @@ func exit() -> void:
 
 ##	Call every frame drawn
 func update(_delta: float) -> void:
+	if ability.on_active():
+		Transitioned.emit(self, "Recovery")
 	pass 
 	
 ##	Call every physics tick which can be seperate from the frames being drawn.
 func physics_update(_delta: float)-> void:
-	if (get_parent().get_parent()).on_active(_delta):
-		Transitioned.emit(self, "Recovery")
 	pass

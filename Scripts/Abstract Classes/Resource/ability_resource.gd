@@ -1,4 +1,4 @@
-class_name AbilityResource
+class_name Ability_Resource
 extends Resource
 
 
@@ -10,20 +10,17 @@ extends Resource
 @export var id: String
 @export_multiline var description: String
 
-##This section is loaded with the full gammit of attributes an ability can have.
-@export_group("Stats")
-var armor: float = 0
-var attack_speed: float = 0
-var bounce: float = 0
-var cooldown: float = 0
-var critical_chance: float = 0
-var critical_damage_multiplier: float = 0
-var damage: float = 0
-var duration: float = 0
-var knockback: float = 0
-var movement_speed: float = 0
-var pierce: float = 0
-var pickup_range: float = 0
+@export_category("Adjustments") 
+## Mutable Fields
+@export var projectile_speed: float = 450
+@export var attack_range: float = 500
+@export var projectiles_max: int = 1
+@export var range_tag: Global.range_tag
+@export_range(0,5.0) var area: float = 1
+@export var attack_speed: float = 0.5
+@export var attack_speed_rate: float = 1.0
+@export var cooldown_time: float = 1.00
+@export var cooldown_rate: float = 1.00
 
 
 

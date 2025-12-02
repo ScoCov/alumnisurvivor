@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="Ability_Resource" load_steps=2 format=3 uid="uid://nkdai5p8xl50"]
+
+[ext_resource type="Script" uid="uid://b1ad1mp4224b3" path="res://Scripts/Abstract Classes/Resource/ability_resource.gd" id="1_8plyh"]
+
+[resource]
+script = ExtResource("1_8plyh")
+ability_name = "Throw Hands"
+display_name = "Throw Hands!"
+id = "throw_hands"
+description = ""
+projectile_speed = 450.0
+attack_range = 500.0
+projectiles_max = 1
+range_tag = 0
+area = 1.0
+attack_speed = 0.5
+attack_speed_rate = 1.0
+cooldown_time = 1.0
+cooldown_rate = 1.0
+metadata/_custom_type_script = "uid://b1ad1mp4224b3"

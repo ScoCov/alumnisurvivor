@@ -11,7 +11,7 @@ extends Resource
 
 @export_category("Starting Ability")
 ### Each Student will start with an preassigned ability, ala Vampire Survivor. 
-@export var starting_ability: AbilityResource
+@export var starting_ability: Ability_Resource
 
 @export_category("Besty Info")
 @export_group("Stats")

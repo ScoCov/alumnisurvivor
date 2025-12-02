@@ -51,7 +51,7 @@ var ITEM_COLLECTION: Array[ItemResource]
 #region NOTE:
 ##
 #endregion
-var ABILITIES: Array[AbilityResource]
+var ABILITIES: Array[Ability_Resource]
 
 #region NOTE:
 ##
@@ -82,8 +82,9 @@ var HAIR: Array[Texture]
 enum student_tag {Player, Besty, UNASSIGNED}
 enum group_tag {Athlete, Academic, Technologist, Trade_Skill, Socialite, Artist, Musician, None }
 enum enemy_tag {Elite, Boss, Normal, Weak, Strong, Ranged}
-enum attack_tag { Thrust, Swing, Slam, Wave, AoE, Beam, Single_Shot, Burst_Shot, Retaliation, Status_Effect }
+enum attack_tag { Thrust, Swing, Slam, Wave, Beam, Single_Shot, Burst_Shot, Retaliation, Status_Effect }
 enum ability_type {Attack, Defense, Support, Other, None}
+enum range_tag {Melee, Area, Ranged}
 enum damage_types { Blunt, Slashing, Piercing, Ego, Sonic, Fire, Cold, Acid, Shock}
 
 func _ready():

@@ -36,6 +36,8 @@ var overhealth_maximum_limit: int:
 
 ## Armor will be applied to a logarithmic function, to provide a value. log(armor) * 100
 @export var armor: int = 0;
+## Flat value to reduce damage
+@export var damage_reduction: int = 0
 
 @export_group("Invulnerability")
 ## When true, prevents all damage that would be dealt.

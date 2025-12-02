@@ -30,5 +30,3 @@ eyes = ExtResource("2_lleik")
 mouth = ExtResource("3_lleik")
 unlocked = true
 student_tags = Array[int]([3])
-meta_tags = Array[int]([])
-combat_tags = Array[int]([0])
