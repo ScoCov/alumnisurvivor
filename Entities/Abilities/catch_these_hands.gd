@@ -20,10 +20,7 @@ extends Ability_Entity
 ##TODO: Need to figure out a better angle for the hands. 
 @onready var hands_starting_pos: Vector2 = Vector2(0, ability.attack_range/4)
 
-## This stuff
 var rh_active: bool = false
-
-## Counters
 
 func _ready():
 	$DetectionRange.get_child(0).shape.radius = ability.attack_range
@@ -37,7 +34,6 @@ func _physics_process(_delta):
 		if len(entities_in_range) > 1:
 			entities_in_range.sort_custom(func(_entity_a, _entity_b): return position.distance_to(_entity_a.position) < position.distance_to(_entity_b.position)) 
 		$Facing.look_at(entities_in_range[0].position)
-	$Label.text = "%s || %s" % [attack_speed_current, cooldown_current]
 	
 ## Returnting true to these state functions will trigger it to transition
 func on_ready() -> bool:
@@ -46,6 +42,7 @@ func on_ready() -> bool:
 	
 func on_active() -> bool:
 	## Movementspeed with Delta-time taken into account.
+	if len(entities_in_range) != 0: return false
 	var target:= entities_in_range[0] ## Closest Enemy
 	var speed = ability.projectile_speed * get_process_delta_time() 
 	var active_hand = right_hand if rh_active else left_hand ## assign hand to be used

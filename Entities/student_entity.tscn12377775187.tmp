@@ -1,6 +1,6 @@
 [gd_scene load_steps=16 format=3 uid="uid://v1phrdf8cdqg"]
 
-[ext_resource type="Script" uid="uid://d0tuntxkjee38" path="res://Entities/student_entity.gd" id="1_kt3lm"]
+[ext_resource type="Script" uid="uid://d0tuntxkjee38" path="res://Entities/student_entity.gd" id="1_cijec"]
 [ext_resource type="PackedScene" uid="uid://dysr53ibvwa8l" path="res://Entities/Components/movement_component.tscn" id="3_echn0"]
 [ext_resource type="PackedScene" uid="uid://xy2guokl2776" path="res://Entities/Components/health_component.tscn" id="3_goiee"]
 [ext_resource type="Texture2D" uid="uid://cr4jadxq3b6wj" path="res://Resources/Image/Student/Head/Mouth/Mouth_01.png" id="9_kt3lm"]
@@ -79,7 +79,7 @@ radius = 22.0907
 [node name="StudentEntity" type="CharacterBody2D"]
 y_sort_enabled = true
 slide_on_ceiling = false
-script = ExtResource("1_kt3lm")
+script = ExtResource("1_cijec")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_bj2gu")

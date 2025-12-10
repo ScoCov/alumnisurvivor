@@ -7,21 +7,8 @@ extends Node2D
 ## each form should be an instantiated Ability_Entity.
 #endregion
 
-
 @export var player: Student_Entity
 @export var ability: Ability_Resource
-
-#@export_category("Adjustments")
-## Mutable Fields
-#var projectile_speed: float
-#var attack_range: float 
-#var projectiles_max: int 
-#var range_tag: Global.range_tag
-#var area: float 
-#var attack_speed: float 
-#var attack_speed_rate: float 
-#var cooldown_time: float 
-#var cooldown_rate: float
 
 ## Assign Nodes and reusable default values.
 @onready var detection_range = $DetectionRange
@@ -63,7 +50,7 @@ func _on_hitbox_body_entered(body):
 	pass
 
 ##NOTE:
-## Unnecessary, keeping for reference. At least, until I remember where this 
+## Unnecessary; keeping for reference. At least, until I remember where this 
 ## code would actually be useful. I suspect it'll be useful in the Item_Management
 ## system.
 func ability_factory():
