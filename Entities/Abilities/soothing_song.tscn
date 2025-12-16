@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://4v3yalblhtox"]
+
+[ext_resource type="PackedScene" uid="uid://17q6vmelqtud" path="res://Entities/ability_entity.tscn" id="1_wxfre"]
+[ext_resource type="Script" uid="uid://cqcpajm4o5nnd" path="res://Entities/Abilities/soothing_song.gd" id="2_a4508"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a4508"]
+bg_color = Color(0.152941, 0.152941, 0.152941, 0.839216)
+corner_radius_top_left = 180
+corner_radius_top_right = 180
+corner_radius_bottom_right = 180
+corner_radius_bottom_left = 180
+
+[node name="SoothingSong" instance=ExtResource("1_wxfre")]
+script = ExtResource("2_a4508")
+
+[node name="Panel" type="Panel" parent="." index="4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -114.0
+offset_top = -114.0
+offset_right = 114.0
+offset_bottom = 114.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_a4508")

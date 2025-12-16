@@ -23,5 +23,5 @@ func update(_delta: float):
 		self.Transitioned.emit(self,"Avoid_Player_Too_Far")
 	 
 	var direction = enemy_entity.position.direction_to(enemy_entity.player.position).rotated(PI/2)
-	enemy_entity.velocity = (direction_tendency * direction) * (enemy_movement_component.movement_speed * 0.20)
+	enemy_entity.velocity = (direction_tendency * direction) * (enemy_movement_component.speed)
 	

@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://dy7n5gmkswm47" path="res://Scripts/GameLogic.gd" id="1_ujiyw"]
 [ext_resource type="PackedScene" uid="uid://cry3gb37tqlm0" path="res://Scenes/HUD/GameOverlay.tscn" id="3_e4hy1"]
+[ext_resource type="PackedScene" uid="uid://4v3yalblhtox" path="res://Entities/Abilities/soothing_song.tscn" id="5_7pf22"]
 [ext_resource type="Script" uid="uid://cl3mognqkatcs" path="res://Scenes/Maps/damage_floor.gd" id="5_rkel5"]
-[ext_resource type="PackedScene" uid="uid://c854scvwbfqm4" path="res://Entities/Abilities/catch_these_hands.tscn" id="6_c8ydw"]
 [ext_resource type="PackedScene" uid="uid://cyimvhd78npmj" path="res://Entities/Enemies/enemy_entity.tscn" id="6_dobwi"]
 [ext_resource type="PackedScene" uid="uid://bh2ur6pblyj8n" path="res://Scenes/Maps/Shared/continuous_floor.tscn" id="7_c8ydw"]
 [ext_resource type="PackedScene" uid="uid://v1phrdf8cdqg" path="res://Entities/student_entity.tscn" id="8_c8ydw"]
@@ -42,10 +42,12 @@ position = Vector2(576, 324)
 
 [node name="Camera2D" type="Camera2D" parent="Forgound Rendering Node/StudentEntity"]
 
+[node name="SoothingSong" parent="Forgound Rendering Node/StudentEntity" node_paths=PackedStringArray("player") instance=ExtResource("5_7pf22")]
+player = NodePath("..")
+ability = null
+
 [node name="Homerun" parent="Forgound Rendering Node/StudentEntity" node_paths=PackedStringArray("player") instance=ExtResource("8_p4l8i")]
 player = NodePath("..")
-
-[node name="CatchTheseHands" parent="Forgound Rendering Node/StudentEntity" instance=ExtResource("6_c8ydw")]
 
 [node name="Damage" type="Area2D" parent="Forgound Rendering Node"]
 position = Vector2(877.881, 327.696)
@@ -99,7 +101,6 @@ offset_bottom = 40.0
 [node name="EnemyEntity" parent="Forgound Rendering Node" node_paths=PackedStringArray("player") instance=ExtResource("6_dobwi")]
 position = Vector2(280, 467)
 player = NodePath("../StudentEntity")
-movement_strategy = 4
 
 [connection signal="body_entered" from="Forgound Rendering Node/Damage" to="Forgound Rendering Node/Damage" method="_on_body_entered"]
 [connection signal="body_exited" from="Forgound Rendering Node/Damage" to="Forgound Rendering Node/Damage" method="_on_body_exited"]

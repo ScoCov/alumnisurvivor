@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://17q6vmelqtud"]
+[gd_scene load_steps=10 format=3 uid="uid://17q6vmelqtud"]
 
 [ext_resource type="Script" uid="uid://gqwg5uj22upb" path="res://Entities/ability_entity.gd" id="1_nhuqi"]
+[ext_resource type="Resource" uid="uid://cur3sbmategs8" path="res://Resources/Data/Abilities/soothing_song.tres" id="2_nhuqi"]
 [ext_resource type="Script" uid="uid://t3mlm4ybio8c" path="res://Scripts/States/state_machine.gd" id="4_c1mgw"]
 [ext_resource type="Script" uid="uid://dxflctocngquj" path="res://Scripts/States/Ability/AbilityCooldown.gd" id="5_kjxeg"]
 [ext_resource type="Script" uid="uid://dydaurl4tnt6i" path="res://Scripts/States/Ability/AbilityActive.gd" id="6_0j8dl"]
@@ -11,8 +12,10 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_k7kox"]
 radius = 140.004
 
-[node name="Ability_Entity" type="Node2D"]
+[node name="Ability_Entity" type="Node2D" node_paths=PackedStringArray("damage_comp")]
 script = ExtResource("1_nhuqi")
+ability = ExtResource("2_nhuqi")
+damage_comp = NodePath("DamageComponent")
 
 [node name="Facing" type="Marker2D" parent="."]
 
@@ -48,7 +51,8 @@ script = ExtResource("8_axg6r")
 ability = NodePath("../..")
 metadata/_custom_type_script = "uid://bb1ure7bwtit4"
 
-[node name="DamageComponent" parent="." instance=ExtResource("9_bqk6a")]
+[node name="DamageComponent" parent="." node_paths=PackedStringArray("ability") instance=ExtResource("9_bqk6a")]
+ability = NodePath("..")
 
 [connection signal="body_entered" from="DetectionRange" to="." method="_on_detection_range_body_entered"]
 [connection signal="body_exited" from="DetectionRange" to="." method="_on_detection_range_body_exited"]

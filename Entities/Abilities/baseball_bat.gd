@@ -23,7 +23,8 @@ func on_ready() -> bool:
 func on_active() -> bool:
 	## When active, it should disable the looking at function for Facing
 	look_at_target = false
-	$Facing/SwingingArm/BaseballBat.visible = true
+	$Facing/SwingingArm.visible = true
+
 	$Facing/SwingingArm.rotation_degrees += ability.projectile_speed * get_process_delta_time()
 	if $Facing/SwingingArm.rotation_degrees >= 45 * ability.area:
 		return true
@@ -31,7 +32,7 @@ func on_active() -> bool:
 	
 func on_recovery() -> bool:
 	look_at_target = true
-	$Facing/SwingingArm/BaseballBat.visible = false
+	$Facing/SwingingArm.visible = false
 	return true
 	
 func on_cooldown()-> bool:

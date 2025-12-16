@@ -9,7 +9,7 @@ extends Node2D
 
 @export var player: Student_Entity
 @export var ability: Ability_Resource
-
+@export var damage_comp: Damage_Component
 ## Assign Nodes and reusable default values.
 @onready var detection_range = $DetectionRange
 

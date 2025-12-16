@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="Ability_Resource" load_steps=2 format=3 uid="uid://cur3sbmategs8"]
+
+[ext_resource type="Script" uid="uid://b1ad1mp4224b3" path="res://Scripts/Abstract Classes/Resource/ability_resource.gd" id="1_vil71"]
+
+[resource]
+script = ExtResource("1_vil71")
+ability_name = "Soothing Song"
+display_name = "Soothing Song"
+id = "vocal_calming_song"
+description = "Causes any enemy within the range of the user to be slowed and eventually have other effects occur."
+projectile_speed = 450.0
+attack_range = 150.0
+projectiles_max = 1
+range_tag = 0
+area = 1.0
+attack_speed = 0.5
+attack_speed_rate = 1.0
+cooldown_time = 1.0
+cooldown_rate = 1.0
+knockback = 0.0
+metadata/_custom_type_script = "uid://b1ad1mp4224b3"

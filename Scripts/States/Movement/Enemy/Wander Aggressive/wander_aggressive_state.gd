@@ -21,7 +21,7 @@ func update(_delta: float):
 		target = change_direction(entity.player.position)
 	
 	
-	entity.velocity = entity.position.direction_to(target) * enemy_movement_component.movement_speed
+	entity.velocity = entity.position.direction_to(target) * enemy_movement_component.speed
 
 ## Gives a Vector2 location for the entity to use to help determine directions.
 ## [target] == Seed Location

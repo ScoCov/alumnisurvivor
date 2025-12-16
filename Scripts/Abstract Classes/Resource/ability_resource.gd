@@ -10,20 +10,23 @@ extends Resource
 @export var id: String
 @export_multiline var description: String
 
-@export_category("Adjustments") 
+@export_category("Stats") 
 ## Mutable Fields
-@export var projectile_speed: float = 450
-@export var attack_range: float = 500
+@export var base_damage: float = 0
+@export var minimum_damage: float = 0
+@export var maximum_damage: float = 0
+@export var critical_hit_chance: float = 0.01
+@export var critical_damage_multiplier: float = 1.5
+@export var projectile_speed: float = 650
+@export var attack_range: float = 250
 @export var projectiles_max: int = 1
 @export var range_tag: Global.range_tag
-@export_range(0,5.0) var area: float = 1
+@export_range(0,2.0) var area: float = 1
 @export var attack_speed: float = 0.5
 @export var attack_speed_rate: float = 1.0
 @export var cooldown_time: float = 1.00
 @export var cooldown_rate: float = 1.00
 @export var knockback: float = 0
-
-
 
 @export_group("Images")
 ## This is what will be shown outside gameplay, this will be a simple static image of the object

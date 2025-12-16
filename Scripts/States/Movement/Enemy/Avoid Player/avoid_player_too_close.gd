@@ -13,4 +13,4 @@ func update(_delta: float):
 		self.Transitioned.emit(self,"Avoid_Player_State")
 		
 	var direction = -enemy_entity.position.direction_to(enemy_entity.player.position)
-	enemy_entity.velocity = direction * (enemy_movement_component.movement_speed )
+	enemy_entity.velocity = direction * (enemy_movement_component.speed )
