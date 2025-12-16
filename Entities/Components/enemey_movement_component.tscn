@@ -109,3 +109,9 @@ metadata/_custom_type_script = "uid://tajxm7m6miy8"
 script = ExtResource("11_j44vp")
 enemy_movement_component = NodePath("../../../../..")
 metadata/_custom_type_script = "uid://kn8v3mptp0ws"
+
+[node name="KnockbackTimer" type="Timer" parent="."]
+wait_time = 0.33
+one_shot = true
+
+[connection signal="timeout" from="KnockbackTimer" to="." method="_on_knockback_timer_timeout"]

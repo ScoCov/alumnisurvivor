@@ -20,6 +20,7 @@ func _process(_delta):
 		health.find_child("Statemachine").current_state = health.find_child("Full Health")
 		health.current_health = health.maximum_health
 		position = _original_position_debug
+		velocity *= 0
 	$Label.text = "%s/%s" % [health.current_health, health.maximum_health]
 	
 func emit_damage_indicator(param: String):

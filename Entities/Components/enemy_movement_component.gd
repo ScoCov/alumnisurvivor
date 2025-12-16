@@ -3,6 +3,13 @@ extends Node
 
 @export var movement_speed: float = 85
 @export var enemy_entity: Enemy_Entity
+@export var is_knocked_backed: bool = false:
+	set(value):
+		if value and $KnockbackTimer.is_stopped():
+			$KnockbackTimer.start()
+		#elif not value and not $KnockbackTimer.is_stopped():
+			#$KnockbackTimer.stop()
+		is_knocked_backed = value
 
 var movement_strategy: EnemyMovementStrategy.type = EnemyMovementStrategy.type.Move_to_Player:
 	set(value):
@@ -31,3 +38,8 @@ func movement_update():
 			movement_type = $StateMachine/EnemyMoving/EnemyMovementWanderIgnore
 		EnemyMovementStrategy.type.Wander_Aggressive:
 			movement_type = $StateMachine/EnemyMoving/EnemyMovementWanderAggressive
+
+
+func _on_knockback_timer_timeout():
+	is_knocked_backed = false
+	#enemy_entity.velocity = Vector2.ZERO

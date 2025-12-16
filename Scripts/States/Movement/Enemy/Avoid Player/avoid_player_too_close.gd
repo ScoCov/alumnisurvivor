@@ -5,6 +5,7 @@ extends Enemy_Avoid_Player_Movement_State
 
 func update(_delta: float):
 	## Determine distance from player:
+	if enemy_movement_component.is_knocked_backed: return
 	var enemy_entity = enemy_movement_component.enemy_entity
 	var distance = enemy_entity.position.distance_to(enemy_entity.player.position)
 	

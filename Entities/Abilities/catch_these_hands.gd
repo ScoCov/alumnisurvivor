@@ -42,7 +42,7 @@ func on_ready() -> bool:
 	
 func on_active() -> bool:
 	## Movementspeed with Delta-time taken into account.
-	if len(entities_in_range) != 0: return false
+	if len(entities_in_range) <= 0: return false
 	var target:= entities_in_range[0] ## Closest Enemy
 	var speed = ability.projectile_speed * get_process_delta_time() 
 	var active_hand = right_hand if rh_active else left_hand ## assign hand to be used

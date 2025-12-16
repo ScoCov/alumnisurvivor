@@ -10,7 +10,7 @@ func enter():
 	direction_tendency = binary_array[randi_range(0, len(binary_array) - 1)]
 
 func update(_delta: float):
-	if enemy_movement_component.movement_type is not EnemyMovementAvoidPlayer:
+	if enemy_movement_component.is_knocked_backed or enemy_movement_component.movement_type is not EnemyMovementAvoidPlayer:
 		return
 
 	## Determine distance from player:

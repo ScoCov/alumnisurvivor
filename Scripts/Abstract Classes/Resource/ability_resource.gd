@@ -21,6 +21,7 @@ extends Resource
 @export var attack_speed_rate: float = 1.0
 @export var cooldown_time: float = 1.00
 @export var cooldown_rate: float = 1.00
+@export var knockback: float = 0
 
 
 

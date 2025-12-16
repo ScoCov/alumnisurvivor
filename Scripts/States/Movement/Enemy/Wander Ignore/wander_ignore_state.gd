@@ -4,7 +4,7 @@ extends Enemy_Wander_Movement_State
 var target: Vector2
 
 func update(_delta: float):
-	if enemy_movement_component.movement_type is not EnemyMovementWanderIgnore: return
+	if enemy_movement_component.is_knocked_backed or enemy_movement_component.movement_type is not EnemyMovementWanderIgnore : return
 	if entity.position.distance_to(entity.player.position) > enemy_movement_component.movement_type.player_distance_limits.y:
 		self.Transitioned.emit(self, "Wander_Ignore_Too_Far")
  	## If there isn't a target or if there is a target and either: 

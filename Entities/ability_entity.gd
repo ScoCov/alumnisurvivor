@@ -20,6 +20,7 @@ var entities_in_range: Array[Enemy_Entity]
 var attack_speed_current: float = 0.0
 var cooldown_current: float = 0.0
 var projectiles_current: int = 0
+var knockback: float = 0
 
 func _ready():
 	pass

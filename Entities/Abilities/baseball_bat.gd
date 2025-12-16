@@ -15,7 +15,7 @@ func _physics_process(_delta):
 	
 ## Returnting true to these state functions will trigger it to transition
 func on_ready() -> bool:
-	$Facing/SwingingArm.rotation_degrees = -45
+	$Facing/SwingingArm.rotation_degrees = -45 * ability.area
 	cooldown_current = 0
 	return len(entities_in_range) > 0 and entities_in_range[0].position.distance_to(entities_in_range[0].player.position) < ability.attack_range/2
 	
@@ -24,8 +24,8 @@ func on_active() -> bool:
 	## When active, it should disable the looking at function for Facing
 	look_at_target = false
 	$Facing/SwingingArm/BaseballBat.visible = true
-	$Facing/SwingingArm.rotation_degrees += 1
-	if $Facing/SwingingArm.rotation_degrees >= 45:
+	$Facing/SwingingArm.rotation_degrees += ability.projectile_speed * get_process_delta_time()
+	if $Facing/SwingingArm.rotation_degrees >= 45 * ability.area:
 		return true
 	return false
 	
@@ -53,3 +53,7 @@ func _on_detection_range_body_exited(body):
 func _on_hitbox_body_entered(body):
 	if body is Enemy_Entity:
 		body.health.attempt_damage(self, -1)
+		var direction = player.position.direction_to(body.position)
+		#var value = ability.knockback ##TEST: Needs a Variable
+		body.movement_component.is_knocked_backed = true
+		body.velocity += direction * ability.knockback

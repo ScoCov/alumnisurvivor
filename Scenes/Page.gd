@@ -35,7 +35,3 @@ func _on_page_type_changed(_page_type: String = "") -> bool:
 		return false
 	_update_page() 
 	return true
-
-
-func _on_debug_pressed():
-	get_tree().change_scene_to_file("res://Scenes/Debug.tscn")

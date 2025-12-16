@@ -7,6 +7,7 @@ extends Enemy_Wander_Movement_State
 var target: Vector2
 
 func update(_delta: float):
+	if enemy_movement_component.is_knocked_backed: return
 	var distance_to_player: float = entity.position.distance_to(entity.player.position)
 
 	if distance_to_player >= enemy_movement_component.movement_type.player_distance_limits.x:

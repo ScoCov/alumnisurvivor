@@ -45,8 +45,7 @@ position = Vector2(576, 324)
 [node name="Homerun" parent="Forgound Rendering Node/StudentEntity" node_paths=PackedStringArray("player") instance=ExtResource("8_p4l8i")]
 player = NodePath("..")
 
-[node name="CatchTheseHands" parent="Forgound Rendering Node/StudentEntity" node_paths=PackedStringArray("player") instance=ExtResource("6_c8ydw")]
-player = NodePath("..")
+[node name="CatchTheseHands" parent="Forgound Rendering Node/StudentEntity" instance=ExtResource("6_c8ydw")]
 
 [node name="Damage" type="Area2D" parent="Forgound Rendering Node"]
 position = Vector2(877.881, 327.696)
@@ -100,6 +99,7 @@ offset_bottom = 40.0
 [node name="EnemyEntity" parent="Forgound Rendering Node" node_paths=PackedStringArray("player") instance=ExtResource("6_dobwi")]
 position = Vector2(280, 467)
 player = NodePath("../StudentEntity")
+movement_strategy = 4
 
 [connection signal="body_entered" from="Forgound Rendering Node/Damage" to="Forgound Rendering Node/Damage" method="_on_body_entered"]
 [connection signal="body_exited" from="Forgound Rendering Node/Damage" to="Forgound Rendering Node/Damage" method="_on_body_exited"]
