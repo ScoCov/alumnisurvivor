@@ -7,5 +7,4 @@ extends EnemyMovementStrategy
 func update(_delta: float):
 	if entity and not enemy_movement_component.is_knocked_backed:
 		var direction = entity.position.direction_to(entity.player.position)
-		var speed = enemy_movement_component.movement_speed * enemy_movement_component.speed
-		entity.velocity = ( direction * speed) 
+		entity.velocity = ( direction * enemy_movement_component.speed) 

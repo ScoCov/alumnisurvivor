@@ -85,7 +85,7 @@ enum enemy_tag {Elite, Boss, Normal, Weak, Strong, Ranged}
 enum attack_tag { Thrust, Swing, Slam, Wave, Beam, Single_Shot, Burst_Shot, Retaliation, Status_Effect }
 enum ability_type {Attack, Defense, Support, Other, None}
 enum range_tag {Melee, Area, Ranged}
-enum damage_types { Blunt, Slashing, Piercing, Ego, Sonic, Fire, Cold, Acid, Shock}
+enum damage_types { Blunt, Sharp, Ego, Sonic, Explosion, Toxic, Electric}
 
 func _ready():
 	@warning_ignore("static_called_on_instance")

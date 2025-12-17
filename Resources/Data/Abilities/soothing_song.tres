@@ -4,11 +4,16 @@
 
 [resource]
 script = ExtResource("1_vil71")
-ability_name = "Soothing Song"
-display_name = "Soothing Song"
-id = "vocal_calming_song"
-description = "Causes any enemy within the range of the user to be slowed and eventually have other effects occur."
-projectile_speed = 450.0
+ability_name = ""
+display_name = ""
+id = ""
+description = ""
+base_damage = 0.0
+minimum_damage = 0.0
+maximum_damage = 0.0
+critical_hit_chance = 0.01
+critical_damage_multiplier = 1.5
+projectile_speed = 650.0
 attack_range = 150.0
 projectiles_max = 1
 range_tag = 0

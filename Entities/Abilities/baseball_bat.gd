@@ -53,8 +53,7 @@ func _on_detection_range_body_exited(body):
 
 func _on_hitbox_body_entered(body):
 	if body is Enemy_Entity:
-		body.health.attempt_damage(self, -1)
+		body.health.attempt_damage(self, -damage_comp.base_damage)
 		var direction = player.position.direction_to(body.position)
-		#var value = ability.knockback ##TEST: Needs a Variable
 		body.movement_component.is_knocked_backed = true
 		body.velocity += direction * ability.knockback

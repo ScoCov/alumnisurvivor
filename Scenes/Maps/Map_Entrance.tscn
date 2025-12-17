@@ -42,11 +42,11 @@ position = Vector2(576, 324)
 
 [node name="Camera2D" type="Camera2D" parent="Forgound Rendering Node/StudentEntity"]
 
-[node name="SoothingSong" parent="Forgound Rendering Node/StudentEntity" node_paths=PackedStringArray("player") instance=ExtResource("5_7pf22")]
-player = NodePath("..")
-ability = null
-
 [node name="Homerun" parent="Forgound Rendering Node/StudentEntity" node_paths=PackedStringArray("player") instance=ExtResource("8_p4l8i")]
+player = NodePath("..")
+
+[node name="SoothingSong" parent="Forgound Rendering Node/StudentEntity" node_paths=PackedStringArray("player") instance=ExtResource("5_7pf22")]
+pulse_rate = 1
 player = NodePath("..")
 
 [node name="Damage" type="Area2D" parent="Forgound Rendering Node"]
