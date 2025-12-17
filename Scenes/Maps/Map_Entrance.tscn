@@ -46,7 +46,8 @@ position = Vector2(576, 324)
 player = NodePath("..")
 
 [node name="SoothingSong" parent="Forgound Rendering Node/StudentEntity" node_paths=PackedStringArray("player") instance=ExtResource("5_7pf22")]
-pulse_rate = 1
+pulse_rate = 1.0
+min_transparency = 0.25
 player = NodePath("..")
 
 [node name="Damage" type="Area2D" parent="Forgound Rendering Node"]

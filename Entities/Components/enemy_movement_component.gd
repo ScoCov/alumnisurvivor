@@ -5,12 +5,8 @@ const MIN_SLOW_EFFECT: float = 0.05
 
 @export var movement_speed: float = 85
 @export var enemy_entity: Enemy_Entity
-@export_range(0.05, 2.0) var speed_modifier: float = 1:
-	set(value):
-		if value < MIN_SLOW_EFFECT:
-			value = MIN_SLOW_EFFECT
-		speed_modifier = value
-@export var is_slowed: bool = false
+@export_range(0.05, 2.0,0.05) var speed_modifier: float = 1.0
+	
 @export var is_knocked_backed: bool = false:
 	set(value):
 		if value and $KnockbackTimer.is_stopped():
@@ -38,7 +34,6 @@ func _process(_delta):
 	if not movement_type:
 		movement_strategy = enemy_entity.movement_strategy
 		movement_update()
-	#enemy_entity.find_child("Label").text = "%s (%s)" % [$StateMachine/EnemyMoving/EnemyMovementWanderAggressive/StateMachine.current_state.name, enemy_entity.position.distance_to(enemy_entity.player.position)]
 		
 func movement_update():
 	match movement_strategy:

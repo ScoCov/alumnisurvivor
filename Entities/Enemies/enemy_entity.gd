@@ -7,6 +7,7 @@ extends CharacterBody2D
 @onready var movement_component: Enemy_Movement_Component = $EnemeyMovementComponent
 @onready var health: Health_Component = $HealthComponent
 @onready var _original_position_debug:= position
+@onready var status_effects: Node2D = $StatusEffects
 var _taking_damage_particles:= preload("res://Entities/Effects/taking_damage.tscn")
 var _healing_damage_particles:= preload("res://Entities/Effects/healing_damage.tscn")
 
@@ -21,7 +22,7 @@ func _process(_delta):
 		health.current_health = health.maximum_health
 		position = _original_position_debug
 		velocity *= 0
-	$Label.text = "%s/%s" % [health.current_health, health.maximum_health]
+	$Label.text = "%s" % [movement_component.speed_modifier]
 	
 func emit_damage_indicator(param: String):
 	var new_particle

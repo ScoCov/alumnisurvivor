@@ -5,9 +5,11 @@
 [ext_resource type="Texture2D" uid="uid://biopnyinv43f5" path="res://Resources/Image/Ability/test_slow_area.png" id="3_6p3nf"]
 
 [node name="SoothingSong" instance=ExtResource("1_wxfre")]
-z_index = -1
 script = ExtResource("2_a4508")
-pulse_rate = 10
+slow_strength = 0.25
+pulse_rate = 0.1
+min_transparency = 0.35
+max_transparency = 1.0
 
 [node name="TestSlowArea" type="Sprite2D" parent="Facing" index="0"]
 z_index = -1

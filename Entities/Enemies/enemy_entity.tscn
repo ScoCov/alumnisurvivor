@@ -15,6 +15,8 @@ script = ExtResource("1_pl5he")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_us7kl")
 
+[node name="StatusEffects" type="Node2D" parent="."]
+
 [node name="HealthComponent" parent="." instance=ExtResource("2_ghi0t")]
 invulnerability_time = 0.05
 

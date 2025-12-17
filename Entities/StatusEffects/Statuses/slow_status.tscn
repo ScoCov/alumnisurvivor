@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://homfpi6ow1fl"]
+
+[ext_resource type="PackedScene" uid="uid://duhcemp1lve0q" path="res://Entities/StatusEffects/status_entity.tscn" id="1_10bvi"]
+[ext_resource type="Script" uid="uid://b2k0tjbuap225" path="res://Entities/StatusEffects/Statuses/slow_status.gd" id="2_picly"]
+
+[node name="SlowStatus" instance=ExtResource("1_10bvi")]
+script = ExtResource("2_picly")
+pulse_rate = 1.0
+min_transparency = 0.25
+max_transparency = 1.0
+status_color = Color(0.3024, 0.34848, 0.36, 1)
+
+[node name="Duration" parent="." index="0"]
+autostart = true
