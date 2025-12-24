@@ -28,11 +28,11 @@ func _process(_delta):
 		
 
 func _attempt_spawn():
-	var rand_x: float = randf_range(spawn_range_minimum,spawn_range_maximum)
-	var rand_y: float = randf_range(spawn_range_minimum,spawn_range_maximum)
+	#var rand_x: float = randf_range(spawn_range_minimum,spawn_range_maximum)
+	#var rand_y: float = randf_range(spawn_range_minimum,spawn_range_maximum)
 	var enemy = temp_enemy_entity.instantiate()
 	enemy.player = player
-	enemy.position = player.position + Vector2(rand_x, rand_y)
+	enemy.position = enemy.player.position + _get_range()
 	enemy_container.add_child(enemy)
 	
 func _get_range() -> Vector2:

@@ -18,11 +18,8 @@ func _ready():
 	
 func _process(_delta):
 	if health.active_state is DeadState:
-		health.find_child("Statemachine").current_state = health.find_child("Full Health")
-		health.current_health = health.maximum_health
-		position = _original_position_debug
-		velocity *= 0
-	$Label.text = "%s" % [movement_component.speed_modifier]
+		self.queue_free()
+	#$Label.text = "%s" % [movement_component.speed_modifier]
 	
 func emit_damage_indicator(param: String):
 	var new_particle
