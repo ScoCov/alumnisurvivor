@@ -1,10 +1,12 @@
-[gd_scene load_steps=11 format=3 uid="uid://dxs4mstvhwgv"]
+[gd_scene load_steps=13 format=3 uid="uid://dxs4mstvhwgv"]
 
 [ext_resource type="Script" uid="uid://dy7n5gmkswm47" path="res://Scripts/GameLogic.gd" id="1_ujiyw"]
+[ext_resource type="Script" uid="uid://wj4520tlhte0" path="res://Scripts/enemy_spawner.gd" id="2_wyfbo"]
 [ext_resource type="PackedScene" uid="uid://cry3gb37tqlm0" path="res://Scenes/HUD/game_ui.tscn" id="3_e4hy1"]
+[ext_resource type="Script" uid="uid://ckklwqmrrbi60" path="res://Scripts/Abstract Classes/Resource/enemy_resource.gd" id="3_j0m0t"]
+[ext_resource type="Resource" uid="uid://vxcgej738s84" path="res://Resources/Data/Enemies/possessed_student.tres" id="4_brgl6"]
 [ext_resource type="PackedScene" uid="uid://4v3yalblhtox" path="res://Entities/Abilities/soothing_song.tscn" id="5_7pf22"]
 [ext_resource type="Script" uid="uid://cl3mognqkatcs" path="res://Scenes/Maps/damage_floor.gd" id="5_rkel5"]
-[ext_resource type="PackedScene" uid="uid://cyimvhd78npmj" path="res://Entities/Enemies/enemy_entity.tscn" id="6_dobwi"]
 [ext_resource type="PackedScene" uid="uid://bh2ur6pblyj8n" path="res://Scenes/Maps/Shared/continuous_floor.tscn" id="7_c8ydw"]
 [ext_resource type="PackedScene" uid="uid://v1phrdf8cdqg" path="res://Entities/student_entity.tscn" id="8_c8ydw"]
 [ext_resource type="PackedScene" uid="uid://dni77fk231wfc" path="res://Entities/Abilities/baseball_bat.tscn" id="8_p4l8i"]
@@ -24,6 +26,15 @@ game_time = NodePath("GameTimeLimit")
 [node name="GameTimeLimit" type="Timer" parent="GameLogic"]
 wait_time = 300.0
 autostart = true
+
+[node name="EnemySpawner" type="Node" parent="GameLogic" node_paths=PackedStringArray("player", "enemy_container")]
+script = ExtResource("2_wyfbo")
+enemy_list = Array[ExtResource("3_j0m0t")]([ExtResource("4_brgl6")])
+player = NodePath("../../Forgound Rendering Node/StudentEntity")
+enemy_container = NodePath("../../Forgound Rendering Node/EnemyContainer")
+spawn_range_minimum = -250.0
+spawn_range_maximum = 250.0
+too_close = Vector2(100, 100)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -100,9 +111,7 @@ position = Vector2(546, 171)
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="EnemyEntity" parent="Forgound Rendering Node" node_paths=PackedStringArray("player") instance=ExtResource("6_dobwi")]
-position = Vector2(280, 467)
-player = NodePath("../StudentEntity")
+[node name="EnemyContainer" type="Node2D" parent="Forgound Rendering Node"]
 
 [node name="PausedLayer" type="CanvasLayer" parent="."]
 

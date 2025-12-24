@@ -25,14 +25,15 @@ func _process(_delta):
 ## that is currently assigned in the Global Script. [Global.SELECTED_STUDENT, 
 ## Global.SELECTED_BESTY]
 func update_student_ui() -> void:
-	##Student
 	$"Control/Student Name".text = "Student: %s" % Global.SELECTED_STUDENT.student_name
-	for part in ["Hair", "Eyebrows", "Eyes", "Mouth"]:
-		_get_facial_node("Student", part).texture = Global.SELECTED_STUDENT[part.to_lower()]
-	###Besty
 	$"Control/Besty Name".text = "Besty: %s" % Global.SELECTED_BESTY.student_name
-	for part in ["Hair", "Eyebrows", "Eyes", "Mouth"]:
-		_get_facial_node("Besty", part).texture = Global.SELECTED_BESTY[part.to_lower()]
+	var versions = find_child("Image").find_child("Control")
+	for version in versions.get_children().map(func(ver): return ver.name):
+		var parts = versions.find_child(version).get_children().map(func(par): return par.name)
+		for part in parts:
+			_get_facial_node(version, part).texture = Global["SELECTED_%s" % 
+			version.to_upper()][part.to_lower()]
+
 
 ## Give two inputs, version being either a student or besty. 
 ## Then give which part you wish to update.
