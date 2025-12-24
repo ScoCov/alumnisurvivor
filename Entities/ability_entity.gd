@@ -6,21 +6,26 @@ extends Node2D
 ## This is the base ability entity that will have all the other abilities based upon.
 ## each form should be an instantiated Ability_Entity.
 #endregion
-
+@export_category("Connections")
 @export var player: Student_Entity
 @export var ability: Ability_Resource
 @export var damage_comp: Damage_Component
+@export_category("Tags")
+@export var range_type: Global.range_tag
+@export var attack_type: Global.attack_tag
+@export var damage_type: Array[Global.damage_types]
+@export var ability_type: Array[Global.ability_type]
+@export var status_effects: Array[Global.status_effects]
 ## Assign Nodes and reusable default values.
 @onready var detection_range = $DetectionRange
 
 ## This stuff
 var entities_in_range: Array[Enemy_Entity]
 
-## Counters
+## Counters 
 var attack_speed_current: float = 0.0
 var cooldown_current: float = 0.0
 var projectiles_current: int = 0
-var knockback: float = 0
 
 func _ready():
 	pass

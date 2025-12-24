@@ -1,8 +1,5 @@
 extends Control
-class_name GameOverlay
-
-@warning_ignore("unused_signal")
-signal update
+class_name Game_Ui
 
 ## Place the GameLogic's current active StudentEntity character. The player variable
 ## will be use to update the health, experience, and many other aspects of the game ui. 
@@ -30,18 +27,19 @@ func _process(_delta):
 func update_student_ui() -> void:
 	##Student
 	$"Control/Student Name".text = "Student: %s" % Global.SELECTED_STUDENT.student_name
-	$Image/Control/Student/Hair01.texture = Global.SELECTED_STUDENT.hair
-	$Image/Control/Student/Eyebrows01.texture = Global.SELECTED_STUDENT.eyebrows
-	$Image/Control/Student/Eyes01.texture = Global.SELECTED_STUDENT.eyes
-	$Image/Control/Student/Mouth01.texture = Global.SELECTED_STUDENT.mouth
-	##Besty
+	for part in ["Hair", "Eyebrows", "Eyes", "Mouth"]:
+		_get_facial_node("Student", part).texture = Global.SELECTED_STUDENT[part.to_lower()]
+	###Besty
 	$"Control/Besty Name".text = "Besty: %s" % Global.SELECTED_BESTY.student_name
-	$Image/Control/Besty/Hair01.texture = Global.SELECTED_BESTY.hair
-	$Image/Control/Besty/Eyebrows01.texture = Global.SELECTED_BESTY.eyebrows
-	$Image/Control/Besty/Eyes01.texture = Global.SELECTED_BESTY.eyes
-	$Image/Control/Besty/Mouth01.texture = Global.SELECTED_BESTY.mouth
+	for part in ["Hair", "Eyebrows", "Eyes", "Mouth"]:
+		_get_facial_node("Besty", part).texture = Global.SELECTED_BESTY[part.to_lower()]
 
-
+## Give two inputs, version being either a student or besty. 
+## Then give which part you wish to update.
+func _get_facial_node(version: String, part: String) -> Sprite2D:
+	assert(version.to_lower() == "student" or "besty","Version must be \'Student\' or \'Besty\'" )
+	assert (part.to_lower() in ["hair", "eyebrows", "eyes", "mouth"], "Part must exist.")
+	return find_child(version).find_child(part)
 
 ##TODO: Need to update once StudentEntity is fully updated.
 func update_experience():

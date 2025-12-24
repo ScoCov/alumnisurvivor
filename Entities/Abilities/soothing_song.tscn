@@ -10,6 +10,7 @@ slow_strength = 0.25
 pulse_rate = 0.1
 min_transparency = 0.35
 max_transparency = 1.0
+damage_type = Array[int]([2])
 
 [node name="TestSlowArea" type="Sprite2D" parent="Facing" index="0"]
 z_index = -1

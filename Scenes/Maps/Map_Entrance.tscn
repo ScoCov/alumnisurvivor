@@ -1,13 +1,14 @@
-[gd_scene load_steps=10 format=3 uid="uid://dxs4mstvhwgv"]
+[gd_scene load_steps=11 format=3 uid="uid://dxs4mstvhwgv"]
 
 [ext_resource type="Script" uid="uid://dy7n5gmkswm47" path="res://Scripts/GameLogic.gd" id="1_ujiyw"]
-[ext_resource type="PackedScene" uid="uid://cry3gb37tqlm0" path="res://Scenes/HUD/GameOverlay.tscn" id="3_e4hy1"]
+[ext_resource type="PackedScene" uid="uid://cry3gb37tqlm0" path="res://Scenes/HUD/game_ui.tscn" id="3_e4hy1"]
 [ext_resource type="PackedScene" uid="uid://4v3yalblhtox" path="res://Entities/Abilities/soothing_song.tscn" id="5_7pf22"]
 [ext_resource type="Script" uid="uid://cl3mognqkatcs" path="res://Scenes/Maps/damage_floor.gd" id="5_rkel5"]
 [ext_resource type="PackedScene" uid="uid://cyimvhd78npmj" path="res://Entities/Enemies/enemy_entity.tscn" id="6_dobwi"]
 [ext_resource type="PackedScene" uid="uid://bh2ur6pblyj8n" path="res://Scenes/Maps/Shared/continuous_floor.tscn" id="7_c8ydw"]
 [ext_resource type="PackedScene" uid="uid://v1phrdf8cdqg" path="res://Entities/student_entity.tscn" id="8_c8ydw"]
 [ext_resource type="PackedScene" uid="uid://dni77fk231wfc" path="res://Entities/Abilities/baseball_bat.tscn" id="8_p4l8i"]
+[ext_resource type="PackedScene" uid="uid://seskgbg740b2" path="res://Scenes/HUD/pause_menu.tscn" id="10_8es3b"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dobwi"]
 radius = 29.1206
@@ -28,7 +29,7 @@ autostart = true
 
 [node name="background_continuous_floor_grass" parent="CanvasLayer" instance=ExtResource("7_c8ydw")]
 
-[node name="GameOverlay" parent="CanvasLayer" node_paths=PackedStringArray("player", "timer") instance=ExtResource("3_e4hy1")]
+[node name="game_ui" parent="CanvasLayer" node_paths=PackedStringArray("player", "timer") instance=ExtResource("3_e4hy1")]
 process_mode = 3
 y_sort_enabled = true
 player = NodePath("../../Forgound Rendering Node/StudentEntity")
@@ -102,6 +103,12 @@ offset_bottom = 40.0
 [node name="EnemyEntity" parent="Forgound Rendering Node" node_paths=PackedStringArray("player") instance=ExtResource("6_dobwi")]
 position = Vector2(280, 467)
 player = NodePath("../StudentEntity")
+
+[node name="PausedLayer" type="CanvasLayer" parent="."]
+
+[node name="PauseMenu" parent="PausedLayer" node_paths=PackedStringArray("game_ui", "rendering_node") instance=ExtResource("10_8es3b")]
+game_ui = NodePath("../../CanvasLayer/game_ui")
+rendering_node = NodePath("../../Forgound Rendering Node")
 
 [connection signal="body_entered" from="Forgound Rendering Node/Damage" to="Forgound Rendering Node/Damage" method="_on_body_entered"]
 [connection signal="body_exited" from="Forgound Rendering Node/Damage" to="Forgound Rendering Node/Damage" method="_on_body_exited"]

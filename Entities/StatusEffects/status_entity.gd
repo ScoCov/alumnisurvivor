@@ -2,6 +2,8 @@ class_name Status_Effect_Entity
 extends Node2D
 
 ##This will always be added programmically
+@export var attribute_effected: AttributeResource
+
 var entity: 
 	set(value):
 		assert(value is Student_Entity or Enemy_Entity, "Entity Must be a Student_Entity or 
@@ -12,6 +14,7 @@ var repeat: bool = true:
 	set(value):
 		$Duration.one_shot = value
 		repeat = value
+
 
 func _ready():
 	pass

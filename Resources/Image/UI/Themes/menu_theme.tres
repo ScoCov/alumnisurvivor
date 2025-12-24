@@ -14,8 +14,8 @@ shadow_size = 1
 shadow_offset = Vector2(0.2, 0.2)
 
 [resource]
-MarginContainer/constants/margin_bottom = 4
-MarginContainer/constants/margin_left = 4
-MarginContainer/constants/margin_right = 4
-MarginContainer/constants/margin_top = 4
+MarginContainer/constants/margin_bottom = 12
+MarginContainer/constants/margin_left = 12
+MarginContainer/constants/margin_right = 12
+MarginContainer/constants/margin_top = 12
 Panel/styles/panel = SubResource("StyleBoxFlat_buhm0")

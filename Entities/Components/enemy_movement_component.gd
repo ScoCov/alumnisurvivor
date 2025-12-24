@@ -5,7 +5,11 @@ const MIN_SLOW_EFFECT: float = 0.05
 
 @export var movement_speed: float = 85
 @export var enemy_entity: Enemy_Entity
-@export_range(0.05, 2.0,0.05) var speed_modifier: float = 1.0
+@export_range(0.05, 2.0,0.05) var speed_modifier: float = 1.0:
+	set(value):
+		if value < 0.05:
+			value = 0.05
+		speed_modifier = value
 	
 @export var is_knocked_backed: bool = false:
 	set(value):

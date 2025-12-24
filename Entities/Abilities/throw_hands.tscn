@@ -1,0 +1,42 @@
+[gd_scene load_steps=5 format=3 uid="uid://clrkp8gtjfcve"]
+
+[ext_resource type="PackedScene" uid="uid://17q6vmelqtud" path="res://Entities/ability_entity.tscn" id="1_ofcub"]
+[ext_resource type="Script" uid="uid://br3akakn8yops" path="res://Entities/Abilities/throw_hands.gd" id="2_xg70w"]
+[ext_resource type="Resource" uid="uid://nkdai5p8xl50" path="res://Resources/Data/Abilities/throw_hands.tres" id="3_dsy1l"]
+[ext_resource type="Texture2D" uid="uid://cncr26fn2esx2" path="res://Resources/Image/Ability/Fist_01_128x128.png" id="4_tjndp"]
+
+[node name="ThrowHands" instance=ExtResource("1_ofcub")]
+script = ExtResource("2_xg70w")
+starting_pos_denominator = 1.0
+ability = ExtResource("3_dsy1l")
+damage_type = Array[int]([0])
+ability_type = Array[int]([0])
+status_effects = Array[int]([0])
+
+[node name="LeftHand" type="Node2D" parent="Facing" index="0"]
+
+[node name="Fist01128x128" type="Sprite2D" parent="Facing/LeftHand" index="0"]
+position = Vector2(0, -92)
+rotation = 1.5708
+texture = ExtResource("4_tjndp")
+
+[node name="RightHand" type="Node2D" parent="Facing" index="1"]
+
+[node name="Fist01128x129" type="Sprite2D" parent="Facing/RightHand" index="0"]
+position = Vector2(0, 92)
+rotation = 1.5708
+texture = ExtResource("4_tjndp")
+flip_h = true
+
+[node name="ColorRect" type="ColorRect" parent="Facing" index="2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
