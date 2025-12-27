@@ -23,7 +23,7 @@ func _process(_delta):
 	alpha_value += _signed * (pulse_rate * _delta)
 	if alpha_value <= min_transparency or alpha_value >= max_transparency:
 		_signed *= -1
-	var color:= status_color
+	var color:= status_resource.effect_color
 	color.a = alpha_value
 	entity.modulate = color
 

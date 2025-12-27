@@ -46,10 +46,10 @@ var SELECTED_MAP: Map_Resource
 #region NOTE:
 ##
 #endregion
-var ITEM_COLLECTION: Array[ItemResource]
+var ITEM_COLLECTION: Array[Item_Resource]
 
 #region NOTE:
-##
+##s
 #endregion
 var ABILITIES: Array[Ability_Resource]
 

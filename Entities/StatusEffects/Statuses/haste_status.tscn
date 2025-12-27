@@ -17,3 +17,6 @@ status_resource = ExtResource("4_7drpv")
 [node name="Duration" parent="." index="0"]
 wait_time = 3.0
 autostart = true
+
+[node name="Tick" parent="." index="1"]
+autostart = true

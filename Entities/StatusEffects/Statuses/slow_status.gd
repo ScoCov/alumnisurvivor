@@ -8,7 +8,9 @@ extends Status_Effect_Entity
 
 var speed_modification: float:
 	get():
-		return status_resource.base_value + (status_resource.growth_value * stack_count)
+		if status_resource:
+			return status_resource.base_value + (status_resource.growth_value * stack_count)
+		return 0
 var alpha_value: float = 0.25
 var _signed: int = 1.0
 
@@ -23,7 +25,7 @@ func _process(_delta):
 	alpha_value += _signed * (pulse_rate * _delta)
 	if alpha_value <= min_transparency or alpha_value >= max_transparency:
 		_signed *= -1
-	var color:= status_color
+	var color:= status_resource.effect_color if status_resource else status_color
 	color.a = alpha_value
 	entity.modulate = color
 

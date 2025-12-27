@@ -21,7 +21,8 @@ var repeat: bool = true:
 		repeat = value
 
 func _ready():
-	pass
+	$Duration.wait_time = status_resource.duration
+	$Tick.wait_time = status_resource.tick_rate
 
 ## This will refresh the status effect
 func refresh():

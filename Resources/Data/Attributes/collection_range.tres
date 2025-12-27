@@ -13,4 +13,5 @@ min_limit = 0.0
 max_limit = 0.0
 min_limit_active = false
 max_limit_active = false
+color = Color(0, 0, 0, 1)
 metadata/_custom_type_script = "uid://cfnxcuwnotvhw"

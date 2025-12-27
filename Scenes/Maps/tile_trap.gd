@@ -10,6 +10,7 @@ var entities_in_range: Array[CharacterBody2D]
 
 const SLOW_STATUS: PackedScene = preload("res://Entities/StatusEffects/Statuses/slow_status.tscn")
 const HASTE_STATUS: PackedScene = preload("res://Entities/StatusEffects/Statuses/haste_status.tscn")
+const BURN_STATUS: PackedScene = preload("res://Entities/StatusEffects/Statuses/burn_status.tscn")
 
 func _ready():
 	$Activation.wait_time = cooldown
@@ -33,7 +34,7 @@ func activate_status(entity: CharacterBody2D):
 	print("Activating Trap: %s [%s]" % [tile_mode, status_effect.status_name])
 	var status: Status_Effect_Entity = self[status_effect.status_file_name.to_upper()].instantiate()
 	status.entity = entity
-	if status is Status_Slow or Status_Haste:
+	if status is Status_Slow or status is  Status_Haste:
 		status.speed_modification = damage_amount
 	entity.status_effects.add_child(status)
 

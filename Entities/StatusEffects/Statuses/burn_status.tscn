@@ -1,7 +1,21 @@
-[gd_scene load_steps=3 format=3 uid="uid://ej4kqkodmhic"]
+[gd_scene load_steps=5 format=3 uid="uid://ej4kqkodmhic"]
 
 [ext_resource type="PackedScene" uid="uid://duhcemp1lve0q" path="res://Entities/StatusEffects/status_entity.tscn" id="1_nby2y"]
 [ext_resource type="Script" uid="uid://d1l3xqvkehmw6" path="res://Entities/StatusEffects/Statuses/burn_status.gd" id="2_8qql7"]
+[ext_resource type="Resource" uid="uid://de4ke6fjbvt45" path="res://Resources/Data/Attributes/health.tres" id="3_dg45q"]
+[ext_resource type="Resource" uid="uid://hr0ojg7ra2ca" path="res://Resources/Data/StatusEffects/burn_status.tres" id="4_vaeuu"]
 
 [node name="BurnStatus" instance=ExtResource("1_nby2y")]
 script = ExtResource("2_8qql7")
+pulse_rate = 1.0
+min_transparency = 0.25
+max_transparency = 1.0
+status_color = Color(0.25, 0.55, 0.25, 1)
+attribute_effected = ExtResource("3_dg45q")
+status_resource = ExtResource("4_vaeuu")
+
+[node name="Duration" parent="." index="0"]
+autostart = true
+
+[node name="Tick" parent="." index="1"]
+autostart = true

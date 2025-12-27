@@ -11,4 +11,6 @@ status_id = "Slow"
 attribute_effected = ExtResource("1_g1aiy")
 duration = 1.0
 tick_rate = 1.0
-effect_color = Color(0.252028, 0.252028, 0.252028, 1)
+effect_color = Color(0.0528299, 0.808118, 0.844339, 1)
+base_value = 0.0
+growth_value = 0.0

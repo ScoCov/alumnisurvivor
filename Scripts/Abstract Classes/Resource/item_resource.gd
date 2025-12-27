@@ -1,4 +1,4 @@
-class_name ItemResource
+class_name Item_Resource
 extends Resource
 
 
@@ -21,11 +21,9 @@ extends Resource
 ## in the collections log as the image a player can click on to see the detail information page.
 @export var image: Texture
 ## This is planned to be able to accept a sheet of sprits, multiple sprite frames, or a single image.
-@export var in_game_image: Texture
 @export_group("Count Limits")
 ## The maximum number that an Item can be stacked. If 0, there is no limit.
 @export var max_count: int = 0
 ## If the item is supposed to by obtained once, enable this value.
 @export var unique: bool = false
 @export_category("Modifications")
-@export var bonuses: Array[ItemBonus]

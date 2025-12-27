@@ -12,7 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://seskgbg740b2" path="res://Scenes/HUD/pause_menu.tscn" id="10_8es3b"]
 [ext_resource type="PackedScene" uid="uid://ce6c247nfjdn6" path="res://Scenes/Maps/tile_trap.tscn" id="11_670kd"]
 [ext_resource type="Resource" uid="uid://dg1r0iybx44jl" path="res://Resources/Data/StatusEffects/slow_status.tres" id="12_wyfbo"]
-[ext_resource type="Resource" uid="uid://ctw5k4vpmi3at" path="res://Resources/Data/StatusEffects/haste_status.tres" id="13_j0m0t"]
+[ext_resource type="Resource" uid="uid://hr0ojg7ra2ca" path="res://Resources/Data/StatusEffects/burn_status.tres" id="13_j0m0t"]
 
 [node name="MapEntrance" type="Node2D"]
 
