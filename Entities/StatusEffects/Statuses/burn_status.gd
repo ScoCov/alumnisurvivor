@@ -1,0 +1,2 @@
+class_name Status_Burn
+extends Status_Effect_Entity

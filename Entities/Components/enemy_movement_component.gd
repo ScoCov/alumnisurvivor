@@ -53,3 +53,7 @@ func movement_update():
 
 func _on_knockback_timer_timeout():
 	is_knocked_backed = false
+
+func knockback_effect(direction: Vector2, knockback_value: float):
+	is_knocked_backed = true
+	enemy_entity.velocity += direction * knockback_value

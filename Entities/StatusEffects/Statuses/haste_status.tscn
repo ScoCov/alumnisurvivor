@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://xgmvip04u2w0"]
+
+[ext_resource type="PackedScene" uid="uid://duhcemp1lve0q" path="res://Entities/StatusEffects/status_entity.tscn" id="1_r4tsx"]
+[ext_resource type="Script" uid="uid://bks1sc1o7cplg" path="res://Entities/StatusEffects/Statuses/haste_status.gd" id="2_8yiq8"]
+[ext_resource type="Resource" uid="uid://b7lj25emughbo" path="res://Resources/Data/Attributes/movement_speed.tres" id="3_5nb16"]
+[ext_resource type="Resource" uid="uid://ctw5k4vpmi3at" path="res://Resources/Data/StatusEffects/haste_status.tres" id="4_7drpv"]
+
+[node name="HasteStatus" instance=ExtResource("1_r4tsx")]
+script = ExtResource("2_8yiq8")
+pulse_rate = 1.0
+min_transparency = 0.25
+max_transparency = 1.0
+status_color = Color(0.934362, 0.704573, 0.152809, 1)
+attribute_effected = ExtResource("3_5nb16")
+status_resource = ExtResource("4_7drpv")
+
+[node name="Duration" parent="." index="0"]
+wait_time = 3.0
+autostart = true

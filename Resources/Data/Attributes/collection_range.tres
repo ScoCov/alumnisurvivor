@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="AttributeResource" load_steps=2 format=3 uid="uid://bty5w5hd2sgme"]
+
+[ext_resource type="Script" uid="uid://cfnxcuwnotvhw" path="res://Scripts/Abstract Classes/Resource/attribute_resource.gd" id="1_r6fqo"]
+
+[resource]
+script = ExtResource("1_r6fqo")
+name = "Collection Range"
+id = "collection_range"
+ordinal = 5
+description = "This is the range meant for the collection of XP Nodes. This being seperate from the pick_up range is so that there can be a myriad of interactions associated with XP alone."
+value = 150.0
+min_limit = 0.0
+max_limit = 0.0
+min_limit_active = false
+max_limit_active = false
+metadata/_custom_type_script = "uid://cfnxcuwnotvhw"

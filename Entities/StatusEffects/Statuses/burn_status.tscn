@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://ej4kqkodmhic"]
+
+[ext_resource type="PackedScene" uid="uid://duhcemp1lve0q" path="res://Entities/StatusEffects/status_entity.tscn" id="1_nby2y"]
+[ext_resource type="Script" uid="uid://d1l3xqvkehmw6" path="res://Entities/StatusEffects/Statuses/burn_status.gd" id="2_8qql7"]
+
+[node name="BurnStatus" instance=ExtResource("1_nby2y")]
+script = ExtResource("2_8qql7")

@@ -56,4 +56,3 @@ extends Resource
 func _to_string() -> String:
 	return ("Student: %s " % [student_name] )
 	
-	

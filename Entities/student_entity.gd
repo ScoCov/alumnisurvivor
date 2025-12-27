@@ -18,18 +18,19 @@ const DEFAULT_MOVEMENT_SPEED: float = 150
 @export var is_controllable: bool = true
 @export_category("Entity Data")
 @export var student: StudentResource 
-var movement: Movement_Component
+var movement_component: Movement_Component
 var health: Health_Component
+@onready var status_effects = $StatusEffects
 var _taking_damage_particles:= preload("res://Entities/Effects/taking_damage.tscn")
 var _healing_damage_particles:= preload("res://Entities/Effects/healing_damage.tscn")
 
 func _input(event):
 	if not is_controllable: pass
 	if event.is_action_pressed("dash", false):
-		movement.is_dash = true
+		movement_component.is_dash = true
 	
 func _ready():
-	movement = $Stats/MovementComponent
+	movement_component = $Stats/MovementComponent
 	health = $Stats/HealthComponent
 	health.damage_taken.connect(emit_damage_indicator.bind("damage"))
 	health.damage_healed.connect(emit_damage_indicator.bind("healed"))
@@ -46,7 +47,7 @@ func emit_damage_indicator(param: String):
 	
 func _process(_delta):
 	if not is_controllable: pass
-	movement = $Stats/MovementComponent if not movement else movement
+	movement_component = $Stats/MovementComponent if not movement_component else movement_component
 	health = $Stats/HealthComponent if not health else health
 	#$Label.text = "Shader Pulse Active: %s" % str($Visuals/StudentBody.get_instance_shader_parameter("pulse"))
 	

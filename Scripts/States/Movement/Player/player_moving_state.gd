@@ -40,7 +40,7 @@ func physics_update(_delta):
 	if player.is_controllable:
 		var directions:= Input.get_vector("move_left","move_right","move_up","move_down")
 		movement_comp.last_movement_direction = directions
-		player.velocity = directions * movement_comp.active_movement_speed
+		player.velocity = directions * movement_comp.active_movement_speed * movement_comp.speed_modifier
 	elif player.movement.is_dash:
-		player.velocity = movement_comp.last_movement_direction * movement_comp.active_movement_speed
+		player.velocity = movement_comp.last_movement_direction * movement_comp.active_movement_speed * movement_comp.speed_modifier
 	player.move_and_slide()

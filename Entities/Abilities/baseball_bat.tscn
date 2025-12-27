@@ -6,6 +6,7 @@
 [ext_resource type="Resource" uid="uid://mreamsv3sg1" path="res://Resources/Data/Abilities/baseball_bat.tres" id="2_ktabt"]
 
 [node name="Homerun" instance=ExtResource("1_7ejnk")]
+self_modulate = Color(1, 0.0564023, 0.0816096, 1)
 script = ExtResource("1_ka3u3")
 ability = ExtResource("2_ktabt")
 

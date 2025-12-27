@@ -4,10 +4,12 @@ extends CharacterBody2D
 @export var enemy: EnemyResource
 @export var player: Student_Entity
 @export var movement_strategy: EnemyMovementStrategy.type
+
 @onready var movement_component: Enemy_Movement_Component = $EnemeyMovementComponent
 @onready var health: Health_Component = $HealthComponent
 @onready var _original_position_debug:= position
 @onready var status_effects: Node2D = $StatusEffects
+
 var _taking_damage_particles:= preload("res://Entities/Effects/taking_damage.tscn")
 var _healing_damage_particles:= preload("res://Entities/Effects/healing_damage.tscn")
 
@@ -19,7 +21,6 @@ func _ready():
 func _process(_delta):
 	if health.active_state is DeadState:
 		self.queue_free()
-	#$Label.text = "%s" % [movement_component.speed_modifier]
 	
 func emit_damage_indicator(param: String):
 	var new_particle
@@ -29,7 +30,7 @@ func emit_damage_indicator(param: String):
 		"healed":
 			new_particle = _healing_damage_particles.instantiate()
 	self.add_child(new_particle)
-	
+
 	
 func build_enemy():
 	health.maximum_health = enemy.maximum_health

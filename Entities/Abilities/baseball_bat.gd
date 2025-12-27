@@ -2,8 +2,11 @@ class_name Ability_Homerun
 extends Ability_Entity
 
 var look_at_target: bool = true
+@onready var damage_component = $DamageComponent
+
 
 func _ready():
+	damage_component.base_damage = ability.base_damage
 	pass
 	
 func _physics_process(_delta):
@@ -17,14 +20,13 @@ func _physics_process(_delta):
 func on_ready() -> bool:
 	$Facing/SwingingArm.rotation_degrees = -45 * ability.area
 	cooldown_current = 0
-	return len(entities_in_range) > 0 and entities_in_range[0].position.distance_to(entities_in_range[0].player.position) < ability.attack_range/2
-	
+	return len(entities_in_range) > 0 and entities_in_range[0].position.distance_to(entities_in_range[0].player.position) < ability.attack_range
 	
 func on_active() -> bool:
 	## When active, it should disable the looking at function for Facing
 	look_at_target = false
-	$Facing/SwingingArm.visible = true
-
+	#$Facing/SwingingArm.visible = true
+	_bat_disable(true)
 	$Facing/SwingingArm.rotation_degrees += ability.projectile_speed * get_process_delta_time()
 	if $Facing/SwingingArm.rotation_degrees >= 45 * ability.area:
 		return true
@@ -32,7 +34,8 @@ func on_active() -> bool:
 	
 func on_recovery() -> bool:
 	look_at_target = true
-	$Facing/SwingingArm.visible = false
+	#$Facing/SwingingArm.visible = false
+	_bat_disable(false)
 	return true
 	
 func on_cooldown()-> bool:
@@ -55,5 +58,9 @@ func _on_hitbox_body_entered(body):
 	if body is Enemy_Entity:
 		body.health.attempt_damage(self, -damage_comp.base_damage)
 		var direction = player.position.direction_to(body.position)
-		body.movement_component.is_knocked_backed = true
-		body.velocity += direction * ability.knockback
+		if ability.knockback != 0:
+			body.movement_component.knockback_effect(direction, ability.knockback)
+		
+func _bat_disable(value: bool):
+	$Facing/SwingingArm.visible = value
+	$Facing/SwingingArm/Area2D.disable_mode = !value

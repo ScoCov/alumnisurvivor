@@ -24,6 +24,7 @@ extends Resource
 ## Enforce Maximum Limit
 @export var max_limit_active: bool = false
 
-@export_group("Images")
+@export_group("Identification")
 ## Set the image that will be displayed in menus
-@export var image: Texture
+@export var icon: Texture
+@export var color: Color

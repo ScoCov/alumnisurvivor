@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Status_Effect_Resource" load_steps=3 format=3 uid="uid://hr0ojg7ra2ca"]
+
+[ext_resource type="Resource" uid="uid://b7lj25emughbo" path="res://Resources/Data/Attributes/movement_speed.tres" id="1_gwgvn"]
+[ext_resource type="Script" uid="uid://ckvye2ih2a81c" path="res://Scripts/Abstract Classes/Resource/status_effect_resource.gd" id="2_gkfha"]
+
+[resource]
+script = ExtResource("2_gkfha")
+status_name = "Haste"
+status_file_name = "haste_status"
+status_id = "Haste"
+attribute_effected = ExtResource("1_gwgvn")
+duration = 1.0
+tick_rate = 1.0
+effect_color = Color(0.252028, 0.252028, 0.252028, 1)
+base_value = 0.0
+growth_value = 0.0

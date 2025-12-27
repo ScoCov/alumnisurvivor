@@ -11,6 +11,7 @@ extends Node
 @export_category("Movement")
 @export var base_movement_speed: float = 120
 @export var dash_movement_percentage: float = 2.5
+@export var speed_modifier: float = 1.0
 @export var is_dash: bool = false:
 	set(value):
 		if value:

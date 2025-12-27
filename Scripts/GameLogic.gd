@@ -22,7 +22,6 @@ func _ready() -> void:
 	if game_time != null and not debug:
 		game_time.timeout.connect(game_over)
 		
-		
 func debug_mode():
 	var thing = $"../Forgound Rendering Node/Test"
 	var speed = 15

@@ -11,34 +11,27 @@ extends Node
 @export var spawn_chance: float = 0.5
 @export var enemy_minimum: int = 1
 @export var spawn_rate: float = 1
-@export var spawn_range_minimum: float = -50
-@export var spawn_range_maximum: float = 50
-@export var too_close:= Vector2(50,50)
+@export var spawn_range: float = 400
+@export var spawn_too_close: float = 50
 
 var temp_enemy_entity = preload("res://Entities/Enemies/enemy_entity.tscn")
 var current_enemy_count: int = 0
 
 func _process(_delta):
-	if enemy_container.get_child_count() < 1:
+	var enemy_count: int = enemy_container.get_child_count()
+	if (enemy_count < enemy_minimum or (enemy_count < max_spawns 
+					and randf_range(0,1) < (spawn_chance * _delta)) ):
 		_attempt_spawn()
-	else:
-		if enemy_container.get_child_count() < max_spawns:
-			if randf_range(0,1) < (spawn_chance * _delta):
-				_attempt_spawn()
 		
-
 func _attempt_spawn():
-	#var rand_x: float = randf_range(spawn_range_minimum,spawn_range_maximum)
-	#var rand_y: float = randf_range(spawn_range_minimum,spawn_range_maximum)
 	var enemy = temp_enemy_entity.instantiate()
 	enemy.player = player
 	enemy.position = enemy.player.position + _get_range()
 	enemy_container.add_child(enemy)
 	
 func _get_range() -> Vector2:
-	var rand_x: float = randf_range(spawn_range_minimum,spawn_range_maximum)
-	var rand_y: float = randf_range(spawn_range_minimum,spawn_range_maximum)
-	var rand_vec:= Vector2(rand_x, rand_y)
-	if rand_vec < too_close:
+	var rand_vec:= Vector2(randf_range(-spawn_range,spawn_range), 
+							randf_range(-spawn_range,spawn_range))
+	if player.position.distance_to(player.position + rand_vec) < spawn_too_close:
 		rand_vec = _get_range()
 	return rand_vec
