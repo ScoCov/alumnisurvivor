@@ -6,9 +6,10 @@
 script = ExtResource("1_b8m7u")
 
 [node name="Duration" type="Timer" parent="."]
-one_shot = true
+autostart = true
 
 [node name="Tick" type="Timer" parent="."]
+autostart = true
 
 [connection signal="timeout" from="Duration" to="." method="_on_duration_timeout"]
 [connection signal="timeout" from="Tick" to="." method="_on_tick_timeout"]

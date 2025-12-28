@@ -1,36 +1,37 @@
 class_name Status_Effect_Entity
 extends Node2D
 
-##This will always be added programmically
-@export var attribute_effected: AttributeResource
-## Either Student_Entity or Enemy_Entity
+## This signal will be executed any time the duration of the status effect is up and
+## either there is no repeat command, or the stack_count is 0.
+signal expires
+signal initial_infection
+signal tick
+
+@export var status_resource: Status_Effect_Resource
+## Supply a color to tint the enity when they have the status effect on them.
 @export var entity: CharacterBody2D
 ## Use this to help the algorithims of the statuses.
-@export var stack_count: int = 0
+## Either Student_Entity or Enemy_Entity
+@export var stack_count: int = 1
 ## If set to -1 the stack can be effectively infinite.
 @export var max_stack: int = -1
 ## Data for the status_effect
-@export var status_resource: Status_Effect_Resource
-
-
-## Toggles whether or not the status effect will continue or stop after 
-## executing the timeout.
-var repeat: bool = true:
-	set(value):
-		$Duration.one_shot = value
-		repeat = value
+@export var status_color:= Color(0.25, 0.55,0.25,1)
+##This will always be added programmically
+@export var attribute_effected: AttributeResource
 
 func _ready():
+	assert(status_resource, "Status-Effects must be paired with Status_Effect_Resource")
+	assert(entity, "Status-Effects must be assigned an entity.")
 	$Duration.wait_time = status_resource.duration
 	$Tick.wait_time = status_resource.tick_rate
-
-## This will refresh the status effect
-func refresh():
-	$Duration.stop()
-	$Duration.start()
-
+	initial_infection.emit()
+	
 func _on_duration_timeout():
-	pass # Replace with function body.
+	if stack_count < 1:
+		expires.emit()
+		self.queue_free()
+	stack_count -= 1
 
 func _on_tick_timeout():
-	pass # Replace with function body.
+	tick.emit()

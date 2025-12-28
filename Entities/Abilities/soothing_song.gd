@@ -31,12 +31,11 @@ func on_active() -> bool:
 		if not entity.find_child("StatusEffects").has_node("SlowStatus"):
 				var _slow = slow_status_package.instantiate()
 				_slow.entity = entity
-				_slow.speed_modification = slow_strength
 				entity.find_child("StatusEffects").add_child(_slow)
 		else:
 			var slow_effect_index: int = entity.status_effects.get_children().find_custom(func(status): return status.name == "SlowStatus")
 			var slow_effect: Status_Slow = entity.status_effects.get_child(slow_effect_index)
-			slow_effect.refresh()
+			slow_effect.stack_count += 1
 	$Facing.modulate = Color(1,1,1, alpha_value)
 	return false
 	

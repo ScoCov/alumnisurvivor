@@ -7,16 +7,12 @@
 
 [node name="HasteStatus" instance=ExtResource("1_r4tsx")]
 script = ExtResource("2_8yiq8")
-pulse_rate = 1.0
-min_transparency = 0.25
-max_transparency = 1.0
-status_color = Color(0.934362, 0.704573, 0.152809, 1)
-attribute_effected = ExtResource("3_5nb16")
 status_resource = ExtResource("4_7drpv")
+status_color = Color(0.730838, 0.536918, 5.77569e-07, 1)
+attribute_effected = ExtResource("3_5nb16")
 
 [node name="Duration" parent="." index="0"]
 wait_time = 3.0
-autostart = true
 
-[node name="Tick" parent="." index="1"]
-autostart = true
+[connection signal="expires" from="." to="." method="_on_expires"]
+[connection signal="initial_infection" from="." to="." method="_on_initial_infection"]

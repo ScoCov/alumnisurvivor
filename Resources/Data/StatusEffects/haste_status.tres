@@ -12,5 +12,5 @@ attribute_effected = ExtResource("1_q46b2")
 duration = 1.0
 tick_rate = 1.0
 effect_color = Color(0.252028, 0.252028, 0.252028, 1)
-base_value = 0.0
+base_value = 0.33
 growth_value = 0.0

@@ -6,7 +6,7 @@ extends Node
 
 ##TODO: The acceptable_directories needs to be populated automatically in the future. 
 const acceptable_directories: Array[String] = ["student", "attribute", "item",
-	 "enemy", "map", "ability", "mouth", "eyes", "hair", "eyebrows"]
+	 "enemy", "map", "ability", "mouth", "eyes", "hair", "eyebrows", "status_effects"]
 	
 ## Returns the relative path of the given desired resource directory.
 static func get_dir(target_dir: String, _cfg: ConfigFile = null) -> String:

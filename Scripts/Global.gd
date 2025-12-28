@@ -63,6 +63,9 @@ var ATTRIBUTES: Array[AttributeResource]
 #endregion
 var MAPS: Array[Map_Resource]
 
+
+var STATUS_EFFECTS: Array[Status_Effect_Resource]
+
 #region Note:
 ##
 #endregion
@@ -109,6 +112,8 @@ func _ready():
 	load_objects(Configuration.get_dir("hair"), load_hair_array)
 	@warning_ignore("static_called_on_instance")
 	load_objects(Configuration.get_dir("map"), MAPS)
+	@warning_ignore("static_called_on_instance")
+	load_objects(Configuration.get_dir("status_effects"), STATUS_EFFECTS)
 	
 	## Load in the Images
 	load_textures(load_mouths_array, MOUTHS)

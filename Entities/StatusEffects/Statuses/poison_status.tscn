@@ -1,0 +1,15 @@
+[gd_scene load_steps=5 format=3 uid="uid://bn1djiutgkg8b"]
+
+[ext_resource type="PackedScene" uid="uid://duhcemp1lve0q" path="res://Entities/StatusEffects/status_entity.tscn" id="1_xwgxi"]
+[ext_resource type="Script" uid="uid://jqhyv4lt1784" path="res://Entities/StatusEffects/Statuses/poison_status.gd" id="2_c7nod"]
+[ext_resource type="Resource" uid="uid://cr2mwag15qow4" path="res://Resources/Data/StatusEffects/poison_status.tres" id="3_beedf"]
+[ext_resource type="Resource" uid="uid://de4ke6fjbvt45" path="res://Resources/Data/Attributes/health.tres" id="4_lhkw1"]
+
+[node name="PoisonStatus" instance=ExtResource("1_xwgxi")]
+script = ExtResource("2_c7nod")
+status_resource = ExtResource("3_beedf")
+attribute_effected = ExtResource("4_lhkw1")
+
+[connection signal="expires" from="." to="." method="_on_expires"]
+[connection signal="initial_infection" from="." to="." method="_on_initial_infection"]
+[connection signal="tick" from="." to="." method="_on_tick"]

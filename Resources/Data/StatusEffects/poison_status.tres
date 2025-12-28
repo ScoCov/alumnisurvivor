@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Status_Effect_Resource" load_steps=3 format=3 uid="uid://cr2mwag15qow4"]
+
+[ext_resource type="Resource" uid="uid://de4ke6fjbvt45" path="res://Resources/Data/Attributes/health.tres" id="1_8fml0"]
+[ext_resource type="Script" uid="uid://ckvye2ih2a81c" path="res://Scripts/Abstract Classes/Resource/status_effect_resource.gd" id="2_1vsrb"]
+
+[resource]
+script = ExtResource("2_1vsrb")
+status_name = "Poison"
+status_file_name = "poison_status"
+status_id = "Poison"
+attribute_effected = ExtResource("1_8fml0")
+duration = 5.0
+tick_rate = 1.0
+effect_color = Color(0, 0.423529, 0, 1)
+base_value = 1.0
+growth_value = 0.0

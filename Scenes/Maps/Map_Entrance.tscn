@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dxs4mstvhwgv"]
+[gd_scene load_steps=18 format=3 uid="uid://dxs4mstvhwgv"]
 
 [ext_resource type="Script" uid="uid://dy7n5gmkswm47" path="res://Scripts/GameLogic.gd" id="1_ujiyw"]
 [ext_resource type="Script" uid="uid://wj4520tlhte0" path="res://Scripts/enemy_spawner.gd" id="2_wyfbo"]
@@ -12,7 +12,19 @@
 [ext_resource type="PackedScene" uid="uid://seskgbg740b2" path="res://Scenes/HUD/pause_menu.tscn" id="10_8es3b"]
 [ext_resource type="PackedScene" uid="uid://ce6c247nfjdn6" path="res://Scenes/Maps/tile_trap.tscn" id="11_670kd"]
 [ext_resource type="Resource" uid="uid://dg1r0iybx44jl" path="res://Resources/Data/StatusEffects/slow_status.tres" id="12_wyfbo"]
-[ext_resource type="Resource" uid="uid://hr0ojg7ra2ca" path="res://Resources/Data/StatusEffects/burn_status.tres" id="13_j0m0t"]
+[ext_resource type="Resource" uid="uid://ctw5k4vpmi3at" path="res://Resources/Data/StatusEffects/haste_status.tres" id="13_j0m0t"]
+[ext_resource type="Resource" uid="uid://hr0ojg7ra2ca" path="res://Resources/Data/StatusEffects/burn_status.tres" id="14_brgl6"]
+[ext_resource type="Resource" uid="uid://cr2mwag15qow4" path="res://Resources/Data/StatusEffects/poison_status.tres" id="15_lut24"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_brgl6"]
+
+[sub_resource type="Environment" id="Environment_lut24"]
+background_mode = 3
+glow_enabled = true
+glow_intensity = 2.65
+glow_strength = 1.4
+glow_blend_mode = 1
+glow_map = SubResource("NoiseTexture2D_brgl6")
 
 [node name="MapEntrance" type="Node2D"]
 
@@ -31,8 +43,6 @@ script = ExtResource("2_wyfbo")
 enemy_list = Array[ExtResource("3_j0m0t")]([ExtResource("4_brgl6")])
 player = NodePath("../../Forgound Rendering Node/StudentEntity")
 enemy_container = NodePath("../../Forgound Rendering Node/EnemyContainer")
-max_spawns = 33
-enemy_minimum = 5
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -57,9 +67,15 @@ self_modulate = Color(0, 0, 0, 0)
 player = NodePath("..")
 
 [node name="SoothingSong" parent="Forgound Rendering Node/StudentEntity" node_paths=PackedStringArray("player") instance=ExtResource("5_7pf22")]
+slow_strength = 0.25
 pulse_rate = 1.0
 min_transparency = 0.25
+max_transparency = 1.0
 player = NodePath("..")
+range_type = 0
+attack_type = 0
+ability_type = Array[int]([])
+status_effects = Array[int]([])
 
 [node name="Label2" type="Label" parent="Forgound Rendering Node"]
 offset_left = 496.0
@@ -99,13 +115,27 @@ cooldown = 0.25
 position = Vector2(855, 413)
 tile_mode = "Status Effect"
 damage_amount = 0.5
-tile_color = Color(0, 1, 0, 1)
+tile_color = Color(0.0698776, 0.542533, 0.665006, 1)
 cooldown = 1.0
 status_effect = ExtResource("12_wyfbo")
 
 [node name="TileTrap4" parent="." instance=ExtResource("11_670kd")]
-position = Vector2(853, 501)
+position = Vector2(319, 384)
 tile_mode = "Status Effect"
 tile_color = Color(0.854902, 1, 0, 1)
-cooldown = 0.2
+status_effect = ExtResource("14_brgl6")
+
+[node name="TileTrap5" parent="." instance=ExtResource("11_670kd")]
+position = Vector2(323, 243)
+tile_mode = "Status Effect"
+tile_color = Color(0.392157, 0.0784314, 0.956863, 1)
 status_effect = ExtResource("13_j0m0t")
+
+[node name="TileTrap6" parent="." instance=ExtResource("11_670kd")]
+position = Vector2(317, 516)
+tile_mode = "Status Effect"
+tile_color = Color(0, 0.956863, 0, 1)
+status_effect = ExtResource("15_lut24")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_lut24")

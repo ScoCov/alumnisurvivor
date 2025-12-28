@@ -7,15 +7,10 @@
 
 [node name="BurnStatus" instance=ExtResource("1_nby2y")]
 script = ExtResource("2_8qql7")
-pulse_rate = 1.0
-min_transparency = 0.25
-max_transparency = 1.0
-status_color = Color(0.25, 0.55, 0.25, 1)
-attribute_effected = ExtResource("3_dg45q")
 status_resource = ExtResource("4_vaeuu")
+status_color = Color(0.847074, 0.183658, 0, 1)
+attribute_effected = ExtResource("3_dg45q")
 
-[node name="Duration" parent="." index="0"]
-autostart = true
-
-[node name="Tick" parent="." index="1"]
-autostart = true
+[connection signal="expires" from="." to="." method="_on_expires"]
+[connection signal="initial_infection" from="." to="." method="_on_initial_infection"]
+[connection signal="tick" from="." to="." method="_on_tick"]
