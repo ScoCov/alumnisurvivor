@@ -12,6 +12,7 @@ signal death
 
 const _taking_damage_particles:= preload("res://Entities/Effects/taking_damage.tscn")
 const _healing_damage_particles:= preload("res://Entities/Effects/healing_damage.tscn")
+const _xp_node:= preload("res://Entities/xp_node.tscn")
 
 func _ready():
 	build_enemy()
@@ -21,6 +22,7 @@ func _ready():
 func _process(_delta):
 	if health.active_state is DeadState:
 		death.emit()
+		drop_xp()
 		self.queue_free()
 	
 func emit_damage_indicator(param: String):
@@ -37,3 +39,8 @@ func build_enemy():
 	health.maximum_health = entity.maximum_health
 	movement_component.movement_speed = entity.movement_speed
 	$Sprite2D.texture = entity.image_variants[2] ## get the 256x256 images
+
+func drop_xp():
+	var new_node = _xp_node.instantiate()
+	new_node.position = position
+	get_parent().add_child(new_node)

@@ -66,3 +66,10 @@ func student_update(_student: StudentResource) -> void:
 	student = _student
 	_render_student()
 	
+func _on_xp_collector_body_entered(body):
+	if body is XP_Node:
+		body.target = self
+
+func _on_xp_collection_zone_body_entered(body):
+	if body is XP_Node:
+		body.collide_with_player()

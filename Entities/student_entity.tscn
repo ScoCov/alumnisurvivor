@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://v1phrdf8cdqg"]
+[gd_scene load_steps=18 format=3 uid="uid://v1phrdf8cdqg"]
 
 [ext_resource type="Script" uid="uid://d0tuntxkjee38" path="res://Entities/student_entity.gd" id="1_kt3lm"]
 [ext_resource type="PackedScene" uid="uid://dysr53ibvwa8l" path="res://Entities/Components/movement_component.tscn" id="3_echn0"]
@@ -76,6 +76,12 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_kt3lm"]
 radius = 22.0907
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_qr54b"]
+radius = 100.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fkouh"]
+radius = 32.0
+
 [node name="StudentEntity" type="CharacterBody2D"]
 y_sort_enabled = true
 slide_on_ceiling = false
@@ -147,3 +153,28 @@ collision_mask = 2
 shape = SubResource("CircleShape2D_kt3lm")
 
 [node name="StatusEffects" type="Node2D" parent="."]
+
+[node name="XP_Pickup_Range" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 4
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="XP_Pickup_Range"]
+light_mask = 4
+visibility_layer = 4
+shape = SubResource("CircleShape2D_qr54b")
+debug_color = Color(0.518355, 0.574736, 0.0459606, 0.42)
+
+[node name="XP_Collection_Zone" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 4
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="XP_Collection_Zone"]
+light_mask = 4
+visibility_layer = 4
+shape = SubResource("CircleShape2D_fkouh")
+debug_color = Color(0.936353, 0.128452, 0.542358, 0.42)
+
+[connection signal="body_entered" from="XP_Pickup_Range" to="." method="_on_xp_collector_body_entered"]
+[connection signal="body_entered" from="XP_Collection_Zone" to="." method="_on_xp_collection_zone_body_entered"]

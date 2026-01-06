@@ -1,0 +1,62 @@
+[gd_scene load_steps=6 format=3 uid="uid://bp3xeoq3vy0vp"]
+
+[ext_resource type="Script" uid="uid://c0p2xxoh1m36t" path="res://Entities/xp_node.gd" id="1_4w61y"]
+[ext_resource type="Texture2D" uid="uid://bobyu81hw6ipu" path="res://Assets/Image/Misc/XP_Node_128x128.png" id="1_dvdwt"]
+
+[sub_resource type="Animation" id="Animation_4w61y"]
+resource_name = "spin"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.02, 0.233333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.28319]
+}
+
+[sub_resource type="Animation" id="Animation_3uef0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gwj3g"]
+_data = {
+&"RESET": SubResource("Animation_3uef0"),
+&"spin": SubResource("Animation_4w61y")
+}
+
+[node name="XpNode" type="CharacterBody2D"]
+light_mask = 4
+visibility_layer = 4
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("1_4w61y")
+movement_speed = 400.0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+scale = Vector2(0.2, 0.2)
+polygon = PackedVector2Array(-5, -62.3, -5, -60.8, -45.3, -55, -52.5, -55, -62, -50.2, -62, -46.4, -3, 51.5, -3, 53.3, -0.5, 54.4, 8.8, 45, 10.2, 45, 60.1, -44, 61.2, -44, 62.3, -46, 59, -51.5, 59, -53.8)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_dvdwt")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_gwj3g")
+}
