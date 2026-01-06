@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://cota3fk72xl5h"]
+
+[ext_resource type="PackedScene" uid="uid://cyimvhd78npmj" path="res://Entities/Enemies/enemy_entity.tscn" id="1_yln3g"]
+[ext_resource type="Resource" uid="uid://cmf76ta31ox1v" path="res://Resources/Data/Enemies/weakling.tres" id="2_i6l8j"]
+[ext_resource type="Texture2D" uid="uid://b0vb3roy28lwk" path="res://Assets/Image/Enemies/mutant_02_256x256.png" id="2_qjve4"]
+[ext_resource type="Script" uid="uid://bv4facsdymlnw" path="res://Scripts/Strategy/EnemyMovement/move_to_player.gd" id="4_sqsl4"]
+
+[node name="Weakling" instance=ExtResource("1_yln3g")]
+entity = ExtResource("2_i6l8j")
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_qjve4")
+
+[node name="HealthComponent" parent="." index="3"]
+maximum_health = 5
+current_health = 5
+over_health_maximum = 0.05
+
+[node name="movetoplayer" type="Node" parent="EnemeyMovementComponent" index="2"]
+script = ExtResource("4_sqsl4")

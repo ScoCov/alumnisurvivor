@@ -1,10 +1,18 @@
 class_name EnemyMovementMoveToPlayer
 extends EnemyMovementStrategy
 
+func enter():
+	pass
+	
+func exit():
+	pass
 
-@onready var entity: Enemy_Entity = enemy_movement_component.enemy_entity
+func update(entity: Enemy_Entity, player: Student_Entity, _delta: float):
+	_move_toward_player(entity,player,_delta)
 
-func update(_delta: float):
-	if entity and not enemy_movement_component.is_knocked_backed:
-		var direction = entity.position.direction_to(entity.player.position)
-		entity.velocity = (direction * enemy_movement_component.speed) 
+func _move_toward_player(entity: Enemy_Entity, player: Student_Entity,_delta: float):
+	if entity.movement_component.is_knocked_backed: return ## Exit early if is being knocked back.
+	var direction = entity.position.direction_to(player.position)
+	if entity.entity.looks_at_target:
+		entity.sprite_2d.look_at(entity.player.position)
+	entity.velocity = direction * entity.movement_component.movement_speed

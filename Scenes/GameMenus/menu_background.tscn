@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://dlx6bgpsdi00e"]
 
 [ext_resource type="Script" uid="uid://cji2jl0yve25u" path="res://Scenes/GameMenus/menu_background.gd" id="1_5pns2"]
-[ext_resource type="Texture2D" uid="uid://dtcox1uymld8h" path="res://Resources/Image/Backgrounds/Background.Layer1.png" id="2_rcbes"]
+[ext_resource type="Texture2D" uid="uid://dtcox1uymld8h" path="res://Assets/Image/Backgrounds/Background.Layer1.png" id="2_rcbes"]
 
 [sub_resource type="Animation" id="Animation_10dcw"]
 resource_name = "Background_Movement"

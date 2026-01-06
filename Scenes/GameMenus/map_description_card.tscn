@@ -1,9 +1,9 @@
 [gd_scene load_steps=6 format=3 uid="uid://c0s0cfpe0g84g"]
 
 [ext_resource type="Script" uid="uid://dmrun2b1eapvc" path="res://Scenes/GameMenus/map_description_card.gd" id="1_wxvcy"]
-[ext_resource type="Theme" uid="uid://dtoedfkuckej4" path="res://Resources/Image/UI/Themes/menu_theme.tres" id="2_nh8cp"]
+[ext_resource type="Theme" uid="uid://dtoedfkuckej4" path="res://Assets/Image/UI/Themes/menu_theme.tres" id="2_nh8cp"]
 [ext_resource type="Resource" uid="uid://bx3gbrn4ldeom" path="res://Resources/Data/Maps/parking_lot.tres" id="2_wve6k"]
-[ext_resource type="Texture2D" uid="uid://lgue3c8jgscy" path="res://Resources/Image/Backgrounds/Background_Quicky.png" id="4_wve6k"]
+[ext_resource type="Texture2D" uid="uid://lgue3c8jgscy" path="res://Assets/Image/Backgrounds/Background_Quicky.png" id="4_wve6k"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wve6k"]
 draw_center = false

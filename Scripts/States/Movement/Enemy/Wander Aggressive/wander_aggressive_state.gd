@@ -20,7 +20,8 @@ func update(_delta: float):
 	or not target):
 		target = change_direction(entity.player.position)
 	
-	
+	if (entity.enemy as EnemyResource).looks_at_target:
+		entity.sprite_2d.look_at(target)
 	entity.velocity = entity.position.direction_to(target) * enemy_movement_component.speed
 
 ## Gives a Vector2 location for the entity to use to help determine directions.

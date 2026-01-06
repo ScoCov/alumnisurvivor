@@ -1,11 +1,13 @@
 [gd_scene load_steps=18 format=3 uid="uid://dxs4mstvhwgv"]
 
 [ext_resource type="Script" uid="uid://dy7n5gmkswm47" path="res://Scripts/GameLogic.gd" id="1_ujiyw"]
-[ext_resource type="Script" uid="uid://wj4520tlhte0" path="res://Scripts/enemy_spawner.gd" id="2_wyfbo"]
+[ext_resource type="Script" uid="uid://wj4520tlhte0" path="res://Scripts/Spawner/enemy_spawner.gd" id="2_wyfbo"]
 [ext_resource type="PackedScene" uid="uid://cry3gb37tqlm0" path="res://Scenes/HUD/game_ui.tscn" id="3_e4hy1"]
-[ext_resource type="Script" uid="uid://ckklwqmrrbi60" path="res://Scripts/Abstract Classes/Resource/enemy_resource.gd" id="3_j0m0t"]
-[ext_resource type="Resource" uid="uid://vxcgej738s84" path="res://Resources/Data/Enemies/possessed_student.tres" id="4_brgl6"]
+[ext_resource type="Script" uid="uid://ckklwqmrrbi60" path="res://Scripts/Abstract Classes/Resource/enemy_resource.gd" id="3_ibji4"]
+[ext_resource type="Resource" uid="uid://cmf76ta31ox1v" path="res://Resources/Data/Enemies/weakling.tres" id="4_pwssg"]
 [ext_resource type="PackedScene" uid="uid://4v3yalblhtox" path="res://Entities/Abilities/soothing_song.tscn" id="5_7pf22"]
+[ext_resource type="Resource" uid="uid://chujgr1qlg2eh" path="res://Resources/Data/Enemies/spitter.tres" id="5_pvsxl"]
+[ext_resource type="Resource" uid="uid://d3t00c3xci4hm" path="res://Resources/Data/Enemies/slitherer.tres" id="6_pwssg"]
 [ext_resource type="PackedScene" uid="uid://bh2ur6pblyj8n" path="res://Scenes/Maps/Shared/continuous_floor.tscn" id="7_c8ydw"]
 [ext_resource type="PackedScene" uid="uid://v1phrdf8cdqg" path="res://Entities/student_entity.tscn" id="8_c8ydw"]
 [ext_resource type="PackedScene" uid="uid://dni77fk231wfc" path="res://Entities/Abilities/baseball_bat.tscn" id="8_p4l8i"]
@@ -15,16 +17,6 @@
 [ext_resource type="Resource" uid="uid://ctw5k4vpmi3at" path="res://Resources/Data/StatusEffects/haste_status.tres" id="13_j0m0t"]
 [ext_resource type="Resource" uid="uid://hr0ojg7ra2ca" path="res://Resources/Data/StatusEffects/burn_status.tres" id="14_brgl6"]
 [ext_resource type="Resource" uid="uid://cr2mwag15qow4" path="res://Resources/Data/StatusEffects/poison_status.tres" id="15_lut24"]
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_brgl6"]
-
-[sub_resource type="Environment" id="Environment_lut24"]
-background_mode = 3
-glow_enabled = true
-glow_intensity = 2.65
-glow_strength = 1.4
-glow_blend_mode = 1
-glow_map = SubResource("NoiseTexture2D_brgl6")
 
 [node name="MapEntrance" type="Node2D"]
 
@@ -40,9 +32,11 @@ autostart = true
 
 [node name="EnemySpawner" type="Node" parent="GameLogic" node_paths=PackedStringArray("player", "enemy_container")]
 script = ExtResource("2_wyfbo")
-enemy_list = Array[ExtResource("3_j0m0t")]([ExtResource("4_brgl6")])
+enemy_list = Array[ExtResource("3_ibji4")]([ExtResource("4_pwssg"), ExtResource("5_pvsxl"), ExtResource("6_pwssg")])
 player = NodePath("../../Forgound Rendering Node/StudentEntity")
 enemy_container = NodePath("../../Forgound Rendering Node/EnemyContainer")
+spawn_rate = 100
+max_distance_to_player = 350.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -54,11 +48,21 @@ y_sort_enabled = true
 player = NodePath("../../Forgound Rendering Node/StudentEntity")
 timer = NodePath("../../GameLogic/GameTimeLimit")
 
+[node name="Label" type="Label" parent="CanvasLayer/game_ui"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.035
+anchor_bottom = 0.035
+offset_left = 528.0
+offset_top = 593.0
+offset_right = 527.68
+offset_bottom = 593.32
+
 [node name="Forgound Rendering Node" type="Node2D" parent="."]
 y_sort_enabled = true
 
 [node name="StudentEntity" parent="Forgound Rendering Node" instance=ExtResource("8_c8ydw")]
-position = Vector2(576, 324)
+position = Vector2(579, 352)
 
 [node name="Camera2D" type="Camera2D" parent="Forgound Rendering Node/StudentEntity"]
 
@@ -67,29 +71,9 @@ self_modulate = Color(0, 0, 0, 0)
 player = NodePath("..")
 
 [node name="SoothingSong" parent="Forgound Rendering Node/StudentEntity" node_paths=PackedStringArray("player") instance=ExtResource("5_7pf22")]
-slow_strength = 0.25
 pulse_rate = 1.0
 min_transparency = 0.25
-max_transparency = 1.0
 player = NodePath("..")
-range_type = 0
-attack_type = 0
-ability_type = Array[int]([])
-status_effects = Array[int]([])
-
-[node name="Label2" type="Label" parent="Forgound Rendering Node"]
-offset_left = 496.0
-offset_top = 226.0
-offset_right = 653.0
-offset_bottom = 261.0
-
-[node name="Test" type="Node2D" parent="Forgound Rendering Node"]
-visible = false
-position = Vector2(546, 171)
-
-[node name="ColorRect" type="ColorRect" parent="Forgound Rendering Node/Test"]
-offset_right = 40.0
-offset_bottom = 40.0
 
 [node name="EnemyContainer" type="Node2D" parent="Forgound Rendering Node"]
 
@@ -136,6 +120,3 @@ position = Vector2(317, 516)
 tile_mode = "Status Effect"
 tile_color = Color(0, 0.956863, 0, 1)
 status_effect = ExtResource("15_lut24")
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_lut24")

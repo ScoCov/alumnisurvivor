@@ -19,7 +19,6 @@ func update(_delta):
 
 	## Animation
 	var head: Sprite2D = player.find_child("Head")
-	#var body: Sprite2D = player.find_child("StudentBody")
 	
 	if directions.x < 0: ## Head instantly follows the direciton of the player.
 		head.flip_h = false
@@ -41,6 +40,6 @@ func physics_update(_delta):
 		var directions:= Input.get_vector("move_left","move_right","move_up","move_down")
 		movement_comp.last_movement_direction = directions
 		player.velocity = directions * movement_comp.active_movement_speed * movement_comp.speed_modifier
-	elif player.movement.is_dash:
+	elif player.movement_component.is_dash:
 		player.velocity = movement_comp.last_movement_direction * movement_comp.active_movement_speed * movement_comp.speed_modifier
 	player.move_and_slide()

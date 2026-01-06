@@ -1,11 +1,8 @@
 class_name Health_Component
 extends Node
 
-@warning_ignore("unused_signal")
 signal damage_taken
-@warning_ignore("unused_signal")
 signal damage_negated
-@warning_ignore("unused_signal")
 signal damage_healed
 
 ## Allows cheats to be applied.
@@ -60,7 +57,6 @@ var active_state: State:
 		return null
 
 func attempt_damage(_source: Variant, damage_dealt: float):
-	#print("%s: %s/%s" % [name, current_health, maximum_health])
 	if invulnerable: return
 	if damage_dealt < 0: ## if taken damage
 		damage_taken.emit()

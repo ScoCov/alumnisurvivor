@@ -1,0 +1,39 @@
+[gd_resource type="Resource" script_class="EnemyResource" load_steps=6 format=3 uid="uid://d3t00c3xci4hm"]
+
+[ext_resource type="Texture2D" uid="uid://bf31caspnk4dv" path="res://Assets/Image/Enemies/mutant_03_64x64.png" id="1_uncux"]
+[ext_resource type="Texture2D" uid="uid://bx4q3ttjbttc1" path="res://Assets/Image/Enemies/mutant_03_128x128.png" id="2_w4qrh"]
+[ext_resource type="Texture2D" uid="uid://yb1rq63bhh22" path="res://Assets/Image/Enemies/mutant_03_256x256.png" id="3_gb4yi"]
+[ext_resource type="Texture2D" uid="uid://rhhvdmsehapt" path="res://Assets/Image/Enemies/mutant_03_512x512.png" id="4_gu5ji"]
+[ext_resource type="Script" uid="uid://ckklwqmrrbi60" path="res://Scripts/Abstract Classes/Resource/enemy_resource.gd" id="5_hhpyr"]
+
+[resource]
+script = ExtResource("5_hhpyr")
+name = "Slitherer"
+file_name = "slitherer"
+enemy_scene_path = ""
+power_level = 2.0
+xp_per_power = 0.0
+description = "Ew! It's so gross! It slowly inches at us leaving a strange slime that does ____. It doesn't seem hostile towards us otherwise."
+looks_at_target = true
+image_variants = Array[Texture]([ExtResource("1_uncux"), ExtResource("2_w4qrh"), ExtResource("3_gb4yi"), ExtResource("4_gu5ji")])
+enemy = Array[int]([2])
+group = Array[int]([7])
+damage_type = Array[int]([0])
+movement_speed = 50.0
+wander_timer = 16.0
+furthest_distance = 0.0
+closest_distance = 0.0
+maximum_health = 5
+armor = 0
+dodge = 0.0
+touch_damage = true
+damage = 0.0
+critical_chance = 0.0
+critical_damage = 0.0
+cooldown = 1.0
+attack_speed = 1.0
+duration = 1.0
+projectiles = 0
+pierce = 0
+bounce = 0
+metadata/_custom_type_script = "uid://ckklwqmrrbi60"

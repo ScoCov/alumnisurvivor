@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://jbxpmitfobh3"]
 
-[ext_resource type="Texture2D" uid="uid://ckq1qdrtyp7jy" path="res://Resources/Image/Effects/positive_damage.png" id="1_1yj54"]
+[ext_resource type="Texture2D" uid="uid://ckq1qdrtyp7jy" path="res://Assets/Image/Effects/positive_damage.png" id="1_1yj54"]
 [ext_resource type="Script" uid="uid://bj2l13i7j2qac" path="res://Entities/Effects/healing_damage.gd" id="2_6ksx4"]
 
 [sub_resource type="Curve" id="Curve_y1u5r"]

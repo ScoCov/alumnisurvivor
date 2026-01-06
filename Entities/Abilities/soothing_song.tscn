@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://17q6vmelqtud" path="res://Entities/ability_entity.tscn" id="1_wxfre"]
 [ext_resource type="Script" uid="uid://cqcpajm4o5nnd" path="res://Entities/Abilities/soothing_song.gd" id="2_a4508"]
-[ext_resource type="Texture2D" uid="uid://biopnyinv43f5" path="res://Resources/Image/Ability/test_slow_area.png" id="3_6p3nf"]
+[ext_resource type="Texture2D" uid="uid://biopnyinv43f5" path="res://Assets/Image/Ability/test_slow_area.png" id="3_6p3nf"]
 
 [node name="SoothingSong" instance=ExtResource("1_wxfre")]
 script = ExtResource("2_a4508")

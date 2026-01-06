@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="Ability_Resource" load_steps=2 format=3 uid="uid://bmjdqf2hvrjxf"]
+
+[ext_resource type="Script" uid="uid://b1ad1mp4224b3" path="res://Scripts/Abstract Classes/Resource/ability_resource.gd" id="1_hgshp"]
+
+[resource]
+script = ExtResource("1_hgshp")
+ability_name = "baseball_bat"
+display_name = "Homerun!"
+id = "baseball_bat"
+description = "Swing a long bat giving you greater range than the heavy punch, but at lower damage and cooldown. It does have a considerable knockback."
+base_damage = 2.0
+minimum_damage = 0.0
+maximum_damage = 0.0
+critical_hit_chance = 0.01
+critical_damage_multiplier = 1.5
+projectile_speed = 650.0
+attack_range = 150.0
+projectiles_max = 1
+range_tag = 0
+area = 1.0
+attack_speed = 0.5
+attack_speed_rate = 1.0
+cooldown_time = 1.0
+cooldown_rate = 1.0
+duration = 1.0
+knockback = 75.0
+metadata/_custom_type_script = "uid://b1ad1mp4224b3"

@@ -24,6 +24,8 @@ var health: Health_Component
 var _taking_damage_particles:= preload("res://Entities/Effects/taking_damage.tscn")
 var _healing_damage_particles:= preload("res://Entities/Effects/healing_damage.tscn")
 
+var angle = 0
+
 func _input(event):
 	if not is_controllable: pass
 	if event.is_action_pressed("dash", false):
@@ -49,10 +51,6 @@ func _process(_delta):
 	if not is_controllable: pass
 	movement_component = $Stats/MovementComponent if not movement_component else movement_component
 	health = $Stats/HealthComponent if not health else health
-	#$Label.text = "Shader Pulse Active: %s" % str($Visuals/StudentBody.get_instance_shader_parameter("pulse"))
-	
-		
-
 
 func _render_student() -> void:
 	if not student: return
@@ -67,3 +65,4 @@ func _render_student() -> void:
 func student_update(_student: StudentResource) -> void:
 	student = _student
 	_render_student()
+	

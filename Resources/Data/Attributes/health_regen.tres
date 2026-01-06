@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="AttributeResource" load_steps=2 format=3 uid="uid://o2bqtjl0e7vb"]
+
+[ext_resource type="Script" uid="uid://cfnxcuwnotvhw" path="res://Scripts/Abstract Classes/Resource/attribute_resource.gd" id="1_4crgb"]
+
+[resource]
+script = ExtResource("1_4crgb")
+name = "Armor"
+id = "armor"
+ordinal = 4
+description = ""
+value = 0.0
+min_limit = 0.0
+max_limit = 0.0
+min_limit_active = false
+max_limit_active = false
+color = Color(0, 0, 0, 1)
+metadata/_custom_type_script = "uid://cfnxcuwnotvhw"

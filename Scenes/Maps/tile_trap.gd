@@ -16,6 +16,7 @@ const POISON_STATUS: PackedScene = preload("res://Entities/StatusEffects/Statuse
 func _ready():
 	$Activation.wait_time = cooldown
 	$ColorRect.color = tile_color
+	$Label.text = "%s" % tile_mode if tile_mode in ["Heal", "Damage"] else "%s [%s]" % [tile_mode, status_effect.status_name]
 
 ## Determines which tile type is active and will use the appropriate application.
 func activate_trap(entity: CharacterBody2D):

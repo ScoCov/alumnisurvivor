@@ -32,6 +32,7 @@ extends Resource
 @export var pierce: float = 0
 @export var pickup_range: float = 0
 @export var attack_range: float = 0
+@export var collection_range: float = 0
 
 @export_group("Besty Bonuses")
 ### Increases growth of given stat, when selected as a Besty.

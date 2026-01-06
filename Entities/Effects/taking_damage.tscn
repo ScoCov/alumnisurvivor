@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://p56ddqiibxyc"]
 
-[ext_resource type="Texture2D" uid="uid://dv8d70doomun" path="res://Resources/Image/Effects/negative_damage.png" id="1_q6inj"]
+[ext_resource type="Texture2D" uid="uid://dv8d70doomun" path="res://Assets/Image/Effects/negative_damage.png" id="1_q6inj"]
 [ext_resource type="Script" uid="uid://dkb44twc6syco" path="res://Entities/Effects/taking_damage.gd" id="2_y1u5r"]
 
 [sub_resource type="Curve" id="Curve_y1u5r"]

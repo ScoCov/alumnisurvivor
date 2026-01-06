@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://dekq1iqfcty50"]
 
-[ext_resource type="Theme" uid="uid://dtoedfkuckej4" path="res://Resources/Image/UI/Themes/menu_theme.tres" id="1_kdwis"]
+[ext_resource type="Theme" uid="uid://dtoedfkuckej4" path="res://Assets/Image/UI/Themes/menu_theme.tres" id="1_kdwis"]
 [ext_resource type="Script" uid="uid://c24gb0j0r6s0" path="res://Scenes/GameMenus/besty_selection_screen.gd" id="1_qibhx"]
 [ext_resource type="PackedScene" uid="uid://dlx6bgpsdi00e" path="res://Scenes/GameMenus/menu_background.tscn" id="2_s880w"]
 

@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Map_Resource" load_steps=3 format=3 uid="uid://bx3gbrn4ldeom"]
 
-[ext_resource type="AudioStream" uid="uid://rjag6fud7kpj" path="res://Resources/BGM/bgm_01.wav" id="1_dvqa5"]
+[ext_resource type="AudioStream" uid="uid://rjag6fud7kpj" path="res://Assets/BGM/bgm_01.wav" id="1_dvqa5"]
 [ext_resource type="Script" uid="uid://be05hjv1ghi7e" path="res://Scripts/Abstract Classes/Resource/map_resource.gd" id="1_qr04o"]
 
 [resource]

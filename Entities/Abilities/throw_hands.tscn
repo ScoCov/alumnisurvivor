@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://17q6vmelqtud" path="res://Entities/ability_entity.tscn" id="1_ofcub"]
 [ext_resource type="Script" uid="uid://br3akakn8yops" path="res://Entities/Abilities/throw_hands.gd" id="2_xg70w"]
 [ext_resource type="Resource" uid="uid://nkdai5p8xl50" path="res://Resources/Data/Abilities/throw_hands.tres" id="3_dsy1l"]
-[ext_resource type="Texture2D" uid="uid://cncr26fn2esx2" path="res://Resources/Image/Ability/Fist_01_128x128.png" id="4_tjndp"]
+[ext_resource type="Texture2D" uid="uid://cncr26fn2esx2" path="res://Assets/Image/Ability/Fist_01_128x128.png" id="4_tjndp"]
 
 [node name="ThrowHands" instance=ExtResource("1_ofcub")]
 script = ExtResource("2_xg70w")

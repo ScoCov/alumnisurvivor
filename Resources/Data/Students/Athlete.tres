@@ -1,9 +1,9 @@
 [gd_resource type="Resource" script_class="StudentResource" load_steps=6 format=3 uid="uid://bdyv3dp43ka7l"]
 
-[ext_resource type="Texture2D" uid="uid://va580vf1m0o7" path="res://Resources/Image/Student/Head/Eyebrows/Eyebrows_01.png" id="1_14jll"]
-[ext_resource type="Texture2D" uid="uid://b5dlojhwtpkpo" path="res://Resources/Image/Student/Head/Eyes/Eyes_01.png" id="2_yuwmk"]
-[ext_resource type="Texture2D" uid="uid://crfkr6wxgmawr" path="res://Resources/Image/Student/Head/Hair/Hair_05.png" id="3_14jll"]
-[ext_resource type="Texture2D" uid="uid://qq2xynak3arc" path="res://Resources/Image/Student/Head/Mouth/Mouth_02.png" id="4_noivu"]
+[ext_resource type="Texture2D" uid="uid://va580vf1m0o7" path="res://Assets/Image/Student/Head/Eyebrows/Eyebrows_01.png" id="1_14jll"]
+[ext_resource type="Texture2D" uid="uid://b5dlojhwtpkpo" path="res://Assets/Image/Student/Head/Eyes/Eyes_01.png" id="2_yuwmk"]
+[ext_resource type="Texture2D" uid="uid://crfkr6wxgmawr" path="res://Assets/Image/Student/Head/Hair/Hair_05.png" id="3_14jll"]
+[ext_resource type="Texture2D" uid="uid://qq2xynak3arc" path="res://Assets/Image/Student/Head/Mouth/Mouth_02.png" id="4_noivu"]
 [ext_resource type="Script" uid="uid://40jgn8mckuc1" path="res://Scripts/Abstract Classes/Resource/student_resource.gd" id="5_77tcy"]
 
 [resource]

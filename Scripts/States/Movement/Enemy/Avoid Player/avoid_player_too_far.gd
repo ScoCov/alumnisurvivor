@@ -12,4 +12,6 @@ func update(_delta:float):
 		self.Transitioned.emit(self,"Avoid_Player_State")
 		
 	var direction = enemy_entity.position.direction_to(enemy_entity.player.position)
+	if (enemy_entity.enemy as EnemyResource).looks_at_target:
+			enemy_entity.sprite_2d.look_at(enemy_entity.player.position)
 	enemy_entity.velocity = direction * enemy_movement_component.speed

@@ -35,7 +35,8 @@ func on_active() -> bool:
 		else:
 			var slow_effect_index: int = entity.status_effects.get_children().find_custom(func(status): return status.name == "SlowStatus")
 			var slow_effect: Status_Slow = entity.status_effects.get_child(slow_effect_index)
-			slow_effect.stack_count += 1
+			if slow_effect.stack_count < 2: ## Keeps constantly active but won't over load slow stack.
+				slow_effect.stack_count += 1
 	$Facing.modulate = Color(1,1,1, alpha_value)
 	return false
 	

@@ -1,14 +1,14 @@
 [gd_scene load_steps=12 format=3 uid="uid://dus2k8551fqf8"]
 
-[ext_resource type="Theme" uid="uid://dtoedfkuckej4" path="res://Resources/Image/UI/Themes/menu_theme.tres" id="1_gvwp4"]
+[ext_resource type="Theme" uid="uid://dtoedfkuckej4" path="res://Assets/Image/UI/Themes/menu_theme.tres" id="1_gvwp4"]
 [ext_resource type="Script" uid="uid://c0s620s2lvujy" path="res://Scenes/GameMenus/student_icon.gd" id="1_notm7"]
 [ext_resource type="Resource" uid="uid://bqrarylfmicoh" path="res://Resources/Data/Students/Nerd.tres" id="2_fk38g"]
-[ext_resource type="Texture2D" uid="uid://ckyqn1o6hh0i1" path="res://Resources/Image/Student/Head/Head_beta_2.png" id="2_notm7"]
-[ext_resource type="Texture2D" uid="uid://va580vf1m0o7" path="res://Resources/Image/Student/Head/Eyebrows/Eyebrows_01.png" id="3_fk38g"]
-[ext_resource type="Texture2D" uid="uid://cfg4vqlg36ofq" path="res://Resources/Image/Student/Head/Hair/Hair_01.png" id="4_o4rpc"]
-[ext_resource type="Texture2D" uid="uid://b5dlojhwtpkpo" path="res://Resources/Image/Student/Head/Eyes/Eyes_01.png" id="5_6ynmj"]
-[ext_resource type="Texture2D" uid="uid://cr4jadxq3b6wj" path="res://Resources/Image/Student/Head/Mouth/Mouth_01.png" id="6_mv02y"]
-[ext_resource type="AudioStream" uid="uid://dmdfma2dtee3l" path="res://Resources/SFX/low_medium_beep.mp3" id="9_o4rpc"]
+[ext_resource type="Texture2D" uid="uid://ckyqn1o6hh0i1" path="res://Assets/Image/Student/Head/Head_beta_2.png" id="2_notm7"]
+[ext_resource type="Texture2D" uid="uid://va580vf1m0o7" path="res://Assets/Image/Student/Head/Eyebrows/Eyebrows_01.png" id="3_fk38g"]
+[ext_resource type="Texture2D" uid="uid://cfg4vqlg36ofq" path="res://Assets/Image/Student/Head/Hair/Hair_01.png" id="4_o4rpc"]
+[ext_resource type="Texture2D" uid="uid://b5dlojhwtpkpo" path="res://Assets/Image/Student/Head/Eyes/Eyes_01.png" id="5_6ynmj"]
+[ext_resource type="Texture2D" uid="uid://cr4jadxq3b6wj" path="res://Assets/Image/Student/Head/Mouth/Mouth_01.png" id="6_mv02y"]
+[ext_resource type="AudioStream" uid="uid://dmdfma2dtee3l" path="res://Assets/SFX/low_medium_beep.mp3" id="9_o4rpc"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fk38g"]
 draw_center = false

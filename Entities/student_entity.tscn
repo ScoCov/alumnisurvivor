@@ -3,12 +3,12 @@
 [ext_resource type="Script" uid="uid://d0tuntxkjee38" path="res://Entities/student_entity.gd" id="1_kt3lm"]
 [ext_resource type="PackedScene" uid="uid://dysr53ibvwa8l" path="res://Entities/Components/movement_component.tscn" id="3_echn0"]
 [ext_resource type="PackedScene" uid="uid://xy2guokl2776" path="res://Entities/Components/health_component.tscn" id="3_goiee"]
-[ext_resource type="Texture2D" uid="uid://cr4jadxq3b6wj" path="res://Resources/Image/Student/Head/Mouth/Mouth_01.png" id="9_kt3lm"]
-[ext_resource type="Texture2D" uid="uid://c0ebqy6ydav7u" path="res://Resources/Image/Student/Head/Hair/Hair_02.png" id="16_71snr"]
-[ext_resource type="Texture2D" uid="uid://dtt7h2na2opvb" path="res://Resources/Image/Student/Body/Student_Body.png" id="27_gi4ri"]
-[ext_resource type="Texture2D" uid="uid://ckyqn1o6hh0i1" path="res://Resources/Image/Student/Head/Head_beta_2.png" id="28_1pn2y"]
-[ext_resource type="Texture2D" uid="uid://va580vf1m0o7" path="res://Resources/Image/Student/Head/Eyebrows/Eyebrows_01.png" id="30_hj61p"]
-[ext_resource type="Texture2D" uid="uid://b1pkn4viaktqf" path="res://Resources/Image/Student/Head/Eyes/Eyes_02.png" id="31_ngr5b"]
+[ext_resource type="Texture2D" uid="uid://cr4jadxq3b6wj" path="res://Assets/Image/Student/Head/Mouth/Mouth_01.png" id="9_kt3lm"]
+[ext_resource type="Texture2D" uid="uid://c0ebqy6ydav7u" path="res://Assets/Image/Student/Head/Hair/Hair_02.png" id="16_71snr"]
+[ext_resource type="Texture2D" uid="uid://dtt7h2na2opvb" path="res://Assets/Image/Student/Body/Student_Body.png" id="27_gi4ri"]
+[ext_resource type="Texture2D" uid="uid://ckyqn1o6hh0i1" path="res://Assets/Image/Student/Head/Head_beta_2.png" id="28_1pn2y"]
+[ext_resource type="Texture2D" uid="uid://va580vf1m0o7" path="res://Assets/Image/Student/Head/Eyebrows/Eyebrows_01.png" id="30_hj61p"]
+[ext_resource type="Texture2D" uid="uid://b1pkn4viaktqf" path="res://Assets/Image/Student/Head/Eyes/Eyes_02.png" id="31_ngr5b"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bj2gu"]
 radius = 31.0644

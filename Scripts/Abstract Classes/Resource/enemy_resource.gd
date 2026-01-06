@@ -5,21 +5,22 @@ extends Resource
 @export var name: String
 @export var file_name: String
 @export var enemy_scene_path: String
+@export var power_level: float = 0
+@export var xp_per_power: float = 0
 @export_group("Description")
 @export_multiline var description: String
 @export_group("Images")
+@export var looks_at_target: bool = false
 @export var image_variants: Array[Texture]
 @export_group("Tags")
 @export var enemy: Array[Global.enemy_tag] = [Global.enemy_tag.Normal]
 @export var group: Array[Global.group_tag] = [Global.group_tag.None]
 @export var damage_type: Array[Global.damage_types] = [Global.damage_types.Blunt]
 @export_group("Other")
-## If there is an extension to the enemy_entity.gd script being ran, place the new script here.
-@export var extended_script: GDScript
 
 @export_category("Movement")
 ## The way the enemy will move in game. 
-@export var move_style: EnemyMovementStrategy.type
+#@export var move_style: EnemyMovementStrategy.type
 ## Default Movement Speed = 75
 @export var movement_speed: float = 75
 ## When using a Wander-Type of Movement, the enemy will redirect it's self [wander_timer]-seconds.

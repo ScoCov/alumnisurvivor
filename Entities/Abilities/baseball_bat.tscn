@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://17q6vmelqtud" path="res://Entities/ability_entity.tscn" id="1_7ejnk"]
 [ext_resource type="Script" uid="uid://dl7oj27qxe7r5" path="res://Entities/Abilities/baseball_bat.gd" id="1_ka3u3"]
-[ext_resource type="Texture2D" uid="uid://dao16y3oi7gpe" path="res://Resources/Image/Ability/Baseball_Bat.png" id="2_hrcwj"]
+[ext_resource type="Texture2D" uid="uid://dao16y3oi7gpe" path="res://Assets/Image/Ability/Baseball_Bat.png" id="2_hrcwj"]
 [ext_resource type="Resource" uid="uid://mreamsv3sg1" path="res://Resources/Data/Abilities/baseball_bat.tres" id="2_ktabt"]
 
 [node name="Homerun" instance=ExtResource("1_7ejnk")]

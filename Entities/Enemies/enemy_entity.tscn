@@ -1,11 +1,12 @@
 [gd_scene load_steps=6 format=3 uid="uid://cyimvhd78npmj"]
 
 [ext_resource type="Script" uid="uid://dv5sx6l1730tc" path="res://Entities/Enemies/enemy_entity.gd" id="1_pl5he"]
+[ext_resource type="Texture2D" uid="uid://be58g2b5n46va" path="res://Assets/Image/Enemies/mutant_01_256x256.png" id="2_7qq51"]
 [ext_resource type="PackedScene" uid="uid://xy2guokl2776" path="res://Entities/Components/health_component.tscn" id="2_ghi0t"]
-[ext_resource type="PackedScene" uid="uid://bl1mad5sv5jr4" path="res://Entities/Components/enemey_movement_component.tscn" id="3_ghi0t"]
-[ext_resource type="Texture2D" uid="uid://bambx8oylmvtd" path="res://Resources/Image/Enemies/enemy_01.png" id="4_6jo2l"]
+[ext_resource type="PackedScene" uid="uid://bl1mad5sv5jr4" path="res://Entities/Components/enemy_movement_component.tscn" id="3_ghi0t"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_us7kl"]
+radius = 28.0
 
 [node name="EnemyEntity" type="CharacterBody2D"]
 collision_layer = 2
@@ -14,8 +15,8 @@ script = ExtResource("1_pl5he")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 y_sort_enabled = true
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("4_6jo2l")
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_7qq51")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_us7kl")
@@ -25,13 +26,5 @@ shape = SubResource("CircleShape2D_us7kl")
 [node name="HealthComponent" parent="." instance=ExtResource("2_ghi0t")]
 invulnerability_time = 0.05
 
-[node name="EnemeyMovementComponent" parent="." node_paths=PackedStringArray("enemy_entity") instance=ExtResource("3_ghi0t")]
-enemy_entity = NodePath("..")
-
-[node name="Label" type="Label" parent="."]
-offset_left = -31.0
-offset_top = -63.0
-offset_right = 31.0
-offset_bottom = -40.0
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="EnemeyMovementComponent" parent="." node_paths=PackedStringArray("entity") instance=ExtResource("3_ghi0t")]
+entity = NodePath("..")

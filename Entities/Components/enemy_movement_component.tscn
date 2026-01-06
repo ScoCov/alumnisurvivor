@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://bl1mad5sv5jr4"]
+
+[ext_resource type="Script" uid="uid://br6sjkycugrhl" path="res://Entities/Components/enemy_movement_component.gd" id="1_diisb"]
+[ext_resource type="Script" uid="uid://t3mlm4ybio8c" path="res://Scripts/States/state_machine.gd" id="2_064ci"]
+[ext_resource type="Script" uid="uid://btdoexa3kq5si" path="res://Scripts/States/Movement/Enemy/enemy_idle_state.gd" id="3_655k1"]
+[ext_resource type="Script" uid="uid://b16cr35r6uor" path="res://Scripts/States/Movement/Enemy/enemy_moving_state.gd" id="4_2alll"]
+
+[node name="EnemyMovementComponent" type="Node"]
+script = ExtResource("1_diisb")
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("2_064ci")
+initial_state = NodePath("EnemyIdle")
+
+[node name="EnemyIdle" type="Node" parent="StateMachine" node_paths=PackedStringArray("enemy_movement_component")]
+script = ExtResource("3_655k1")
+enemy_movement_component = NodePath("../..")
+metadata/_custom_type_script = "uid://btdoexa3kq5si"
+
+[node name="EnemyMoving" type="Node" parent="StateMachine" node_paths=PackedStringArray("movement_component")]
+script = ExtResource("4_2alll")
+movement_component = NodePath("../..")
+metadata/_custom_type_script = "uid://b16cr35r6uor"
+
+[node name="KnockbackTimer" type="Timer" parent="."]
+wait_time = 0.33
+one_shot = true
+
+[connection signal="timeout" from="KnockbackTimer" to="." method="_on_knockback_timer_timeout"]

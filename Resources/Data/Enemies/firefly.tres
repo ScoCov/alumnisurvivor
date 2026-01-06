@@ -1,0 +1,39 @@
+[gd_resource type="Resource" script_class="EnemyResource" load_steps=6 format=3 uid="uid://cns6xh6no2a0i"]
+
+[ext_resource type="Texture2D" uid="uid://cqu1vjndlqlqw" path="res://Assets/Image/Enemies/mutant_04_64x64.png" id="1_48rec"]
+[ext_resource type="Texture2D" uid="uid://bws2tsw8uvfvr" path="res://Assets/Image/Enemies/mutant_04_128x128.png" id="2_eob87"]
+[ext_resource type="Texture2D" uid="uid://cquiskxd2w8oa" path="res://Assets/Image/Enemies/mutant_04_256x256.png" id="3_6tkad"]
+[ext_resource type="Texture2D" uid="uid://dkdl56doghp00" path="res://Assets/Image/Enemies/mutant_04_512x512.png" id="4_igdjd"]
+[ext_resource type="Script" uid="uid://ckklwqmrrbi60" path="res://Scripts/Abstract Classes/Resource/enemy_resource.gd" id="5_qx0hn"]
+
+[resource]
+script = ExtResource("5_qx0hn")
+name = "Charger"
+file_name = "charger"
+enemy_scene_path = ""
+power_level = 3.0
+xp_per_power = 0.0
+description = "Watch out!	 This thing is armored to the ... whatever they have. It builds up its' strength until it has enough to launch itself forward - be wary around this one. [Charge is not yet working - set to Wander Aggressive]"
+looks_at_target = true
+image_variants = Array[Texture]([ExtResource("1_48rec"), ExtResource("2_eob87"), ExtResource("3_6tkad"), ExtResource("4_igdjd")])
+enemy = Array[int]([2])
+group = Array[int]([7])
+damage_type = Array[int]([0])
+movement_speed = 80.0
+wander_timer = 4.0
+furthest_distance = 0.0
+closest_distance = 0.0
+maximum_health = 5
+armor = 0
+dodge = 0.0
+touch_damage = true
+damage = 0.0
+critical_chance = 0.0
+critical_damage = 0.0
+cooldown = 1.0
+attack_speed = 1.0
+duration = 1.0
+projectiles = 0
+pierce = 0
+bounce = 0
+metadata/_custom_type_script = "uid://ckklwqmrrbi60"

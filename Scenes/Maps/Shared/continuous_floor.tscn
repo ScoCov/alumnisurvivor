@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://bh2ur6pblyj8n"]
 
-[ext_resource type="Texture2D" uid="uid://ca37pmu5jk5pq" path="res://Resources/Image/Backgrounds/grass_floor_02_720x540.png" id="2_c740n"]
+[ext_resource type="Texture2D" uid="uid://ca37pmu5jk5pq" path="res://Assets/Image/Backgrounds/grass_floor_02_720x540.png" id="2_c740n"]
 [ext_resource type="Shader" uid="uid://cyjdmut1mcguy" path="res://Scenes/Maps/Shared/noise_generator_floor.tres" id="2_pqjnj"]
 [ext_resource type="Script" uid="uid://n3b37n1idxy4" path="res://Scenes/Maps/Shared/enviromental_spawning.gd" id="3_ssaib"]
 
