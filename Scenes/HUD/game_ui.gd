@@ -20,7 +20,8 @@ func _ready() -> void:
 func _process(_delta):
 	update_timer()
 	update_health()
-
+	update_experience()
+	
 ## Update the visual and text-based aspects related to the Student and Besty 
 ## that is currently assigned in the Global Script. [Global.SELECTED_STUDENT, 
 ## Global.SELECTED_BESTY]
@@ -46,11 +47,16 @@ func _get_facial_node(version: String, part: String) -> Sprite2D:
 func update_experience():
 	var experience_bar_text = $"Control/Control/VBoxContainer/Experience/Experience Bar Text"
 	experience_bar_text.text = "Error!" 
-	
 	if not player: return
-	experience_bar_text.text = ("Level: %s\t\t\t%s needed to level up!" % 
-		[player.experience.level, 
-		str(player.experience.next_level_xp - player.experience.current_xp)])
+	var exp_mgmt: Experience_Manager = player.experience
+	$Control/Control/VBoxContainer/Experience.value = exp_mgmt.current_xp
+	$Control/Control/VBoxContainer/Experience.max_value = exp_mgmt.xp_until_level_up
+	var exp_bar = $ExperienceBar
+	exp_bar.value = exp_mgmt.current_xp
+	exp_bar.max_value = exp_mgmt.xp_until_level_up
+	experience_bar_text.text = ("Level: %s (%s/%s)" % 
+		[exp_mgmt.player_level,exp_mgmt.current_xp, exp_mgmt.xp_until_level_up])
+	experience_bar_text.text += " +%s" % exp_mgmt.level_up_points if exp_mgmt.level_up_points >= 1 else ""
 		
 ##TODO: Need to update once StudentEntity is fully updated.
 func update_health() -> void:

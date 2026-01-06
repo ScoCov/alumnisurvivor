@@ -1,6 +1,10 @@
 class_name Enemy_Spawner
 extends Node
 
+signal spawned_group
+signal below_minimum_power
+signal power_level_maxed
+
 @export_category("Imports")
 @export var enemy_list: Array[EnemyResource]
 @export var player: Student_Entity
@@ -32,19 +36,17 @@ func _ready():
 
 func _process(_delta):
 	time_passed += 1
-	$"../../CanvasLayer/game_ui/Label".text = "Current Power Level: %s/%s | Spawn Rate: %s" % [current_pwer, max_power, spawn_rate]
+	$"../../CanvasLayer/game_ui/Label".text = "Current Power Level: %s/%s | Spawn Rate: %s" % [current_pwer, max_power, spawn_rate - player.experience.player_level]
 	## Check to see if max or min count of enemy entities as been exceeded.
 	if time_passed % growth_rate == 0:
 		max_power += 1
-		if time_passed % int(max_power) == 0:
-			spawn_rate -= 1
 	if should_spawn(current_pwer):
 		#spawn_group.spawn_group(player.position,1)
 		_spawn_entity() ## Spawn enemy
 
 func should_spawn(power_level) -> bool:
 	var true_conditions = [(power_level < min_power),( current_pwer < max_power and randf_range(0,1) <= spawn_chance)]
-	return (time_passed % spawn_rate == 0) and true_conditions.any(func(check): return check == true)
+	return (time_passed % (spawn_rate - player.experience.player_level) == 0) and true_conditions.any(func(check): return check == true)
 
 func get_enemy_from_roll(roll: float) -> EnemyResource:
 	var closest_spawn = entities_dict.values().filter(func(entity): 

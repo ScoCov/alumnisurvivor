@@ -18,9 +18,10 @@ const DEFAULT_MOVEMENT_SPEED: float = 150
 @export var is_controllable: bool = true
 @export_category("Entity Data")
 @export var student: StudentResource 
+@onready var status_effects = $StatusEffects
+@onready var experience = $Stats/Experience
 var movement_component: Movement_Component
 var health: Health_Component
-@onready var status_effects = $StatusEffects
 var _taking_damage_particles:= preload("res://Entities/Effects/taking_damage.tscn")
 var _healing_damage_particles:= preload("res://Entities/Effects/healing_damage.tscn")
 
@@ -73,3 +74,4 @@ func _on_xp_collector_body_entered(body):
 func _on_xp_collection_zone_body_entered(body):
 	if body is XP_Node:
 		body.collide_with_player()
+		experience.add_experience(body.xp_value)

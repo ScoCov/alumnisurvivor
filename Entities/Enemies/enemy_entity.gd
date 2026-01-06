@@ -43,4 +43,5 @@ func build_enemy():
 func drop_xp():
 	var new_node = _xp_node.instantiate()
 	new_node.position = position
+	new_node.xp_value = entity.xp_per_power * entity.power_level
 	get_parent().add_child(new_node)

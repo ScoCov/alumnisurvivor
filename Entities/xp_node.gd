@@ -11,9 +11,8 @@ signal dropped
 
 
 func _ready():
-	xp_value = randi_range(1, debug_value_random_limit)
-	var value = xp_value / debug_value_random_limit 
-	scale = Vector2(scale.x + (scale.x * value), scale.y + (scale.y * value))
+	scale = Vector2(scale.x + (scale.x * clamp(xp_value/10,0,0.5)), 
+					scale.y + (scale.y * clamp(xp_value/10,0,0.5)))
 	dropped.emit()
 
 func _process(_delta):

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cry3gb37tqlm0"]
+[gd_scene load_steps=11 format=3 uid="uid://cry3gb37tqlm0"]
 
 [ext_resource type="Script" uid="uid://bojlurhd6fuft" path="res://Scenes/HUD/game_ui.gd" id="1_pakjy"]
 [ext_resource type="Texture2D" uid="uid://ckyqn1o6hh0i1" path="res://Assets/Image/Student/Head/Head_beta_2.png" id="3_wvjy2"]
@@ -18,11 +18,13 @@ border_width_right = 3
 border_width_bottom = 3
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pvh76"]
-bg_color = Color(0, 1, 1, 1)
-border_width_left = 3
-border_width_top = 3
-border_width_right = 3
-border_width_bottom = 3
+bg_color = Color(0, 0.72, 0.72, 1)
+border_width_right = 47
+border_blend = true
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xjiab"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+draw_center = false
 
 [node name="GameOverlay" type="Control"]
 layout_mode = 3
@@ -212,5 +214,28 @@ grow_vertical = 2
 mouse_filter = 2
 columns = 5
 metadata/_edit_use_anchors_ = true
+
+[node name="ExperienceBar" type="ProgressBar" parent="."]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -6.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/background = SubResource("StyleBoxFlat_xjiab")
+theme_override_styles/fill = SubResource("StyleBoxFlat_pvh76")
+show_percentage = false
+
+[node name="Experience Bar Text" type="Label" parent="ExperienceBar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_alignment = 1
 
 [connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]

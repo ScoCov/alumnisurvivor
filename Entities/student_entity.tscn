@@ -1,9 +1,10 @@
-[gd_scene load_steps=18 format=3 uid="uid://v1phrdf8cdqg"]
+[gd_scene load_steps=19 format=3 uid="uid://v1phrdf8cdqg"]
 
 [ext_resource type="Script" uid="uid://d0tuntxkjee38" path="res://Entities/student_entity.gd" id="1_kt3lm"]
 [ext_resource type="PackedScene" uid="uid://dysr53ibvwa8l" path="res://Entities/Components/movement_component.tscn" id="3_echn0"]
 [ext_resource type="PackedScene" uid="uid://xy2guokl2776" path="res://Entities/Components/health_component.tscn" id="3_goiee"]
 [ext_resource type="Texture2D" uid="uid://cr4jadxq3b6wj" path="res://Assets/Image/Student/Head/Mouth/Mouth_01.png" id="9_kt3lm"]
+[ext_resource type="Script" uid="uid://dl3knldaqwm3p" path="res://Entities/Components/Attachments/experience_manager.gd" id="10_qr54b"]
 [ext_resource type="Texture2D" uid="uid://c0ebqy6ydav7u" path="res://Assets/Image/Student/Head/Hair/Hair_02.png" id="16_71snr"]
 [ext_resource type="Texture2D" uid="uid://dtt7h2na2opvb" path="res://Assets/Image/Student/Body/Student_Body.png" id="27_gi4ri"]
 [ext_resource type="Texture2D" uid="uid://ckyqn1o6hh0i1" path="res://Assets/Image/Student/Head/Head_beta_2.png" id="28_1pn2y"]
@@ -12,6 +13,15 @@
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bj2gu"]
 radius = 31.0644
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kt3lm"]
+radius = 22.0907
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qr54b"]
+radius = 100.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fkouh"]
+radius = 32.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fkouh"]
 resource_local_to_scene = true
@@ -73,15 +83,6 @@ _data = {
 &"walk": SubResource("Animation_gi4ri")
 }
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_kt3lm"]
-radius = 22.0907
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_qr54b"]
-radius = 100.0
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_fkouh"]
-radius = 32.0
-
 [node name="StudentEntity" type="CharacterBody2D"]
 y_sort_enabled = true
 slide_on_ceiling = false
@@ -90,7 +91,41 @@ script = ExtResource("1_kt3lm")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_bj2gu")
 
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("CircleShape2D_kt3lm")
+
+[node name="Sensors" type="Node2D" parent="."]
+
+[node name="XP_Pickup_Range" type="Area2D" parent="Sensors"]
+collision_layer = 4
+collision_mask = 4
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sensors/XP_Pickup_Range"]
+light_mask = 4
+visibility_layer = 4
+shape = SubResource("CircleShape2D_qr54b")
+debug_color = Color(0.518355, 0.574736, 0.0459606, 0.42)
+
+[node name="XP_Collection_Zone" type="Area2D" parent="Sensors"]
+collision_layer = 4
+collision_mask = 4
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sensors/XP_Collection_Zone"]
+light_mask = 4
+visibility_layer = 4
+shape = SubResource("CircleShape2D_fkouh")
+debug_color = Color(0.936353, 0.128452, 0.542358, 0.42)
+
 [node name="Stats" type="Node" parent="."]
+
+[node name="Experience" type="Node" parent="Stats"]
+script = ExtResource("10_qr54b")
 
 [node name="MovementComponent" parent="Stats" node_paths=PackedStringArray("entity") instance=ExtResource("3_echn0")]
 entity = NodePath("../..")
@@ -145,36 +180,7 @@ offset_top = -138.0
 offset_right = 50.0
 offset_bottom = -95.0
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-collision_layer = 2
-collision_mask = 2
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
-shape = SubResource("CircleShape2D_kt3lm")
-
 [node name="StatusEffects" type="Node2D" parent="."]
 
-[node name="XP_Pickup_Range" type="Area2D" parent="."]
-collision_layer = 4
-collision_mask = 4
-monitorable = false
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="XP_Pickup_Range"]
-light_mask = 4
-visibility_layer = 4
-shape = SubResource("CircleShape2D_qr54b")
-debug_color = Color(0.518355, 0.574736, 0.0459606, 0.42)
-
-[node name="XP_Collection_Zone" type="Area2D" parent="."]
-collision_layer = 4
-collision_mask = 4
-monitorable = false
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="XP_Collection_Zone"]
-light_mask = 4
-visibility_layer = 4
-shape = SubResource("CircleShape2D_fkouh")
-debug_color = Color(0.936353, 0.128452, 0.542358, 0.42)
-
-[connection signal="body_entered" from="XP_Pickup_Range" to="." method="_on_xp_collector_body_entered"]
-[connection signal="body_entered" from="XP_Collection_Zone" to="." method="_on_xp_collection_zone_body_entered"]
+[connection signal="body_entered" from="Sensors/XP_Pickup_Range" to="." method="_on_xp_collector_body_entered"]
+[connection signal="body_entered" from="Sensors/XP_Collection_Zone" to="." method="_on_xp_collection_zone_body_entered"]
