@@ -8,3 +8,4 @@ extends Resource
 @export_multiline var description: String
 @export var map_theme_song: AudioStream
 @export var scene_path: String
+@export var unlocked_from_start: bool = false

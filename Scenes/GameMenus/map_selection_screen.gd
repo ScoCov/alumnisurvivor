@@ -11,7 +11,7 @@ func _on_back_pressed():
 	get_tree().change_scene_to_file("res://Scenes/GameMenus/besty_selection_screen.tscn")
 
 func populate_map_list():
-	for map in Global.MAPS:
+	for map in Global.MAPS.filter(func(m: Map_Resource): return m.unlocked_from_start):
 		var new_map_card:= MAP_DESCRIPTION_CARD_PACKED_SCENE.instantiate()
 		new_map_card.map = map
 		maps.add_child(new_map_card)

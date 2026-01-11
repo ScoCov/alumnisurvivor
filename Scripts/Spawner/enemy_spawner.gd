@@ -36,7 +36,6 @@ func _ready():
 
 func _process(_delta):
 	time_passed += 1
-	$"../../CanvasLayer/game_ui/Label".text = "Current Power Level: %s/%s | Spawn Rate: %s" % [current_pwer, max_power, spawn_rate - player.experience.player_level]
 	## Check to see if max or min count of enemy entities as been exceeded.
 	if time_passed % growth_rate == 0:
 		max_power += 1

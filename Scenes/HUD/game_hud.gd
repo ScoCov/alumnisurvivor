@@ -1,0 +1,59 @@
+class_name Game_HUD
+extends Control
+
+enum STUDENT_OPTIONS {STUDENT, BESTY} 
+enum UPDATE_OPTIONS {STUDENT_AND_BESTY, HEALTH, EXPERIENCE, TIME}
+
+@export var game_ui: Game_Ui
+
+@onready var student_name = $"Student Info/Student Name"
+@onready var besty_name = $"Student Info/Besty Name"
+@onready var health = $"Student Info/Control/VBoxContainer/Health"
+@onready var health_bar_text = $"Student Info/Control/VBoxContainer/Health/Health Bar Text"
+@onready var experience_bar = $ExperienceBar
+@onready var experience_bar_text = $"ExperienceBar/Experience Bar Text"
+@onready var debug_info = $"Debug Info"
+
+func _ready():
+	debug_info.visible = game_ui.debug_mode
+	
+func _process(_delta):
+	if game_ui.debug_mode:
+		update_debug_info()
+	
+func update_hud_static():
+	## Develop Names
+	student_name.text = Global.SELECTED_STUDENT.student_name
+	besty_name.text = Global.SELECTED_BESTY.student_name
+	## Fill out Faces
+	update_faces(Global.SELECTED_STUDENT, STUDENT_OPTIONS.STUDENT)
+	update_faces(Global.SELECTED_BESTY, STUDENT_OPTIONS.BESTY)
+	## Update Health
+	update_health_values()
+	## Update Experience
+	update_experience_values()
+		
+func update_faces(student:StudentResource, option: STUDENT_OPTIONS ):
+	var control: Control = $Image/Control
+	var target = control.find_child("Student" if option == STUDENT_OPTIONS.STUDENT else "Besty")
+	var resource = Global.SELECTED_STUDENT if option == STUDENT_OPTIONS.STUDENT else Global.SELECTED_BESTY
+	for part in target.get_children():
+		part.texture = resource[part.name.to_lower()]
+	
+func update_health_values():
+	var student = game_ui.player
+	health.max_value = student.health.maximum_health
+	health.value = student.health.current_health
+	health_bar_text.text = "%s/%s" % [student.health.current_health, student.health.maximum_health]
+	
+func update_experience_values():
+	var student = game_ui.player
+	experience_bar.max_value = student.experience.xp_until_level_up
+	experience_bar.value = student.experience.current_xp
+	experience_bar_text.text = "Lvl. %s     EXP: %s        (Next Level: %s)" % [student.experience.player_level, student.experience.current_xp, student.experience.xp_until_level_up]
+
+func update_debug_info():
+	var enemy_spawner: Enemy_Spawner = game_ui.game_logic.enemy_spawner
+	$"Debug Info/MarginContainer/VBoxContainer/Enemy Power".text = "Power [Current/Max]: %s / %s" % [enemy_spawner.current_pwer, enemy_spawner.max_power]
+	$"Debug Info/MarginContainer/VBoxContainer/Spawn Chance".text = "Spawn Chance: %s" % [enemy_spawner.spawn_chance]
+	$"Debug Info/MarginContainer/VBoxContainer/Number of Enemies".text = "Enemy Count: %s" % [enemy_spawner.enemy_container.get_child_count()]

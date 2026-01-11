@@ -16,13 +16,13 @@ var xp_until_level_up: float:
 		return ceil((base_xp_value * (player_level * xp_growth_rate)) + base_xp_value )
 
 func add_experience(amount: float):
-	experience_gained.emit()
 	current_xp += amount + (amount * xp_multiplier)
 	while(current_xp >= xp_until_level_up):
 		_level_up()
+	experience_gained.emit()
 	
 func _level_up():
-	level_up.emit()
 	current_xp =  current_xp - xp_until_level_up 
 	player_level += 1
 	level_up_points += 1
+	level_up.emit()

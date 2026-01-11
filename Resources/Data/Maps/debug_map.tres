@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Map_Resource" load_steps=2 format=3 uid="uid://cdknqcjbrxok8"]
+
+[ext_resource type="Script" uid="uid://be05hjv1ghi7e" path="res://Scripts/Abstract Classes/Resource/map_resource.gd" id="2_dq3pj"]
+
+[resource]
+script = ExtResource("2_dq3pj")
+display_name = "Debug"
+file_name = "debug_map"
+map_background = Array[Texture]([])
+description = ""
+scene_path = "res://Scenes/Maps/Map_Entrance.tscn"
+unlocked_from_start = true
+metadata/_custom_type_script = "uid://be05hjv1ghi7e"

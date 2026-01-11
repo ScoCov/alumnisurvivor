@@ -1,0 +1,108 @@
+[gd_scene load_steps=3 format=3 uid="uid://cmfryqpg8p4oy"]
+
+[ext_resource type="Script" uid="uid://totcu6mbpxtt" path="res://Scenes/HUD/item_display.gd" id="1_k8xo2"]
+[ext_resource type="Resource" uid="uid://cjbub7kgmphl2" path="res://Resources/Data/Items/01_debug_item.tres" id="2_awjwo"]
+
+[node name="Card" type="Control"]
+custom_minimum_size = Vector2(200, 350)
+layout_mode = 3
+anchor_right = 0.173611
+anchor_bottom = 0.540123
+offset_right = -200.0
+offset_bottom = -350.0
+script = ExtResource("1_k8xo2")
+item = ExtResource("2_awjwo")
+metadata/_edit_use_anchors_ = true
+
+[node name="BackgroundColor" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.517184, 0.517184, 0.517184, 1)
+
+[node name="Item Name" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 38.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 18
+text = "Item_Name"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ImageContainer" type="Control" parent="."]
+layout_mode = 1
+anchor_top = 0.111429
+anchor_right = 1.0
+anchor_bottom = 0.502857
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Center" type="Control" parent="ImageContainer"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="DisplayImage" type="Sprite2D" parent="ImageContainer/Center"]
+
+[node name="Pick" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.4
+anchor_top = 0.87
+anchor_right = 0.6
+anchor_bottom = 0.958571
+grow_horizontal = 2
+grow_vertical = 2
+text = "Pick"
+metadata/_edit_use_anchors_ = true
+
+[node name="Information" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -88.0
+offset_top = -173.0
+offset_right = 88.0
+offset_bottom = -55.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="ColorRect" type="ColorRect" parent="Information"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.172833, 0.172833, 0.172833, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="Information"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 12
+
+[node name="InfoSorter" type="VBoxContainer" parent="Information/MarginContainer"]
+layout_mode = 2
+
+[connection signal="pressed" from="Pick" to="." method="_on_pick_pressed"]

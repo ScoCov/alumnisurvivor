@@ -1,6 +1,5 @@
-[gd_resource type="Resource" script_class="Map_Resource" load_steps=3 format=3 uid="uid://bx3gbrn4ldeom"]
+[gd_resource type="Resource" script_class="Map_Resource" load_steps=2 format=3 uid="uid://bx3gbrn4ldeom"]
 
-[ext_resource type="AudioStream" uid="uid://rjag6fud7kpj" path="res://Assets/BGM/bgm_01.wav" id="1_dvqa5"]
 [ext_resource type="Script" uid="uid://be05hjv1ghi7e" path="res://Scripts/Abstract Classes/Resource/map_resource.gd" id="1_qr04o"]
 
 [resource]
@@ -8,7 +7,6 @@ script = ExtResource("1_qr04o")
 display_name = "School Parking"
 file_name = "parking_lot"
 map_background = Array[Texture]([])
-description = "Example Description: I am ranting and raving about things to write about so that I may check on how a lengthy message will be displayed to the user. I wonder how long this could be before it starts to look bad, really bad, and totally unusable. "
-map_theme_song = ExtResource("1_dvqa5")
+description = ""
 scene_path = "res://Scenes/Maps/Map_Entrance.tscn"
 metadata/_custom_type_script = "uid://be05hjv1ghi7e"

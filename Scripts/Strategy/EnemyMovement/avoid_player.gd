@@ -8,10 +8,10 @@ var target = Vector2.ZERO
 var desired_distance = (too_close_distance + too_far_distance) / 2
 
 func update(entity: Enemy_Entity, player: Student_Entity, _delta: float):
-	get_target(entity,player,_delta)
+	get_target(player,_delta)
 	entity.velocity = entity.position.direction_to(target) * entity.movement_component.movement_speed
 
-func get_target(entity: Enemy_Entity, player: Student_Entity, _delta: float):
+func get_target(player: Student_Entity, _delta: float):
 	angle += 1 * _delta
 	var radius = desired_distance
 	var x_pos = cos(angle)

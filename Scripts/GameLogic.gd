@@ -1,4 +1,4 @@
-class_name GameLogic
+class_name Game_Local
 extends Node
 
 #region Description
@@ -16,11 +16,17 @@ extends Node
 @export var player: Student_Entity
 ## This is the time limit for the game.
 @export var game_time: Timer
+@export var game_ui: Game_Ui
+@export var enemy_spawner: Enemy_Spawner
 	
 func _ready() -> void:
 	player.student = Global.SELECTED_STUDENT
+	player.loaded.connect(student_load)
 	if game_time != null and not debug:
 		game_time.timeout.connect(game_over)
+
+func student_load():
+		game_ui.student_loaded()
 		
 func debug_mode():
 	var thing = $"../Forgound Rendering Node/Test"
@@ -32,3 +38,6 @@ func debug_mode():
 
 func game_over():
 	get_tree().change_scene_to_file("res://Scenes/MainMenu.tscn")
+	
+
+	

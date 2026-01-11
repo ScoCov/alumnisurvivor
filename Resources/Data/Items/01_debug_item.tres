@@ -1,0 +1,51 @@
+[gd_resource type="Resource" script_class="Item_Resource" load_steps=13 format=3 uid="uid://cjbub7kgmphl2"]
+
+[ext_resource type="Script" uid="uid://4pylfu4f1res" path="res://Scripts/Abstract Classes/Resource/item_resource.gd" id="1_mhhxk"]
+[ext_resource type="Texture2D" uid="uid://dv8qcv103yp3e" path="res://Assets/Image/UI/Arrow_Menu_01.png" id="1_tydw0"]
+[ext_resource type="Script" uid="uid://l7aipj0jfga8" path="res://Scripts/Abstract Classes/Item/item_effect.gd" id="2_rh2s4"]
+[ext_resource type="Resource" uid="uid://gl46emysxfo3" path="res://Resources/Data/Attributes/damage.tres" id="3_f6cka"]
+[ext_resource type="Script" uid="uid://uibb0wxuei0a" path="res://Scripts/Abstract Classes/Item/item_effect_attribute.gd" id="4_m5d7s"]
+[ext_resource type="Resource" uid="uid://clct1lsc7c8iq" path="res://Resources/Data/Attributes/attack_speed.tres" id="5_7xoum"]
+[ext_resource type="Resource" uid="uid://b4tkhcjsw15ux" path="res://Resources/Data/Attributes/cooldown.tres" id="6_aqyfo"]
+[ext_resource type="Resource" uid="uid://de4ke6fjbvt45" path="res://Resources/Data/Attributes/health.tres" id="7_xhbjy"]
+
+[sub_resource type="Resource" id="Resource_7xoum"]
+script = ExtResource("4_m5d7s")
+attribute = ExtResource("3_f6cka")
+value = 5.0
+modification = "Add"
+metadata/_custom_type_script = "uid://uibb0wxuei0a"
+
+[sub_resource type="Resource" id="Resource_4j2oo"]
+script = ExtResource("4_m5d7s")
+attribute = ExtResource("5_7xoum")
+value = 5.0
+modification = "Multi"
+metadata/_custom_type_script = "uid://uibb0wxuei0a"
+
+[sub_resource type="Resource" id="Resource_u2idt"]
+script = ExtResource("4_m5d7s")
+attribute = ExtResource("6_aqyfo")
+value = 5.0
+modification = "Div"
+metadata/_custom_type_script = "uid://uibb0wxuei0a"
+
+[sub_resource type="Resource" id="Resource_6p08t"]
+script = ExtResource("4_m5d7s")
+attribute = ExtResource("7_xhbjy")
+value = 5.0
+modification = "Sub"
+metadata/_custom_type_script = "uid://uibb0wxuei0a"
+
+[resource]
+script = ExtResource("1_mhhxk")
+item_name = "The Debug Item"
+item_id = "DEBUG_ITEM"
+item_description = ""
+tool_tip = ""
+unlocked = false
+image = ExtResource("1_tydw0")
+max_count = 0
+unique = false
+item_effects = Array[ExtResource("2_rh2s4")]([SubResource("Resource_7xoum"), SubResource("Resource_4j2oo"), SubResource("Resource_u2idt"), SubResource("Resource_6p08t")])
+metadata/_custom_type_script = "uid://4pylfu4f1res"

@@ -10,7 +10,7 @@ extends Ability_Entity
 var life_timer: float = Time.get_date_string_from_system().to_float()
 var slow_status_package: PackedScene = preload("res://Entities/StatusEffects/Statuses/slow_status.tscn")
 var alpha_value: float = 0.5
-var _signed: int = 1.0
+var _signed: int = 1
 
 func _ready():
 	$DetectionRange/CollisionShape2D.shape.radius = ability.attack_range
@@ -40,9 +40,7 @@ func on_active() -> bool:
 	$Facing.modulate = Color(1,1,1, alpha_value)
 	return false
 	
-func test(entity: Enemy_Entity) -> bool:
-	return false
-	
+
 func on_recovery() -> bool:
 	return false
 	

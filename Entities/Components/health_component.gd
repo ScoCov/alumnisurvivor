@@ -58,15 +58,15 @@ var active_state: State:
 
 func attempt_damage(_source: Variant, damage_dealt: float):
 	if invulnerable: return
+	current_health += floor(damage_dealt)
 	if damage_dealt < 0: ## if taken damage
 		damage_taken.emit()
+		invulnerable = true
+		invulnerability_timer.start()
 	elif damage_dealt > 0:
 		damage_healed.emit()
 	elif damage_dealt == 0:
 		damage_negated.emit()
-	current_health += floor(damage_dealt)
-	invulnerable = true
-	invulnerability_timer.start()
 
 func _on_invulnerability_timer_timeout():
 	invulnerability_timer.stop()

@@ -27,3 +27,5 @@ extends Resource
 ## If the item is supposed to by obtained once, enable this value.
 @export var unique: bool = false
 @export_category("Modifications")
+
+@export var item_effects: Array[Item_Effect]

@@ -1,6 +1,8 @@
 class_name Student_Entity
 extends CharacterBody2D
 
+signal loaded 
+
 #region Description
 ## This entity is the base entity used by the playable characters, the Students. Each student
 ## will inherit their class/scene from this entity. 
@@ -19,7 +21,7 @@ const DEFAULT_MOVEMENT_SPEED: float = 150
 @export_category("Entity Data")
 @export var student: StudentResource 
 @onready var status_effects = $StatusEffects
-@onready var experience = $Stats/Experience
+@onready var experience: Experience_Manager = $Stats/Experience
 var movement_component: Movement_Component
 var health: Health_Component
 var _taking_damage_particles:= preload("res://Entities/Effects/taking_damage.tscn")
@@ -38,6 +40,7 @@ func _ready():
 	health.damage_taken.connect(emit_damage_indicator.bind("damage"))
 	health.damage_healed.connect(emit_damage_indicator.bind("healed"))
 	_render_student()
+	loaded.emit()
 		
 func emit_damage_indicator(param: String):
 	var new_particle

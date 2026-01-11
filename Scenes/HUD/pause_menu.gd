@@ -1,26 +1,16 @@
 class_name Pause_Menu
 extends Control
 
-@export var game_ui: Game_Ui
-@export var rendering_node: Node2D
+signal game_paused
+signal game_resumed
+signal game_quit
 
-func _unhandled_input(event):
-	if event is InputEventKey and (event as InputEventKey).is_action_released("pause"):
-		_pause_screen_toggle()
+@export var game_ui: Game_Ui
 
 func _on_resume_pressed():
-	_pause_screen_toggle()
+	game_ui.display_game_ui()
+	game_resumed.emit()
 
 func _on_quit_pressed():
+	game_quit.emit()
 	get_tree().quit()
-
-func _pause_screen_toggle():
-	get_tree().paused = !get_tree().paused
-	_change_visibility()
-
-func _change_visibility() -> void:
-	self.visible = get_tree().paused
-	game_ui.visible = !self.visible
-	rendering_node.visible = !self.visible
-	if self.visible:
-		$Panel/MarginContainer/VBoxContainer/Resume.grab_focus()

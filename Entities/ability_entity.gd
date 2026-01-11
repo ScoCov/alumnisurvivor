@@ -46,13 +46,13 @@ func on_recovery() -> bool:
 func on_cooldown() -> bool:
 	return true
 	
-func _on_detection_range_body_entered(body):
+func _on_detection_range_body_entered(_body):
 	pass
 
-func _on_detection_range_body_exited(body):
+func _on_detection_range_body_exited(_body):
 	pass
 	
-func _on_hitbox_body_entered(body):
+func _on_hitbox_body_entered(_body):
 	pass
 
 ##NOTE:

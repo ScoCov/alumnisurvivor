@@ -1,0 +1,2 @@
+class_name Item_Effect_Ability
+extends Item_Effect
