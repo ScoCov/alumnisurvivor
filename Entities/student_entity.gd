@@ -1,7 +1,8 @@
 class_name Student_Entity
-extends CharacterBody2D
+extends Entity
 
 signal loaded 
+signal died
 
 #region Description
 ## This entity is the base entity used by the playable characters, the Students. Each student
@@ -13,61 +14,35 @@ signal loaded
 ## will not rever to default values when this file is changes (and saved). 
 #endregion
 
-const DEFAULT_MOVEMENT_SPEED: float = 150
-@export_group("Tools")
 ## Check box to have StudentEntity be in debug mode.
-@export var debug: bool = false
 @export var is_controllable: bool = true
-@export_category("Entity Data")
-@export var student: StudentResource 
-@onready var status_effects = $StatusEffects
-@onready var experience: Experience_Manager = $Stats/Experience
-var movement_component: Movement_Component
-var health: Health_Component
-var _taking_damage_particles:= preload("res://Entities/Effects/taking_damage.tscn")
-var _healing_damage_particles:= preload("res://Entities/Effects/healing_damage.tscn")
+@export var student: StudentResource:
+	set(_student):
+		student = _student
+		student_update(_student)
 
-var angle = 0
+@onready var experience: Experience_Manager = $Experience
+@onready var movement_component: Movement_Component = $MovementComponent
 
-func _input(event):
-	if not is_controllable: pass
-	if event.is_action_pressed("dash", false):
-		movement_component.is_dash = true
+func _get_configuration_warnings():
+	var msg: Array[String]
+	var children = get_children()
+	if not children.any(func(child): return child is Experience_Manager):
+		msg.append("Student Entity requires an Experience Manager Node.")
+	return msg
 	
 func _ready():
-	movement_component = $Stats/MovementComponent
-	health = $Stats/HealthComponent
-	health.damage_taken.connect(emit_damage_indicator.bind("damage"))
-	health.damage_healed.connect(emit_damage_indicator.bind("healed"))
-	_render_student()
+	get_universal_components()
 	loaded.emit()
-		
-func emit_damage_indicator(param: String):
-	var new_particle
-	match param:
-		"damage":
-			new_particle = _taking_damage_particles.instantiate()
-		"healed":
-			new_particle = _healing_damage_particles.instantiate()
-	self.add_child(new_particle)
 	
-func _process(_delta):
-	if not is_controllable: pass
-	movement_component = $Stats/MovementComponent if not movement_component else movement_component
-	health = $Stats/HealthComponent if not health else health
-
 func _render_student() -> void:
 	if not student: return
-	if student.hair != null:
-		$Visuals/Head/Hair.texture = student.hair
-	else:
-		$Visuals/Head/Hair.texture = null
+	$Visuals/Head/Hair.texture = student.hair if student.hair != null else null
 	$Visuals/Head/Eyebrows.texture = student.eyebrows
 	$Visuals/Head/Eyes.texture = student.eyes
 	$Visuals/Head/Mouth.texture = student.mouth
 
 func student_update(_student: StudentResource) -> void:
-	student = _student
 	_render_student()
 	
 func _on_xp_collector_body_entered(body):
@@ -77,4 +52,5 @@ func _on_xp_collector_body_entered(body):
 func _on_xp_collection_zone_body_entered(body):
 	if body is XP_Node:
 		body.collide_with_player()
+		#$Sensors/XP_Collection_Zone/XpChime1.play(0)
 		experience.add_experience(body.xp_value)

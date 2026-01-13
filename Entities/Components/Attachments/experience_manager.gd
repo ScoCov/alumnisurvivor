@@ -11,6 +11,10 @@ signal experience_gained
 @export var xp_multiplier: float = 0
 @export var level_up_points: int = 0
 
+func _get_configuration_warnings():
+	if not get_parent() is Student_Entity:
+		return ["Experience Manager can only be a child of Student Entity."]
+
 var xp_until_level_up: float:
 	get():
 		return ceil((base_xp_value * (player_level * xp_growth_rate)) + base_xp_value )

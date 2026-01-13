@@ -41,7 +41,10 @@ var active_state: State:
 			return $StateMachine.initial_state
 		return active_state
 
-
+func _input(event):
+	if event.is_action_pressed("dash", false):
+		is_dash = true
+		
 func _on_dash_length_timer_timeout():
 	if entity:
 		entity.is_controllable = true

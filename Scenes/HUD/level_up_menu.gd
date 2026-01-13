@@ -7,9 +7,7 @@ signal reroll
 signal ban
 signal skip
 
-#@export var rendering_node: Node2D 
 @export var game_ui: Game_Ui
-
 @onready var level_up_points = $"Title/Level Up Points"
 
 

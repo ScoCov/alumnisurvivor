@@ -9,7 +9,6 @@ signal dropped
 @export var xp_value: float = 1.0
 @export var debug_value_random_limit: float = 50
 
-
 func _ready():
 	scale = Vector2(scale.x + (scale.x * clamp(xp_value/10,0,0.5)), 
 					scale.y + (scale.y * clamp(xp_value/10,0,0.5)))

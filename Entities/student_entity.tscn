@@ -1,6 +1,7 @@
-[gd_scene load_steps=19 format=3 uid="uid://v1phrdf8cdqg"]
+[gd_scene load_steps=20 format=3 uid="uid://v1phrdf8cdqg"]
 
 [ext_resource type="Script" uid="uid://d0tuntxkjee38" path="res://Entities/student_entity.gd" id="1_kt3lm"]
+[ext_resource type="AudioStream" uid="uid://bsvxl6ry23s8q" path="res://Assets/SFX/XP Pickup Chime/XP Chime 1.wav" id="2_fkouh"]
 [ext_resource type="PackedScene" uid="uid://dysr53ibvwa8l" path="res://Entities/Components/movement_component.tscn" id="3_echn0"]
 [ext_resource type="PackedScene" uid="uid://xy2guokl2776" path="res://Entities/Components/health_component.tscn" id="3_goiee"]
 [ext_resource type="Texture2D" uid="uid://cr4jadxq3b6wj" path="res://Assets/Image/Student/Head/Mouth/Mouth_01.png" id="9_kt3lm"]
@@ -84,12 +85,23 @@ _data = {
 }
 
 [node name="StudentEntity" type="CharacterBody2D"]
-y_sort_enabled = true
 slide_on_ceiling = false
 script = ExtResource("1_kt3lm")
+metadata/_custom_type_script = "uid://dcgrocrt0ga75"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_bj2gu")
+
+[node name="HealthComponent" parent="." instance=ExtResource("3_goiee")]
+maximum_health = 30
+current_health = 30
+
+[node name="MovementComponent" parent="." node_paths=PackedStringArray("entity") instance=ExtResource("3_echn0")]
+entity = NodePath("..")
+player_controls = true
+
+[node name="Experience" type="Node" parent="."]
+script = ExtResource("10_qr54b")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 collision_layer = 2
@@ -122,18 +134,8 @@ visibility_layer = 4
 shape = SubResource("CircleShape2D_fkouh")
 debug_color = Color(0.936353, 0.128452, 0.542358, 0.42)
 
-[node name="Stats" type="Node" parent="."]
-
-[node name="Experience" type="Node" parent="Stats"]
-script = ExtResource("10_qr54b")
-
-[node name="MovementComponent" parent="Stats" node_paths=PackedStringArray("entity") instance=ExtResource("3_echn0")]
-entity = NodePath("../..")
-player_controls = true
-
-[node name="HealthComponent" parent="Stats" instance=ExtResource("3_goiee")]
-maximum_health = 30
-current_health = 30
+[node name="XpChime1" type="AudioStreamPlayer" parent="Sensors/XP_Collection_Zone"]
+stream = ExtResource("2_fkouh")
 
 [node name="Visuals" type="Node2D" parent="."]
 position = Vector2(3, -36)
@@ -173,12 +175,6 @@ libraries = {
 
 [node name="BodyLagTimer" type="Timer" parent="Visuals"]
 wait_time = 0.2
-
-[node name="Label" type="Label" parent="."]
-offset_left = -49.0
-offset_top = -138.0
-offset_right = 50.0
-offset_bottom = -95.0
 
 [node name="StatusEffects" type="Node2D" parent="."]
 

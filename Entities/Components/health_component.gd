@@ -1,9 +1,11 @@
+@tool
 class_name Health_Component
 extends Node
 
 signal damage_taken
 signal damage_negated
 signal damage_healed
+signal damage_lethal
 
 ## Allows cheats to be applied.
 @export_group("Debug Mode")
@@ -15,13 +17,6 @@ signal damage_healed
 @export var maximum_health: int = 10;
 
 @export var current_health: int = 10
-
-		
-## This will behave as 'extra' health. If an ability allows to heal past maximum
-## it will be stored in shield, and then shield will be taken from before health 
-## has anything removed. 
-
-
 
 ## Percentage of how much health can be gained passed the maximum health. Default = 0.25 (25%)
 @export var over_health_maximum: float = 0.25
@@ -56,6 +51,15 @@ var active_state: State:
 			return ($Statemachine as State_Machine).current_state
 		return null
 
+const _taking_damage_particles:= preload("res://Entities/Effects/taking_damage.tscn")
+const _healing_damage_particles:= preload("res://Entities/Effects/healing_damage.tscn")
+
+func _get_configuration_warnings():
+	var msg: Array[String]
+	if not get_parent() is Entity:
+		msg.append("Health Component must be a child in an Entity class.")
+	return msg
+	
 func attempt_damage(_source: Variant, damage_dealt: float):
 	if invulnerable: return
 	current_health += floor(damage_dealt)
@@ -67,7 +71,24 @@ func attempt_damage(_source: Variant, damage_dealt: float):
 		damage_healed.emit()
 	elif damage_dealt == 0:
 		damage_negated.emit()
+	emit_hit_indication(get_parent(), damage_dealt)
 
 func _on_invulnerability_timer_timeout():
 	invulnerability_timer.stop()
 	invulnerable = false
+
+func emit_hit_indication(entity: Entity, amount: float):
+	var lbl := Label.new()
+	var life_timer:= Timer.new()
+	
+	lbl.text = "%s" % amount
+	life_timer.autostart = true
+	life_timer.wait_time = 0.5
+	life_timer.timeout.connect(func(): lbl.queue_free())
+	lbl.add_child(life_timer)
+	entity.add_child(lbl)
+	
+	if amount < 0:
+		entity.add_child(_taking_damage_particles.instantiate())
+	if amount > 0:
+		entity.add_child(_healing_damage_particles.instantiate())

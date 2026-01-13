@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bgbk5u6eptr02"
+path="res://.godot/imported/XP Chime 7.wav-76ce0fc5d82c9fc3122a918a91a68669.sample"
+
+[deps]
+
+source_file="res://Assets/SFX/XP Pickup Chime/XP Chime 7.wav"
+dest_files=["res://.godot/imported/XP Chime 7.wav-76ce0fc5d82c9fc3122a918a91a68669.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
