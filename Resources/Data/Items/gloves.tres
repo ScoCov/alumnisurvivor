@@ -1,14 +1,29 @@
-[gd_resource type="Resource" script_class="Item_Resource" load_steps=2 format=3 uid="uid://bjxk4wi5egutd"]
+[gd_resource type="Resource" script_class="Item_Resource" load_steps=6 format=3 uid="uid://bjxk4wi5egutd"]
 
 [ext_resource type="Script" uid="uid://4pylfu4f1res" path="res://Scripts/Abstract Classes/Resource/item_resource.gd" id="1_hiqgg"]
+[ext_resource type="Script" uid="uid://l7aipj0jfga8" path="res://Scripts/Abstract Classes/Item/item_effect.gd" id="1_xmghq"]
+[ext_resource type="Resource" uid="uid://clct1lsc7c8iq" path="res://Resources/Data/Attributes/attack_speed.tres" id="2_8axsu"]
+[ext_resource type="Script" uid="uid://uibb0wxuei0a" path="res://Scripts/Abstract Classes/Item/item_effect_attribute.gd" id="3_m0yj8"]
+
+[sub_resource type="Resource" id="Resource_n0vbx"]
+script = ExtResource("3_m0yj8")
+attribute = ExtResource("2_8axsu")
+base_value = 0.0
+base_stack_mod = 0.0
+percentage_value = 0.0
+percentage_stack_mod = 0.0
+metadata/_custom_type_script = "uid://uibb0wxuei0a"
 
 [resource]
 script = ExtResource("1_hiqgg")
-item_name = ""
-item_id = ""
+item_name = "Gloves"
+item_id = "gloves"
 item_description = ""
 tool_tip = ""
 unlocked = false
+group_tags = 0
+rarity = 0
 max_count = 0
 unique = false
+item_effects = Array[ExtResource("1_xmghq")]([SubResource("Resource_n0vbx")])
 metadata/_custom_type_script = "uid://4pylfu4f1res"

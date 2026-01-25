@@ -1,14 +1,27 @@
-[gd_resource type="Resource" script_class="Item_Resource" load_steps=2 format=3 uid="uid://7wyfcp8twhke"]
+[gd_resource type="Resource" script_class="Item_Resource" load_steps=6 format=3 uid="uid://7wyfcp8twhke"]
 
+[ext_resource type="Script" uid="uid://l7aipj0jfga8" path="res://Scripts/Abstract Classes/Item/item_effect.gd" id="1_7tvdo"]
 [ext_resource type="Script" uid="uid://4pylfu4f1res" path="res://Scripts/Abstract Classes/Resource/item_resource.gd" id="1_bhrqc"]
+[ext_resource type="Resource" uid="uid://dvx88scshq1lb" path="res://Resources/Data/Attributes/pickup_range.tres" id="3_emkg5"]
+[ext_resource type="Script" uid="uid://uibb0wxuei0a" path="res://Scripts/Abstract Classes/Item/item_effect_attribute.gd" id="4_h1usc"]
+
+[sub_resource type="Resource" id="Resource_bf5ow"]
+script = ExtResource("4_h1usc")
+attribute = ExtResource("3_emkg5")
+base_value = 0.0
+percentage_value = 30.0
+metadata/_custom_type_script = "uid://uibb0wxuei0a"
 
 [resource]
 script = ExtResource("1_bhrqc")
-item_name = ""
-item_id = ""
+item_name = "Collectable"
+item_id = "action_figure"
 item_description = ""
 tool_tip = ""
 unlocked = false
+group_tags = 6
+rarity = 3
 max_count = 0
-unique = false
+unique = true
+item_effects = Array[ExtResource("1_7tvdo")]([SubResource("Resource_bf5ow")])
 metadata/_custom_type_script = "uid://4pylfu4f1res"

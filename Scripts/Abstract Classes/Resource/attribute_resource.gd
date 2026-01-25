@@ -7,6 +7,8 @@ extends Resource
 @export var id: String
 ## Display Order
 @export var ordinal: int
+## Havea Color associated with attribute:
+@export var color:= Color.GREEN
 ## Used to help describe how the attribute effects game play
 @export_multiline var description: String
 
@@ -27,4 +29,3 @@ extends Resource
 @export_group("Identification")
 ## Set the image that will be displayed in menus
 @export var icon: Texture
-@export var color: Color

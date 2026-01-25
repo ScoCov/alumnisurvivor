@@ -17,7 +17,7 @@ extends Node
 		if value:
 			$"Dash Length Timer".start()
 			if entity:
-				entity.is_controllable = false
+				entity.is_controllable = !value
 		is_dash = value
 @export var active_movement_speed: float:
 	set(value):
@@ -26,13 +26,14 @@ extends Node
 		if is_dash:
 			return base_movement_speed * dash_movement_percentage
 		return base_movement_speed
+		
 @export var dash_timer_length: float:
 	set(value):
 		$"Dash Length Timer".wait_time = value
 		dash_timer_length = value
 
 var last_movement_direction: Vector2
-		
+
 var active_state: State:
 	set(value):
 		pass
@@ -41,13 +42,26 @@ var active_state: State:
 			return $StateMachine.initial_state
 		return active_state
 
+var dashes: Dash_Manager:
+	get():
+		return entity.dashes
+
+var can_dash: bool:
+	get:
+		return dashes.cand_dash and not is_dash
+		
+var is_moving: bool: 
+	get:
+		return entity.velocity.normalized() != Vector2.ZERO
+
 func _input(event):
 	if event.is_action_pressed("dash", false):
-		is_dash = true
+		if can_dash and is_moving:
+			dashes.consume_dash()
+			is_dash = true
 		
 func _on_dash_length_timer_timeout():
 	if entity:
 		entity.is_controllable = true
-	$"Dash Length Timer".stop()
 	entity.velocity *= 0
 	is_dash = false

@@ -1,14 +1,39 @@
-[gd_resource type="Resource" script_class="Item_Resource" load_steps=2 format=3 uid="uid://ji0qbffr7jd"]
+[gd_resource type="Resource" script_class="Item_Resource" load_steps=8 format=3 uid="uid://ji0qbffr7jd"]
 
 [ext_resource type="Script" uid="uid://4pylfu4f1res" path="res://Scripts/Abstract Classes/Resource/item_resource.gd" id="1_ovrua"]
+[ext_resource type="Script" uid="uid://l7aipj0jfga8" path="res://Scripts/Abstract Classes/Item/item_effect.gd" id="1_x0qvf"]
+[ext_resource type="Resource" uid="uid://o2bqtjl0e7vb" path="res://Resources/Data/Attributes/health_regen.tres" id="3_d8mul"]
+[ext_resource type="Script" uid="uid://uibb0wxuei0a" path="res://Scripts/Abstract Classes/Item/item_effect_attribute.gd" id="4_jl6tm"]
+[ext_resource type="Resource" uid="uid://b7lj25emughbo" path="res://Resources/Data/Attributes/movement_speed.tres" id="5_jl6tm"]
+
+[sub_resource type="Resource" id="Resource_uby4l"]
+script = ExtResource("4_jl6tm")
+attribute = ExtResource("3_d8mul")
+base_value = 1.0
+base_stack_mod = 0.0
+percentage_value = 0.0
+percentage_stack_mod = 0.0
+metadata/_custom_type_script = "uid://uibb0wxuei0a"
+
+[sub_resource type="Resource" id="Resource_5qa2o"]
+script = ExtResource("4_jl6tm")
+attribute = ExtResource("5_jl6tm")
+base_value = 0.0
+base_stack_mod = 0.0
+percentage_value = -30.0
+percentage_stack_mod = 0.0
+metadata/_custom_type_script = "uid://uibb0wxuei0a"
 
 [resource]
 script = ExtResource("1_ovrua")
-item_name = ""
-item_id = ""
+item_name = "Backpack"
+item_id = "backpack"
 item_description = ""
 tool_tip = ""
 unlocked = false
+group_tags = 0
+rarity = 1
 max_count = 0
 unique = false
+item_effects = Array[ExtResource("1_x0qvf")]([SubResource("Resource_uby4l"), SubResource("Resource_5qa2o")])
 metadata/_custom_type_script = "uid://4pylfu4f1res"

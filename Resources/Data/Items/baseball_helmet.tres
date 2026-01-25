@@ -1,14 +1,27 @@
-[gd_resource type="Resource" script_class="Item_Resource" load_steps=2 format=3 uid="uid://bl06bk1w0d8ap"]
+[gd_resource type="Resource" script_class="Item_Resource" load_steps=6 format=3 uid="uid://bl06bk1w0d8ap"]
 
+[ext_resource type="Script" uid="uid://l7aipj0jfga8" path="res://Scripts/Abstract Classes/Item/item_effect.gd" id="1_7n4qi"]
 [ext_resource type="Script" uid="uid://4pylfu4f1res" path="res://Scripts/Abstract Classes/Resource/item_resource.gd" id="1_uxdk1"]
+[ext_resource type="Resource" uid="uid://cxlq71nn5t6fm" path="res://Resources/Data/Attributes/armor.tres" id="2_qfa3a"]
+[ext_resource type="Script" uid="uid://uibb0wxuei0a" path="res://Scripts/Abstract Classes/Item/item_effect_attribute.gd" id="3_qfr10"]
+
+[sub_resource type="Resource" id="Resource_jmhg5"]
+script = ExtResource("3_qfr10")
+attribute = ExtResource("2_qfa3a")
+base_value = 4.0
+percentage_value = 0.0
+metadata/_custom_type_script = "uid://uibb0wxuei0a"
 
 [resource]
 script = ExtResource("1_uxdk1")
-item_name = ""
-item_id = ""
+item_name = "Helmet"
+item_id = "baseball_helmet"
 item_description = ""
 tool_tip = ""
 unlocked = false
+group_tags = 1
+rarity = 2
 max_count = 0
 unique = false
+item_effects = Array[ExtResource("1_7n4qi")]([SubResource("Resource_jmhg5")])
 metadata/_custom_type_script = "uid://4pylfu4f1res"

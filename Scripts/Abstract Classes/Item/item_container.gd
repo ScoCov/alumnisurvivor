@@ -10,20 +10,24 @@ class_name Item_Container
 signal item_stack_added
 signal item_count_increased
 
-## Quick Access to the items for outside use.
-var items: Array[Item_Stack]:
-	get:
-		return get_children().map(func(child): return child is Item_Stack  )
+### Quick Access to the items for outside use.
+#var items: Array:
+	#get:
+		#return get_children().map(func(child): if child is Item_Stack: return child  )
 
-## Number of Unique Items current in the container. This is NOT the total number
-## of items for any given item.
-var number_of_unique_items: int:
-	get():
-		return len(items)
+### Number of Unique Items current in the container. This is NOT the total number
+### of items for any given item.
+#var unique_items_count: int:
+	#get():
+		#return len(items)
+		
+		
+var _items: Dictionary = {}
+var _attribute_modifiers: Dictionary
 		
 func add_item(item: Item_Resource) -> void:
 	## Check the item_container children to see if any of them have an ItemStack that contains the given Item.
-	var extant_item: bool = get_children().any(func(item_stack): return item_stack.item == item)
+	var extant_item: bool = get_children().any(func(_item_stack): return _item_stack.item == item)
 	var item_stack: Item_Stack ## Create variable to have a count incremented on
 	
 	## Next steps is to check is to assign the item_stack variable either the 
@@ -32,10 +36,25 @@ func add_item(item: Item_Resource) -> void:
 		item_stack = Item_Stack.new()
 		item_stack.item = item 
 		add_child(item_stack)
+		
 		item_stack_added.emit()
 	else:
 		item_stack = get_child(get_children().find_custom(func(_item_stack): 
 			return _item_stack.item == item))
 	## Either item_stack creation route, we would increment the counter by 1 (either initializing, or increasing the value)
 	item_stack.count += 1 
+	_add_to_item_dictionary(item_stack)
 	item_count_increased.emit()
+	
+
+func _add_to_item_dictionary(_item_stack: Item_Stack):
+	var dict_item = _items.get(_item_stack.item.item_id)
+	if dict_item:
+		dict_item.count = _item_stack.count
+	else:
+		_items.get_or_add(_item_stack.item.item_id, { "count": _item_stack.count,"item": {"item_effects": _item_stack.item.item_effects}} )
+	
+	
+func _attribute_mods():
+	## Go through and build a quick attribute specific dictionary with the base, mod, stack, and total values.
+	pass

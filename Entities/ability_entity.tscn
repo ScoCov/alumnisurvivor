@@ -51,8 +51,7 @@ script = ExtResource("8_axg6r")
 ability = NodePath("../..")
 metadata/_custom_type_script = "uid://bb1ure7bwtit4"
 
-[node name="DamageComponent" parent="." node_paths=PackedStringArray("ability") instance=ExtResource("9_bqk6a")]
-ability = NodePath("..")
+[node name="DamageComponent" parent="." instance=ExtResource("9_bqk6a")]
 
 [connection signal="body_entered" from="DetectionRange" to="." method="_on_detection_range_body_entered"]
 [connection signal="body_exited" from="DetectionRange" to="." method="_on_detection_range_body_exited"]

@@ -1,40 +1,58 @@
-[gd_resource type="Resource" script_class="Item_Resource" load_steps=13 format=3 uid="uid://cjbub7kgmphl2"]
+[gd_resource type="Resource" script_class="Item_Resource" load_steps=15 format=3 uid="uid://cjbub7kgmphl2"]
 
 [ext_resource type="Script" uid="uid://4pylfu4f1res" path="res://Scripts/Abstract Classes/Resource/item_resource.gd" id="1_mhhxk"]
 [ext_resource type="Texture2D" uid="uid://dv8qcv103yp3e" path="res://Assets/Image/UI/Arrow_Menu_01.png" id="1_tydw0"]
 [ext_resource type="Script" uid="uid://l7aipj0jfga8" path="res://Scripts/Abstract Classes/Item/item_effect.gd" id="2_rh2s4"]
-[ext_resource type="Resource" uid="uid://gl46emysxfo3" path="res://Resources/Data/Attributes/damage.tres" id="3_f6cka"]
-[ext_resource type="Script" uid="uid://uibb0wxuei0a" path="res://Scripts/Abstract Classes/Item/item_effect_attribute.gd" id="4_m5d7s"]
-[ext_resource type="Resource" uid="uid://clct1lsc7c8iq" path="res://Resources/Data/Attributes/attack_speed.tres" id="5_7xoum"]
-[ext_resource type="Resource" uid="uid://b4tkhcjsw15ux" path="res://Resources/Data/Attributes/cooldown.tres" id="6_aqyfo"]
-[ext_resource type="Resource" uid="uid://de4ke6fjbvt45" path="res://Resources/Data/Attributes/health.tres" id="7_xhbjy"]
-
-[sub_resource type="Resource" id="Resource_7xoum"]
-script = ExtResource("4_m5d7s")
-attribute = ExtResource("3_f6cka")
-value = 5.0
-modification = "Add"
-metadata/_custom_type_script = "uid://uibb0wxuei0a"
-
-[sub_resource type="Resource" id="Resource_4j2oo"]
-script = ExtResource("4_m5d7s")
-attribute = ExtResource("5_7xoum")
-value = 5.0
-modification = "Multi"
-metadata/_custom_type_script = "uid://uibb0wxuei0a"
-
-[sub_resource type="Resource" id="Resource_u2idt"]
-script = ExtResource("4_m5d7s")
-attribute = ExtResource("6_aqyfo")
-value = 5.0
-modification = "Div"
-metadata/_custom_type_script = "uid://uibb0wxuei0a"
+[ext_resource type="Resource" uid="uid://cxlq71nn5t6fm" path="res://Resources/Data/Attributes/armor.tres" id="3_7xoum"]
+[ext_resource type="Script" uid="uid://uibb0wxuei0a" path="res://Scripts/Abstract Classes/Item/item_effect_attribute.gd" id="4_aqyfo"]
+[ext_resource type="Resource" uid="uid://gl46emysxfo3" path="res://Resources/Data/Attributes/damage.tres" id="5_xhbjy"]
+[ext_resource type="Resource" uid="uid://dv1f0bnfk5i44" path="res://Resources/Data/Attributes/dodge.tres" id="6_4j2oo"]
+[ext_resource type="Resource" uid="uid://dvx88scshq1lb" path="res://Resources/Data/Attributes/pickup_range.tres" id="7_u2idt"]
+[ext_resource type="Resource" uid="uid://daw6jacc8mg1s" path="res://Resources/Data/Attributes/critical_chance.tres" id="8_aqyfo"]
 
 [sub_resource type="Resource" id="Resource_6p08t"]
-script = ExtResource("4_m5d7s")
-attribute = ExtResource("7_xhbjy")
-value = 5.0
-modification = "Sub"
+script = ExtResource("4_aqyfo")
+attribute = ExtResource("3_7xoum")
+base_value = 1.0
+base_stack_mod = 1.0
+percentage_value = 0.0
+percentage_stack_mod = 0.0
+metadata/_custom_type_script = "uid://uibb0wxuei0a"
+
+[sub_resource type="Resource" id="Resource_isb2l"]
+script = ExtResource("4_aqyfo")
+attribute = ExtResource("5_xhbjy")
+base_value = 0.0
+base_stack_mod = 0.0
+percentage_value = 5.0
+percentage_stack_mod = 5.0
+metadata/_custom_type_script = "uid://uibb0wxuei0a"
+
+[sub_resource type="Resource" id="Resource_bqxru"]
+script = ExtResource("4_aqyfo")
+attribute = ExtResource("6_4j2oo")
+base_value = 0.0
+base_stack_mod = 0.0
+percentage_value = 15.0
+percentage_stack_mod = 2.0
+metadata/_custom_type_script = "uid://uibb0wxuei0a"
+
+[sub_resource type="Resource" id="Resource_vce0n"]
+script = ExtResource("4_aqyfo")
+attribute = ExtResource("7_u2idt")
+base_value = 0.0
+base_stack_mod = 0.0
+percentage_value = 10.0
+percentage_stack_mod = 10.0
+metadata/_custom_type_script = "uid://uibb0wxuei0a"
+
+[sub_resource type="Resource" id="Resource_xhbjy"]
+script = ExtResource("4_aqyfo")
+attribute = ExtResource("8_aqyfo")
+base_value = 0.0
+base_stack_mod = 0.0
+percentage_value = 3.0
+percentage_stack_mod = 3.0
 metadata/_custom_type_script = "uid://uibb0wxuei0a"
 
 [resource]
@@ -44,8 +62,10 @@ item_id = "DEBUG_ITEM"
 item_description = ""
 tool_tip = ""
 unlocked = false
+group_tags = 7
+rarity = 1
 image = ExtResource("1_tydw0")
 max_count = 0
 unique = false
-item_effects = Array[ExtResource("2_rh2s4")]([SubResource("Resource_7xoum"), SubResource("Resource_4j2oo"), SubResource("Resource_u2idt"), SubResource("Resource_6p08t")])
+item_effects = Array[ExtResource("2_rh2s4")]([SubResource("Resource_6p08t"), SubResource("Resource_isb2l"), SubResource("Resource_bqxru"), SubResource("Resource_vce0n"), SubResource("Resource_xhbjy")])
 metadata/_custom_type_script = "uid://4pylfu4f1res"

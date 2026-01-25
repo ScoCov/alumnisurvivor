@@ -1,14 +1,29 @@
-[gd_resource type="Resource" script_class="Item_Resource" load_steps=2 format=3 uid="uid://b61lrghxcxdgm"]
+[gd_resource type="Resource" script_class="Item_Resource" load_steps=6 format=3 uid="uid://b61lrghxcxdgm"]
 
 [ext_resource type="Script" uid="uid://4pylfu4f1res" path="res://Scripts/Abstract Classes/Resource/item_resource.gd" id="1_asgww"]
+[ext_resource type="Script" uid="uid://l7aipj0jfga8" path="res://Scripts/Abstract Classes/Item/item_effect.gd" id="1_hs5vc"]
+[ext_resource type="Resource" uid="uid://mno0drh8g3i8" path="res://Resources/Data/Attributes/attack_range.tres" id="2_sqfxy"]
+[ext_resource type="Script" uid="uid://uibb0wxuei0a" path="res://Scripts/Abstract Classes/Item/item_effect_attribute.gd" id="3_nc5xr"]
+
+[sub_resource type="Resource" id="Resource_oikeo"]
+script = ExtResource("3_nc5xr")
+attribute = ExtResource("2_sqfxy")
+base_value = 0.0
+base_stack_mod = 0.0
+percentage_value = 100.0
+percentage_stack_mod = 0.0
+metadata/_custom_type_script = "uid://uibb0wxuei0a"
 
 [resource]
 script = ExtResource("1_asgww")
-item_name = ""
-item_id = ""
+item_name = "Paper Airplane"
+item_id = "paper_airplane"
 item_description = ""
 tool_tip = ""
 unlocked = false
-max_count = 0
+group_tags = 0
+rarity = 4
+max_count = 2
 unique = false
+item_effects = Array[ExtResource("1_hs5vc")]([SubResource("Resource_oikeo")])
 metadata/_custom_type_script = "uid://4pylfu4f1res"

@@ -1,14 +1,29 @@
-[gd_resource type="Resource" script_class="Item_Resource" load_steps=2 format=3 uid="uid://d2tj88o3w8rtc"]
+[gd_resource type="Resource" script_class="Item_Resource" load_steps=6 format=3 uid="uid://d2tj88o3w8rtc"]
 
 [ext_resource type="Script" uid="uid://4pylfu4f1res" path="res://Scripts/Abstract Classes/Resource/item_resource.gd" id="1_55nnn"]
+[ext_resource type="Script" uid="uid://l7aipj0jfga8" path="res://Scripts/Abstract Classes/Item/item_effect.gd" id="1_vhyu4"]
+[ext_resource type="Resource" uid="uid://mno0drh8g3i8" path="res://Resources/Data/Attributes/attack_range.tres" id="2_xmnuu"]
+[ext_resource type="Script" uid="uid://uibb0wxuei0a" path="res://Scripts/Abstract Classes/Item/item_effect_attribute.gd" id="3_n76ws"]
+
+[sub_resource type="Resource" id="Resource_aj7mi"]
+script = ExtResource("3_n76ws")
+attribute = ExtResource("2_xmnuu")
+base_value = 15.0
+base_stack_mod = 0.0
+percentage_value = 0.0
+percentage_stack_mod = 0.0
+metadata/_custom_type_script = "uid://uibb0wxuei0a"
 
 [resource]
 script = ExtResource("1_55nnn")
-item_name = ""
-item_id = ""
+item_name = "Guitar"
+item_id = "guitar_acustic"
 item_description = ""
 tool_tip = ""
 unlocked = false
+group_tags = 0
+rarity = 0
 max_count = 0
 unique = false
+item_effects = Array[ExtResource("1_vhyu4")]([SubResource("Resource_aj7mi")])
 metadata/_custom_type_script = "uid://4pylfu4f1res"

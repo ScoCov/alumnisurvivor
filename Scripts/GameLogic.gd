@@ -1,3 +1,4 @@
+@tool
 class_name Game_Local
 extends Node
 
@@ -18,6 +19,22 @@ extends Node
 @export var game_time: Timer
 @export var game_ui: Game_Ui
 @export var enemy_spawner: Enemy_Spawner
+@export var reroll_counter: int = 1
+#@export var ban_counter: int = 1
+#@export var ban_list: Array[Item_Resource]
+	
+func _get_configuration_warnings():
+	var msg: Array[String]
+	var children = get_children()
+	if not children.any(func(child): return child is Enemy_Spawner):
+		msg.append("Game Local requires an Enemy Spawner.")
+	if not player:
+		msg.append("Game Local requires Student Entity.")
+	if not game_ui:
+		msg.append("Game Local requires Game UI.")
+	if not player:
+		msg.append("Game Local requires a Student Entity as Player")
+	return msg
 	
 func _ready() -> void:
 	player.student = Global.SELECTED_STUDENT
@@ -38,6 +55,4 @@ func debug_mode():
 
 func game_over():
 	get_tree().change_scene_to_file("res://Scenes/MainMenu.tscn")
-	
-
 	

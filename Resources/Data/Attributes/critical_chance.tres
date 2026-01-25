@@ -7,6 +7,7 @@ script = ExtResource("1_jg4ka")
 name = "Critical Chance"
 id = "critical_chance"
 ordinal = 3
+color = Color(0, 1, 0, 1)
 description = "Effects the chance of a critical hit occuring per giving damage instance."
 value = 0.0
 min_limit = 0.0

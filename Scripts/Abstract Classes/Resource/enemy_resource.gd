@@ -13,9 +13,9 @@ extends Resource
 @export var looks_at_target: bool = false
 @export var image_variants: Array[Texture]
 @export_group("Tags")
-@export var enemy: Array[Global.enemy_tag] = [Global.enemy_tag.Normal]
-@export var group: Array[Global.group_tag] = [Global.group_tag.None]
-@export var damage_type: Array[Global.damage_types] = [Global.damage_types.Blunt]
+#@export var enemy: Array[Global.enemy_tag] = [Global.enemy_tag.Normal]
+#@export var group: Array[Global.group_tag] = [Global.group_tag.None]
+#@export var damage_type: Array[Global.damage_types] = [Global.damage_types.Blunt]
 @export_group("Other")
 
 @export_category("Movement")

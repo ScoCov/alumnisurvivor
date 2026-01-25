@@ -256,3 +256,8 @@ text = "Spawn Chance: %s"
 [node name="Number of Enemies" type="Label" parent="Debug Info/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Number of Enemies: %s"
+
+[node name="Items" type="RichTextLabel" parent="Debug Info/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Items: %s"
+fit_content = true

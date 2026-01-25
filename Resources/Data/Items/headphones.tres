@@ -1,14 +1,29 @@
-[gd_resource type="Resource" script_class="Item_Resource" load_steps=2 format=3 uid="uid://cbqpvbbvnll7o"]
+[gd_resource type="Resource" script_class="Item_Resource" load_steps=6 format=3 uid="uid://cbqpvbbvnll7o"]
 
+[ext_resource type="Script" uid="uid://l7aipj0jfga8" path="res://Scripts/Abstract Classes/Item/item_effect.gd" id="1_bc6wk"]
 [ext_resource type="Script" uid="uid://4pylfu4f1res" path="res://Scripts/Abstract Classes/Resource/item_resource.gd" id="1_o7jyn"]
+[ext_resource type="Resource" uid="uid://b4tkhcjsw15ux" path="res://Resources/Data/Attributes/cooldown.tres" id="2_i6y8t"]
+[ext_resource type="Script" uid="uid://uibb0wxuei0a" path="res://Scripts/Abstract Classes/Item/item_effect_attribute.gd" id="3_0d2ss"]
+
+[sub_resource type="Resource" id="Resource_tk63k"]
+script = ExtResource("3_0d2ss")
+attribute = ExtResource("2_i6y8t")
+base_value = 0.0
+base_stack_mod = 0.0
+percentage_value = -5.0
+percentage_stack_mod = 0.0
+metadata/_custom_type_script = "uid://uibb0wxuei0a"
 
 [resource]
 script = ExtResource("1_o7jyn")
-item_name = ""
-item_id = ""
+item_name = "Headphones"
+item_id = "headphones"
 item_description = ""
 tool_tip = ""
 unlocked = false
+group_tags = 0
+rarity = 3
 max_count = 0
 unique = false
+item_effects = Array[ExtResource("1_bc6wk")]([SubResource("Resource_tk63k")])
 metadata/_custom_type_script = "uid://4pylfu4f1res"

@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://di3yidl1tqbq4"]
+
+[ext_resource type="Texture2D" uid="uid://b3sriv7evrs2a" path="res://Assets/Image/Effects/Dash_Indicator_Not_Ready.png" id="1_myi70"]
+[ext_resource type="Script" uid="uid://oe2d0lupr354" path="res://Entities/Indicator/dash_indicator.gd" id="1_yroev"]
+[ext_resource type="Texture2D" uid="uid://gjdixx2incvq" path="res://Assets/Image/Effects/Dash_Indicator_Ready.png" id="2_yroev"]
+
+[node name="DashIndicator" type="Control"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 3
+anchor_right = 0.0286458
+anchor_bottom = 0.0509259
+script = ExtResource("1_yroev")
+metadata/_edit_use_anchors_ = true
+
+[node name="NotReady" type="Sprite2D" parent="."]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("1_myi70")
+centered = false
+
+[node name="Ready" type="Sprite2D" parent="."]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_yroev")
+centered = false
+
+[node name="Cooldown" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="Cooldown" to="." method="_on_cooldown_timeout"]

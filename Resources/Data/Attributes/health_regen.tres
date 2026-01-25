@@ -4,8 +4,8 @@
 
 [resource]
 script = ExtResource("1_4crgb")
-name = "Armor"
-id = "armor"
+name = "Health Regeneration"
+id = "health_regen"
 ordinal = 4
 description = ""
 value = 0.0

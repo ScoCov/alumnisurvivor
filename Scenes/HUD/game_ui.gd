@@ -1,3 +1,4 @@
+@tool
 extends Control
 class_name Game_Ui
 
@@ -25,6 +26,12 @@ signal player_death
 @onready var pause_menu: Pause_Menu = $PauseMenu
 @onready var death_menu = $"Death Menu"
 
+func _get_configuration_warnings():
+	var msg: Array[String]
+	if [game_logic, render_node, player].any(func(prop): return prop == null):
+		msg.append("Game UI lacks needed objects. %s" % [["player", "game_logic", "render_node"]])
+	return msg
+	
 func _unhandled_input(event):
 	if event is InputEventKey and event.is_action_pressed("pause"):
 		display_pause_menu()
@@ -32,6 +39,7 @@ func _unhandled_input(event):
 func student_loaded(): ## I am not understanding load order so using _ready() hasn't worked out. 
 	game_hud.update_hud_static()
 	player.experience.level_up.connect(display_level_up_menu, 1)
+	
 	player.experience.experience_gained.connect(game_hud.update_experience_values)
 	player.health.damage_taken.connect(game_hud.update_health_values)
 	player.health.damage_healed.connect(game_hud.update_health_values)
@@ -46,6 +54,7 @@ func display_level_up_menu():
 	level_up_menu.visible = true
 	pause_menu.visible = false
 	player_leveled.emit()
+	level_up_menu.emit_signal("menu_triggered")
 
 func display_pause_menu():
 	render_node.visible = false

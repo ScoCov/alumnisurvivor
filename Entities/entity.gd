@@ -9,7 +9,7 @@ func _get_configuration_warnings():
 	var return_array: Array[String]
 	if not get_children().any(func(child): child is Health_Component):	
 		return_array.append("Entity Requires a Health Component")
-	if not get_children().any(func(child): child.name == "StatusEffects"):
+	if not get_children().any(func(child): child.name.to_lower() == "statuseffects"):
 		return_array.append("Entity requires a Node2D name 'StatusEffects'.")
 	return return_array
 

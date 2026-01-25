@@ -1,8 +1,10 @@
+@tool
 class_name Student_Entity
 extends Entity
 
 signal loaded 
-signal died
+signal death
+signal swapped_students
 
 #region Description
 ## This entity is the base entity used by the playable characters, the Students. Each student
@@ -16,14 +18,26 @@ signal died
 
 ## Check box to have StudentEntity be in debug mode.
 @export var is_controllable: bool = true
-@export var student: StudentResource:
+@export var student: StudentResource = Global.SELECTED_STUDENT:
 	set(_student):
 		student = _student
 		student_update(_student)
+@export var besty: StudentResource = Global.SELECTED_BESTY
+@export var starting_ability: Ability_Resource
 
 @onready var experience: Experience_Manager = $Experience
 @onready var movement_component: Movement_Component = $MovementComponent
+@onready var items: Item_Container = $Items
+@onready var abilities: Ability_Manager = $Abilities
+@onready var dashes: Dash_Manager = $Dashes
 
+func _input(event):
+	if event.is_action_pressed("swap_besty"):
+		var temp = student
+		student = besty
+		besty = temp
+		swapped_students.emit()
+		
 func _get_configuration_warnings():
 	var msg: Array[String]
 	var children = get_children()
@@ -33,6 +47,8 @@ func _get_configuration_warnings():
 	
 func _ready():
 	get_universal_components()
+	abilities.starting_ability = starting_ability
+	dashes.visible = is_controllable
 	loaded.emit()
 	
 func _render_student() -> void:
@@ -52,5 +68,4 @@ func _on_xp_collector_body_entered(body):
 func _on_xp_collection_zone_body_entered(body):
 	if body is XP_Node:
 		body.collide_with_player()
-		#$Sensors/XP_Collection_Zone/XpChime1.play(0)
 		experience.add_experience(body.xp_value)

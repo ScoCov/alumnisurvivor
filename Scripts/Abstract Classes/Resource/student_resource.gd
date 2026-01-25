@@ -18,6 +18,7 @@ extends Resource
 ##This section is loaded with the full gammit of attributes the student will have.
 #@export var health: int = 10
 @export var health: float = 10
+@export var health_regen: float = 0.0
 @export var armor: float = 0
 @export var attack_speed: float = 1.0
 @export var bounce: float = 0
@@ -52,7 +53,7 @@ extends Resource
 @export_category("Tags")
 @export var unlocked: bool = true
 ## Unique Tags associated direactly with Students.
-@export var student_tags: Array[Global.student_tag]
+#@export var student_tags: Array[Global.student_tag]
 
 func _to_string() -> String:
 	return ("Student: %s " % [student_name] )

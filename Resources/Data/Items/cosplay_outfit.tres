@@ -1,14 +1,35 @@
-[gd_resource type="Resource" script_class="Item_Resource" load_steps=2 format=3 uid="uid://c3085d2ifnldk"]
+[gd_resource type="Resource" script_class="Item_Resource" load_steps=8 format=3 uid="uid://c3085d2ifnldk"]
 
+[ext_resource type="Script" uid="uid://l7aipj0jfga8" path="res://Scripts/Abstract Classes/Item/item_effect.gd" id="1_0l35y"]
 [ext_resource type="Script" uid="uid://4pylfu4f1res" path="res://Scripts/Abstract Classes/Resource/item_resource.gd" id="1_xdb36"]
+[ext_resource type="Resource" uid="uid://de4ke6fjbvt45" path="res://Resources/Data/Attributes/health.tres" id="2_ub8gm"]
+[ext_resource type="Script" uid="uid://uibb0wxuei0a" path="res://Scripts/Abstract Classes/Item/item_effect_attribute.gd" id="3_ce881"]
+[ext_resource type="Resource" uid="uid://o2bqtjl0e7vb" path="res://Resources/Data/Attributes/health_regen.tres" id="4_hfhlm"]
+
+[sub_resource type="Resource" id="Resource_sxexl"]
+script = ExtResource("3_ce881")
+attribute = ExtResource("2_ub8gm")
+base_value = 10.0
+percentage_value = 0.0
+metadata/_custom_type_script = "uid://uibb0wxuei0a"
+
+[sub_resource type="Resource" id="Resource_ms73s"]
+script = ExtResource("3_ce881")
+attribute = ExtResource("4_hfhlm")
+base_value = 1.0
+percentage_value = 0.0
+metadata/_custom_type_script = "uid://uibb0wxuei0a"
 
 [resource]
 script = ExtResource("1_xdb36")
-item_name = ""
-item_id = ""
+item_name = "Kawaii"
+item_id = "cosplay_outfit"
 item_description = ""
 tool_tip = ""
 unlocked = false
+group_tags = 6
+rarity = 4
 max_count = 0
-unique = false
+unique = true
+item_effects = Array[ExtResource("1_0l35y")]([SubResource("Resource_sxexl"), SubResource("Resource_ms73s")])
 metadata/_custom_type_script = "uid://4pylfu4f1res"

@@ -72,17 +72,21 @@ layout_mode = 2
 theme_override_constants/separation = 33
 alignment = 1
 
-[node name="Card" parent="Body/MarginContainer/HBoxContainer" instance=ExtResource("2_2segy")]
+[node name="Card" parent="Body/MarginContainer/HBoxContainer" node_paths=PackedStringArray("level_up_menu") instance=ExtResource("2_2segy")]
 layout_mode = 2
+level_up_menu = NodePath("../../../..")
 
-[node name="Card2" parent="Body/MarginContainer/HBoxContainer" instance=ExtResource("2_2segy")]
+[node name="Card2" parent="Body/MarginContainer/HBoxContainer" node_paths=PackedStringArray("level_up_menu") instance=ExtResource("2_2segy")]
 layout_mode = 2
+level_up_menu = NodePath("../../../..")
 
-[node name="Card3" parent="Body/MarginContainer/HBoxContainer" instance=ExtResource("2_2segy")]
+[node name="Card3" parent="Body/MarginContainer/HBoxContainer" node_paths=PackedStringArray("level_up_menu") instance=ExtResource("2_2segy")]
 layout_mode = 2
+level_up_menu = NodePath("../../../..")
 
-[node name="Card4" parent="Body/MarginContainer/HBoxContainer" instance=ExtResource("2_2segy")]
+[node name="Card4" parent="Body/MarginContainer/HBoxContainer" node_paths=PackedStringArray("level_up_menu") instance=ExtResource("2_2segy")]
 layout_mode = 2
+level_up_menu = NodePath("../../../..")
 
 [node name="Options" type="Control" parent="."]
 layout_mode = 1
@@ -113,14 +117,55 @@ custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 text = "Reroll"
 
+[node name="Label" type="Label" parent="Options/MarginContainer/HBoxContainer/Reroll"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.6
+anchor_top = 0.283019
+anchor_right = 1.0
+anchor_bottom = 0.716981
+grow_horizontal = 0
+grow_vertical = 2
+horizontal_alignment = 2
+metadata/_edit_use_anchors_ = true
+
 [node name="Ban" type="Button" parent="Options/MarginContainer/HBoxContainer"]
+visible = false
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 text = "Ban"
 
+[node name="Label" type="Label" parent="Options/MarginContainer/HBoxContainer/Ban"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.6
+anchor_top = 0.283019
+anchor_right = 1.0
+anchor_bottom = 0.716981
+grow_horizontal = 0
+grow_vertical = 2
+horizontal_alignment = 2
+metadata/_edit_use_anchors_ = true
+
 [node name="Skip" type="Button" parent="Options/MarginContainer/HBoxContainer"]
+visible = false
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 text = "Skip"
 
+[node name="Label" type="Label" parent="Options/MarginContainer/HBoxContainer/Skip"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.6
+anchor_top = 0.283019
+anchor_right = 1.0
+anchor_bottom = 0.716981
+grow_horizontal = 0
+grow_vertical = 2
+horizontal_alignment = 2
+metadata/_edit_use_anchors_ = true
+
+[connection signal="menu_triggered" from="." to="." method="_on_menu_triggered"]
+[connection signal="pressed" from="Options/MarginContainer/HBoxContainer/Reroll" to="." method="_on_reroll_pressed"]
+[connection signal="pressed" from="Options/MarginContainer/HBoxContainer/Ban" to="." method="_on_ban_pressed"]
 [connection signal="pressed" from="Options/MarginContainer/HBoxContainer/Skip" to="." method="_on_skip_pressed"]

@@ -1,14 +1,39 @@
-[gd_resource type="Resource" script_class="Item_Resource" load_steps=2 format=3 uid="uid://cqipsqfvmu3md"]
+[gd_resource type="Resource" script_class="Item_Resource" load_steps=8 format=3 uid="uid://cqipsqfvmu3md"]
 
 [ext_resource type="Script" uid="uid://4pylfu4f1res" path="res://Scripts/Abstract Classes/Resource/item_resource.gd" id="1_3ofhe"]
+[ext_resource type="Script" uid="uid://l7aipj0jfga8" path="res://Scripts/Abstract Classes/Item/item_effect.gd" id="1_60ac1"]
+[ext_resource type="Resource" uid="uid://bmg5pkypsljug" path="res://Resources/Data/Attributes/critical_damage.tres" id="2_mr3lk"]
+[ext_resource type="Script" uid="uid://uibb0wxuei0a" path="res://Scripts/Abstract Classes/Item/item_effect_attribute.gd" id="3_4qe8f"]
+[ext_resource type="Resource" uid="uid://daw6jacc8mg1s" path="res://Resources/Data/Attributes/critical_chance.tres" id="4_n8fyr"]
+
+[sub_resource type="Resource" id="Resource_hon4j"]
+script = ExtResource("3_4qe8f")
+attribute = ExtResource("2_mr3lk")
+base_value = 0.0
+base_stack_mod = 0.0
+percentage_value = 1.0
+percentage_stack_mod = 0.0
+metadata/_custom_type_script = "uid://uibb0wxuei0a"
+
+[sub_resource type="Resource" id="Resource_4wsi0"]
+script = ExtResource("3_4qe8f")
+attribute = ExtResource("4_n8fyr")
+base_value = 0.0
+base_stack_mod = 0.0
+percentage_value = 3.0
+percentage_stack_mod = 0.0
+metadata/_custom_type_script = "uid://uibb0wxuei0a"
 
 [resource]
 script = ExtResource("1_3ofhe")
-item_name = ""
-item_id = ""
+item_name = "Wallet"
+item_id = "wallet"
 item_description = ""
 tool_tip = ""
 unlocked = false
+group_tags = 0
+rarity = 0
 max_count = 0
 unique = false
+item_effects = Array[ExtResource("1_60ac1")]([SubResource("Resource_hon4j"), SubResource("Resource_4wsi0")])
 metadata/_custom_type_script = "uid://4pylfu4f1res"

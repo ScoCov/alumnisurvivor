@@ -1,14 +1,29 @@
-[gd_resource type="Resource" script_class="Item_Resource" load_steps=2 format=3 uid="uid://cnphxu3dr4siq"]
+[gd_resource type="Resource" script_class="Item_Resource" load_steps=6 format=3 uid="uid://cnphxu3dr4siq"]
 
+[ext_resource type="Script" uid="uid://l7aipj0jfga8" path="res://Scripts/Abstract Classes/Item/item_effect.gd" id="1_14mnx"]
 [ext_resource type="Script" uid="uid://4pylfu4f1res" path="res://Scripts/Abstract Classes/Resource/item_resource.gd" id="1_i1gnf"]
+[ext_resource type="Resource" uid="uid://b4tkhcjsw15ux" path="res://Resources/Data/Attributes/cooldown.tres" id="2_6a7pv"]
+[ext_resource type="Script" uid="uid://uibb0wxuei0a" path="res://Scripts/Abstract Classes/Item/item_effect_attribute.gd" id="2_uak4v"]
+
+[sub_resource type="Resource" id="Resource_6a7pv"]
+script = ExtResource("2_uak4v")
+attribute = ExtResource("2_6a7pv")
+base_value = 0.0
+base_stack_mod = 0.0
+percentage_value = -2.0
+percentage_stack_mod = 0.0
+metadata/_custom_type_script = "uid://uibb0wxuei0a"
 
 [resource]
 script = ExtResource("1_i1gnf")
-item_name = ""
-item_id = ""
+item_name = "Earrings"
+item_id = "earrings"
 item_description = ""
 tool_tip = ""
 unlocked = false
+group_tags = 0
+rarity = 1
 max_count = 0
 unique = false
+item_effects = Array[ExtResource("1_14mnx")]([SubResource("Resource_6a7pv")])
 metadata/_custom_type_script = "uid://4pylfu4f1res"

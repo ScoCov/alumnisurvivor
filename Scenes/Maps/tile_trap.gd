@@ -46,11 +46,11 @@ func activate_status(entity: CharacterBody2D):
 
 func activate_damage(entity: CharacterBody2D):
 	var entity_health_comp: Health_Component = entity.health
-	entity_health_comp.attempt_damage(self, -damage_amount)
+	entity_health_comp.attempt_damage(-damage_amount)
 	
 func activate_heal(entity: CharacterBody2D):
 	var entity_health_comp: Health_Component = entity.health
-	entity_health_comp.attempt_damage(self, damage_amount)
+	entity_health_comp.attempt_damage(damage_amount)
 	
 func _on_body_entered(body):
 	if body is Student_Entity or Enemy_Entity:

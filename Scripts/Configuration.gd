@@ -1,3 +1,4 @@
+class_name Config
 extends Node
 
 

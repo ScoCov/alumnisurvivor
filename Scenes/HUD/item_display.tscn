@@ -1,7 +1,37 @@
-[gd_scene load_steps=3 format=3 uid="uid://cmfryqpg8p4oy"]
+[gd_scene load_steps=6 format=3 uid="uid://cmfryqpg8p4oy"]
 
 [ext_resource type="Script" uid="uid://totcu6mbpxtt" path="res://Scenes/HUD/item_display.gd" id="1_k8xo2"]
-[ext_resource type="Resource" uid="uid://cjbub7kgmphl2" path="res://Resources/Data/Items/01_debug_item.tres" id="2_awjwo"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a6jw7"]
+bg_color = Color(0.633857, 0.590578, 0.568653, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k8xo2"]
+bg_color = Color(0.633857, 0.590578, 0.568653, 1)
+draw_center = false
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+shadow_size = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_awjwo"]
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+shadow_size = 3
+shadow_offset = Vector2(0, 1.5)
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_k8xo2"]
+color = Color(0.23896, 0.24, 0.1776, 1)
 
 [node name="Card" type="Control"]
 custom_minimum_size = Vector2(200, 350)
@@ -11,34 +41,74 @@ anchor_bottom = 0.540123
 offset_right = -200.0
 offset_bottom = -350.0
 script = ExtResource("1_k8xo2")
-item = ExtResource("2_awjwo")
 metadata/_edit_use_anchors_ = true
 
-[node name="BackgroundColor" type="ColorRect" parent="."]
+[node name="Background" type="Panel" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.517184, 0.517184, 0.517184, 1)
+theme_override_styles/panel = SubResource("StyleBoxFlat_a6jw7")
 
-[node name="Item Name" type="Label" parent="."]
+[node name="Border" type="Panel" parent="."]
 layout_mode = 1
-anchors_preset = 10
+anchors_preset = 15
 anchor_right = 1.0
-offset_bottom = 38.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_k8xo2")
+
+[node name="Title" type="Control" parent="."]
+layout_mode = 1
+anchor_left = 0.06
+anchor_top = 0.0314286
+anchor_right = 0.94
+anchor_bottom = 0.185714
+grow_horizontal = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Bar" type="Panel" parent="Title"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -26.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_awjwo")
+
+[node name="Item Name" type="Label" parent="Title"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.590909
 grow_horizontal = 2
 theme_override_font_sizes/font_size = 18
 text = "Item_Name"
 horizontal_alignment = 1
-vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Limit" type="Label" parent="Title"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -23.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Limit"
+horizontal_alignment = 1
 
 [node name="ImageContainer" type="Control" parent="."]
 layout_mode = 1
-anchor_top = 0.111429
-anchor_right = 1.0
-anchor_bottom = 0.502857
+anchor_left = 0.06
+anchor_top = 0.185714
+anchor_right = 0.94
+anchor_bottom = 0.482857
 grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_use_anchors_ = true
@@ -59,11 +129,12 @@ grow_vertical = 2
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.4
-anchor_top = 0.87
+anchor_top = 1.01429
 anchor_right = 0.6
-anchor_bottom = 0.958571
+anchor_bottom = 1.10286
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/focus = SubResource("StyleBoxLine_k8xo2")
 text = "Pick"
 metadata/_edit_use_anchors_ = true
 
@@ -75,9 +146,9 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -88.0
-offset_top = -173.0
+offset_top = -174.0
 offset_right = 88.0
-offset_bottom = -55.0
+offset_bottom = -29.0
 grow_horizontal = 2
 grow_vertical = 0
 
@@ -105,4 +176,58 @@ theme_override_constants/margin_bottom = 12
 [node name="InfoSorter" type="VBoxContainer" parent="Information/MarginContainer"]
 layout_mode = 2
 
+[node name="Tags" type="Control" parent="."]
+layout_mode = 1
+anchor_left = 0.1
+anchor_top = 0.928571
+anchor_right = 0.9
+anchor_bottom = 0.968571
+metadata/_edit_use_anchors_ = true
+
+[node name="Bar" type="Panel" parent="Tags"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_awjwo")
+
+[node name="Group" type="Label" parent="Tags"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = -0.107143
+anchor_right = 1.0
+anchor_bottom = 1.10714
+offset_top = 1.5
+offset_bottom = -1.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_font_sizes/font_size = 12
+text = "Group"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Rarity" type="Label" parent="Tags"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+text = "Rarity"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[connection signal="focus_entered" from="." to="." method="_on_focus_entered"]
 [connection signal="pressed" from="Pick" to="." method="_on_pick_pressed"]

@@ -13,14 +13,16 @@ func _physics_process(_delta):
 	if len(entities_in_range) > 0:
 		if len(entities_in_range) > 1:
 			entities_in_range.sort_custom(func(_entity_a, _entity_b): return position.distance_to(_entity_a.position) < position.distance_to(_entity_b.position)) 
-		if look_at_target:
-			$Facing.look_at(entities_in_range[0].position)
+		if look_at_target and target_entity:
+			$Facing.look_at(target_entity.position)
 	
 ## Returnting true to these state functions will trigger it to transition
 func on_ready() -> bool:
+	if len(entities_in_range) < 1: return false
 	$Facing/SwingingArm.rotation_degrees = -45 * ability.area
 	cooldown_current = 0
-	return len(entities_in_range) > 0 and entities_in_range[0].position.distance_to(entities_in_range[0].player.position) < ability.attack_range
+	target_entity = entities_in_range[0]
+	return target_entity.position.distance_to(entity.position) < ability.attack_range
 	
 func on_active() -> bool:
 	## When active, it should disable the looking at function for Facing
@@ -56,8 +58,8 @@ func _on_detection_range_body_exited(body):
 
 func _on_hitbox_body_entered(body):
 	if body is Enemy_Entity:
-		body.health.attempt_damage(self, -damage_comp.base_damage)
-		var direction = player.position.direction_to(body.position)
+		body.health.attempt_damage(-damage_comp.base_damage)
+		var direction = entity.position.direction_to(body.position)
 		if ability.knockback != 0:
 			body.movement_component.knockback_effect(direction, ability.knockback)
 		

@@ -20,7 +20,7 @@ extends Resource
 @export var projectile_speed: float = 650
 @export var attack_range: float = 250
 @export var projectiles_max: int = 1
-@export var range_tag: Global.range_tag
+@export var range_tag: Tags.Range_Type
 @export_range(0,2.0) var area: float = 1
 @export var attack_speed: float = 0.5
 @export var attack_speed_rate: float = 1.0

@@ -1,14 +1,29 @@
-[gd_resource type="Resource" script_class="Item_Resource" load_steps=2 format=3 uid="uid://dfjvsq7oc0q0g"]
+[gd_resource type="Resource" script_class="Item_Resource" load_steps=6 format=3 uid="uid://dfjvsq7oc0q0g"]
 
+[ext_resource type="Script" uid="uid://l7aipj0jfga8" path="res://Scripts/Abstract Classes/Item/item_effect.gd" id="1_13r0f"]
 [ext_resource type="Script" uid="uid://4pylfu4f1res" path="res://Scripts/Abstract Classes/Resource/item_resource.gd" id="1_yl6sc"]
+[ext_resource type="Resource" uid="uid://cxxky3c0l03d6" path="res://Resources/Data/Attributes/duration.tres" id="2_x0glb"]
+[ext_resource type="Script" uid="uid://uibb0wxuei0a" path="res://Scripts/Abstract Classes/Item/item_effect_attribute.gd" id="3_0maw4"]
+
+[sub_resource type="Resource" id="Resource_5vk1x"]
+script = ExtResource("3_0maw4")
+attribute = ExtResource("2_x0glb")
+base_value = 0.0
+base_stack_mod = 0.0
+percentage_value = 5.0
+percentage_stack_mod = 5.0
+metadata/_custom_type_script = "uid://uibb0wxuei0a"
 
 [resource]
 script = ExtResource("1_yl6sc")
-item_name = ""
-item_id = ""
+item_name = "Notebook"
+item_id = "notebook"
 item_description = ""
 tool_tip = ""
 unlocked = false
+group_tags = 0
+rarity = 0
 max_count = 0
 unique = false
+item_effects = Array[ExtResource("1_13r0f")]([SubResource("Resource_5vk1x")])
 metadata/_custom_type_script = "uid://4pylfu4f1res"

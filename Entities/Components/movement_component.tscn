@@ -24,5 +24,6 @@ metadata/_custom_type_script = "uid://icw1is6pi6hp"
 
 [node name="Dash Length Timer" type="Timer" parent="."]
 wait_time = 0.2
+one_shot = true
 
 [connection signal="timeout" from="Dash Length Timer" to="." method="_on_dash_length_timer_timeout"]
