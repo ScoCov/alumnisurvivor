@@ -2,14 +2,14 @@
 
 [ext_resource type="Script" uid="uid://4pylfu4f1res" path="res://Scripts/Abstract Classes/Resource/item_resource.gd" id="1_03cd6"]
 [ext_resource type="Script" uid="uid://l7aipj0jfga8" path="res://Scripts/Abstract Classes/Item/item_effect.gd" id="1_tlupc"]
-[ext_resource type="Resource" uid="uid://cdwg8wxieafmh" path="res://Resources/Data/Attributes/bounce.tres" id="2_tqb61"]
+[ext_resource type="Resource" uid="uid://b7lj25emughbo" path="res://Resources/Data/Attributes/movement_speed.tres" id="2_tqb61"]
 [ext_resource type="Script" uid="uid://uibb0wxuei0a" path="res://Scripts/Abstract Classes/Item/item_effect_attribute.gd" id="3_kpcm0"]
 
 [sub_resource type="Resource" id="Resource_5pnvi"]
 script = ExtResource("3_kpcm0")
 attribute = ExtResource("2_tqb61")
-base_value = 1.0
-base_stack_mod = 0.0
+base_value = 0.2
+base_stack_mod = 0.2
 percentage_value = 0.0
 percentage_stack_mod = 0.0
 metadata/_custom_type_script = "uid://uibb0wxuei0a"

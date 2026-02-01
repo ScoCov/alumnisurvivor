@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://v1phrdf8cdqg"]
+[gd_scene load_steps=25 format=3 uid="uid://v1phrdf8cdqg"]
 
 [ext_resource type="Script" uid="uid://d0tuntxkjee38" path="res://Entities/student_entity.gd" id="1_kt3lm"]
 [ext_resource type="AudioStream" uid="uid://bsvxl6ry23s8q" path="res://Assets/SFX/XP Pickup Chime/XP Chime 1.wav" id="2_fkouh"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://dl3knldaqwm3p" path="res://Entities/Components/Attachments/experience_manager.gd" id="10_qr54b"]
 [ext_resource type="PackedScene" uid="uid://di3yidl1tqbq4" path="res://Entities/Indicator/dash_indicator.tscn" id="14_iwsns"]
 [ext_resource type="Script" uid="uid://wcnfsy2fs30a" path="res://Entities/Components/Attachments/dash_manager.gd" id="14_o4euj"]
+[ext_resource type="PackedScene" uid="uid://ifl1frui5nv" path="res://Entities/Effects/dash_boom.tscn" id="16_2xxaj"]
 [ext_resource type="Texture2D" uid="uid://c0ebqy6ydav7u" path="res://Assets/Image/Student/Head/Hair/Hair_02.png" id="16_71snr"]
 [ext_resource type="Texture2D" uid="uid://dtt7h2na2opvb" path="res://Assets/Image/Student/Body/Student_Body.png" id="27_gi4ri"]
 [ext_resource type="Texture2D" uid="uid://ckyqn1o6hh0i1" path="res://Assets/Image/Student/Head/Head_beta_2.png" id="28_1pn2y"]
@@ -98,6 +99,29 @@ shape = SubResource("CircleShape2D_bj2gu")
 
 [node name="Abilities" type="Node2D" parent="."]
 script = ExtResource("6_wox1n")
+
+[node name="Dashes" type="HBoxContainer" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -87.0
+offset_top = 55.0
+offset_right = 87.0
+offset_bottom = 88.0
+grow_horizontal = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+script = ExtResource("14_o4euj")
+
+[node name="DashIndicator" parent="Dashes" instance=ExtResource("14_iwsns")]
+layout_mode = 2
+
+[node name="DashIndicator2" parent="Dashes" instance=ExtResource("14_iwsns")]
+layout_mode = 2
+
+[node name="DashIndicator3" parent="Dashes" instance=ExtResource("14_iwsns")]
+layout_mode = 2
 
 [node name="HealthComponent" parent="." instance=ExtResource("3_goiee")]
 maximum_health = 30
@@ -188,22 +212,9 @@ wait_time = 0.2
 
 [node name="StatusEffects" type="Node2D" parent="."]
 
-[node name="Dashes" type="HBoxContainer" parent="."]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -87.0
-offset_top = 55.0
-offset_right = 87.0
-offset_bottom = 88.0
-grow_horizontal = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-alignment = 1
-script = ExtResource("14_o4euj")
+[node name="VFX" type="Node2D" parent="."]
 
-[node name="DashIndicator" parent="Dashes" instance=ExtResource("14_iwsns")]
-layout_mode = 2
+[node name="DashBoom" parent="VFX" instance=ExtResource("16_2xxaj")]
 
 [connection signal="body_entered" from="Sensors/XP_Pickup_Range" to="." method="_on_xp_collector_body_entered"]
 [connection signal="body_entered" from="Sensors/XP_Collection_Zone" to="." method="_on_xp_collection_zone_body_entered"]

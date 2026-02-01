@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://pwkmukwcd7ve"]
+
+[ext_resource type="Script" uid="uid://b4bdpl7tm785w" path="res://Entities/Effects/strike.gd" id="1_kxe2e"]
+[ext_resource type="Texture2D" uid="uid://n4a6hfq4xmmt" path="res://Assets/Image/VFX/Slash.png" id="2_83c5w"]
+
+[sub_resource type="Curve" id="Curve_83c5w"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.833333, 0.506031), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_huxix"]
+curve = SubResource("Curve_83c5w")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_huxix"]
+particle_flag_disable_z = true
+angle_min = -27.5
+angle_max = 27.5
+gravity = Vector3(0, 0, 98)
+radial_accel_min = -12.5
+radial_accel_max = 12.5
+alpha_curve = SubResource("CurveTexture_huxix")
+
+[node name="Strike" type="Node2D"]
+script = ExtResource("1_kxe2e")
+
+[node name="Particle" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 1
+texture = ExtResource("2_83c5w")
+lifetime = 0.15
+one_shot = true
+explosiveness = 1.0
+randomness = 1.0
+process_material = SubResource("ParticleProcessMaterial_huxix")
+
+[connection signal="finished" from="Particle" to="." method="_on_particle_finished"]

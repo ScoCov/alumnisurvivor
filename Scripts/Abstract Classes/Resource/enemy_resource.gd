@@ -5,22 +5,20 @@ extends Resource
 @export var name: String
 @export var file_name: String
 @export var enemy_scene_path: String
-@export var power_level: float = 0
+@export var starting_power_level: float = 0
+@export var power_level_growth: float = 0
 @export var xp_per_power: float = 0
-@export_group("Description")
-@export_multiline var description: String
+@export var power_level: float = 1
+
 @export_group("Images")
 @export var looks_at_target: bool = false
 @export var image_variants: Array[Texture]
+
 @export_group("Tags")
-#@export var enemy: Array[Global.enemy_tag] = [Global.enemy_tag.Normal]
-#@export var group: Array[Global.group_tag] = [Global.group_tag.None]
-#@export var damage_type: Array[Global.damage_types] = [Global.damage_types.Blunt]
-@export_group("Other")
+@export var enemy: Tags.Enemy
+@export var group: Tags.Group
 
 @export_category("Movement")
-## The way the enemy will move in game. 
-#@export var move_style: EnemyMovementStrategy.type
 ## Default Movement Speed = 75
 @export var movement_speed: float = 75
 ## When using a Wander-Type of Movement, the enemy will redirect it's self [wander_timer]-seconds.
@@ -31,7 +29,7 @@ extends Resource
 @export var closest_distance: float = 0.0
 
 @export_category("Health")
-@export var maximum_health: int = 5
+@export var health: int = 5
 @export var armor: int = 0
 @export var dodge: float = 0.0
 

@@ -2,14 +2,16 @@
 
 [ext_resource type="Script" uid="uid://4pylfu4f1res" path="res://Scripts/Abstract Classes/Resource/item_resource.gd" id="1_4lyo4"]
 [ext_resource type="Script" uid="uid://l7aipj0jfga8" path="res://Scripts/Abstract Classes/Item/item_effect.gd" id="1_f4y6a"]
-[ext_resource type="Resource" uid="uid://mno0drh8g3i8" path="res://Resources/Data/Attributes/attack_range.tres" id="2_ifmof"]
+[ext_resource type="Resource" uid="uid://b7lj25emughbo" path="res://Resources/Data/Attributes/movement_speed.tres" id="2_ifmof"]
 [ext_resource type="Script" uid="uid://uibb0wxuei0a" path="res://Scripts/Abstract Classes/Item/item_effect_attribute.gd" id="3_6pu0o"]
 
 [sub_resource type="Resource" id="Resource_r5m4d"]
 script = ExtResource("3_6pu0o")
 attribute = ExtResource("2_ifmof")
-base_value = 0.0
-percentage_value = 10.0
+base_value = 0.1
+base_stack_mod = 0.1
+percentage_value = 0.0
+percentage_stack_mod = 0.0
 metadata/_custom_type_script = "uid://uibb0wxuei0a"
 
 [resource]

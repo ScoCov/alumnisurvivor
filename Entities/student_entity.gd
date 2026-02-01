@@ -30,6 +30,9 @@ signal swapped_students
 @onready var items: Item_Container = $Items
 @onready var abilities: Ability_Manager = $Abilities
 @onready var dashes: Dash_Manager = $Dashes
+var vfx: Node2D:
+	get():
+		return $VFX
 
 func _input(event):
 	if event.is_action_pressed("swap_besty"):

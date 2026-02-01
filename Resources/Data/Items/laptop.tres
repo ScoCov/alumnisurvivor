@@ -8,9 +8,9 @@
 [sub_resource type="Resource" id="Resource_h5lxd"]
 script = ExtResource("3_514v1")
 attribute = ExtResource("2_wt1md")
-base_value = 0.0
-base_stack_mod = 0.0
-percentage_value = 10.0
+base_value = 10.0
+base_stack_mod = 10.0
+percentage_value = 0.0
 percentage_stack_mod = 0.0
 metadata/_custom_type_script = "uid://uibb0wxuei0a"
 

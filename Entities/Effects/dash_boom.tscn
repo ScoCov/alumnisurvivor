@@ -1,0 +1,72 @@
+[gd_scene load_steps=9 format=3 uid="uid://ifl1frui5nv"]
+
+[ext_resource type="Script" uid="uid://cwbon3i0vgpw3" path="res://Entities/Effects/dash_boom.gd" id="1_3n0lc"]
+[ext_resource type="Texture2D" uid="uid://bywo8cf8lvufe" path="res://Assets/Image/VFX/Plasma_Bolt_rotated_180.png" id="2_83url"]
+
+[sub_resource type="Gradient" id="Gradient_d1rqu"]
+offsets = PackedFloat32Array(0.592105, 1)
+colors = PackedColorArray(1, 1, 1, 0.317647, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_3n0lc"]
+gradient = SubResource("Gradient_d1rqu")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_83url"]
+particle_flag_disable_z = true
+direction = Vector3(1, 1, 1)
+spread = 180.0
+initial_velocity_min = 149.46
+initial_velocity_max = 171.2
+gravity = Vector3(0, 0, 0)
+scale_min = 8.0
+scale_max = 12.0
+color_ramp = SubResource("GradientTexture1D_3n0lc")
+sub_emitter_keep_velocity = true
+
+[sub_resource type="Curve" id="Curve_83url"]
+_data = [Vector2(0.254545, 0.513872), 0.0, 0.0, 0, 0, Vector2(0.5, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_771lh"]
+curve = SubResource("Curve_83url")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_j434i"]
+particle_flag_align_y = true
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(-20, -15, 1)
+emission_shape = 3
+emission_box_extents = Vector3(-1, 1, 1)
+direction = Vector3(0, 0, 0)
+spread = 15.0
+initial_velocity_min = 168.48
+initial_velocity_max = 168.48
+gravity = Vector3(0, 0, -100)
+alpha_curve = SubResource("CurveTexture_771lh")
+
+[node name="DashBoom" type="Node2D"]
+scale = Vector2(1.00391, 1.00999)
+script = ExtResource("1_3n0lc")
+direction = Vector3(-12, -15, 1)
+emitting = true
+
+[node name="Boom" type="GPUParticles2D" parent="."]
+position = Vector2(0, -1)
+emitting = false
+amount = 40
+lifetime = 0.4
+speed_scale = 1.25
+explosiveness = 1.0
+trail_enabled = true
+trail_lifetime = 0.1
+trail_sections = 13
+trail_section_subdivisions = 23
+process_material = SubResource("ParticleProcessMaterial_83url")
+
+[node name="Trail" type="GPUParticles2D" parent="."]
+position = Vector2(-1, 0)
+scale = Vector2(2, 2)
+emitting = false
+amount = 10
+texture = ExtResource("2_83url")
+explosiveness = 1.0
+fixed_fps = 15
+process_material = SubResource("ParticleProcessMaterial_j434i")

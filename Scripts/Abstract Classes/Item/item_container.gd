@@ -9,21 +9,9 @@ class_name Item_Container
 
 signal item_stack_added
 signal item_count_increased
-
-### Quick Access to the items for outside use.
-#var items: Array:
-	#get:
-		#return get_children().map(func(child): if child is Item_Stack: return child  )
-
-### Number of Unique Items current in the container. This is NOT the total number
-### of items for any given item.
-#var unique_items_count: int:
-	#get():
-		#return len(items)
-		
 		
 var _items: Dictionary = {}
-var _attribute_modifiers: Dictionary
+var _attributes: Dictionary
 		
 func add_item(item: Item_Resource) -> void:
 	## Check the item_container children to see if any of them have an ItemStack that contains the given Item.
@@ -44,6 +32,7 @@ func add_item(item: Item_Resource) -> void:
 	## Either item_stack creation route, we would increment the counter by 1 (either initializing, or increasing the value)
 	item_stack.count += 1 
 	_add_to_item_dictionary(item_stack)
+	_attributes_to_dict(item_stack)
 	item_count_increased.emit()
 	
 
@@ -54,7 +43,26 @@ func _add_to_item_dictionary(_item_stack: Item_Stack):
 	else:
 		_items.get_or_add(_item_stack.item.item_id, { "count": _item_stack.count,"item": {"item_effects": _item_stack.item.item_effects}} )
 	
-	
-func _attribute_mods():
-	## Go through and build a quick attribute specific dictionary with the base, mod, stack, and total values.
-	pass
+func _attributes_to_dict(_item_stack: Item_Stack):
+	# Get Item effects that are attribute related. Isolate those effects.
+	for iea: Item_Effect_Attribute in _item_stack.item.item_effects.filter(func(eff): return eff is Item_Effect_Attribute):
+		## Get Attribute, Base Value, Growth Value, and then get the count of the item. 
+		var attr = _attributes.get_or_add(iea.attribute.id, {"items":[]})
+		if attr.items.any(func(obj): return obj.has(_item_stack.item.item_id)):
+			var _item_index =  attr.items.find_custom(func(obj): return obj.has(_item_stack.item.item_id))
+			attr.items[_item_index].assign(create_dict_row(_item_stack, iea))
+		else:
+			attr.items.append(create_dict_row(_item_stack, iea))
+				
+## Returns the value to be treated as the singular [item_bonus] on abilities and actions. 
+func get_attribute_bonus(attribute_id: String) -> float:
+	var attr = _attributes.get(attribute_id)
+	var sum: float = 0
+	if not attr: return 0
+	for obj in attr.items:
+		sum += (obj.growth_value * obj.count)
+	return sum
+
+func create_dict_row(_item_stack: Item_Stack, iea: Item_Effect_Attribute) -> Dictionary:
+	var _item = _item_stack.item
+	return {_item.item_id: _item, "count": _item_stack.count, "base_value": iea.base_value , "growth_value": iea.base_stack_mod}

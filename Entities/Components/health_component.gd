@@ -48,6 +48,7 @@ var overhealth_maximum_limit: int:
 			$"Invulnerability Timer".wait_time = value
 
 @onready var invulnerability_timer = $"Invulnerability Timer"
+@onready var strike = $Strike
 
 var active_state: State:
 	set(value):
@@ -87,20 +88,5 @@ func _on_invulnerability_timer_timeout():
 	invulnerable = false
 
 func emit_hit_indication(entity: Entity, amount: float):
-	var lbl := Label.new()
-	var life_timer:= Timer.new()
-	lbl.text = "%s" % abs(amount)
-	lbl.modulate = hit_colors[0 if amount > 0 else 1]
-	life_timer.autostart = true
-	life_timer.wait_time = 0.5
-	life_timer.timeout.connect(func(): lbl.queue_free())
-	lbl.add_child(life_timer)
-	var blank_node:= Node.new() ## Node to creat a static position for text to attach to _will need to make a global [ignores position] Node in Game
-	blank_node.add_child(lbl)
-	lbl.position = entity.position
-	entity.add_child(blank_node)
-	
-	if amount < 0:
-		entity.add_child(_taking_damage_particles.instantiate())
-	if amount > 0:
-		entity.add_child(_healing_damage_particles.instantiate())
+	strike.position = entity.position
+	strike.particle.emitting = true

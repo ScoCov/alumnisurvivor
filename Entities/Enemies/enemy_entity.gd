@@ -20,7 +20,6 @@ func _ready():
 
 func build_enemy():
 	assert(entity, "Must have an Enemy resource to build enemy entity")
-	health.maximum_health = entity.maximum_health
 	movement_component.movement_speed = entity.movement_speed
 	$Sprite2D.texture = entity.image_variants[2] ## get the 256x256 images
 

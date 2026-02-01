@@ -13,8 +13,9 @@ func exit() -> void:
 
 func update(_delta):
 	var directions:= Input.get_vector("move_left","move_right","move_up","move_down")
-	if not directions:
-		Transitioned.emit(self, "idle")
+	movement_comp.direction = directions
+	#if not directions:
+		#Transitioned.emit(self, "idle")
 	var player = movement_comp.entity
 
 	## Animation
