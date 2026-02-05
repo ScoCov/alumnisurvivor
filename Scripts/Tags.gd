@@ -5,11 +5,13 @@ enum Group {
 	NONE,
 	ATHLETE, 
 	ARTIST, 
+	CLOTHING,
 	ACADEMIC, 
 	MUSICAL, 
 	INFLUENCER,
 	NERD, 
-	OUTCAST
+	OUTCAST, 
+	TOY,
 	}
 
 enum Enemy {

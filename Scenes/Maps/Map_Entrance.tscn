@@ -20,7 +20,7 @@ player = NodePath("../Forgound Rendering Node/StudentEntity")
 game_time = NodePath("GameTimeLimit")
 game_ui = NodePath("../CanvasLayer/Game UI")
 enemy_spawner = NodePath("EnemySpawner")
-reroll_counter = 20
+reroll_counter = 1000000
 
 [node name="GameTimeLimit" type="Timer" parent="Game Local"]
 wait_time = 300.0

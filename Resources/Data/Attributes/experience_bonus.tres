@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="AttributeResource" load_steps=2 format=3 uid="uid://d1pt71eggayje"]
+
+[ext_resource type="Script" uid="uid://cfnxcuwnotvhw" path="res://Scripts/Abstract Classes/Resource/attribute_resource.gd" id="1_nry7m"]
+
+[resource]
+script = ExtResource("1_nry7m")
+name = "XP Bonus"
+id = "experience_bonus"
+ordinal = 4
+color = Color(0, 0, 0, 1)
+description = "Controls Student's Health"
+value = 0.0
+min_limit = 0.0
+max_limit = 0.0
+min_limit_active = false
+max_limit_active = false

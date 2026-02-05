@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="Item_Resource" load_steps=7 format=3 uid="uid://soni45ctnpki"]
+
+[ext_resource type="Texture2D" uid="uid://w82o3yg64d45" path="res://Assets/Image/Items/Baseball_Cap_128.png" id="1_at06r"]
+[ext_resource type="Script" uid="uid://l7aipj0jfga8" path="res://Scripts/Abstract Classes/Item/item_effect.gd" id="2_s2l2s"]
+[ext_resource type="Script" uid="uid://uibb0wxuei0a" path="res://Scripts/Abstract Classes/Item/item_effect_attribute.gd" id="4_uuxfq"]
+[ext_resource type="Resource" uid="uid://mno0drh8g3i8" path="res://Resources/Data/Attributes/attack_range.tres" id="5_ffnks"]
+[ext_resource type="Script" uid="uid://4pylfu4f1res" path="res://Scripts/Abstract Classes/Resource/item_resource.gd" id="6_dvesd"]
+
+[sub_resource type="Resource" id="Resource_w0bft"]
+script = ExtResource("4_uuxfq")
+attribute = ExtResource("5_ffnks")
+base_value = 0.1
+base_stack_mod = 0.1
+metadata/_custom_type_script = "uid://uibb0wxuei0a"
+
+[resource]
+script = ExtResource("6_dvesd")
+item_name = "Hat"
+item_id = "baseball_cap"
+item_description = ""
+tool_tip = ""
+unlocked = false
+group_tags = 1
+rarity = 0
+image = ExtResource("1_at06r")
+max_count = 0
+unique = false
+item_effects = Array[ExtResource("2_s2l2s")]([SubResource("Resource_w0bft")])
+metadata/_custom_type_script = "uid://4pylfu4f1res"

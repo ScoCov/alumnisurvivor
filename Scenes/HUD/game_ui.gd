@@ -32,9 +32,15 @@ func _get_configuration_warnings():
 		msg.append("Game UI lacks needed objects. %s" % [["player", "game_logic", "render_node"]])
 	return msg
 	
+func update_health_values():
+	game_hud.update_health_values()
+	
 func _unhandled_input(event):
 	if event is InputEventKey and event.is_action_pressed("pause"):
-		display_pause_menu()
+		if pause_menu.visible:
+			display_game_ui()
+		else:
+			display_pause_menu()
  
 func student_loaded(): ## I am not understanding load order so using _ready() hasn't worked out. 
 	game_hud.update_hud_static()

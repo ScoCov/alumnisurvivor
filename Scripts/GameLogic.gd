@@ -20,8 +20,6 @@ extends Node
 @export var game_ui: Game_Ui
 @export var enemy_spawner: Enemy_Spawner
 @export var reroll_counter: int = 1
-#@export var ban_counter: int = 1
-#@export var ban_list: Array[Item_Resource]
 	
 func _get_configuration_warnings():
 	var msg: Array[String]
@@ -43,6 +41,7 @@ func _ready() -> void:
 		game_time.timeout.connect(game_over)
 
 func student_load():
+		player.items.item_count_increased.connect(game_ui.update_health_values)
 		game_ui.student_loaded()
 		
 func debug_mode():

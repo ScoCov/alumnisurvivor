@@ -1,17 +1,16 @@
-[gd_resource type="Resource" script_class="Item_Resource" load_steps=6 format=3 uid="uid://dbxy0th4dl51"]
+[gd_resource type="Resource" script_class="Item_Resource" load_steps=7 format=3 uid="uid://dbxy0th4dl51"]
 
 [ext_resource type="Script" uid="uid://4pylfu4f1res" path="res://Scripts/Abstract Classes/Resource/item_resource.gd" id="1_hfen4"]
 [ext_resource type="Script" uid="uid://l7aipj0jfga8" path="res://Scripts/Abstract Classes/Item/item_effect.gd" id="1_i8div"]
-[ext_resource type="Resource" uid="uid://bmg5pkypsljug" path="res://Resources/Data/Attributes/critical_damage.tres" id="2_wwxpc"]
+[ext_resource type="Texture2D" uid="uid://qmt4t7h0pasx" path="res://Assets/Image/Items/Sunhat_128.png" id="1_wwxpc"]
 [ext_resource type="Script" uid="uid://uibb0wxuei0a" path="res://Scripts/Abstract Classes/Item/item_effect_attribute.gd" id="3_lvk4q"]
+[ext_resource type="Resource" uid="uid://gl46emysxfo3" path="res://Resources/Data/Attributes/damage.tres" id="3_xpofp"]
 
-[sub_resource type="Resource" id="Resource_xpofp"]
+[sub_resource type="Resource" id="Resource_lvk4q"]
 script = ExtResource("3_lvk4q")
-attribute = ExtResource("2_wwxpc")
-base_value = 1.0
-base_stack_mod = 0.0
-percentage_value = 0.0
-percentage_stack_mod = 0.0
+attribute = ExtResource("3_xpofp")
+base_value = 0.03
+base_stack_mod = 0.03
 metadata/_custom_type_script = "uid://uibb0wxuei0a"
 
 [resource]
@@ -21,9 +20,10 @@ item_id = "sun_hat"
 item_description = ""
 tool_tip = ""
 unlocked = false
-group_tags = 0
+group_tags = 5
 rarity = 0
+image = ExtResource("1_wwxpc")
 max_count = 0
 unique = false
-item_effects = Array[ExtResource("1_i8div")]([SubResource("Resource_xpofp")])
+item_effects = Array[ExtResource("1_i8div")]([SubResource("Resource_lvk4q")])
 metadata/_custom_type_script = "uid://4pylfu4f1res"

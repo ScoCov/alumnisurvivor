@@ -24,6 +24,8 @@ extends Node
 		pass
 	get:
 		var item_value: float = (entity as Student_Entity).items.get_attribute_bonus(resource.id)
+		if item_value != 0:
+			var temp = false 
 		var _base_speed = base_movement_speed * (1+item_value )
 		if is_dash:
 			return _base_speed * dash_movement_percentage 

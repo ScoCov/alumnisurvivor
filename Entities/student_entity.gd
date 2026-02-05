@@ -52,6 +52,7 @@ func _ready():
 	get_universal_components()
 	abilities.starting_ability = starting_ability
 	dashes.visible = is_controllable
+	items = $Items
 	loaded.emit()
 	
 func _render_student() -> void:

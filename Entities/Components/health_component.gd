@@ -1,4 +1,3 @@
-@tool
 class_name Health_Component
 extends Node
 
@@ -8,6 +7,7 @@ signal damage_healed
 signal damage_lethal
 
 const hit_colors: Array[Color] = [Color.GREEN, Color.RED]
+const RESOURCE = preload("res://Resources/Data/Attributes/health.tres")
 
 ## Allows cheats to be applied.
 @export_group("Debug Mode")
@@ -16,7 +16,13 @@ const hit_colors: Array[Color] = [Color.GREEN, Color.RED]
 @export_category("Health")
 ## This is the health the character will start with at the beginning of the game.
 ## Eventually, the player will have the option to increase this value.
-@export var maximum_health: int = 10;
+const MAX_HEALTH: = 10
+@export var maximum_health: int = 10:
+	get():
+		if get_parent() is Student_Entity:
+			return _get_maximum_health()
+		else:
+			return maximum_health
 
 @export var current_health: int = 10:
 	set(value):
@@ -90,3 +96,10 @@ func _on_invulnerability_timer_timeout():
 func emit_hit_indication(entity: Entity, amount: float):
 	strike.position = entity.position
 	strike.particle.emitting = true
+
+
+func _get_maximum_health() -> float:
+	var bonus_max_health = 0
+	if get_parent().get_children().any(func(child): return child.name.to_lower() == "items"):
+		bonus_max_health = get_parent().items.get_attribute_bonus(RESOURCE.id)
+	return floor(MAX_HEALTH + bonus_max_health)

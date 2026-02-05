@@ -1,3 +1,4 @@
+@tool
 extends Node
 class_name Item_Container
 
@@ -50,19 +51,24 @@ func _attributes_to_dict(_item_stack: Item_Stack):
 		var attr = _attributes.get_or_add(iea.attribute.id, {"items":[]})
 		if attr.items.any(func(obj): return obj.has(_item_stack.item.item_id)):
 			var _item_index =  attr.items.find_custom(func(obj): return obj.has(_item_stack.item.item_id))
-			attr.items[_item_index].assign(create_dict_row(_item_stack, iea))
+			attr.items[_item_index].assign(_create_dict_row(_item_stack, iea))
 		else:
-			attr.items.append(create_dict_row(_item_stack, iea))
+			attr.items.append(_create_dict_row(_item_stack, iea))
 				
 ## Returns the value to be treated as the singular [item_bonus] on abilities and actions. 
 func get_attribute_bonus(attribute_id: String) -> float:
 	var attr = _attributes.get(attribute_id)
 	var sum: float = 0
 	if not attr: return 0
+	if attribute_id == "movement_speed":
+		var temp = false
 	for obj in attr.items:
-		sum += (obj.growth_value * obj.count)
+		var base = obj.base_value
+		var growth = obj.growth_value
+		var count = obj.count
+		sum += obj.base_value + (obj.growth_value * (obj.count -1))
 	return sum
 
-func create_dict_row(_item_stack: Item_Stack, iea: Item_Effect_Attribute) -> Dictionary:
+func _create_dict_row(_item_stack: Item_Stack, iea: Item_Effect_Attribute) -> Dictionary:
 	var _item = _item_stack.item
 	return {_item.item_id: _item, "count": _item_stack.count, "base_value": iea.base_value , "growth_value": iea.base_stack_mod}

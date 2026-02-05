@@ -1,0 +1,370 @@
+[gd_scene load_steps=2 format=3 uid="uid://4rnoles5vrjp"]
+
+[ext_resource type="Script" uid="uid://dhw4ctafucjbh" path="res://Scenes/HUD/stat_block.gd" id="1_714vj"]
+
+[node name="StatBlock" type="Control"]
+layout_mode = 3
+anchor_right = 0.304688
+anchor_bottom = 0.802469
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_714vj")
+metadata/_edit_use_anchors_ = true
+
+[node name="Background" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 23.0
+grow_horizontal = 2
+text = "Attribute Modifiers"
+horizontal_alignment = 1
+
+[node name="Margin" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.0539906
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 4
+metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Margin"]
+layout_mode = 2
+
+[node name="health" type="Label" parent="Margin/VBoxContainer"]
+layout_mode = 2
+text = "Health"
+
+[node name="Label" type="Label" parent="Margin/VBoxContainer/health"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -1.0
+offset_top = -11.5
+offset_bottom = 11.5
+grow_horizontal = 0
+grow_vertical = 2
+text = "0"
+horizontal_alignment = 2
+
+[node name="health_regen" type="Label" parent="Margin/VBoxContainer"]
+layout_mode = 2
+text = "Health Regen"
+
+[node name="Label" type="Label" parent="Margin/VBoxContainer/health_regen"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -1.0
+offset_top = -11.5
+offset_bottom = 11.5
+grow_horizontal = 0
+grow_vertical = 2
+text = "0"
+horizontal_alignment = 2
+
+[node name="armor" type="Label" parent="Margin/VBoxContainer"]
+layout_mode = 2
+text = "Armor"
+
+[node name="Label" type="Label" parent="Margin/VBoxContainer/armor"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -1.0
+offset_top = -11.5
+offset_bottom = 11.5
+grow_horizontal = 0
+grow_vertical = 2
+text = "0"
+horizontal_alignment = 2
+
+[node name="dodge" type="Label" parent="Margin/VBoxContainer"]
+layout_mode = 2
+text = "Dodge"
+
+[node name="Label" type="Label" parent="Margin/VBoxContainer/dodge"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -1.0
+offset_top = -11.5
+offset_bottom = 11.5
+grow_horizontal = 0
+grow_vertical = 2
+text = "0"
+horizontal_alignment = 2
+
+[node name="movement_speed" type="Label" parent="Margin/VBoxContainer"]
+layout_mode = 2
+text = "Movement Speed"
+
+[node name="Label" type="Label" parent="Margin/VBoxContainer/movement_speed"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -1.0
+offset_top = -11.5
+offset_bottom = 11.5
+grow_horizontal = 0
+grow_vertical = 2
+text = "0"
+horizontal_alignment = 2
+
+[node name="damage" type="Label" parent="Margin/VBoxContainer"]
+layout_mode = 2
+text = "Damage"
+
+[node name="Label" type="Label" parent="Margin/VBoxContainer/damage"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -1.0
+offset_top = -11.5
+offset_bottom = 11.5
+grow_horizontal = 0
+grow_vertical = 2
+text = "0"
+horizontal_alignment = 2
+
+[node name="critical_chance" type="Label" parent="Margin/VBoxContainer"]
+layout_mode = 2
+text = "Critical Chance"
+
+[node name="Label" type="Label" parent="Margin/VBoxContainer/critical_chance"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -1.0
+offset_top = -11.5
+offset_bottom = 11.5
+grow_horizontal = 0
+grow_vertical = 2
+text = "0"
+horizontal_alignment = 2
+
+[node name="critical_damage" type="Label" parent="Margin/VBoxContainer"]
+layout_mode = 2
+text = "Critical Damage"
+
+[node name="Label" type="Label" parent="Margin/VBoxContainer/critical_damage"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -1.0
+offset_top = -11.5
+offset_bottom = 11.5
+grow_horizontal = 0
+grow_vertical = 2
+text = "0"
+horizontal_alignment = 2
+
+[node name="attack_range" type="Label" parent="Margin/VBoxContainer"]
+layout_mode = 2
+text = "Attack Range"
+
+[node name="Label" type="Label" parent="Margin/VBoxContainer/attack_range"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -1.0
+offset_top = -11.5
+offset_bottom = 11.5
+grow_horizontal = 0
+grow_vertical = 2
+text = "0"
+horizontal_alignment = 2
+
+[node name="attack_speed" type="Label" parent="Margin/VBoxContainer"]
+layout_mode = 2
+text = "Attack Speed"
+
+[node name="Label" type="Label" parent="Margin/VBoxContainer/attack_speed"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -1.0
+offset_top = -11.5
+offset_bottom = 11.5
+grow_horizontal = 0
+grow_vertical = 2
+text = "0"
+horizontal_alignment = 2
+
+[node name="cooldown" type="Label" parent="Margin/VBoxContainer"]
+layout_mode = 2
+text = "Cooldown"
+
+[node name="Label" type="Label" parent="Margin/VBoxContainer/cooldown"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -1.0
+offset_top = -11.5
+offset_bottom = 11.5
+grow_horizontal = 0
+grow_vertical = 2
+text = "0"
+horizontal_alignment = 2
+
+[node name="duration" type="Label" parent="Margin/VBoxContainer"]
+layout_mode = 2
+text = "Duration"
+
+[node name="Label" type="Label" parent="Margin/VBoxContainer/duration"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -1.0
+offset_top = -11.5
+offset_bottom = 11.5
+grow_horizontal = 0
+grow_vertical = 2
+text = "0"
+horizontal_alignment = 2
+
+[node name="knockback" type="Label" parent="Margin/VBoxContainer"]
+layout_mode = 2
+text = "Knockback"
+
+[node name="Label" type="Label" parent="Margin/VBoxContainer/knockback"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -1.0
+offset_top = -11.5
+offset_bottom = 11.5
+grow_horizontal = 0
+grow_vertical = 2
+text = "0"
+horizontal_alignment = 2
+
+[node name="bounce" type="Label" parent="Margin/VBoxContainer"]
+layout_mode = 2
+text = "Bounce"
+
+[node name="Label" type="Label" parent="Margin/VBoxContainer/bounce"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -1.0
+offset_top = -11.5
+offset_bottom = 11.5
+grow_horizontal = 0
+grow_vertical = 2
+text = "0"
+horizontal_alignment = 2
+
+[node name="pierce" type="Label" parent="Margin/VBoxContainer"]
+layout_mode = 2
+text = "Pierce"
+
+[node name="Label" type="Label" parent="Margin/VBoxContainer/pierce"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -1.0
+offset_top = -11.5
+offset_bottom = 11.5
+grow_horizontal = 0
+grow_vertical = 2
+text = "0"
+horizontal_alignment = 2
+
+[node name="collection_range" type="Label" parent="Margin/VBoxContainer"]
+layout_mode = 2
+text = "Collection Range"
+
+[node name="Label" type="Label" parent="Margin/VBoxContainer/collection_range"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -1.0
+offset_top = -11.5
+offset_bottom = 11.5
+grow_horizontal = 0
+grow_vertical = 2
+rotation = 4.59225e-05
+text = "0"
+horizontal_alignment = 2
+
+[node name="pickup_range" type="Label" parent="Margin/VBoxContainer"]
+layout_mode = 2
+text = "Pickup Range"
+
+[node name="Label" type="Label" parent="Margin/VBoxContainer/pickup_range"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -1.0
+offset_top = -11.5
+offset_bottom = 11.5
+grow_horizontal = 0
+grow_vertical = 2
+text = "0"
+horizontal_alignment = 2
