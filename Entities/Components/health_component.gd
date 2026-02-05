@@ -8,6 +8,10 @@ signal damage_lethal
 
 const hit_colors: Array[Color] = [Color.GREEN, Color.RED]
 const RESOURCE = preload("res://Resources/Data/Attributes/health.tres")
+const REGEN_RES = preload("res://Resources/Data/Attributes/health_regen.tres")
+const HEALTH_REGEN_DEFAULT_WAIT_TIME: float = 10
+const _taking_damage_particles:= preload("res://Entities/Effects/taking_damage.tscn")
+const _healing_damage_particles:= preload("res://Entities/Effects/healing_damage.tscn")
 
 ## Allows cheats to be applied.
 @export_group("Debug Mode")
@@ -29,6 +33,8 @@ const MAX_HEALTH: = 10
 		current_health = value
 		if current_health < 1:
 			damage_lethal.emit()
+		if current_health < maximum_health and health_regen.is_stopped():
+			health_regen.start()
 
 ## Percentage of how much health can be gained passed the maximum health. Default = 0.25 (25%)
 @export var over_health_maximum: float = 0.25
@@ -37,7 +43,17 @@ var overhealth_maximum_limit: int:
 		pass
 	get:
 		return floor(maximum_health * over_health_maximum)
+@export var regen_base: float = 10
+#@export var regen_base: float = 5.0
+@export var regen_scale: float = 7.225
+var _can_regen: bool:
+	get():
+		var value = 0
+		if get_parent().get_children().any(func(child): return child.name.to_lower() == "items"):
+			value = get_parent().items.get_attribute_bonus(REGEN_RES.id)
+		return value > 0
 
+@export_group("Armor")
 ## Armor will be applied to a logarithmic function, to provide a value. log(armor) * 100
 @export var armor: int = 0;
 ## Flat value to reduce damage
@@ -53,8 +69,12 @@ var overhealth_maximum_limit: int:
 		if has_node("Invulnerability Timer"):
 			$"Invulnerability Timer".wait_time = value
 
+
+
+
 @onready var invulnerability_timer = $"Invulnerability Timer"
 @onready var strike = $Strike
+@onready var health_regen: Timer = $"Health Regen"
 
 var active_state: State:
 	set(value):
@@ -64,8 +84,13 @@ var active_state: State:
 			return ($Statemachine as State_Machine).current_state
 		return null
 
-const _taking_damage_particles:= preload("res://Entities/Effects/taking_damage.tscn")
-const _healing_damage_particles:= preload("res://Entities/Effects/healing_damage.tscn")
+
+func _process(delta):
+	if current_health < maximum_health and _can_regen and health_regen.is_stopped():
+		print("[Process] Health Regen Timer: %s (%s/1-sec)" % [health_regen.wait_time,1/health_regen.wait_time ] )
+		var value = HEALTH_REGEN_DEFAULT_WAIT_TIME * get_parent().items.get_attribute_bonus(REGEN_RES.id)
+		health_regen.wait_time = regen_base * (regen_base/(1 + ((value -1) / regen_scale)))
+		health_regen.start()
 
 func _get_configuration_warnings():
 	var msg: Array[String]
@@ -77,12 +102,12 @@ func attempt_damage(damage_dealt: float):
 	if invulnerable: return
 	## Deal Damage
 	current_health += floor(damage_dealt)
-	
 	## Determine if invul and what type of damage to emit
 	if damage_dealt < 0: 
 		damage_taken.emit()
 		invulnerable = true
 		invulnerability_timer.start()
+
 	elif damage_dealt > 0:
 		damage_healed.emit()
 	elif damage_dealt == 0:
@@ -97,9 +122,18 @@ func emit_hit_indication(entity: Entity, amount: float):
 	strike.position = entity.position
 	strike.particle.emitting = true
 
-
 func _get_maximum_health() -> float:
 	var bonus_max_health = 0
 	if get_parent().get_children().any(func(child): return child.name.to_lower() == "items"):
 		bonus_max_health = get_parent().items.get_attribute_bonus(RESOURCE.id)
 	return floor(MAX_HEALTH + bonus_max_health)
+
+func _passive_healing():
+	if current_health < maximum_health and _can_regen:
+		attempt_damage(1)
+	## If Health is still below max, then allow the timer to continue. 
+	if current_health < maximum_health and _can_regen:
+		var value = HEALTH_REGEN_DEFAULT_WAIT_TIME * get_parent().items.get_attribute_bonus(REGEN_RES.id)
+		health_regen.wait_time = regen_base * (regen_base/(1 + ((value -1) / regen_scale)))
+		print("[_passive] Health Regen Timer: %s (%s/1-sec)" % [health_regen.wait_time,1/health_regen.wait_time ] )
+		health_regen.start()

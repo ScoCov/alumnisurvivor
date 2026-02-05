@@ -10,14 +10,14 @@
 script = ExtResource("4_jl6tm")
 attribute = ExtResource("3_d8mul")
 base_value = 1.0
-base_stack_mod = 0.0
+base_stack_mod = 1.0
 metadata/_custom_type_script = "uid://uibb0wxuei0a"
 
 [sub_resource type="Resource" id="Resource_5qa2o"]
 script = ExtResource("4_jl6tm")
 attribute = ExtResource("5_jl6tm")
-base_value = 0.0
-base_stack_mod = 0.0
+base_value = -0.1
+base_stack_mod = -0.1
 metadata/_custom_type_script = "uid://uibb0wxuei0a"
 
 [resource]

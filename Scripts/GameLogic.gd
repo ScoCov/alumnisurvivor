@@ -41,7 +41,7 @@ func _ready() -> void:
 		game_time.timeout.connect(game_over)
 
 func student_load():
-		player.items.item_count_increased.connect(game_ui.update_health_values)
+		#player.items.item_count_increased.connect(game_ui.update_health_values)
 		game_ui.student_loaded()
 		
 func debug_mode():

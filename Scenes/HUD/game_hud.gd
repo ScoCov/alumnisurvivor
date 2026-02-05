@@ -20,6 +20,8 @@ func _ready():
 func _process(_delta):
 	if game_ui.debug_mode:
 		update_debug_info()
+	update_health_values()
+
 	
 func update_items():
 	var items = $"Debug Info/MarginContainer/VBoxContainer/Items"
@@ -33,7 +35,7 @@ func update_hud_static():
 	update_faces(Global.SELECTED_STUDENT, STUDENT_OPTIONS.STUDENT)
 	update_faces(Global.SELECTED_BESTY, STUDENT_OPTIONS.BESTY)
 	## Update Health
-	update_health_values()
+	#update_health_values()
 	## Update Experience
 	update_experience_values()
 		

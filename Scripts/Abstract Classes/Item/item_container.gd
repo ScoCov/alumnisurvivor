@@ -60,8 +60,7 @@ func get_attribute_bonus(attribute_id: String) -> float:
 	var attr = _attributes.get(attribute_id)
 	var sum: float = 0
 	if not attr: return 0
-	if attribute_id == "movement_speed":
-		var temp = false
+
 	for obj in attr.items:
 		var base = obj.base_value
 		var growth = obj.growth_value

@@ -14,6 +14,7 @@
 
 [node name="HealthComponent" type="Node"]
 script = ExtResource("1_bbh48")
+regen_base = 5.0
 
 [node name="Statemachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("2_lr4gt")
@@ -61,4 +62,8 @@ wait_time = 0.33
 image = ExtResource("11_t2ae7")
 emitting = false
 
+[node name="Health Regen" type="Timer" parent="."]
+one_shot = true
+
 [connection signal="timeout" from="Invulnerability Timer" to="." method="_on_invulnerability_timer_timeout"]
+[connection signal="timeout" from="Health Regen" to="." method="_passive_healing"]

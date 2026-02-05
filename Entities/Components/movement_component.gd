@@ -1,6 +1,8 @@
 class_name Movement_Component
 extends Node
 
+const RESOURCE: AttributeResource = preload("res://Resources/Data/Attributes/movement_speed.tres")
+
 @export_category("Meta")
 ## This can be any player or enemy.
 @export var entity: CharacterBody2D
@@ -23,9 +25,7 @@ extends Node
 	set(value):
 		pass
 	get:
-		var item_value: float = (entity as Student_Entity).items.get_attribute_bonus(resource.id)
-		if item_value != 0:
-			var temp = false 
+		var item_value: float = (entity as Student_Entity).items.get_attribute_bonus(RESOURCE.id)
 		var _base_speed = base_movement_speed * (1+item_value )
 		if is_dash:
 			return _base_speed * dash_movement_percentage 
@@ -37,7 +37,6 @@ extends Node
 		dash_timer_length = value
 
 var last_movement_direction: Vector2
-var resource: AttributeResource = load("res://Resources/Data/Attributes/movement_speed.tres")
 var active_state: State:
 	set(value):
 		pass

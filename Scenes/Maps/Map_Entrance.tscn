@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dxs4mstvhwgv"]
+[gd_scene load_steps=12 format=3 uid="uid://dxs4mstvhwgv"]
 
 [ext_resource type="Script" uid="uid://dy7n5gmkswm47" path="res://Scripts/GameLogic.gd" id="1_ujiyw"]
 [ext_resource type="Script" uid="uid://wj4520tlhte0" path="res://Scripts/Spawner/enemy_spawner.gd" id="2_wyfbo"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://bh2ur6pblyj8n" path="res://Scenes/Maps/Shared/continuous_floor.tscn" id="7_c8ydw"]
 [ext_resource type="PackedScene" uid="uid://v1phrdf8cdqg" path="res://Entities/student_entity.tscn" id="8_c8ydw"]
 [ext_resource type="Resource" uid="uid://mreamsv3sg1" path="res://Resources/Data/Abilities/baseball_bat.tres" id="10_8es3b"]
+[ext_resource type="PackedScene" uid="uid://ce6c247nfjdn6" path="res://Scenes/Maps/tile_trap.tscn" id="11_670kd"]
 
 [node name="MapEntrance" type="Node2D"]
 
@@ -54,3 +55,6 @@ starting_ability = ExtResource("10_8es3b")
 [node name="Camera2D" type="Camera2D" parent="Forgound Rendering Node/StudentEntity"]
 
 [node name="EnemyContainer" type="Node2D" parent="Forgound Rendering Node"]
+
+[node name="TileTrap" parent="." instance=ExtResource("11_670kd")]
+position = Vector2(820, 365)
