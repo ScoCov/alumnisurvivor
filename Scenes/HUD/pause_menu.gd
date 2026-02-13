@@ -9,7 +9,9 @@ signal ready_signal
 @export var game_ui: Game_Ui:
 	set(value):
 		game_ui = value
+@export var student: Student_Entity
 @onready var stat_block = $StatBlock
+@onready var item_list_pause = $ItemListPause
 
 func _ready():
 	emit_signal("ready_signal")
@@ -24,3 +26,8 @@ func _on_quit_pressed():
 
 func _on_game_paused():
 	stat_block.menu_update()
+	item_list_pause.student = game_ui.player
+
+func _on_main_menu_pressed():
+	get_tree().paused = false
+	get_tree().change_scene_to_file("res://Scenes/MainMenu.tscn")

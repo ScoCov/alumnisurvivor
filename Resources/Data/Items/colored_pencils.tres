@@ -10,8 +10,7 @@ script = ExtResource("3_uwjk5")
 attribute = ExtResource("2_b1oxm")
 base_value = 5.0
 base_stack_mod = 5.0
-percentage_value = 0.0
-percentage_stack_mod = 0.0
+effect = "Neutral"
 metadata/_custom_type_script = "uid://uibb0wxuei0a"
 
 [resource]

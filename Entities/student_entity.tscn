@@ -117,12 +117,6 @@ script = ExtResource("14_o4euj")
 [node name="DashIndicator" parent="Dashes" instance=ExtResource("14_iwsns")]
 layout_mode = 2
 
-[node name="DashIndicator2" parent="Dashes" instance=ExtResource("14_iwsns")]
-layout_mode = 2
-
-[node name="DashIndicator3" parent="Dashes" instance=ExtResource("14_iwsns")]
-layout_mode = 2
-
 [node name="HealthComponent" parent="." instance=ExtResource("3_goiee")]
 maximum_health = 0
 

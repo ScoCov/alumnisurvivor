@@ -15,7 +15,6 @@ func populate_student_roster() -> void:
 	for student: StudentResource in Global.STUDENT_ROSTER:
 		var new_student_icon: Student_Icon = student_icon_scene.instantiate()
 		new_student_icon.student = student
-		#new_student_icon.connect("focus_entered", func(): update_student_doll(student) )
 		new_student_icon.focus_entered.connect(update_student_doll.bind(student) )
 		if not student.unlocked:
 			new_student_icon.focus_mode = Control.FOCUS_NONE
@@ -30,10 +29,6 @@ func update_student_doll(student: StudentResource):
 	$"Doll Container/RichTextLabel".text = "%s" % student.student_name
 	for row in attribute_container.get_children():
 		row.queue_free()
-	for attribute: AttributeResource in Global.ATTRIBUTES:
-		if not student[attribute.id] == null:
-			attribute_container.add_child(
-				create_stat_row(student, attribute))
 				
 func select_student_as_player(student, student_icon):
 	print("Select_student_as_player has triggered")

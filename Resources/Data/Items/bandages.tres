@@ -11,6 +11,7 @@ script = ExtResource("4_4qdla")
 attribute = ExtResource("3_6v8w8")
 base_value = 3.0
 base_stack_mod = 3.0
+effect = "Good"
 metadata/_custom_type_script = "uid://uibb0wxuei0a"
 
 [resource]

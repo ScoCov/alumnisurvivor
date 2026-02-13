@@ -1,0 +1,86 @@
+[gd_scene load_steps=5 format=3 uid="uid://cxffa38i13cmc"]
+
+[ext_resource type="Script" uid="uid://dfoon5cp1igut" path="res://Scenes/HUD/item_node.gd" id="1_rpx7c"]
+[ext_resource type="Resource" uid="uid://soni45ctnpki" path="res://Resources/Data/Items/baseball_cap.tres" id="2_6k0tf"]
+[ext_resource type="Texture2D" uid="uid://w82o3yg64d45" path="res://Assets/Image/Items/Baseball_Cap_128.png" id="3_b1pjv"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6k0tf"]
+bg_color = Color(0, 0, 0, 0.294118)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[node name="ItemNode" type="Control"]
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 3
+anchor_right = 0.0833333
+anchor_bottom = 0.148148
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_rpx7c")
+debug_item = ExtResource("2_6k0tf")
+
+[node name="Background" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_6k0tf")
+metadata/_edit_use_anchors_ = true
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+use_top_left = true
+
+[node name="Sprite2D" type="Sprite2D" parent="MarginContainer/CenterContainer"]
+scale = Vector2(0.55, 0.55)
+texture = ExtResource("3_b1pjv")
+centered = false
+
+[node name="Count_Margin" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -25.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Count_Margin"]
+layout_mode = 2
+tooltip_auto_translate_mode = 2
+mouse_filter = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+bbcode_enabled = true
+text = "X1"
+horizontal_alignment = 2
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[connection signal="loaded" from="." to="." method="_on_loaded"]

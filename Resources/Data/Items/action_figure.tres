@@ -10,6 +10,7 @@ script = ExtResource("4_h1usc")
 attribute = ExtResource("2_jtun0")
 base_value = 100.0
 base_stack_mod = 0.0
+effect = "Neutral"
 metadata/_custom_type_script = "uid://uibb0wxuei0a"
 
 [resource]

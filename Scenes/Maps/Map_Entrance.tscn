@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dxs4mstvhwgv"]
+[gd_scene load_steps=14 format=3 uid="uid://dxs4mstvhwgv"]
 
 [ext_resource type="Script" uid="uid://dy7n5gmkswm47" path="res://Scripts/GameLogic.gd" id="1_ujiyw"]
 [ext_resource type="Script" uid="uid://wj4520tlhte0" path="res://Scripts/Spawner/enemy_spawner.gd" id="2_wyfbo"]
@@ -11,6 +11,8 @@
 [ext_resource type="PackedScene" uid="uid://v1phrdf8cdqg" path="res://Entities/student_entity.tscn" id="8_c8ydw"]
 [ext_resource type="Resource" uid="uid://mreamsv3sg1" path="res://Resources/Data/Abilities/baseball_bat.tres" id="10_8es3b"]
 [ext_resource type="PackedScene" uid="uid://ce6c247nfjdn6" path="res://Scenes/Maps/tile_trap.tscn" id="11_670kd"]
+[ext_resource type="Resource" uid="uid://damgk0ps128qe" path="res://Resources/Data/Items/bandages.tres" id="12_wyfbo"]
+[ext_resource type="Resource" uid="uid://06bb5bg5r7xp" path="res://Resources/Data/Items/puzzle_cube.tres" id="13_j0m0t"]
 
 [node name="MapEntrance" type="Node2D"]
 
@@ -58,3 +60,15 @@ starting_ability = ExtResource("10_8es3b")
 
 [node name="TileTrap" parent="." instance=ExtResource("11_670kd")]
 position = Vector2(820, 365)
+
+[node name="TileTrap2" parent="." instance=ExtResource("11_670kd")]
+position = Vector2(827, 587)
+tile_mode = "Item"
+tile_color = Color(1, 0, 0, 1)
+item = ExtResource("12_wyfbo")
+
+[node name="TileTrap3" parent="." instance=ExtResource("11_670kd")]
+position = Vector2(822, 476)
+tile_mode = "Item"
+tile_color = Color(1, 0, 0, 1)
+item = ExtResource("13_j0m0t")

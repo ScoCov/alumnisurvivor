@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=3 uid="uid://bvbbn652fppor"]
+
+[ext_resource type="Script" uid="uid://bsn2gp5a8qt6c" path="res://Scenes/HUD/item_node_tooltip_custom.gd" id="1_bns38"]
+
+[node name="ItemNodeTooltipCustom" type="RichTextLabel"]
+custom_minimum_size = Vector2(250, 325)
+anchors_preset = -1
+anchor_right = 0.217014
+anchor_bottom = 0.501543
+offset_bottom = -250.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+bbcode_enabled = true
+text = "[center]Example Text[/center]
+
+[left]Attribute_Name:[/left][color=\"green\"][right]+1 [/right][/color]
+[left]Attribute_Name:[/left][color=red][right]-1[/right][/color]
+[left]Attribute_Name:[/left][color=green][right]+1[/right][/color]"
+script = ExtResource("1_bns38")
+metadata/_edit_use_anchors_ = true
+
+[connection signal="loaded" from="." to="." method="_on_loaded"]

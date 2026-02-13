@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://seskgbg740b2"]
+[gd_scene load_steps=6 format=3 uid="uid://seskgbg740b2"]
 
 [ext_resource type="Script" uid="uid://cxg7u6d0pvlnd" path="res://Scenes/HUD/pause_menu.gd" id="1_pw5hu"]
 [ext_resource type="Theme" uid="uid://dtoedfkuckej4" path="res://Assets/Image/UI/Themes/menu_theme.tres" id="2_dj1e7"]
 [ext_resource type="PackedScene" uid="uid://4rnoles5vrjp" path="res://Scenes/HUD/stat_block.tscn" id="3_dmjpy"]
+[ext_resource type="PackedScene" uid="uid://cu26bnhonqbb1" path="res://Scenes/HUD/item_list_pause.tscn" id="4_f0sgo"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dj1e7"]
 bg_color = Color(0.175125, 0.0320173, 0.0593538, 0.945098)
@@ -61,6 +62,10 @@ focus_next = NodePath("../Quit")
 focus_previous = NodePath("../Quit")
 text = "Resume"
 
+[node name="Main Menu" type="Button" parent="Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Main Menu"
+
 [node name="Quit" type="Button" parent="Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
 focus_next = NodePath("../Resume")
@@ -81,8 +86,20 @@ metadata/_edit_lock_ = true
 
 [node name="StatBlock" parent="." instance=ExtResource("3_dmjpy")]
 layout_mode = 1
+anchor_left = 0.0529514
+anchor_top = 0.123457
+anchor_right = 0.357639
+anchor_bottom = 0.925926
+
+[node name="ItemListPause" parent="." instance=ExtResource("4_f0sgo")]
+layout_mode = 1
+offset_left = 729.0
+offset_top = 46.0
+offset_right = -39.0
+offset_bottom = -26.0
 
 [connection signal="game_paused" from="." to="." method="_on_game_paused"]
 [connection signal="ready_signal" from="." to="." method="_on_ready_signal"]
 [connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/Main Menu" to="." method="_on_main_menu_pressed"]
 [connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]

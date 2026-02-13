@@ -11,7 +11,7 @@ signal experience_gained
 @export var xp_multiplier: float = 0
 @export var level_up_points: int = 0
 
-var resource = load("res://Resources/Data/Attributes/experience_bonus.tres")
+const resource = preload("res://Resources/Data/Attributes/experience_bonus.tres")
 
 func _get_configuration_warnings():
 	if not get_parent() is Student_Entity:

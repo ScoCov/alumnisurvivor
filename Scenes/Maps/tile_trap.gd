@@ -1,11 +1,12 @@
 extends Area2D
 
-@export_enum("Damage", "Heal", "Status Effect") var tile_mode: String = "Damage"
+@export_enum("Damage", "Heal", "Item", "Status Effect") var tile_mode: String = "Damage"
 @export var over_heal: bool = false
 @export var damage_amount: float = 1
 @export var tile_color: Color
 @export var cooldown: float = 0.2
 @export var status_effect: Status_Effect_Resource
+@export var item: Item_Resource
 var entities_in_range: Array[CharacterBody2D]
 
 const SLOW_STATUS: PackedScene = preload("res://Entities/StatusEffects/Statuses/slow_status.tscn")
@@ -16,7 +17,20 @@ const POISON_STATUS: PackedScene = preload("res://Entities/StatusEffects/Statuse
 func _ready():
 	$Activation.wait_time = cooldown
 	$ColorRect.color = tile_color
-	$Label.text = "%s" % tile_mode if tile_mode in ["Heal", "Damage"] else "%s [%s]" % [tile_mode, status_effect.status_name]
+	$Label.text = display_text()
+
+func display_text() -> String:
+	var msg: String = ""
+	match tile_mode:
+		"Damage":
+			msg = "Damage %s" % damage_amount
+		"Heal":
+			msg = "Heal %s" % damage_amount
+		"Status Effect":
+			msg = "%s [%s]" % [tile_mode, status_effect.status_name]
+		"Item":
+			msg = "%s {%s}" % [tile_mode, item.item_name]
+	return msg
 
 ## Determines which tile type is active and will use the appropriate application.
 func activate_trap(entity: CharacterBody2D):
@@ -27,6 +41,8 @@ func activate_trap(entity: CharacterBody2D):
 			activate_heal(entity)
 		"Status Effect":
 			activate_status(entity)
+		"Item":
+			activate_item(entity)
 	
 func activate_status(entity: CharacterBody2D):
 	if not status_effect: return
@@ -42,7 +58,10 @@ func activate_status(entity: CharacterBody2D):
 	if status is Status_Slow or status is  Status_Haste:
 		status.speed_modification = damage_amount
 	entity.status_effects.add_child(status)
-	
+
+func activate_item(entity: CharacterBody2D):
+	if entity is Student_Entity:
+		entity.items.add_item(item)
 
 func activate_damage(entity: CharacterBody2D):
 	var entity_health_comp: Health_Component = entity.health

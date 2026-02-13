@@ -8,7 +8,7 @@ extends Item_Effect
 ## Base Stack Mod will be used to calculate the modifications to be added onto the base value, which 
 ## the value is determined by the stack count multiplied by this value. 
 @export var base_stack_mod: float = 0
-
+@export_enum ("Good", "Bad", "Neutral") var effect: String = "Neutral"
 
 func _to_string() -> String:
 	var msg: String = "%s: %s" % [attribute.name, base_value,]

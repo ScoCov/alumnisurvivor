@@ -1,16 +1,44 @@
-[gd_resource type="Resource" script_class="Item_Resource" load_steps=7 format=3 uid="uid://soni45ctnpki"]
+[gd_resource type="Resource" script_class="Item_Resource" load_steps=13 format=3 uid="uid://soni45ctnpki"]
 
 [ext_resource type="Texture2D" uid="uid://w82o3yg64d45" path="res://Assets/Image/Items/Baseball_Cap_128.png" id="1_at06r"]
 [ext_resource type="Script" uid="uid://l7aipj0jfga8" path="res://Scripts/Abstract Classes/Item/item_effect.gd" id="2_s2l2s"]
 [ext_resource type="Script" uid="uid://uibb0wxuei0a" path="res://Scripts/Abstract Classes/Item/item_effect_attribute.gd" id="4_uuxfq"]
 [ext_resource type="Resource" uid="uid://mno0drh8g3i8" path="res://Resources/Data/Attributes/attack_range.tres" id="5_ffnks"]
+[ext_resource type="Resource" uid="uid://gl46emysxfo3" path="res://Resources/Data/Attributes/damage.tres" id="5_gemmn"]
+[ext_resource type="Resource" uid="uid://dv1f0bnfk5i44" path="res://Resources/Data/Attributes/dodge.tres" id="6_ba6re"]
 [ext_resource type="Script" uid="uid://4pylfu4f1res" path="res://Scripts/Abstract Classes/Resource/item_resource.gd" id="6_dvesd"]
+[ext_resource type="Resource" uid="uid://d1pt71eggayje" path="res://Resources/Data/Attributes/experience_bonus.tres" id="7_uuxfq"]
 
 [sub_resource type="Resource" id="Resource_w0bft"]
 script = ExtResource("4_uuxfq")
 attribute = ExtResource("5_ffnks")
 base_value = 0.1
 base_stack_mod = 0.1
+effect = "Good"
+metadata/_custom_type_script = "uid://uibb0wxuei0a"
+
+[sub_resource type="Resource" id="Resource_s2l2s"]
+script = ExtResource("4_uuxfq")
+attribute = ExtResource("5_gemmn")
+base_value = -0.1
+base_stack_mod = -0.1
+effect = "Bad"
+metadata/_custom_type_script = "uid://uibb0wxuei0a"
+
+[sub_resource type="Resource" id="Resource_ffnks"]
+script = ExtResource("4_uuxfq")
+attribute = ExtResource("6_ba6re")
+base_value = 2.0
+base_stack_mod = 2.0
+effect = "Good"
+metadata/_custom_type_script = "uid://uibb0wxuei0a"
+
+[sub_resource type="Resource" id="Resource_dvesd"]
+script = ExtResource("4_uuxfq")
+attribute = ExtResource("7_uuxfq")
+base_value = 3.0
+base_stack_mod = 3.0
+effect = "Bad"
 metadata/_custom_type_script = "uid://uibb0wxuei0a"
 
 [resource]
@@ -25,5 +53,5 @@ rarity = 0
 image = ExtResource("1_at06r")
 max_count = 0
 unique = false
-item_effects = Array[ExtResource("2_s2l2s")]([SubResource("Resource_w0bft")])
+item_effects = Array[ExtResource("2_s2l2s")]([SubResource("Resource_w0bft"), SubResource("Resource_s2l2s"), SubResource("Resource_ffnks"), SubResource("Resource_dvesd")])
 metadata/_custom_type_script = "uid://4pylfu4f1res"
