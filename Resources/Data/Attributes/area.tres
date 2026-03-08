@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="AttributeResource" load_steps=2 format=3 uid="uid://ckf82hwh76sfm"]
+
+[ext_resource type="Script" uid="uid://cfnxcuwnotvhw" path="res://Scripts/Abstract Classes/Resource/attribute_resource.gd" id="1_5tj16"]
+
+[resource]
+script = ExtResource("1_5tj16")
+name = "Area"
+id = "Area"
+ordinal = 5
+color = Color(0, 1, 0, 1)
+description = "Effects the size of your abilities"
+value = 0.0
+min_limit = 0.0
+max_limit = 0.0
+min_limit_active = false
+max_limit_active = false
+metadata/_custom_type_script = "uid://cfnxcuwnotvhw"

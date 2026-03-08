@@ -4,8 +4,9 @@
 [ext_resource type="AudioStream" uid="uid://bsvxl6ry23s8q" path="res://Assets/SFX/XP Pickup Chime/XP Chime 1.wav" id="2_fkouh"]
 [ext_resource type="PackedScene" uid="uid://dysr53ibvwa8l" path="res://Entities/Components/movement_component.tscn" id="3_echn0"]
 [ext_resource type="PackedScene" uid="uid://xy2guokl2776" path="res://Entities/Components/health_component.tscn" id="3_goiee"]
-[ext_resource type="Script" uid="uid://cpwhsrq1ak3v5" path="res://Scripts/Abstract Classes/Item/item_container.gd" id="5_d52sr"]
 [ext_resource type="Script" uid="uid://bs86w8aueivx2" path="res://Entities/Components/Attachments/ability_manager.gd" id="6_wox1n"]
+[ext_resource type="Script" uid="uid://cpl5cire205ag" path="res://Entities/Components/Attachments/status_effect_manager.gd" id="9_8xx2g"]
+[ext_resource type="Script" uid="uid://cpwhsrq1ak3v5" path="res://Scripts/Abstract Classes/Item/item_container.gd" id="9_bumjm"]
 [ext_resource type="Texture2D" uid="uid://cr4jadxq3b6wj" path="res://Assets/Image/Student/Head/Mouth/Mouth_01.png" id="9_kt3lm"]
 [ext_resource type="Script" uid="uid://dl3knldaqwm3p" path="res://Entities/Components/Attachments/experience_manager.gd" id="10_qr54b"]
 [ext_resource type="PackedScene" uid="uid://di3yidl1tqbq4" path="res://Entities/Indicator/dash_indicator.tscn" id="14_iwsns"]
@@ -17,11 +18,9 @@
 [ext_resource type="Texture2D" uid="uid://va580vf1m0o7" path="res://Assets/Image/Student/Head/Eyebrows/Eyebrows_01.png" id="30_hj61p"]
 [ext_resource type="Texture2D" uid="uid://b1pkn4viaktqf" path="res://Assets/Image/Student/Head/Eyes/Eyes_02.png" id="31_ngr5b"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_bj2gu"]
-radius = 31.0644
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_kt3lm"]
-radius = 22.0907
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8xx2g"]
+radius = 30.0
+height = 106.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qr54b"]
 radius = 100.0
@@ -95,10 +94,12 @@ script = ExtResource("1_kt3lm")
 metadata/_custom_type_script = "uid://dcgrocrt0ga75"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_bj2gu")
+shape = SubResource("CapsuleShape2D_8xx2g")
+debug_color = Color(0, 0.641216, 0.337845, 0.42)
 
-[node name="Abilities" type="Node2D" parent="."]
+[node name="Abilities" type="Node2D" parent="." node_paths=PackedStringArray("parent_entity")]
 script = ExtResource("6_wox1n")
+parent_entity = NodePath("..")
 
 [node name="Dashes" type="HBoxContainer" parent="."]
 anchors_preset = 5
@@ -120,22 +121,18 @@ layout_mode = 2
 [node name="HealthComponent" parent="." instance=ExtResource("3_goiee")]
 maximum_health = 0
 
+[node name="Experience" type="Node" parent="."]
+script = ExtResource("10_qr54b")
+
 [node name="MovementComponent" parent="." node_paths=PackedStringArray("entity") instance=ExtResource("3_echn0")]
 entity = NodePath("..")
 player_controls = true
 
-[node name="Experience" type="Node" parent="."]
-script = ExtResource("10_qr54b")
+[node name="StatusEffects" type="Node" parent="."]
+script = ExtResource("9_8xx2g")
 
 [node name="Items" type="Node" parent="."]
-script = ExtResource("5_d52sr")
-
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-collision_layer = 2
-collision_mask = 2
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
-shape = SubResource("CircleShape2D_kt3lm")
+script = ExtResource("9_bumjm")
 
 [node name="Sensors" type="Node2D" parent="."]
 
@@ -202,8 +199,6 @@ libraries = {
 
 [node name="BodyLagTimer" type="Timer" parent="Visuals"]
 wait_time = 0.2
-
-[node name="StatusEffects" type="Node2D" parent="."]
 
 [node name="VFX" type="Node2D" parent="."]
 

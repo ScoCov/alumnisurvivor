@@ -4,9 +4,9 @@
 
 [resource]
 script = ExtResource("1_p0j3v")
-ability_name = "baseball_bat"
-display_name = "Homerun!"
-id = "baseball_bat"
+ability_name = "aura_farm"
+display_name = "Aura Farming"
+id = "aura_farm"
 description = "Swing a long bat giving you greater range than the heavy punch, but at lower damage and cooldown. It does have a considerable knockback."
 base_damage = 2.0
 minimum_damage = 0.0
@@ -19,9 +19,7 @@ projectiles_max = 1
 range_tag = 0
 area = 1.0
 attack_speed = 0.5
-attack_speed_rate = 1.0
-cooldown_time = 1.0
-cooldown_rate = 1.0
+cooldown = 1.0
 duration = 1.0
 knockback = 75.0
 metadata/_custom_type_script = "uid://b1ad1mp4224b3"

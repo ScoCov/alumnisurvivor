@@ -15,4 +15,4 @@ func _move_toward_player(entity: Enemy_Entity, player: Student_Entity,_delta: fl
 	var direction = entity.position.direction_to(player.position)
 	if entity.entity.looks_at_target:
 		entity.sprite_2d.look_at(entity.player.position)
-	entity.velocity = direction * entity.movement_component.movement_speed
+	entity.velocity = direction * entity.movement_component.speed

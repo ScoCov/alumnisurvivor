@@ -32,3 +32,9 @@ func populate_node():
 
 func _on_loaded():
 	populate_node()
+
+func _on_mouse_exited():
+	self.scale = Vector2(1, 1)
+
+func _on_mouse_entered():
+	self.scale = Vector2(1.05, 1.05)

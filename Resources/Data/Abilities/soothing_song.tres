@@ -4,10 +4,10 @@
 
 [resource]
 script = ExtResource("1_vil71")
-ability_name = ""
-display_name = ""
-id = ""
-description = ""
+ability_name = "Soothing Voice"
+display_name = "Soothing Voice"
+id = "soothing_song"
+description = "Slows enemies withing the area of effect."
 base_damage = 0.0
 minimum_damage = 0.0
 maximum_damage = 0.0
@@ -20,7 +20,8 @@ range_tag = 0
 area = 1.0
 attack_speed = 0.5
 attack_speed_rate = 1.0
-cooldown_time = 1.0
+cooldown = 1.0
 cooldown_rate = 1.0
+duration = 1.0
 knockback = 0.0
 metadata/_custom_type_script = "uid://b1ad1mp4224b3"

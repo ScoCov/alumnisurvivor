@@ -40,7 +40,7 @@ func _input(event):
 		student = besty
 		besty = temp
 		swapped_students.emit()
-		
+
 func _get_configuration_warnings():
 	var msg: Array[String]
 	var children = get_children()

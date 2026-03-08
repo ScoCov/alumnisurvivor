@@ -1,16 +1,26 @@
-[gd_resource type="Resource" script_class="Item_Resource" load_steps=7 format=3 uid="uid://uwd87kf5if0c"]
+[gd_resource type="Resource" script_class="Item_Resource" load_steps=9 format=3 uid="uid://uwd87kf5if0c"]
 
 [ext_resource type="Script" uid="uid://4pylfu4f1res" path="res://Scripts/Abstract Classes/Resource/item_resource.gd" id="1_4lyo4"]
 [ext_resource type="Texture2D" uid="uid://b4hie0s6sb36f" path="res://Assets/Image/Items/Belt_128.png" id="1_6pu0o"]
 [ext_resource type="Script" uid="uid://l7aipj0jfga8" path="res://Scripts/Abstract Classes/Item/item_effect.gd" id="1_f4y6a"]
 [ext_resource type="Script" uid="uid://uibb0wxuei0a" path="res://Scripts/Abstract Classes/Item/item_effect_attribute.gd" id="3_6pu0o"]
 [ext_resource type="Resource" uid="uid://de4ke6fjbvt45" path="res://Resources/Data/Attributes/health.tres" id="3_r5m4d"]
+[ext_resource type="Resource" uid="uid://b4tkhcjsw15ux" path="res://Resources/Data/Attributes/cooldown.tres" id="5_r5m4d"]
 
 [sub_resource type="Resource" id="Resource_r5m4d"]
 script = ExtResource("3_6pu0o")
 attribute = ExtResource("3_r5m4d")
 base_value = 1.0
 base_stack_mod = 1.0
+effect = "Neutral"
+metadata/_custom_type_script = "uid://uibb0wxuei0a"
+
+[sub_resource type="Resource" id="Resource_xhfea"]
+script = ExtResource("3_6pu0o")
+attribute = ExtResource("5_r5m4d")
+base_value = -0.05
+base_stack_mod = -0.05
+effect = "Good"
 metadata/_custom_type_script = "uid://uibb0wxuei0a"
 
 [resource]
@@ -25,5 +35,5 @@ rarity = 0
 image = ExtResource("1_6pu0o")
 max_count = 0
 unique = false
-item_effects = Array[ExtResource("1_f4y6a")]([SubResource("Resource_r5m4d")])
+item_effects = Array[ExtResource("1_f4y6a")]([SubResource("Resource_r5m4d"), SubResource("Resource_xhfea")])
 metadata/_custom_type_script = "uid://4pylfu4f1res"

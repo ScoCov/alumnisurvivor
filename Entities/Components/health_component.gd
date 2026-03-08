@@ -7,7 +7,7 @@ signal damage_healed
 signal damage_lethal
 
 const hit_colors: Array[Color] = [Color.GREEN, Color.RED]
-const RESOURCE = preload("res://Resources/Data/Attributes/health.tres")
+const HEALTH_RES = preload("res://Resources/Data/Attributes/health.tres")
 const REGEN_RES = preload("res://Resources/Data/Attributes/health_regen.tres")
 const HEALTH_REGEN_DEFAULT_WAIT_TIME: float = 10
 const ARMOR_RES = preload("res://Resources/Data/Attributes/armor.tres")
@@ -95,16 +95,38 @@ func _get_configuration_warnings():
 		msg.append("Health Component must be a child in an Entity class.")
 	return msg
 	
-func attempt_damage(damage_dealt: float):
-	if invulnerable: return
+func apply_damage_rider(damage_rider: Damage_Rider):
+	if invulnerable: return ## Guard
+	## Get Armor and supply it to damage_rider.deal_damage(total_armor [including items or other bonuses])
+	var armor_value = armor + damage_rider.items.get_attribute_bonus("armor")
+	current_health -= damage_rider.deal_damage(armor)
+	print("Damage Base: %s | Crit_Chance: %s | Crit_Damage_Multi: %s | Armor: %s" % [damage_rider.damage, damage_rider.critical_chance, damage_rider.critical_damage_multiplier, armor])
+	_react_to_damage(damage_rider)
 	
+func _react_to_damage(damage_rider: Damage_Rider):
+	## Determine if invul and what type of damage to emit
+	var damage_dealt = damage_rider.damage
+	if damage_dealt < 0: 
+		damage_taken.emit()
+		invulnerable = true
+		invulnerability_timer.start()
+	elif damage_dealt > 0:
+		damage_healed.emit()
+	elif damage_dealt == 0:
+		damage_negated.emit()
+	emit_hit_indication(get_parent(), damage_dealt, damage_rider.is_critical)
+	
+## Deprecieted
+func attempt_damage(damage_dealt: float,is_critical = false):
+	if invulnerable: return
+
 	## Calculate Armor Reduction
 	var armor_mod = 1
 	if get_parent() is Student_Entity:
 		armor_mod = Utility.round_to_dec( _armor_reduction_value(get_parent().items.get_attribute_bonus(ARMOR_RES.id)), 2)
-	
 	## Deal Damage
-	current_health += floor(damage_dealt * armor_mod)
+	var damage_total = floor(damage_dealt * armor_mod)
+	current_health += damage_total
 	## Determine if invul and what type of damage to emit
 	if damage_dealt < 0: 
 		damage_taken.emit()
@@ -115,7 +137,7 @@ func attempt_damage(damage_dealt: float):
 		damage_healed.emit()
 	elif damage_dealt == 0:
 		damage_negated.emit()
-	emit_hit_indication(get_parent(), damage_dealt)
+	emit_hit_indication(get_parent(), damage_dealt, is_critical)
 
 func _armor_reduction_value(value: float)-> float:
 	return (armor_reduction_base) / (armor_reduction_base + value)
@@ -124,14 +146,16 @@ func _on_invulnerability_timer_timeout():
 	invulnerability_timer.stop()
 	invulnerable = false
 
-func emit_hit_indication(entity: Entity, amount: float):
+func emit_hit_indication(entity: Entity, amount: float, is_critical: bool = false):
 	strike.position = entity.position
+	if is_critical:
+		strike.particle.modulate = Color.GOLD
 	strike.particle.emitting = true
 
 func _get_maximum_health() -> float:
 	var bonus_max_health = 0
 	if get_parent().get_children().any(func(child): return child.name.to_lower() == "items"):
-		bonus_max_health = get_parent().items.get_attribute_bonus(RESOURCE.id)
+		bonus_max_health = get_parent().items.get_attribute_bonus(HEALTH_RES.id)
 	return floor(MAX_HEALTH + bonus_max_health)
 
 func _passive_healing():

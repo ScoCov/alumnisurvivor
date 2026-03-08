@@ -11,5 +11,9 @@ status_resource = ExtResource("3_103k8")
 status_color = Color(0.125315, 0.19337, 0.539605, 1)
 attribute_effected = ExtResource("4_dwsta")
 
+[node name="Duration" parent="." index="0"]
+wait_time = 0.5
+
 [connection signal="expires" from="." to="." method="_on_expires"]
 [connection signal="initial_infection" from="." to="." method="_on_initial_infection"]
+[connection signal="stack_reduced" from="." to="." method="_on_stack_reduced"]

@@ -22,10 +22,8 @@ extends Resource
 @export var projectiles_max: int = 1
 @export var range_tag: Tags.Range_Type
 @export_range(0,2.0) var area: float = 1
-@export var attack_speed: float = 0.5
-@export var attack_speed_rate: float = 1.0
-@export var cooldown_time: float = 1.00
-@export var cooldown_rate: float = 1.00
+@export var attack_speed: float = 100
+@export var cooldown: float = 1.00
 @export var duration: float = 1.00
 @export var knockback: float = 0
 

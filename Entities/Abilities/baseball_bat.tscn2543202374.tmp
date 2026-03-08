@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://cvkcs6fk0hopq"]
+
+[ext_resource type="Script" uid="uid://dl7oj27qxe7r5" path="res://Entities/Abilities/baseball_bat.gd" id="1_ka3u3"]
+[ext_resource type="Resource" uid="uid://mreamsv3sg1" path="res://Resources/Data/Abilities/baseball_bat.tres" id="2_ktabt"]
+[ext_resource type="Script" uid="uid://dpfyngj1e5q6j" path="res://Entities/Components/damage_component.gd" id="3_hrcwj"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7ejnk"]
+radius = 500.0
+
+[node name="BaseballBat" type="Node2D"]
+script = ExtResource("1_ka3u3")
+ability = ExtResource("2_ktabt")
+debug = null
+debug_loop = null
+follow_mouse = null
+custom_target = null
+
+[node name="Detection_Range" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Detection_Range"]
+shape = SubResource("CircleShape2D_7ejnk")
+debug_color = Color(0.234833, 0.507961, 1, 0.42)
+
+[node name="Damage" type="Node" parent="."]
+script = ExtResource("3_hrcwj")
+
+[node name="Cooldown" type="Timer" parent="."]
+
+[connection signal="body_entered" from="Detection_Range" to="." method="_on_detection_range_body_entered"]
+[connection signal="body_exited" from="Detection_Range" to="." method="_on_detection_range_body_exited"]

@@ -1,27 +1,35 @@
-@tool
 class_name Ability_Manager
 extends Node2D
 
-## Ability Manager requires Ability_Entity as children.
+## The Ability manager is to be used on any entity that will have an action. This 
+## will include actions like "Touch Damage" for the sake of consistency of 
+## implementing damage.
 
 signal ability_added
 signal ability_removed
 
-@export var max_abilities: int = 4
-@export var starting_ability: Ability_Resource
+#TEST
+var baseball_bat_resource = load("res://Resources/Data/Abilities/baseball_bat.tres") 
+#
 
-var manual_target: Vector2
+
+@export var max_abilities: int = 4
+## Needed for debugging purposes
+@export var starting_ability: Ability_Resource
+@export var parent_entity: Entity
+
 var abilities: Dictionary = {}
 
 func _ready():
-	var parent = get_parent() if get_parent() is Entity else null
-	if parent is Student_Entity and not starting_ability :
-		if not (parent as Student_Entity).is_controllable: return
-		starting_ability = parent.starting_ability
-		var ability: PackedScene = load("res://Entities/Abilities/%s.tscn" % starting_ability.id)
+	#parent_entity = get_parent() as Student_Entity if get_parent() is Student_Entity else Enemy_Entity
+	if parent_entity is Student_Entity and parent_entity.is_controllable:
+		#if not (parent_entity as Student_Entity).is_controllable: return
+		#starting_ability = get_parent().starting_ability
+		var ability: PackedScene = load("res://Entities/Abilities/%s.tscn" % Global.SELECTED_STUDENT.starting_ability.id)
 		var ability_entity: Ability_Entity = ability.instantiate()
-		ability_entity.entity = get_parent() if get_parent() is Entity else null
-		_add_ability(starting_ability, ability_entity)
+		ability_entity.entity = get_parent()
+		#ability_entity.entity = get_parent() if get_parent() is Entity else null
+		_add_ability(starting_ability if starting_ability else baseball_bat_resource, ability_entity)
 		add_child(ability_entity)
 
 func _on_child_entered_tree(node):

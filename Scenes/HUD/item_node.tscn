@@ -14,6 +14,8 @@ corner_radius_top_left = 4
 corner_radius_top_right = 4
 corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
+shadow_color = Color(0.00392157, 0, 0, 0.6)
+shadow_offset = Vector2(1, 1)
 
 [node name="ItemNode" type="Control"]
 custom_minimum_size = Vector2(96, 96)
@@ -84,3 +86,5 @@ vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [connection signal="loaded" from="." to="." method="_on_loaded"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
