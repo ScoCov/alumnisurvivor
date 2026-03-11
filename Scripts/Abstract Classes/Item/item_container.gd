@@ -61,9 +61,9 @@ func get_attribute_bonus(attribute_id: String) -> float:
 	if not attr: return 0
 
 	for obj in attr.items:
-		var base = obj.base_value
-		var growth = obj.growth_value
-		var count = obj.count
+		#var base = obj.base_value
+		#var growth = obj.growth_value
+		#var count = obj.count
 		sum += obj.base_value + (obj.growth_value * (obj.count -1))
 	return sum
 

@@ -17,7 +17,7 @@ func _init(_entity: Entity, _ability: Ability_Entity, _items: Item_Container = n
 	ability = _ability
 	items = _items
 
-func deal_damage(armor_value: float = 0) -> int:
+func deal_damage(armor_value: float = 0, direct_damge_reduction: int = 0) -> int:
 	## Check if Crit
 	var damage_total: float = 0
 	critical_chance = (ability.ability.critical_hit_chance + items.get_attribute_bonus("critical_chance"))
@@ -28,8 +28,10 @@ func deal_damage(armor_value: float = 0) -> int:
 		damage_total *= critical_damage_multiplier
 		is_critical = _critical_hit
 	if armor_value != 0:
-		damage_total *= log(armor_value)/log(armor_value+100)
+		var armor_reduction_percentage = armor_value/(armor_value+100)
+		damage_total *= armor_reduction_percentage
 	damage = floori(damage_total)
+	damage -= direct_damge_reduction
 	if damage < 1:
 		damage = 1
-	return damage
+	return floori(damage)

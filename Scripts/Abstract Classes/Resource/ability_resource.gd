@@ -26,6 +26,8 @@ extends Resource
 @export var cooldown: float = 1.00
 @export var duration: float = 1.00
 @export var knockback: float = 0
+@export var pierce: int = 0
+@export var bounce: int = 0
 
 @export_group("Images")
 ## This is what will be shown outside gameplay, this will be a simple static image of the object

@@ -22,10 +22,10 @@ func load_entity(entity_resource: EnemyResource) -> Enemy_Entity:
 										% entity_resource.file_name)
 	return packed_scene.instantiate()
 
-func spawn_group(origin: Vector2, spawn_power: float):
+func spawn_group(_origin: Vector2, spawn_power: float):
 	## Filter group to only be of the spawn power and below.
 	var filter_group: Array[EnemyResource] = enemy_resource_array.filter(func(entity:EnemyResource): return entity.power_level <= spawn_power)
-	var build_power: int = 0
+	#var build_power: int = 0
 	filter_group.sort_custom(func(a,b): return a.power_level < b.power_level )
 	var spawn_roster: Array[EnemyResource]
 

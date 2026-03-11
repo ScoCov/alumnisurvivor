@@ -39,7 +39,7 @@ func update_hud_static():
 	## Update Experience
 	update_experience_values()
 		
-func update_faces(student:StudentResource, option: STUDENT_OPTIONS ):
+func update_faces(_student:StudentResource, option: STUDENT_OPTIONS ):
 	var control: Control = $Image/Control
 	var target = control.find_child("Student" if option == STUDENT_OPTIONS.STUDENT else "Besty")
 	var resource = Global.SELECTED_STUDENT if option == STUDENT_OPTIONS.STUDENT else Global.SELECTED_BESTY

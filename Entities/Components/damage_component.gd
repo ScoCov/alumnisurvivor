@@ -1,4 +1,3 @@
-@tool
 class_name Damage_Component
 extends Node
 
@@ -27,27 +26,27 @@ func _get_configuration_warnings():
 
 ## Deal Damage will accumilate all the damage bonus modifiers, while the health components
 ## attempt_damage function will apply any all all defensive measures.
-func deal_damage(enemy_health: Health_Component, _params: Dictionary) -> float:
-	var damage_amount: float = _get_damage()
-	if _params.has("item_add"):
-		damage_amount += _params["item_add"]
-	if _params.has("item_multi"):
-		damage_amount *= _params["item_multi"]
-	var student_besty: float = 0
+#func deal_damage(_enemy_health: Health_Component, _params: Dictionary) -> float:
+	#var damage_amount: float = _get_damage()
+	#if _params.has("item_add"):
+		#damage_amount += _params["item_add"]
+	#if _params.has("item_multi"):
+		#damage_amount *= _params["item_multi"]
+	#var student_besty: float = 0
+	#
+	#if _params.has("student_primary"):
+		#student_besty += _params["student_primary"]
+	#if _params.has("student_secondary"):
+		#student_besty += _params["student_secondary"]
+	#if _params.has("besty_primary"):
+		#student_besty += _params["besty_primary"]
+	#if _params.has("besty_secondary"):
+		#student_besty += _params["besty_secondary"]
+	#if _params.has("student_weakness"):
+		#student_besty -= _params["student_weakness"]
+	#if _params.has("besty_weakness"):
+		#student_besty -= _params["besty_weakness"]
+	#return damage_amount * (1 + student_besty)
 	
-	if _params.has("student_primary"):
-		student_besty += _params["student_primary"]
-	if _params.has("student_secondary"):
-		student_besty += _params["student_secondary"]
-	if _params.has("besty_primary"):
-		student_besty += _params["besty_primary"]
-	if _params.has("besty_secondary"):
-		student_besty += _params["besty_secondary"]
-	if _params.has("student_weakness"):
-		student_besty -= _params["student_weakness"]
-	if _params.has("besty_weakness"):
-		student_besty -= _params["besty_weakness"]
-	return damage_amount * (1 + student_besty)
-	
-func _get_damage() -> float:
-	return randi_range(floor(min_damage),floor(max_damage)) if enable_ranged_damage else base_damage
+#func _get_damage() -> float:
+	#return randi_range(floor(min_damage),floor(max_damage)) if enable_ranged_damage else base_damage

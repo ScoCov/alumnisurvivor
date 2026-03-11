@@ -1,0 +1,44 @@
+[gd_scene load_steps=4 format=3 uid="uid://chwll3pjbu6r0"]
+
+[ext_resource type="Script" uid="uid://dhpqomidacnh5" path="res://Entities/Abilities/baseball_projectile.gd" id="1_lstbg"]
+[ext_resource type="Texture2D" uid="uid://cucx1gpirwelw" path="res://Assets/Image/Ability/Baseball_Ball_128.png" id="1_s5g11"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lstbg"]
+radius = 32.7567
+
+[node name="Baseball_projectile" type="CharacterBody2D"]
+collision_layer = 0
+collision_mask = 0
+motion_mode = 1
+script = ExtResource("1_lstbg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_lstbg")
+debug_color = Color(0.223529, 0.623529, 0.905882, 0.45098)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_s5g11")
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("CircleShape2D_lstbg")
+debug_color = Color(0.223529, 0.623529, 0.905882, 0.45098)
+
+[node name="Duration" type="Timer" parent="."]
+wait_time = 3.0
+
+[node name="Label" type="Label" parent="."]
+offset_left = -50.0
+offset_top = -68.0
+offset_right = 50.0
+offset_bottom = -45.0
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
+[connection signal="body_exited" from="Hitbox" to="." method="_on_hitbox_body_exited"]
+[connection signal="timeout" from="Duration" to="." method="_on_duration_timeout"]

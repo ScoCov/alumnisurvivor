@@ -57,17 +57,17 @@ func on_recovery() -> bool:
 func on_cooldown() -> bool:
 	return false
 	
-func add_entity_to_pool(entity: Entity):
-	if entity is Enemy_Entity:
-		var extant_entity = entity_pool.any(func(_entity): return _entity == entity)
+func add_entity_to_pool(_entity: Entity):
+	if _entity is Enemy_Entity:
+		var extant_entity = entity_pool.any(func(_entity_): return _entity_ == _entity)
 		if not extant_entity:
-			entity_pool.append(entity)
+			entity_pool.append(_entity)
 				
-func remove_entity_from_pool(entity: Entity):
-	if entity is Enemy_Entity:
-		var extant_entity = entity_pool.filter(func(_entity): return _entity == entity)
+func remove_entity_from_pool(_entity: Entity):
+	if _entity is Enemy_Entity:
+		var extant_entity = entity_pool.filter(func(_entity_): return _entity_ == _entity)
 		if extant_entity:
-			entity_pool.remove_at(entity_pool.find_custom(func(_entity): return _entity == entity))
+			entity_pool.remove_at(entity_pool.find_custom(func(_entity_): return _entity_ == _entity))
 
 func _get_attribute_value(attribute_id: String) -> float:
 	if _items:

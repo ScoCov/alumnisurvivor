@@ -1,4 +1,3 @@
-@tool
 class_name Entity
 extends CharacterBody2D
 
@@ -8,9 +7,9 @@ var health: Health_Component
 
 func _get_configuration_warnings():
 	var return_array: Array[String]
-	if not get_children().any(func(child): child is Health_Component):	
+	if not get_children().any(func(child): return child is Health_Component):	
 		return_array.append("Entity Requires a Health Component")
-	if not get_children().any(func(child): child is Status_Effect_Manager):
+	if not get_children().any(func(child): return child is Status_Effect_Manager):
 		return_array.append("Entity requires Status Effect Manager.")
 	return return_array
 

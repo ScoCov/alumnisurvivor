@@ -10,7 +10,7 @@ const acceptable_directories: Array[String] = ["student", "attribute", "item",
 	 "enemy", "map", "ability", "mouth", "eyes", "hair", "eyebrows", "status_effects"]
 	
 ## Returns the relative path of the given desired resource directory.
-static func get_dir(target_dir: String, _cfg: ConfigFile = null) -> String:
+func get_dir(target_dir: String, _cfg: ConfigFile = null) -> String:
 	var err_msg: String = "Parameter must be one of the following: "
 	for dir in acceptable_directories:
 		err_msg += "%s " % dir

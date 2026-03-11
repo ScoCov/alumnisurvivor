@@ -12,7 +12,7 @@ const _XP_NODE:= preload("res://Entities/xp_node.tscn")
 
 var player: Student_Entity
 #
-func _process(delta):
+func _process(_delta):
 	var string_to_add: String = ""
 	if movement_component.check_for_slow:
 		var slow_entity = status_effects.get_status_effect(load("res://Resources/Data/StatusEffects/slow_status.tres"))

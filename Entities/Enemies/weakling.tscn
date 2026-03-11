@@ -15,6 +15,7 @@ texture = ExtResource("2_qjve4")
 maximum_health = 5
 current_health = 5
 over_health_maximum = 0.05
+regen_base = 1.0
 armor = 10
 
 [node name="movetoplayer" type="Node" parent="EnemeyMovementComponent" index="2"]

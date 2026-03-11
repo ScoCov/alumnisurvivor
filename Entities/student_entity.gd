@@ -1,10 +1,11 @@
-@tool
 class_name Student_Entity
 extends Entity
 
 signal loaded 
-signal death
+#signal death
 signal swapped_students
+
+const XP_COLLECTION_RANGE_DEFAULT = 100
 
 #region Description
 ## This entity is the base entity used by the playable characters, the Students. Each student
@@ -47,6 +48,9 @@ func _get_configuration_warnings():
 	if not children.any(func(child): return child is Experience_Manager):
 		msg.append("Student Entity requires an Experience Manager Node.")
 	return msg
+	
+func _process(_delta):
+	$Sensors/XP_Pickup_Range/CollisionShape2D.shape.radius = XP_COLLECTION_RANGE_DEFAULT * (1 + items.get_attribute_bonus("collection_range"))
 	
 func _ready():
 	get_universal_components()

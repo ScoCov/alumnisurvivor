@@ -9,7 +9,8 @@ signal ability_added
 signal ability_removed
 
 #TEST
-var baseball_bat_resource = load("res://Resources/Data/Abilities/baseball_bat.tres") 
+var baseball_bat_resource = preload("res://Resources/Data/Abilities/baseball_bat.tres") 
+var baseball_ball_resource = preload("res://Resources/Data/Abilities/baseball_ball.tres")
 #
 
 
@@ -29,7 +30,7 @@ func _ready():
 		var ability_entity: Ability_Entity = ability.instantiate()
 		ability_entity.entity = get_parent()
 		#ability_entity.entity = get_parent() if get_parent() is Entity else null
-		_add_ability(starting_ability if starting_ability else baseball_bat_resource, ability_entity)
+		_add_ability(starting_ability if starting_ability else baseball_ball_resource, ability_entity)
 		add_child(ability_entity)
 
 func _on_child_entered_tree(node):

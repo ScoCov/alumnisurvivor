@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dljgmakgpe5tj"]
+[gd_scene load_steps=17 format=3 uid="uid://dljgmakgpe5tj"]
 
 [ext_resource type="Script" uid="uid://dl7oj27qxe7r5" path="res://Entities/Abilities/baseball_bat.gd" id="1_7ejnk"]
 [ext_resource type="Script" uid="uid://b1ad1mp4224b3" path="res://Scripts/Abstract Classes/Resource/ability_resource.gd" id="2_hfyj2"]
@@ -30,19 +30,44 @@ attack_speed = 100.0
 cooldown = 1.0
 duration = 1.0
 knockback = 0.0
+pierce = 0
+bounce = 0
 metadata/_custom_type_script = "uid://b1ad1mp4224b3"
 
+[sub_resource type="Curve" id="Curve_hfyj2"]
+_limits = [0.0, 3.0, 0.0, 1.0]
+_data = [Vector2(0.0121212, 3), 0.0, 0.0, 0, 0, Vector2(0.963636, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_jsh8u"]
+_limits = [0.0, 3.0, 0.0, 1.0]
+_data = [Vector2(0, 3), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_68u3n"]
+_limits = [0.0, 3.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_qkos8"]
+curve_x = SubResource("Curve_hfyj2")
+curve_y = SubResource("Curve_jsh8u")
+curve_z = SubResource("Curve_68u3n")
+
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_lhb0q"]
-lifetime_randomness = 0.02
 particle_flag_disable_z = true
-emission_shape_offset = Vector3(10, 10, 0)
-direction = Vector3(0, 0, 0)
-initial_velocity_max = 10.87
-gravity = Vector3(0, 0, 0)
-radial_accel_min = -1.63
-radial_accel_max = 1.63
-scale_min = 2.72
-scale_max = 8.16
+emission_shape_scale = Vector3(0, 5, 1)
+emission_shape = 3
+emission_box_extents = Vector3(15, 15, 15)
+gravity = Vector3(-500, -2, 0)
+linear_accel_min = -2.23517e-06
+linear_accel_max = 63.59
+tangential_accel_min = 22.83
+tangential_accel_max = 33.7
+scale_min = 24.46
+scale_max = 32.62
+scale_over_velocity_max = 8.15
+scale_over_velocity_curve = SubResource("CurveXYZTexture_qkos8")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hrcwj"]
 radius = 104.235
@@ -79,12 +104,16 @@ scale = Vector2(0.22, 0.22)
 texture = ExtResource("2_hrcwj")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="Facing/Swinging"]
-position = Vector2(55.225, 2.16005e-11)
+position = Vector2(90, -2.39879e-12)
 rotation = 1.5708
 scale = Vector2(0.22, 0.22)
-lifetime = 0.1
+lifetime = 0.5
+speed_scale = 1.5
+local_coords = true
 trail_enabled = true
-trail_lifetime = 0.1
+trail_lifetime = 1.0
+trail_sections = 12
+trail_section_subdivisions = 8
 process_material = SubResource("ParticleProcessMaterial_lhb0q")
 
 [node name="Detection_Range" type="Area2D" parent="."]

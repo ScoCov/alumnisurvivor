@@ -4,7 +4,7 @@ extends Node
 
 signal new_status_effect
 signal increase_status_effect_count
-signal status_expires
+#signal status_expires
 
 var _status_dict: Dictionary
 
@@ -21,7 +21,7 @@ func get_status_effect(status: Status_Effect_Resource):
 		return _status_dict[status.status_id]
 	return null
 	
-func add_status_effect(status: Status_Effect_Resource, max_count_limit = null):
+func add_status_effect(status: Status_Effect_Resource, _max_count_limit = null):
 	## Check if child (status Effect entity) exists, if not, then add.
 	## if it does exist then increase the stack count. 
 	if _status_dict.has(status.status_id):

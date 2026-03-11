@@ -25,7 +25,7 @@ const MAX_HEALTH: = 10
 @export var maximum_health: int = 10:
 	get():
 		if get_parent() is Student_Entity:
-			return _get_maximum_health()
+			return floori(_get_maximum_health())
 		else:
 			return maximum_health
 
@@ -83,7 +83,7 @@ var active_state: State:
 			return ($Statemachine as State_Machine).current_state
 		return null
 
-func _process(delta):
+func _process(_delta):
 	if current_health < maximum_health and _can_regen and health_regen.is_stopped():
 		var value = HEALTH_REGEN_DEFAULT_WAIT_TIME * get_parent().items.get_attribute_bonus(REGEN_RES.id)
 		health_regen.wait_time = regen_base * (regen_base/(1 + ((value -1) / regen_scale)))
@@ -98,9 +98,9 @@ func _get_configuration_warnings():
 func apply_damage_rider(damage_rider: Damage_Rider):
 	if invulnerable: return ## Guard
 	## Get Armor and supply it to damage_rider.deal_damage(total_armor [including items or other bonuses])
-	var armor_value = armor + damage_rider.items.get_attribute_bonus("armor")
-	current_health -= damage_rider.deal_damage(armor)
-	print("Damage Base: %s | Crit_Chance: %s | Crit_Damage_Multi: %s | Armor: %s" % [damage_rider.damage, damage_rider.critical_chance, damage_rider.critical_damage_multiplier, armor])
+	var item_value_armor = damage_rider.items.get_attribute_bonus("armor")
+	var armor_value = armor + item_value_armor
+	current_health -= damage_rider.deal_damage(armor, damage_reduction)
 	_react_to_damage(damage_rider)
 	
 func _react_to_damage(damage_rider: Damage_Rider):

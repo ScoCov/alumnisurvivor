@@ -22,7 +22,7 @@ func _ready():
 	var card_items: Array[Node] = h_box_container.get_children().filter(func(child): return child is Item_Display)
 	for card: Item_Display in card_items:
 		card.picked.connect(card_picked.bind(card))
-	card_items[0].grab_focus()
+	#card_items[0].grab_focus()
 	
 func _on_skip_pressed():
 	game_ui.game_logic.skip_counter -= 1
@@ -41,7 +41,7 @@ func randomize_options():
 	var card_items: Array[Node] = h_box_container.get_children().filter(func(child): return child is Item_Display)
 	for card: Item_Display in card_items:
 		card.assign_item(_get_item())
-	var rand_focus_index: int = randi_range(0, len(card_items) - 1)
+	#var rand_focus_index: int = randi_range(0, len(card_items) - 1)
 	ui_information()
 
 func _update_options_button(target: String):
@@ -74,7 +74,6 @@ func _get_item() -> Item_Resource:
 		if game_ui.player.items._items.has(_item.item_id):
 			_item = _get_item()
 	if _item.max_count != 0:
-		var temp = game_ui.player
 		if game_ui.player.items._items.has(_item.item_id):
 			if game_ui.player.items._items[_item.item_id].count >= _item.max_count:
 				_item = _get_item()
