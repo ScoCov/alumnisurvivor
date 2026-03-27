@@ -6,7 +6,7 @@ const MAX_SLOW_EFFECT: float = 3
 const MIN_STACK_MULT: float = 1
 const MAX_STACK_MULT: float = 2
 
-@export var entity: Enemy_Entity
+@export var entity: Enemy_Entity = get_parent()
 
 var movement_speed: float = 85
 var speed_modifier: float = 1.0:
@@ -35,10 +35,14 @@ var speed: float:
 		
 var movement_type: EnemyMovementStrategy
 var check_for_slow: bool = false
+var check_for_stun: bool = false
 
-func _ready():
-	var stats = get_children().filter(func(child): return child is EnemyMovementStrategy)
-	movement_type = stats[0]
+func _physics_process(delta):
+	if !is_knocked_backed:
+		entity.velocity = entity.position.direction_to(entity.player.position) * speed
+	if entity.status_effects.get_status_effect(load("res://Resources/Data/StatusEffects/stun_status.tres")):
+		entity.velocity *= 0
+	entity.move_and_slide()
 
 func _on_knockback_timer_timeout():
 	is_knocked_backed = false

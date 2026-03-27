@@ -2,7 +2,7 @@ class_name Student_Entity
 extends Entity
 
 signal loaded 
-#signal death
+signal death
 signal swapped_students
 
 const XP_COLLECTION_RANGE_DEFAULT = 100
@@ -77,3 +77,6 @@ func _on_xp_collection_zone_body_entered(body):
 	if body is XP_Node:
 		body.collide_with_player()
 		experience.add_experience(body.xp_value)
+
+func _on_health_component_damage_lethal():
+	death.emit()

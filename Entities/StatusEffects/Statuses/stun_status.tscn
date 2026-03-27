@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://be0ckcu77i1dw"]
+
+[ext_resource type="PackedScene" uid="uid://duhcemp1lve0q" path="res://Entities/StatusEffects/status_entity.tscn" id="1_mesyr"]
+[ext_resource type="Script" uid="uid://hv8kowt4u03h" path="res://Entities/StatusEffects/Statuses/stun_status.gd" id="2_socfd"]
+
+[node name="SlowStatus" instance=ExtResource("1_mesyr")]
+script = ExtResource("2_socfd")
+
+[node name="Duration" parent="." index="0"]
+wait_time = 0.5

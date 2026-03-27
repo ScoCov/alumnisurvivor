@@ -26,6 +26,9 @@ signal player_death
 @onready var pause_menu: Pause_Menu = $PauseMenu
 @onready var death_menu = $"Death Menu"
 
+func _ready():
+	player.death.connect(func(): player_death.emit())
+
 func _get_configuration_warnings():
 	var msg: Array[String]
 	if [game_logic, render_node, player].any(func(prop): return prop == null):

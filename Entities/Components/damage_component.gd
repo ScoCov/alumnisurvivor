@@ -18,35 +18,28 @@ extends Node
 @export var critical_hit_chance: float = 0.03
 @export var critical_damage_multiplier: float = 1.8
 
-func _get_configuration_warnings():
-	var msg: Array[String]
-	if not get_parent() is Ability_Entity:
-		msg.append("Damage Component can only be assigned to an Ability Entity.")
-	return msg
+@export var knockback: float = 0
 
-## Deal Damage will accumilate all the damage bonus modifiers, while the health components
-## attempt_damage function will apply any all all defensive measures.
-#func deal_damage(_enemy_health: Health_Component, _params: Dictionary) -> float:
-	#var damage_amount: float = _get_damage()
-	#if _params.has("item_add"):
-		#damage_amount += _params["item_add"]
-	#if _params.has("item_multi"):
-		#damage_amount *= _params["item_multi"]
-	#var student_besty: float = 0
-	#
-	#if _params.has("student_primary"):
-		#student_besty += _params["student_primary"]
-	#if _params.has("student_secondary"):
-		#student_besty += _params["student_secondary"]
-	#if _params.has("besty_primary"):
-		#student_besty += _params["besty_primary"]
-	#if _params.has("besty_secondary"):
-		#student_besty += _params["besty_secondary"]
-	#if _params.has("student_weakness"):
-		#student_besty -= _params["student_weakness"]
-	#if _params.has("besty_weakness"):
-		#student_besty -= _params["besty_weakness"]
-	#return damage_amount * (1 + student_besty)
+func get_damage() -> Dictionary:
+	var is_crit = false
+	var _items = gather_items()
+	var _item_boost_damage = 0
+	var _item_boost_crit_chance = 0
+	var _item_boost_crit_multiplier = 0
+	if _items:
+		_item_boost_damage = _items.get_attribute_bonus("damage")
+		_item_boost_crit_chance = _items.get_attribute_bonus("critical_chance")
+		_item_boost_crit_multiplier = _items.get_attribute_bonus("critical_damage")
+	var damage_boosted = base_damage * (1 + _item_boost_damage)
+	var total_chance = critical_hit_chance * (1 + _item_boost_crit_chance)
+	var total_multi = critical_damage_multiplier + _item_boost_crit_multiplier
+	if randf_range(0, 1) <= total_chance:
+		damage_boosted *= total_multi
+		is_crit = true
+	return Dictionary({"damage": floori(damage_boosted),"is_crit": is_crit})
 	
-#func _get_damage() -> float:
-	#return randi_range(floor(min_damage),floor(max_damage)) if enable_ranged_damage else base_damage
+func gather_items() -> Item_Container:
+	var index: int = get_parent().get_children().any(func(child): child is Item_Container)
+	if index >= 0:
+		return get_parent().get_children()[index]
+	return null

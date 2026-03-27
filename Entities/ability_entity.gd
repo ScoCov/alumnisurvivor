@@ -18,6 +18,10 @@ extends Node2D
 @export var custom_target: Vector2 = Vector2.ZERO
 
 @onready var damage: Damage_Component = $Damage
+@onready var cooldown: Timer = $Cooldown
+@onready var state_machine = $StateMachine
+@onready var detection = $Detection/CollisionShape2D
+
 
 ## This stuff
 var entity_pool: Array[Entity]
@@ -29,12 +33,29 @@ var bounce_current: int = 0
 var look_at_target: bool = true
 var enable_attack: bool = false
 
+
 var _items: Item_Container:
 	get():
 		if get_parent() is Ability_Manager:
 			if get_parent().parent_entity.has_node("Items"):
 				return get_parent().parent_entity.items
 		return null
+		
+var _cooldown_complete: bool = false
+
+func _get_configuration_warnings():
+	var _msg: Array[String]
+	var children = get_children()
+	if !children.any(func(child): return child is Damage_Component ):
+		_msg.append("Ability Entity Requires a Damage Component")
+	if !children.any(func(child): return child is State_Machine):
+		_msg.append("Ability Entity Requires a State Machine")
+	else:
+		var children_required: Array[String] = ["Active", "Ready","Recovery","Cooldown"]
+		var state_children = children.any(func(child): return child.name in children_required)
+		if !state_children:
+			_msg.append("Ability Entity's State machine requires these states; %s" % children_required)
+	return _msg
 
 func _ready():
 	pass
@@ -56,6 +77,15 @@ func on_recovery() -> bool:
 	
 func on_cooldown() -> bool:
 	return false
+	
+func ability_factory(_resource: Ability_Resource):
+	assert(ability != null, "Ability Entity must have an Ability_Resource connected")
+	cooldown.wait_time = _resource.cooldown
+	damage.base_damage = _resource.base_damage
+	damage.knockback = _resource.knockback
+	damage.critical_hit_chance = _resource.critical_hit_chance
+	damage.critical_damage_multiplier = _resource.critical_damage_multiplier
+	detection.shape.radius = _resource.attack_range
 	
 func add_entity_to_pool(_entity: Entity):
 	if _entity is Enemy_Entity:

@@ -4,42 +4,34 @@ extends Ability_Entity
 const COOLDOWN_MIN = 0.1
 const COOLDOWN_MAX = 10
 
+## Use already existing data 
 var RESOURCE = Global.ABILITIES.rfind_custom(func(child): return child.id == "baseball_ball")
+## Get the baseball_ball projectile scene ready for instantiation.
 var BASEBALL = preload("res://Entities/Abilities/baseball_projectile.tscn")
 
-@onready var facing = $Facing
-@onready var sprite_2d = $Facing/Sprite2D
-@onready var state_machine = $StateMachine
-@onready var detection = $Detection
-@onready var cooldown = $Cooldown
+## The actual sprite of the ability (Which is none here)
 @onready var attack_duration = $AttackDuration
+@onready var detection_collision_shape = $Detection/CollisionShape2D
 
-
-
-var _cooldown_complete: bool = false
 var _attack_complete: bool = false
 var _ready_to_throw_again: bool = true
 
 func _ready():
-	ability = Global.ABILITIES[RESOURCE]
-	damage.base_damage = ability.base_damage
-	damage.critical_hit_chance = ability.critical_hit_chance
-	damage.critical_damage_multiplier = ability.critical_damage_multiplier
-	$Detection/CollisionShape2D.shape.radius = ability.attack_range
-	cooldown.wait_time = ability.cooldown
+	ability_factory(ability)
 	
 func _process(_delta):
 	$Label.text = "State: %s" % [state_machine.current_state.name]
+	pass
 	
 func on_ready():
 	if len(entity_pool) <= 0 : return false
-	$Detection/CollisionShape2D.shape.radius = ability.attack_range + _items.get_attribute_bonus("attack_range")
-	_ready_to_throw_again = true
+	detection_collision_shape.shape.radius = ability.attack_range + _items.get_attribute_bonus("attack_range")
+	
 	_cooldown_complete = false
 	if len(entity_pool) >= 1:
 		sort_entity_pool()
 		target_entity = entity_pool[0]
-		facing.look_at(target_entity.position)
+		#facing.look_at(target_entity.position)
 		return target_entity.position.distance_to(entity.position) < _get_attribute_value("attack_range")
 	return false
 	
@@ -62,13 +54,12 @@ func on_active():
 	return _attack_complete
 	
 func on_recovery():
+	_ready_to_throw_again = true
 	return true
 	
 func on_cooldown():
 	if cooldown.is_stopped():
-		var cool = ability.cooldown
-		var items = 1 + _items.get_attribute_bonus("cooldown")
-		cooldown.wait_time = clamp(ability.cooldown * items, COOLDOWN_MIN ,COOLDOWN_MAX) 
+		cooldown.wait_time = clamp(ability.cooldown * (1 + _items.get_attribute_bonus("cooldown")), COOLDOWN_MIN ,COOLDOWN_MAX) 
 		cooldown.start()
 	return _cooldown_complete
 	
@@ -80,7 +71,6 @@ func _on_detection_body_exited(body):
 
 func _on_cooldown_timeout():
 	_cooldown_complete = true
-
 
 func _on_attack_duration_timeout():
 	_attack_complete = true

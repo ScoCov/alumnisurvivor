@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Status_Effect_Resource" load_steps=3 format=3 uid="uid://dv3iyw2sltqnf"]
+
+[ext_resource type="Resource" uid="uid://b7lj25emughbo" path="res://Resources/Data/Attributes/movement_speed.tres" id="1_xcyr2"]
+[ext_resource type="Script" uid="uid://ckvye2ih2a81c" path="res://Scripts/Abstract Classes/Resource/status_effect_resource.gd" id="2_ok6ak"]
+
+[resource]
+script = ExtResource("2_ok6ak")
+status_name = "Slow"
+status_file_name = "slow_status"
+status_id = "Slow"
+attribute_effected = ExtResource("1_xcyr2")
+duration = 0.1
+tick_rate = 1.0
+effect_color = Color(0.814236, 0.714352, 0, 1)
+base_value = 0.0
+growth_value = 0.0

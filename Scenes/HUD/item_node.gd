@@ -9,7 +9,7 @@ signal loaded
 @onready var rich_text_label = $Count_Margin/RichTextLabel
 @onready var sprite_2d = $MarginContainer/CenterContainer/Sprite2D
 
-func _make_custom_tooltip(for_text):
+func _make_custom_tooltip(_for_text):
 	var item_node_tooltip = load("res://Scenes/HUD/item_node_tooltip_custom.tscn")
 	var tool_tip = item_node_tooltip.instantiate()
 	tool_tip.item = debug_item if not item_stack else item_stack.item

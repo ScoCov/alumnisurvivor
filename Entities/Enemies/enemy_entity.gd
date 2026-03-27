@@ -8,7 +8,7 @@ const _XP_NODE:= preload("res://Entities/xp_node.tscn")
 @export var entity: EnemyResource
 
 @onready var sprite_2d = $Sprite2D
-@onready var movement_component: Enemy_Movement_Component = $EnemeyMovementComponent
+@onready var movement_component: Enemy_Movement_Component = $movement_component
 
 var player: Student_Entity
 #

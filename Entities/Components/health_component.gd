@@ -14,6 +14,7 @@ const ARMOR_RES = preload("res://Resources/Data/Attributes/armor.tres")
 const _taking_damage_particles:= preload("res://Entities/Effects/taking_damage.tscn")
 const _healing_damage_particles:= preload("res://Entities/Effects/healing_damage.tscn")
 
+@export var entity: Entity = get_parent()
 ## Allows cheats to be applied.
 @export_group("Debug Mode")
 @export var debug: bool = false
@@ -57,9 +58,8 @@ var _can_regen: bool:
 @export_group("Armor")
 ## Armor will be applied to a logarithmic function, to provide a value. log(armor) * 100
 @export var armor: int = 0;
-@export var armor_reduction_base: float = 10
-## Flat value to reduce damage
 @export var damage_reduction: int = 0
+@export var dodge: float = 0.0
 
 @export_group("Invulnerability")
 ## When true, prevents all damage that would be dealt.
@@ -74,6 +74,13 @@ var _can_regen: bool:
 @onready var invulnerability_timer = $"Invulnerability Timer"
 @onready var strike = $Strike
 @onready var health_regen: Timer = $"Health Regen"
+
+var _items: Item_Container: 
+	get():
+		var index = get_parent().get_children().rfind_custom(func(child): return child is Item_Container)
+		if index < 0:
+			return null
+		return get_parent().get_children()[index]
 
 var active_state: State:
 	set(value):
@@ -95,14 +102,38 @@ func _get_configuration_warnings():
 		msg.append("Health Component must be a child in an Entity class.")
 	return msg
 	
+func apply_dot_damage(amount: float):
+	current_health -= amount
+	_react_to_dot(amount)
+	
 func apply_damage_rider(damage_rider: Damage_Rider):
 	if invulnerable: return ## Guard
-	## Get Armor and supply it to damage_rider.deal_damage(total_armor [including items or other bonuses])
-	var item_value_armor = damage_rider.items.get_attribute_bonus("armor")
-	var armor_value = armor + item_value_armor
-	current_health -= damage_rider.deal_damage(armor, damage_reduction)
-	_react_to_damage(damage_rider)
+	var damage_value = damage_rider.deal_damage()
+	var reduction_value = get_armor_reduction_value()
+	if !has_dodged():
+		current_health -= floori(damage_value * reduction_value) - damage_reduction
+		_apply_knockback(damage_rider)
+		_react_to_damage(damage_rider)
 	
+func get_armor_reduction_value() -> float:
+	if _items:
+		var combo = armor + _items.get_attribute_bonus("armor")
+		return 1 - (combo / (combo + 100))
+	return 1 - (armor / (armor + 100))
+	
+func has_dodged() -> bool:
+	return randf_range(0,1) < dodge
+	
+func _apply_knockback(damage_rider: Damage_Rider):
+	## TODO: I will need to make something for player.
+	## I will also need to make a stun effect of some sort. 
+	var _entity = get_parent()
+	if _entity.has_node("movement_component"):
+		var kb_value = damage_rider.ability.ability.knockback 
+		kb_value += (damage_rider.items.get_attribute_bonus("knockback") if damage_rider["items"] else 0)
+		if kb_value != 0:
+			_entity.movement_component.knockback_effect(damage_rider.ability.direction, kb_value)
+			
 func _react_to_damage(damage_rider: Damage_Rider):
 	## Determine if invul and what type of damage to emit
 	var damage_dealt = damage_rider.damage
@@ -116,37 +147,32 @@ func _react_to_damage(damage_rider: Damage_Rider):
 		damage_negated.emit()
 	emit_hit_indication(get_parent(), damage_dealt, damage_rider.is_critical)
 	
-## Deprecieted
-func attempt_damage(damage_dealt: float,is_critical = false):
-	if invulnerable: return
-
-	## Calculate Armor Reduction
-	var armor_mod = 1
-	if get_parent() is Student_Entity:
-		armor_mod = Utility.round_to_dec( _armor_reduction_value(get_parent().items.get_attribute_bonus(ARMOR_RES.id)), 2)
-	## Deal Damage
-	var damage_total = floor(damage_dealt * armor_mod)
-	current_health += damage_total
+func _react_to_dot(amount: float):
 	## Determine if invul and what type of damage to emit
+	var damage_dealt = amount
 	if damage_dealt < 0: 
 		damage_taken.emit()
 		invulnerable = true
 		invulnerability_timer.start()
-
 	elif damage_dealt > 0:
 		damage_healed.emit()
 	elif damage_dealt == 0:
 		damage_negated.emit()
-	emit_hit_indication(get_parent(), damage_dealt, is_critical)
-
-func _armor_reduction_value(value: float)-> float:
-	return (armor_reduction_base) / (armor_reduction_base + value)
+	## Emit_hit_indicator needs a dot version
+	emit_dot_indication()
+	#emit_hit_indication(get_parent(), damage_dealt, damage_rider.is_critical)
+	
 
 func _on_invulnerability_timer_timeout():
 	invulnerability_timer.stop()
 	invulnerable = false
 
-func emit_hit_indication(entity: Entity, amount: float, is_critical: bool = false):
+func emit_dot_indication(status_effect: Status_Effect_Entity = null):
+	strike.position = get_parent().position
+	strike.particle.modulate = Color.GREEN
+	strike.particle.emitting = true
+
+func emit_hit_indication(entity: Entity, _amount: float, is_critical: bool = false):
 	strike.position = entity.position
 	if is_critical:
 		strike.particle.modulate = Color.GOLD
@@ -160,7 +186,7 @@ func _get_maximum_health() -> float:
 
 func _passive_healing():
 	if current_health < maximum_health and _can_regen:
-		attempt_damage(1)
+		current_health += 1
 	## If Health is still below max, then allow the timer to continue. 
 	if current_health < maximum_health and _can_regen:
 		var value = HEALTH_REGEN_DEFAULT_WAIT_TIME * get_parent().items.get_attribute_bonus(REGEN_RES.id)

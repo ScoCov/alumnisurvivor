@@ -1,0 +1,44 @@
+[gd_scene load_steps=5 format=3 uid="uid://6oconyg6p0y"]
+
+[ext_resource type="Script" uid="uid://g1igguf7s5f1" path="res://Entities/Abilities/pencil_projectile.gd" id="1_6ug4x"]
+[ext_resource type="Texture2D" uid="uid://djahrjhcfofu7" path="res://Assets/Image/Ability/Pencil_rotated.png" id="2_2gyj7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_grg02"]
+size = Vector2(0, 0)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2gyj7"]
+size = Vector2(60, 8)
+
+[node name="PencilProjectile" type="CharacterBody2D"]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_6ug4x")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_grg02")
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("RectangleShape2D_2gyj7")
+
+[node name="Duration" type="Timer" parent="."]
+wait_time = 4.0
+one_shot = true
+autostart = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.14, 0.14)
+texture = ExtResource("2_2gyj7")
+
+[node name="Label" type="Label" parent="."]
+visible = false
+offset_right = 40.0
+offset_bottom = 23.0
+
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
+[connection signal="body_exited" from="Hitbox" to="." method="_on_hitbox_body_exited"]
+[connection signal="timeout" from="Duration" to="." method="_on_duration_timeout"]

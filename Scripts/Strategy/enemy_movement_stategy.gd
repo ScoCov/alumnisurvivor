@@ -7,5 +7,5 @@ func enter():
 func exit():
 	pass
 
-func update(entity: Enemy_Entity, player: Student_Entity, _delta: float):
+func update(_entity: Enemy_Entity, _player: Student_Entity, _delta: float):
 	pass

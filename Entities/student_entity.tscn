@@ -204,5 +204,6 @@ wait_time = 0.2
 
 [node name="DashBoom" parent="VFX" instance=ExtResource("16_2xxaj")]
 
+[connection signal="damage_lethal" from="HealthComponent" to="." method="_on_health_component_damage_lethal"]
 [connection signal="body_entered" from="Sensors/XP_Pickup_Range" to="." method="_on_xp_collector_body_entered"]
 [connection signal="body_entered" from="Sensors/XP_Collection_Zone" to="." method="_on_xp_collection_zone_body_entered"]

@@ -30,7 +30,7 @@ regen_base = 10.0
 regen_scale = 7.225
 invulnerability_time = 0.05
 
-[node name="EnemeyMovementComponent" parent="." node_paths=PackedStringArray("entity") instance=ExtResource("3_ghi0t")]
+[node name="movement_component" parent="." node_paths=PackedStringArray("entity") instance=ExtResource("3_ghi0t")]
 entity = NodePath("..")
 
 [node name="Label" type="Label" parent="."]

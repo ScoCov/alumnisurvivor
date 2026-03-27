@@ -116,11 +116,11 @@ trail_sections = 12
 trail_section_subdivisions = 8
 process_material = SubResource("ParticleProcessMaterial_lhb0q")
 
-[node name="Detection_Range" type="Area2D" parent="."]
+[node name="Detection" type="Area2D" parent="."]
 collision_layer = 2
 collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Detection_Range"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Detection"]
 shape = SubResource("CircleShape2D_hrcwj")
 debug_color = Color(0, 0.640196, 0.353534, 0.42)
 
@@ -154,6 +154,6 @@ script = ExtResource("8_qkos8")
 ability = NodePath("../..")
 
 [connection signal="body_entered" from="Facing/Swinging/Hitbox" to="." method="_on_hitbox_body_entered"]
-[connection signal="body_entered" from="Detection_Range" to="." method="_on_detection_range_body_entered"]
-[connection signal="body_exited" from="Detection_Range" to="." method="_on_detection_range_body_exited"]
+[connection signal="body_entered" from="Detection" to="." method="_on_detection_range_body_entered"]
+[connection signal="body_exited" from="Detection" to="." method="_on_detection_range_body_exited"]
 [connection signal="timeout" from="Cooldown" to="." method="_on_cooldown_timeout"]

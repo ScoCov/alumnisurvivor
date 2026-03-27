@@ -8,11 +8,6 @@ extends Node2D
 signal ability_added
 signal ability_removed
 
-#TEST
-var baseball_bat_resource = preload("res://Resources/Data/Abilities/baseball_bat.tres") 
-var baseball_ball_resource = preload("res://Resources/Data/Abilities/baseball_ball.tres")
-#
-
 
 @export var max_abilities: int = 4
 ## Needed for debugging purposes
@@ -22,15 +17,12 @@ var baseball_ball_resource = preload("res://Resources/Data/Abilities/baseball_ba
 var abilities: Dictionary = {}
 
 func _ready():
-	#parent_entity = get_parent() as Student_Entity if get_parent() is Student_Entity else Enemy_Entity
 	if parent_entity is Student_Entity and parent_entity.is_controllable:
-		#if not (parent_entity as Student_Entity).is_controllable: return
-		#starting_ability = get_parent().starting_ability
 		var ability: PackedScene = load("res://Entities/Abilities/%s.tscn" % Global.SELECTED_STUDENT.starting_ability.id)
 		var ability_entity: Ability_Entity = ability.instantiate()
 		ability_entity.entity = get_parent()
-		#ability_entity.entity = get_parent() if get_parent() is Entity else null
-		_add_ability(starting_ability if starting_ability else baseball_ball_resource, ability_entity)
+		starting_ability = Global.STUDENT_ROSTER[0].starting_ability
+		_add_ability(starting_ability, ability_entity)
 		add_child(ability_entity)
 
 func _on_child_entered_tree(node):

@@ -1,24 +1,14 @@
 class_name Ability_Homerun
 extends Ability_Entity
 
-var RESOURCE = Global.ABILITIES.rfind_custom(func(child): return child.id == "baseball_bat")
-
 @onready var swinging = $Facing/Swinging
 @onready var facing = $Facing
 @onready var sprite_2d = $Facing/Swinging/Sprite2D
-@onready var cooldown = $Cooldown
 @onready var hitbox = $Facing/Swinging/Hitbox/CollisionPolygon2D
 @onready var gpu_particles_2d = $Facing/Swinging/GPUParticles2D
 
-var _cooldown_complete = false
-
 func _ready():
-	ability = Global.ABILITIES[RESOURCE]
-	damage.base_damage = ability.base_damage
-	damage.critical_hit_chance = ability.critical_hit_chance
-	damage.critical_damage_multiplier = ability.critical_damage_multiplier
-	cooldown.wait_time = ability.cooldown
-	
+	ability_factory(ability)
 
 ## Returnting true to these state functions will trigger it to transition
 func on_ready() -> bool: ## Ready to go
