@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://v1phrdf8cdqg"]
+[gd_scene load_steps=25 format=3 uid="uid://v1phrdf8cdqg"]
 
 [ext_resource type="Script" uid="uid://d0tuntxkjee38" path="res://Entities/player_entity.gd" id="1_cue4i"]
 [ext_resource type="Script" uid="uid://bs86w8aueivx2" path="res://Entities/Components/Managers/ability_manager.gd" id="2_vvltm"]
@@ -17,7 +17,6 @@
 [ext_resource type="Texture2D" uid="uid://va580vf1m0o7" path="res://Assets/Image/Student/Head/Eyebrows/Eyebrows_01.png" id="14_b1hmi"]
 [ext_resource type="Texture2D" uid="uid://b1pkn4viaktqf" path="res://Assets/Image/Student/Head/Eyes/Eyes_02.png" id="15_anyje"]
 [ext_resource type="Texture2D" uid="uid://cr4jadxq3b6wj" path="res://Assets/Image/Student/Head/Mouth/Mouth_01.png" id="16_je17t"]
-[ext_resource type="PackedScene" uid="uid://ifl1frui5nv" path="res://Entities/Effects/dash_boom.tscn" id="17_8kbhj"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8xx2g"]
 radius = 30.0
@@ -109,8 +108,12 @@ debug_color = Color(0, 0.641216, 0.337845, 0.42)
 script = ExtResource("2_vvltm")
 parent_entity = NodePath("..")
 
-[node name="student_manager" type="Node" parent="."]
+[node name="student_manager" type="Node" parent="." node_paths=PackedStringArray("swap_timer")]
 script = ExtResource("3_vvltm")
+swap_timer = NodePath("swap_timer")
+
+[node name="swap_timer" type="Timer" parent="student_manager"]
+one_shot = true
 
 [node name="HealthComponent" parent="." instance=ExtResource("3_f8px4")]
 maximum_health = 0
@@ -216,10 +219,6 @@ libraries = {
 
 [node name="BodyLagTimer" type="Timer" parent="Visuals"]
 wait_time = 0.2
-
-[node name="VFX" type="Node2D" parent="."]
-
-[node name="DashBoom" parent="VFX" instance=ExtResource("17_8kbhj")]
 
 [connection signal="student_swap" from="student_manager" to="." method="_on_student_manager_student_swap"]
 [connection signal="damage_lethal" from="HealthComponent" to="." method="_on_health_component_damage_lethal"]

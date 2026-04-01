@@ -16,7 +16,7 @@ signal ability_removed
 var abilities: Dictionary = {}
 
 func _ready():
-	if parent_entity is Player_Entity and parent_entity.is_controllable:
+	if parent_entity is Player_Entity:
 		var ability: PackedScene = load("res://Entities/Abilities/%s.tscn" % Global.SELECTED_STUDENT.starting_ability.id)
 		var ability_entity: Ability_Entity = ability.instantiate()
 		ability_entity.entity = get_parent()

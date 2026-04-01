@@ -35,7 +35,6 @@ func _get_configuration_warnings():
 	return msg
 	
 func _ready() -> void:
-	player.student = Global.SELECTED_STUDENT
 	player.loaded.connect(student_load)
 	player.death.connect(func(): get_tree().change_scene_to_file("res://Scenes/MainMenu.tscn"))
 	if game_time != null and not debug:
