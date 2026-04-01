@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://dysr53ibvwa8l"]
+
+[ext_resource type="Script" uid="uid://b3rxj036wg8cb" path="res://Entities/Components/player_movement_component.gd" id="1_2qevr"]
+[ext_resource type="PackedScene" uid="uid://ifl1frui5nv" path="res://Entities/Effects/dash_boom.tscn" id="5_dwwlf"]
+
+[node name="Player Movement Component" type="Node2D"]
+script = ExtResource("1_2qevr")
+
+[node name="Dash Timer" type="Timer" parent="."]
+wait_time = 0.3
+one_shot = true
+
+[node name="DashBoom" parent="." instance=ExtResource("5_dwwlf")]
+
+[connection signal="timeout" from="Dash Timer" to="." method="_on_dash_length_timer_timeout"]

@@ -1,0 +1,44 @@
+[gd_scene load_steps=8 format=3 uid="uid://cyimvhd78npmj"]
+
+[ext_resource type="Script" uid="uid://dv5sx6l1730tc" path="res://Entities/enemy_entity.gd" id="1_pl5he"]
+[ext_resource type="Texture2D" uid="uid://be58g2b5n46va" path="res://Assets/Image/Enemies/mutant_01_256x256.png" id="2_7qq51"]
+[ext_resource type="PackedScene" uid="uid://xy2guokl2776" path="res://Entities/Components/health_component.tscn" id="2_ghi0t"]
+[ext_resource type="Script" uid="uid://cpl5cire205ag" path="res://Entities/Components/Managers/status_effect_manager.gd" id="3_7qq51"]
+[ext_resource type="PackedScene" uid="uid://bl1mad5sv5jr4" path="res://Entities/Components/enemy_movement_component.tscn" id="3_ghi0t"]
+[ext_resource type="Script" uid="uid://cpwhsrq1ak3v5" path="res://Scripts/Abstract Classes/Item/item_container.gd" id="6_6jo2l"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_us7kl"]
+radius = 28.0
+
+[node name="EnemyEntity" type="CharacterBody2D" node_paths=PackedStringArray("status_effects", "health", "items", "movment_component")]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_pl5he")
+status_effects = NodePath("StatusEffects")
+health = NodePath("HealthComponent")
+items = NodePath("Items")
+movment_component = NodePath("movement_component")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+y_sort_enabled = true
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_7qq51")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_us7kl")
+
+[node name="StatusEffects" type="Node2D" parent="." node_paths=PackedStringArray("entity")]
+script = ExtResource("3_7qq51")
+entity = NodePath("..")
+
+[node name="HealthComponent" parent="." node_paths=PackedStringArray("entity") instance=ExtResource("2_ghi0t")]
+entity = NodePath("..")
+regen_base = 10.0
+regen_scale = 7.225
+invulnerability_time = 0.05
+
+[node name="movement_component" parent="." node_paths=PackedStringArray("entity") instance=ExtResource("3_ghi0t")]
+entity = NodePath("..")
+
+[node name="Items" type="Node" parent="."]
+script = ExtResource("6_6jo2l")

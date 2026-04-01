@@ -7,6 +7,7 @@ extends Node
 ## when it's time for damage to calculate the total damage that would be dealt before any mitigation 
 ## would occur; which, would be handled by the health component of the entity.
 
+@export var entity: Entity = get_parent()
 @export var enable_ranged_damage: bool = false
 @export var base_damage: float = 1
 ## If base damage is not the values used for calculations will be determined
@@ -38,8 +39,10 @@ func get_damage() -> Dictionary:
 		is_crit = true
 	return Dictionary({"damage": floori(damage_boosted),"is_crit": is_crit})
 	
+## Should Depreciate
 func gather_items() -> Item_Container:
 	var index: int = get_parent().get_children().any(func(child): child is Item_Container)
+	#var index: int = entity.items.
 	if index >= 0:
 		return get_parent().get_children()[index]
 	return null

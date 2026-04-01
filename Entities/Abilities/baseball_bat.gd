@@ -7,8 +7,8 @@ extends Ability_Entity
 @onready var hitbox = $Facing/Swinging/Hitbox/CollisionPolygon2D
 @onready var gpu_particles_2d = $Facing/Swinging/GPUParticles2D
 
-func _ready():
-	ability_factory(ability)
+#func _ready():
+	#ability_factory(ability)
 
 ## Returnting true to these state functions will trigger it to transition
 func on_ready() -> bool: ## Ready to go

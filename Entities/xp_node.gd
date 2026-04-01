@@ -4,7 +4,7 @@ extends CharacterBody2D
 signal collected
 signal dropped
 
-@export var target: Student_Entity
+@export var target: Player_Entity
 @export var movement_speed: float = 100
 @export var xp_value: float = 1.0
 @export var debug_value_random_limit: float = 50

@@ -63,5 +63,5 @@ func update_debug_info():
 	$"Debug Info/MarginContainer/VBoxContainer/Enemy Power".text = "Power [Current/Max]: %s / %s" % [enemy_spawner.current_pwer, enemy_spawner.max_power]
 	$"Debug Info/MarginContainer/VBoxContainer/Spawn Chance".text = "Spawn Chance: %s" % [enemy_spawner.spawn_chance]
 	$"Debug Info/MarginContainer/VBoxContainer/Number of Enemies".text = "Enemy Count: %s" % [enemy_spawner.enemy_container.get_child_count()]
-	var items = game_ui.player.items._items
-	$"Debug Info/MarginContainer/VBoxContainer/Items".text = str("Items: ", items)
+	#var items = game_ui.player.items._items
+	#$"Debug Info/MarginContainer/VBoxContainer/Items".text = str("Items: ", items)

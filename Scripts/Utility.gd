@@ -36,7 +36,6 @@ func round_to_dec(num, decimals):
 	var round_num = sgn*(int(num) + num_dec)
 	return round_num
 
-
 ### Converts a file, given it's directory path and it's file path (name). It returns
 ### an agnostic dictionary. 
 func ConvertJSONFileToDictionary(dir_path: String, file_path: String) -> Dictionary:
@@ -46,7 +45,6 @@ func ConvertJSONFileToDictionary(dir_path: String, file_path: String) -> Diction
 	var jObj = JSON.new()
 	jObj.parse(file_as_string)
 	return jObj.get_data()
-
 
 func ConvertXMLToDict(dir_path: String, file_path: String) -> Dictionary:
 	var xml_parser:= XMLParser.new()

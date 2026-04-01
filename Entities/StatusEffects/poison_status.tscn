@@ -1,0 +1,51 @@
+[gd_scene load_steps=9 format=3 uid="uid://bn1djiutgkg8b"]
+
+[ext_resource type="PackedScene" uid="uid://duhcemp1lve0q" path="res://Entities/status_entity.tscn" id="1_xwgxi"]
+[ext_resource type="Script" uid="uid://jqhyv4lt1784" path="res://Entities/StatusEffects/poison_status.gd" id="2_c7nod"]
+[ext_resource type="Resource" uid="uid://cr2mwag15qow4" path="res://Resources/Data/StatusEffects/poison_status.tres" id="3_beedf"]
+[ext_resource type="Resource" uid="uid://de4ke6fjbvt45" path="res://Resources/Data/Attributes/health.tres" id="4_lhkw1"]
+[ext_resource type="Texture2D" uid="uid://b2gcvfdkjnajk" path="res://Assets/Image/Effects/Poison_64.png" id="5_lhkw1"]
+
+[sub_resource type="Curve" id="Curve_67217"]
+_data = [Vector2(0.248485, 0.913752), 0.0, 0.0, 0, 0, Vector2(0.751515, 0.0904704), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_nbls3"]
+curve = SubResource("Curve_67217")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_asst0"]
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(15, 1, 1)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+gravity = Vector3(0, -25, 0)
+scale_min = 0.5
+scale_max = 0.75
+alpha_curve = SubResource("CurveTexture_nbls3")
+
+[node name="PoisonStatus" instance=ExtResource("1_xwgxi")]
+script = ExtResource("2_c7nod")
+damage = 1.0
+tick_count = 0
+pulse_rate = 1
+duration_time = 3.0
+tick_rate = 2.0
+status_resource = ExtResource("3_beedf")
+attribute_effected = ExtResource("4_lhkw1")
+
+[node name="Duration" parent="." index="0"]
+wait_time = 3.0
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." index="2"]
+amount = 2
+texture = ExtResource("5_lhkw1")
+speed_scale = 0.67
+process_material = SubResource("ParticleProcessMaterial_asst0")
+
+[node name="Label" type="Label" parent="." index="3"]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[connection signal="expires" from="." to="." method="_on_expires"]
+[connection signal="initial_infection" from="." to="." method="_on_initial_infection"]
+[connection signal="tick" from="." to="." method="_on_tick"]

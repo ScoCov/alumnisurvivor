@@ -1,20 +1,20 @@
-[gd_scene load_steps=4 format=3 uid="uid://dlcjvn6vgtrd6"]
+[gd_scene load_steps=4 format=3 uid="uid://dxh5oel5rakfm"]
 
-[ext_resource type="PackedScene" uid="uid://cyimvhd78npmj" path="res://Entities/Enemies/enemy_entity.tscn" id="1_th12s"]
-[ext_resource type="Script" uid="uid://g2pcmcdj7v3h" path="res://Scripts/Strategy/EnemyMovement/avoid_player.gd" id="2_13qkv"]
+[ext_resource type="PackedScene" uid="uid://cyimvhd78npmj" path="res://Entities/enemy_entity.tscn" id="1_th12s"]
+[ext_resource type="Script" uid="uid://bkmm4260ecnmn" path="res://Scripts/Strategy/EnemyMovement/avoid_player.gd" id="2_13qkv"]
 [ext_resource type="Resource" uid="uid://chujgr1qlg2eh" path="res://Resources/Data/Enemies/spitter.tres" id="2_60l3j"]
 
 [node name="Spitter" instance=ExtResource("1_th12s")]
 entity = ExtResource("2_60l3j")
 
-[node name="HealthComponent" parent="." index="3"]
+[node name="EnemeyMovementComponent#avoidplayer" type="Node" parent="." index="2"]
+script = ExtResource("2_13qkv")
+
+[node name="HealthComponent" parent="." index="4"]
 maximum_health = 5
 current_health = 5
 
-[node name="avoidplayer" type="Node" parent="EnemeyMovementComponent" index="2"]
-script = ExtResource("2_13qkv")
-
-[node name="Label" type="Label" parent="." index="5"]
+[node name="Label2" type="Label" parent="." index="5"]
 visible = false
 offset_left = -20.0
 offset_top = -53.0

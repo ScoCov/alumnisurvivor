@@ -16,9 +16,9 @@ var BASEBALL = preload("res://Entities/Abilities/baseball_projectile.tscn")
 var _attack_complete: bool = false
 var _ready_to_throw_again: bool = true
 
-func _ready():
-	ability_factory(ability)
-	
+#func _ready():
+	#ability_factory(ability)
+	#
 func _process(_delta):
 	$Label.text = "State: %s" % [state_machine.current_state.name]
 	pass

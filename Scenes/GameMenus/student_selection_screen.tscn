@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://be1n210v7st6g" path="res://Scenes/GameMenus/student_selection_screen.gd" id="1_lln7v"]
 [ext_resource type="Theme" uid="uid://dtoedfkuckej4" path="res://Assets/Image/UI/Themes/menu_theme.tres" id="2_iu21f"]
 [ext_resource type="PackedScene" uid="uid://dlx6bgpsdi00e" path="res://Scenes/GameMenus/menu_background.tscn" id="2_sh2fa"]
-[ext_resource type="PackedScene" uid="uid://v1phrdf8cdqg" path="res://Entities/student_entity.tscn" id="3_sh2fa"]
+[ext_resource type="PackedScene" uid="uid://v1phrdf8cdqg" path="res://Entities/player_entity.tscn" id="3_sh2fa"]
 [ext_resource type="AudioStream" uid="uid://rjag6fud7kpj" path="res://Assets/BGM/bgm_01.wav" id="4_iu21f"]
 
 [node name="Student Selection Screen" type="Control"]

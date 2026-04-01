@@ -1,9 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://c0mvfepe3apsv"]
+[gd_scene load_steps=5 format=3 uid="uid://dich6kxpoo335"]
 
-[ext_resource type="PackedScene" uid="uid://cyimvhd78npmj" path="res://Entities/Enemies/enemy_entity.tscn" id="1_jxmd3"]
+[ext_resource type="PackedScene" uid="uid://cyimvhd78npmj" path="res://Entities/enemy_entity.tscn" id="1_jxmd3"]
 [ext_resource type="Resource" uid="uid://d3t00c3xci4hm" path="res://Resources/Data/Enemies/slitherer.tres" id="2_0h84s"]
 [ext_resource type="Texture2D" uid="uid://yb1rq63bhh22" path="res://Assets/Image/Enemies/mutant_03_256x256.png" id="3_ysqs4"]
-[ext_resource type="Script" uid="uid://bv4facsdymlnw" path="res://Scripts/Strategy/EnemyMovement/move_to_player.gd" id="4_h0mm2"]
+[ext_resource type="Script" uid="uid://y3oy8y4u031n" path="res://Scripts/Strategy/EnemyMovement/move_to_player.gd" id="4_h0mm2"]
 
 [node name="Slitherer" instance=ExtResource("1_jxmd3")]
 entity = ExtResource("2_0h84s")
@@ -11,5 +11,5 @@ entity = ExtResource("2_0h84s")
 [node name="Sprite2D" parent="." index="0"]
 texture = ExtResource("3_ysqs4")
 
-[node name="movetoplayer" type="Node" parent="EnemeyMovementComponent" index="2"]
+[node name="EnemeyMovementComponent#movetoplayer" type="Node" parent="." index="2"]
 script = ExtResource("4_h0mm2")

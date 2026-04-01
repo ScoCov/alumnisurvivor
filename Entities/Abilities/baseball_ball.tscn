@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://t8tsmn2h0dcm"]
+[gd_scene load_steps=10 format=3 uid="uid://t8tsmn2h0dcm"]
 
 [ext_resource type="Script" uid="uid://c70ocafjqcphd" path="res://Entities/Abilities/baseball_ball.gd" id="1_3merp"]
 [ext_resource type="Script" uid="uid://t3mlm4ybio8c" path="res://Scripts/States/state_machine.gd" id="2_k12dq"]
+[ext_resource type="Resource" uid="uid://bmjdqf2hvrjxf" path="res://Resources/Data/Abilities/baseball_ball.tres" id="2_wvxja"]
 [ext_resource type="Script" uid="uid://dydaurl4tnt6i" path="res://Scripts/States/Ability/AbilityActive.gd" id="3_wvxja"]
 [ext_resource type="Script" uid="uid://bgpw1jyinlpy" path="res://Scripts/States/Ability/AbilityReady.gd" id="4_alqp5"]
 [ext_resource type="Script" uid="uid://bb1ure7bwtit4" path="res://Scripts/States/Ability/AbilityRecovery.gd" id="5_vhagf"]
@@ -13,6 +14,7 @@ radius = 300.0
 
 [node name="Baseball" type="Node2D"]
 script = ExtResource("1_3merp")
+ability = ExtResource("2_wvxja")
 
 [node name="Facing" type="Marker2D" parent="."]
 

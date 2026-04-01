@@ -1,20 +1,12 @@
-class_name EnemyMovementAvoidPlayer
-extends EnemyMovementStrategy
+class_name Stategy_Avoid_Player
+extends Strategy_Enemy_Movement
 
-@export var too_close_distance: float = 150
-@export var too_far_distance: float = 250
-var angle = 0
-var target = Vector2.ZERO
-var desired_distance = (too_close_distance + too_far_distance) / 2
 
-func update(entity: Enemy_Entity, player: Student_Entity, _delta: float):
-	get_target(player,_delta)
-	entity.velocity = entity.position.direction_to(target) * entity.movement_component.movement_speed
-
-func get_target(player: Student_Entity, _delta: float):
-	angle += 1 * _delta
-	var radius = desired_distance
-	var x_pos = cos(angle)
-	var y_pos = sin(angle)
-	target = Vector2(radius * x_pos, radius * y_pos) + (player.position)
+func enter():
+	pass
 	
+func exit():
+	pass
+
+func update(_entity: Enemy_Entity, _delta: float):
+	pass

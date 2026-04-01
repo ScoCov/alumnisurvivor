@@ -16,7 +16,7 @@ signal player_death
 ## we detected the unhandled_event of the player pressing the pause button (ESC). 
 #endregion
 
-@export var player: Student_Entity
+@export var player: Player_Entity
 @export var game_logic: Game_Local
 @export var render_node: Node2D
 @export var debug_mode: bool = false

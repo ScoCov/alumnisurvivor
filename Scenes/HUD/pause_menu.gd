@@ -9,7 +9,7 @@ signal ready_signal
 @export var game_ui: Game_Ui:
 	set(value):
 		game_ui = value
-@export var student: Student_Entity
+@export var student: Player_Entity
 @onready var stat_block = $StatBlock
 @onready var item_list_pause = $ItemListPause
 

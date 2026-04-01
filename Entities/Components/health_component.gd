@@ -6,7 +6,7 @@ signal damage_negated
 signal damage_healed
 signal damage_lethal
 
-const hit_colors: Array[Color] = [Color.GREEN, Color.RED]
+const hit_colors: Dictionary = {"Heal": Color.GREEN,"Damag": Color.RED, "Critical": Color.GOLD}
 const HEALTH_RES = preload("res://Resources/Data/Attributes/health.tres")
 const REGEN_RES = preload("res://Resources/Data/Attributes/health_regen.tres")
 const HEALTH_REGEN_DEFAULT_WAIT_TIME: float = 10
@@ -25,7 +25,7 @@ const _healing_damage_particles:= preload("res://Entities/Effects/healing_damage
 const MAX_HEALTH: = 10
 @export var maximum_health: int = 10:
 	get():
-		if get_parent() is Student_Entity:
+		if get_parent() is Player_Entity:
 			return floori(_get_maximum_health())
 		else:
 			return maximum_health
@@ -102,9 +102,9 @@ func _get_configuration_warnings():
 		msg.append("Health Component must be a child in an Entity class.")
 	return msg
 	
-func apply_dot_damage(amount: float):
+func apply_dot_damage(amount: float, status_entity: Status_Effect_Entity):
 	current_health -= amount
-	_react_to_dot(amount)
+	_react_to_dot(amount, status_entity)
 	
 func apply_damage_rider(damage_rider: Damage_Rider):
 	if invulnerable: return ## Guard
@@ -147,7 +147,7 @@ func _react_to_damage(damage_rider: Damage_Rider):
 		damage_negated.emit()
 	emit_hit_indication(get_parent(), damage_dealt, damage_rider.is_critical)
 	
-func _react_to_dot(amount: float):
+func _react_to_dot(amount: float, status_effect: Status_Effect_Entity):
 	## Determine if invul and what type of damage to emit
 	var damage_dealt = amount
 	if damage_dealt < 0: 
@@ -159,7 +159,7 @@ func _react_to_dot(amount: float):
 	elif damage_dealt == 0:
 		damage_negated.emit()
 	## Emit_hit_indicator needs a dot version
-	emit_dot_indication()
+	emit_dot_indication(status_effect)
 	#emit_hit_indication(get_parent(), damage_dealt, damage_rider.is_critical)
 	
 
@@ -168,8 +168,8 @@ func _on_invulnerability_timer_timeout():
 	invulnerable = false
 
 func emit_dot_indication(status_effect: Status_Effect_Entity = null):
-	strike.position = get_parent().position
-	strike.particle.modulate = Color.GREEN
+	strike.particle.position = get_parent().position
+	strike.particle.modulate = status_effect.status_color
 	strike.particle.emitting = true
 
 func emit_hit_indication(entity: Entity, _amount: float, is_critical: bool = false):

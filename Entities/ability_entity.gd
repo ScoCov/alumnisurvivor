@@ -1,6 +1,8 @@
 class_name Ability_Entity
 extends Node2D
 
+signal ready_complete
+
 #region Development Notes
 ## This is the base ability entity that will have all the other abilities based upon.
 ## each form should be an instantiated Ability_Entity.
@@ -41,6 +43,7 @@ var _items: Item_Container:
 				return get_parent().parent_entity.items
 		return null
 		
+@warning_ignore("unused_parameter")
 var _cooldown_complete: bool = false
 
 func _get_configuration_warnings():
@@ -58,7 +61,8 @@ func _get_configuration_warnings():
 	return _msg
 
 func _ready():
-	pass
+	ready_complete.connect(ability_factory.bind(ability))
+	ready_complete.emit()
 	
 func _physics_process(_delta):
 	if not entity:

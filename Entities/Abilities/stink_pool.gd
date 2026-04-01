@@ -28,7 +28,6 @@ func _ready():
 func _process(delta):
 	_pulse += 5 * delta
 	color.a = sin(_pulse)
-	$Label.text = "Time_Left: %s" % duration.time_left
 	queue_redraw()
 
 func infect_all():
@@ -36,12 +35,13 @@ func infect_all():
 		for entity in entity_pool:
 			apply_status_effect(entity)
 
-func apply_status_effect(entity):
-	(entity as Enemy_Entity).status_effects.add_status_effect(poison_effect)
+func apply_status_effect(entity: Enemy_Entity):
+	entity.status_effects.add_status_effect_entity(poison_effect, parent_ability)
+	#(entity as Enemy_Entity).status_effects.add_status_effect(poison_effect, parent_ability)
 
 func _on_hitbox_body_entered(body):
-	apply_status_effect(body)
 	add_entity_to_pool(body)
+	apply_status_effect(body)
 
 func _on_hitbox_body_exited(body):
 	remove_entity_from_pool(body)
@@ -57,7 +57,6 @@ func remove_entity_from_pool(_entity: Entity):
 		var extant_entity = entity_pool.filter(func(_entity_): return _entity_ == _entity)
 		if extant_entity:
 			entity_pool.remove_at(entity_pool.find_custom(func(_entity_): return _entity_ == _entity))
-
 
 func _on_duration_timeout():
 	queue_free()

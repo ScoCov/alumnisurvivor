@@ -1,0 +1,60 @@
+[gd_scene load_steps=10 format=3 uid="uid://krhyn7tgn3a3"]
+
+[ext_resource type="Script" uid="uid://1omkodm42v0x" path="res://Entities/Abilities/aura_farm.gd" id="1_wndcg"]
+[ext_resource type="Script" uid="uid://dpfyngj1e5q6j" path="res://Entities/Components/damage_component.gd" id="2_1bnb8"]
+[ext_resource type="Resource" uid="uid://1dyd7dt5ia4m" path="res://Resources/Data/Abilities/aura_farm.tres" id="2_xyub7"]
+[ext_resource type="Script" uid="uid://t3mlm4ybio8c" path="res://Scripts/States/state_machine.gd" id="3_xc723"]
+[ext_resource type="Script" uid="uid://dydaurl4tnt6i" path="res://Scripts/States/Ability/AbilityActive.gd" id="4_xyub7"]
+[ext_resource type="Script" uid="uid://bgpw1jyinlpy" path="res://Scripts/States/Ability/AbilityReady.gd" id="5_7ceia"]
+[ext_resource type="Script" uid="uid://bb1ure7bwtit4" path="res://Scripts/States/Ability/AbilityRecovery.gd" id="6_kww7w"]
+[ext_resource type="Script" uid="uid://dxflctocngquj" path="res://Scripts/States/Ability/AbilityCooldown.gd" id="7_qj8vt"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wndcg"]
+radius = 75.0
+
+[node name="AuraFarm" type="Node2D"]
+script = ExtResource("1_wndcg")
+ability = ExtResource("2_xyub7")
+metadata/_custom_type_script = "uid://gqwg5uj22upb"
+
+[node name="Cooldown" type="Timer" parent="."]
+wait_time = 0.75
+
+[node name="Detection" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Detection"]
+shape = SubResource("CircleShape2D_wndcg")
+
+[node name="Damage" type="Node" parent="."]
+script = ExtResource("2_1bnb8")
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("3_xc723")
+initial_state = NodePath("Ready")
+
+[node name="Active" type="Node" parent="StateMachine" node_paths=PackedStringArray("ability")]
+script = ExtResource("4_xyub7")
+ability = NodePath("../..")
+
+[node name="Ready" type="Node" parent="StateMachine" node_paths=PackedStringArray("ability")]
+script = ExtResource("5_7ceia")
+ability = NodePath("../..")
+
+[node name="Recovery" type="Node" parent="StateMachine" node_paths=PackedStringArray("ability")]
+script = ExtResource("6_kww7w")
+ability = NodePath("../..")
+
+[node name="Cooldown" type="Node" parent="StateMachine" node_paths=PackedStringArray("ability")]
+script = ExtResource("7_qj8vt")
+ability = NodePath("../..")
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[connection signal="timeout" from="Cooldown" to="." method="_on_cooldown_timeout"]
+[connection signal="body_entered" from="Detection" to="." method="_on_detection_body_entered"]
+[connection signal="body_exited" from="Detection" to="." method="_on_detection_body_exited"]

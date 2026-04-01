@@ -14,11 +14,11 @@ extends Node
 ## to allow better testing. 
 @export var debug: bool = false
 ## Pass in the StudentEntity that will be used in the game.
-@export var player: Student_Entity
+@export var player: Player_Entity
 ## This is the time limit for the game.
 @export var game_time: Timer
-@export var game_ui: Game_Ui
 @export var enemy_spawner: Enemy_Spawner
+@export var game_ui: Game_Ui
 @export var reroll_counter: int = 1
 	
 func _get_configuration_warnings():

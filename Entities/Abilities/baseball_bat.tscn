@@ -1,7 +1,7 @@
-[gd_scene load_steps=17 format=3 uid="uid://dljgmakgpe5tj"]
+[gd_scene load_steps=16 format=3 uid="uid://dljgmakgpe5tj"]
 
 [ext_resource type="Script" uid="uid://dl7oj27qxe7r5" path="res://Entities/Abilities/baseball_bat.gd" id="1_7ejnk"]
-[ext_resource type="Script" uid="uid://b1ad1mp4224b3" path="res://Scripts/Abstract Classes/Resource/ability_resource.gd" id="2_hfyj2"]
+[ext_resource type="Resource" uid="uid://bv6lkhj6q5gtx" path="res://Resources/Data/Abilities/baseball_bat.tres" id="2_hfyj2"]
 [ext_resource type="Texture2D" uid="uid://dao16y3oi7gpe" path="res://Assets/Image/Ability/Baseball_Bat.png" id="2_hrcwj"]
 [ext_resource type="Script" uid="uid://dpfyngj1e5q6j" path="res://Entities/Components/damage_component.gd" id="2_ka3u3"]
 [ext_resource type="Script" uid="uid://t3mlm4ybio8c" path="res://Scripts/States/state_machine.gd" id="4_lhb0q"]
@@ -9,30 +9,6 @@
 [ext_resource type="Script" uid="uid://bgpw1jyinlpy" path="res://Scripts/States/Ability/AbilityReady.gd" id="6_jsh8u"]
 [ext_resource type="Script" uid="uid://bb1ure7bwtit4" path="res://Scripts/States/Ability/AbilityRecovery.gd" id="7_68u3n"]
 [ext_resource type="Script" uid="uid://dxflctocngquj" path="res://Scripts/States/Ability/AbilityCooldown.gd" id="8_qkos8"]
-
-[sub_resource type="Resource" id="Resource_jsh8u"]
-script = ExtResource("2_hfyj2")
-ability_name = "baseball_bat"
-display_name = "Homerun!"
-id = "baseball_bat"
-description = "Swing a long bat giving you greater range than the heavy punch, but at lower damage and cooldown. It does have a considerable knockback."
-base_damage = 2.0
-minimum_damage = 0.0
-maximum_damage = 0.0
-critical_hit_chance = 0.01
-critical_damage_multiplier = 1.5
-projectile_speed = 650.0
-attack_range = 250.0
-projectiles_max = 1
-range_tag = 0
-area = 1.0
-attack_speed = 100.0
-cooldown = 1.0
-duration = 1.0
-knockback = 0.0
-pierce = 0
-bounce = 0
-metadata/_custom_type_script = "uid://b1ad1mp4224b3"
 
 [sub_resource type="Curve" id="Curve_hfyj2"]
 _limits = [0.0, 3.0, 0.0, 1.0]
@@ -74,7 +50,7 @@ radius = 104.235
 
 [node name="BaseballBat" type="Node2D"]
 script = ExtResource("1_7ejnk")
-ability = SubResource("Resource_jsh8u")
+ability = ExtResource("2_hfyj2")
 debug = false
 
 [node name="Damage" type="Node" parent="."]

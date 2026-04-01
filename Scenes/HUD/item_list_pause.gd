@@ -3,7 +3,7 @@ extends Control
 
 const ITEM_NODE_PACKED_SCENE = preload("res://Scenes/HUD/item_node.tscn")
 
-@export var student: Student_Entity:
+@export var student: Player_Entity:
 	set(value):
 		student = value
 		populate()

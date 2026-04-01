@@ -1,0 +1,219 @@
+[gd_scene load_steps=25 format=3 uid="uid://v1phrdf8cdqg"]
+
+[ext_resource type="Script" uid="uid://d0tuntxkjee38" path="res://Entities/player_entity.gd" id="1_cue4i"]
+[ext_resource type="Script" uid="uid://bs86w8aueivx2" path="res://Entities/Components/Managers/ability_manager.gd" id="2_vvltm"]
+[ext_resource type="PackedScene" uid="uid://xy2guokl2776" path="res://Entities/Components/health_component.tscn" id="3_f8px4"]
+[ext_resource type="Script" uid="uid://dl3knldaqwm3p" path="res://Entities/Components/Managers/experience_manager.gd" id="4_5a7bc"]
+[ext_resource type="PackedScene" uid="uid://dysr53ibvwa8l" path="res://Entities/Components/player_movement_component.tscn" id="5_dba2u"]
+[ext_resource type="Script" uid="uid://wcnfsy2fs30a" path="res://Entities/Components/Managers/dash_manager.gd" id="6_p4eev"]
+[ext_resource type="PackedScene" uid="uid://di3yidl1tqbq4" path="res://Entities/Indicator/dash_indicator.tscn" id="7_tjc8g"]
+[ext_resource type="Script" uid="uid://cpl5cire205ag" path="res://Entities/Components/Managers/status_effect_manager.gd" id="8_ufpw1"]
+[ext_resource type="Script" uid="uid://cpwhsrq1ak3v5" path="res://Scripts/Abstract Classes/Item/item_container.gd" id="9_81gbu"]
+[ext_resource type="AudioStream" uid="uid://bsvxl6ry23s8q" path="res://Assets/SFX/XP Pickup Chime/XP Chime 1.wav" id="10_s7kd2"]
+[ext_resource type="Texture2D" uid="uid://dtt7h2na2opvb" path="res://Assets/Image/Student/Body/Student_Body.png" id="11_80tmn"]
+[ext_resource type="Texture2D" uid="uid://ckyqn1o6hh0i1" path="res://Assets/Image/Student/Head/Head_beta_2.png" id="12_v8sgw"]
+[ext_resource type="Texture2D" uid="uid://c0ebqy6ydav7u" path="res://Assets/Image/Student/Head/Hair/Hair_02.png" id="13_orfis"]
+[ext_resource type="Texture2D" uid="uid://va580vf1m0o7" path="res://Assets/Image/Student/Head/Eyebrows/Eyebrows_01.png" id="14_b1hmi"]
+[ext_resource type="Texture2D" uid="uid://b1pkn4viaktqf" path="res://Assets/Image/Student/Head/Eyes/Eyes_02.png" id="15_anyje"]
+[ext_resource type="Texture2D" uid="uid://cr4jadxq3b6wj" path="res://Assets/Image/Student/Head/Mouth/Mouth_01.png" id="16_je17t"]
+[ext_resource type="PackedScene" uid="uid://ifl1frui5nv" path="res://Entities/Effects/dash_boom.tscn" id="17_8kbhj"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8xx2g"]
+radius = 30.0
+height = 106.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qr54b"]
+radius = 100.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fkouh"]
+radius = 32.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fkouh"]
+resource_local_to_scene = true
+
+[sub_resource type="Animation" id="Animation_1pn2y"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Head:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-15.7, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Head:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-35.4, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_gi4ri"]
+resource_name = "walk"
+loop_mode = 1
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Head:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(-15.7, -0.25, 0, 0.25, 0, -15.7, -0.25, 0, 0.25, 0, -15.7, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5, 0.99)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Head:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(-35.4, -0.25, 0, 0.25, 0, -46, -0.25, 0, 0.25, 0, -36, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5, 0.99)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_876pq"]
+_data = {
+&"RESET": SubResource("Animation_1pn2y"),
+&"walk": SubResource("Animation_gi4ri")
+}
+
+[node name="Player Entity" type="CharacterBody2D" node_paths=PackedStringArray("experience", "abilities", "status_effects", "health", "items", "movment_component")]
+slide_on_ceiling = false
+script = ExtResource("1_cue4i")
+experience = NodePath("Experience")
+abilities = NodePath("Abilities")
+status_effects = NodePath("StatusEffects")
+health = NodePath("HealthComponent")
+items = NodePath("Items")
+movment_component = NodePath("MovementComponent")
+metadata/_custom_type_script = "uid://dcgrocrt0ga75"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_8xx2g")
+debug_color = Color(0, 0.641216, 0.337845, 0.42)
+
+[node name="Abilities" type="Node2D" parent="." node_paths=PackedStringArray("parent_entity")]
+script = ExtResource("2_vvltm")
+parent_entity = NodePath("..")
+
+[node name="HealthComponent" parent="." instance=ExtResource("3_f8px4")]
+maximum_health = 0
+
+[node name="Experience" type="Node" parent="." node_paths=PackedStringArray("player")]
+script = ExtResource("4_5a7bc")
+player = NodePath("..")
+
+[node name="MovementComponent" parent="." node_paths=PackedStringArray("dash_manager", "entity") instance=ExtResource("5_dba2u")]
+player_controls = true
+dash_manager = NodePath("Dashes")
+entity = NodePath("..")
+
+[node name="Dashes" type="HBoxContainer" parent="MovementComponent" node_paths=PackedStringArray("movement_component")]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -663.0
+offset_top = 55.0
+offset_right = -489.0
+offset_bottom = 88.0
+grow_horizontal = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+script = ExtResource("6_p4eev")
+movement_component = NodePath("..")
+
+[node name="DashIndicator" parent="MovementComponent/Dashes" instance=ExtResource("7_tjc8g")]
+layout_mode = 2
+
+[node name="StatusEffects" type="Node2D" parent="." node_paths=PackedStringArray("entity")]
+script = ExtResource("8_ufpw1")
+entity = NodePath("..")
+
+[node name="Items" type="Node" parent="."]
+script = ExtResource("9_81gbu")
+
+[node name="Sensors" type="Node2D" parent="."]
+
+[node name="XP_Pickup_Range" type="Area2D" parent="Sensors"]
+collision_layer = 4
+collision_mask = 4
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sensors/XP_Pickup_Range"]
+light_mask = 4
+visibility_layer = 4
+shape = SubResource("CircleShape2D_qr54b")
+debug_color = Color(0.518355, 0.574736, 0.0459606, 0.42)
+
+[node name="XP_Collection_Zone" type="Area2D" parent="Sensors"]
+collision_layer = 4
+collision_mask = 4
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sensors/XP_Collection_Zone"]
+light_mask = 4
+visibility_layer = 4
+shape = SubResource("CircleShape2D_fkouh")
+debug_color = Color(0.936353, 0.128452, 0.542358, 0.42)
+
+[node name="XpChime1" type="AudioStreamPlayer" parent="Sensors/XP_Collection_Zone"]
+stream = ExtResource("10_s7kd2")
+
+[node name="Visuals" type="Node2D" parent="."]
+position = Vector2(3, -36)
+scale = Vector2(0.2, 0.2)
+
+[node name="StudentBody" type="Sprite2D" parent="Visuals"]
+y_sort_enabled = true
+material = SubResource("ShaderMaterial_fkouh")
+position = Vector2(-16, 255)
+texture = ExtResource("11_80tmn")
+
+[node name="Head" type="Sprite2D" parent="Visuals"]
+position = Vector2(-15.7, -35.4)
+texture = ExtResource("12_v8sgw")
+
+[node name="Hair" type="Sprite2D" parent="Visuals/Head"]
+position = Vector2(-4.75454, 0)
+scale = Vector2(0.887784, 1)
+texture = ExtResource("13_orfis")
+
+[node name="Eyebrows" type="Sprite2D" parent="Visuals/Head"]
+position = Vector2(-1.90735e-06, 13.6364)
+texture = ExtResource("14_b1hmi")
+
+[node name="Eyes" type="Sprite2D" parent="Visuals/Head"]
+position = Vector2(0, 22.7272)
+texture = ExtResource("15_anyje")
+
+[node name="Mouth" type="Sprite2D" parent="Visuals/Head"]
+position = Vector2(-1.5, 62)
+texture = ExtResource("16_je17t")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Visuals"]
+libraries = {
+&"": SubResource("AnimationLibrary_876pq")
+}
+
+[node name="BodyLagTimer" type="Timer" parent="Visuals"]
+wait_time = 0.2
+
+[node name="VFX" type="Node2D" parent="."]
+
+[node name="DashBoom" parent="VFX" instance=ExtResource("17_8kbhj")]
+
+[connection signal="damage_lethal" from="HealthComponent" to="." method="_on_health_component_damage_lethal"]
+[connection signal="body_entered" from="Sensors/XP_Pickup_Range" to="." method="_on_xp_collector_body_entered"]
+[connection signal="body_entered" from="Sensors/XP_Collection_Zone" to="." method="_on_xp_collection_zone_body_entered"]
