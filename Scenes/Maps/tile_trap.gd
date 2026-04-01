@@ -9,11 +9,6 @@ extends Area2D
 @export var item: Item_Resource
 var entities_in_range: Array[CharacterBody2D]
 
-const SLOW_STATUS: PackedScene = preload("res://Entities/StatusEffects/Statuses/slow_status.tscn")
-const HASTE_STATUS: PackedScene = preload("res://Entities/StatusEffects/Statuses/haste_status.tscn")
-const BURN_STATUS: PackedScene = preload("res://Entities/StatusEffects/Statuses/burn_status.tscn")
-const POISON_STATUS: PackedScene = preload("res://Entities/StatusEffects/Statuses/poison_status.tscn")
-
 func _ready():
 	$Activation.wait_time = cooldown
 	$ColorRect.color = tile_color
@@ -59,24 +54,24 @@ func activate_status(entity: CharacterBody2D):
 		status.speed_modification = damage_amount
 	entity.status_effects.add_child(status)
 
-func activate_item(entity: CharacterBody2D):
-	if entity is Student_Entity:
+func activate_item(entity: Entity):
+	if entity is Entity:
 		entity.items.add_item(item)
 
-func activate_damage(entity: CharacterBody2D):
+func activate_damage(entity: Entity):
 	var entity_health_comp: Health_Component = entity.health
 	entity_health_comp.attempt_damage(-damage_amount)
 	
-func activate_heal(entity: CharacterBody2D):
+func activate_heal(entity: Entity):
 	var entity_health_comp: Health_Component = entity.health
 	entity_health_comp.attempt_damage(damage_amount)
 	
 func _on_body_entered(body):
-	if body is Student_Entity or Enemy_Entity:
+	if body is Entity:
 		entities_in_range.append(body)
 
-func _on_body_exited(body):
-	if body is Student_Entity or Enemy_Entity:
+func _on_body_exited(body: Entity):
+	if body is Entity:
 		var index = entities_in_range.find_custom(func(ent): return ent == body)
 		entities_in_range.remove_at(index)
 

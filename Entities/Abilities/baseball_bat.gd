@@ -35,7 +35,7 @@ func on_recovery() -> bool: ## Reset
 	return true
 	
 func on_cooldown()-> bool: ## During Cooldown
-	if entity is Student_Entity and entity.items.get_attribute_bonus("cooldown") != 0:
+	if entity is Player_Entity and entity.items.get_attribute_bonus("cooldown") != 0:
 		cooldown.wait_time = ability.cooldown / (ability.cooldown 
 		+ -(1 + entity.items.get_attribute_bonus("cooldown")))
 	if cooldown.is_stopped():

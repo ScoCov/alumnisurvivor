@@ -1,4 +1,3 @@
-@tool
 class_name Game_Local
 extends Node
 
@@ -21,19 +20,6 @@ extends Node
 @export var game_ui: Game_Ui
 @export var reroll_counter: int = 1
 	
-func _get_configuration_warnings():
-	var msg: Array[String]
-	var children = get_children()
-	if not children.any(func(child): return child is Enemy_Spawner):
-		msg.append("Game Local requires an Enemy Spawner.")
-	if not player:
-		msg.append("Game Local requires Student Entity.")
-	if not game_ui:
-		msg.append("Game Local requires Game UI.")
-	if not player:
-		msg.append("Game Local requires a Student Entity as Player")
-	return msg
-	
 func _ready() -> void:
 	player.loaded.connect(student_load)
 	player.death.connect(func(): get_tree().change_scene_to_file("res://Scenes/MainMenu.tscn"))
@@ -41,17 +27,8 @@ func _ready() -> void:
 		game_time.timeout.connect(game_over)
 
 func student_load():
-		#player.items.item_count_increased.connect(game_ui.update_health_values)
-		game_ui.student_loaded()
+	game_ui.student_loaded()
 		
-func debug_mode():
-	var thing = $"../Forgound Rendering Node/Test"
-	var speed = 15
-	var freq = 0.5
-	var intensity = 1
-	thing.position.x += speed * get_process_delta_time()
-	thing.position.y = sin(log(thing.position.x) * freq) * intensity
-
 func game_over():
 	get_tree().change_scene_to_file("res://Scenes/MainMenu.tscn")
 	
