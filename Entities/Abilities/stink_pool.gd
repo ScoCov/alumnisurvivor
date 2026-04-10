@@ -37,7 +37,6 @@ func infect_all():
 
 func apply_status_effect(entity: Enemy_Entity):
 	entity.status_effects.add_status_effect_entity(poison_effect, parent_ability)
-	#(entity as Enemy_Entity).status_effects.add_status_effect(poison_effect, parent_ability)
 
 func _on_hitbox_body_entered(body):
 	add_entity_to_pool(body)

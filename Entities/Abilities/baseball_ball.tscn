@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://t8tsmn2h0dcm"]
+[gd_scene load_steps=9 format=3 uid="uid://t8tsmn2h0dcm"]
 
 [ext_resource type="Script" uid="uid://c70ocafjqcphd" path="res://Entities/Abilities/baseball_ball.gd" id="1_3merp"]
 [ext_resource type="Script" uid="uid://t3mlm4ybio8c" path="res://Scripts/States/state_machine.gd" id="2_k12dq"]
@@ -7,7 +7,6 @@
 [ext_resource type="Script" uid="uid://bgpw1jyinlpy" path="res://Scripts/States/Ability/AbilityReady.gd" id="4_alqp5"]
 [ext_resource type="Script" uid="uid://bb1ure7bwtit4" path="res://Scripts/States/Ability/AbilityRecovery.gd" id="5_vhagf"]
 [ext_resource type="Script" uid="uid://dxflctocngquj" path="res://Scripts/States/Ability/AbilityCooldown.gd" id="6_3vrij"]
-[ext_resource type="Script" uid="uid://dpfyngj1e5q6j" path="res://Entities/Components/damage_component.gd" id="7_b2bmr"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_icyxi"]
 radius = 300.0
@@ -51,8 +50,6 @@ script = ExtResource("6_3vrij")
 ability = NodePath("../..")
 
 [node name="Damage" type="Node" parent="."]
-script = ExtResource("7_b2bmr")
-enable_ranged_damage = true
 
 [node name="Label" type="Label" parent="."]
 offset_left = -155.0

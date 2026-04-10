@@ -1,0 +1,347 @@
+[gd_scene load_steps=18 format=3 uid="uid://c8xrn0wg6gal2"]
+
+[ext_resource type="Script" uid="uid://clcjo045s1aup" path="res://Scenes/GameMenus/Roster/student_roster.gd" id="1_sq8a0"]
+[ext_resource type="Shader" uid="uid://cyjdmut1mcguy" path="res://Scenes/Maps/Shared/noise_generator_floor.tres" id="2_5obn1"]
+[ext_resource type="PackedScene" uid="uid://bm20qapbxcgdc" path="res://Scenes/GameMenus/Roster/Components/roster_icon.tscn" id="2_dhiog"]
+[ext_resource type="Resource" uid="uid://bqrarylfmicoh" path="res://Resources/Data/Students/Nerd.tres" id="3_8i0qa"]
+[ext_resource type="Texture2D" uid="uid://bdi3hm1eikftg" path="res://Assets/Image/Backgrounds/Background_Quicky2.png" id="3_yarnr"]
+[ext_resource type="Resource" uid="uid://be7tvpc2v1d3i" path="res://Resources/Data/Students/Bully.tres" id="4_ixdau"]
+[ext_resource type="Resource" uid="uid://l12kygxdsvpi" path="res://Resources/Data/Students/ClassClown.tres" id="5_xasdf"]
+[ext_resource type="Resource" uid="uid://crjsylvyx7g2w" path="res://Resources/Data/Students/HeavyMetalGuy.tres" id="6_5obn1"]
+[ext_resource type="Resource" uid="uid://bdyv3dp43ka7l" path="res://Resources/Data/Students/Athlete.tres" id="7_yarnr"]
+[ext_resource type="Resource" uid="uid://cummv1e8257v8" path="res://Resources/Data/Students/Thespian.tres" id="8_lqefm"]
+[ext_resource type="PackedScene" uid="uid://cbpdb6c61ootf" path="res://Scenes/GameMenus/Roster/Components/current_student_container.tscn" id="9_xasdf"]
+[ext_resource type="Theme" uid="uid://ea0hpxrc3ot0" path="res://Resources/Themes/Menu_Themes.tres" id="11_lqefm"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yarnr"]
+shader = ExtResource("2_5obn1")
+
+[sub_resource type="Animation" id="Animation_5obn1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MarginContainer/MarginContainer/ScrollContainer/Control/GridContainer:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(183, 54)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MarginContainer/MarginContainer/CenterContainer/Control/Button:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MarginContainer/MarginContainer/ScrollContainer/Control/GridContainer:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MarginContainer/MarginContainer/CenterContainer/Control/Button:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_yarnr"]
+resource_name = "slide_in"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MarginContainer/MarginContainer/ScrollContainer/Control/GridContainer:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(183, 328.002), Vector2(183, 54)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MarginContainer/MarginContainer/CenterContainer/Control/Button:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MarginContainer/MarginContainer/ScrollContainer/Control/GridContainer:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.166667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MarginContainer/MarginContainer/CenterContainer/Control/Button:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_xasdf"]
+resource_name = "slide_out"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MarginContainer/MarginContainer/ScrollContainer/Control/GridContainer:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(183, 54), Vector2(183, 328.002)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MarginContainer/MarginContainer/CenterContainer/Control/Button:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.233333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MarginContainer/MarginContainer/ScrollContainer/Control/GridContainer:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.15),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MarginContainer/MarginContainer/CenterContainer/Control/Button:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.23),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lqefm"]
+_data = {
+&"RESET": SubResource("Animation_5obn1"),
+&"slide_in": SubResource("Animation_yarnr"),
+&"slide_out": SubResource("Animation_xasdf")
+}
+
+[node name="StudentRoster" type="Control" node_paths=PackedStringArray("student_roster_container", "primary_selected", "secondary_selected", "animator", "ready_button")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_sq8a0")
+student_roster_container = NodePath("MarginContainer/MarginContainer/ScrollContainer/Control/GridContainer")
+primary_selected = NodePath("Selected/Primary")
+secondary_selected = NodePath("Selected/Secondary")
+animator = NodePath("AnimationPlayer")
+ready_button = NodePath("MarginContainer/MarginContainer/CenterContainer/Control/Button")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_yarnr")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.384314, 0.392157, 0.384314, 1)
+
+[node name="BackgroundQuicky2" type="Sprite2D" parent="."]
+position = Vector2(504, 592)
+texture = ExtResource("3_yarnr")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.361111
+anchor_top = 3.17284
+anchor_right = 1.36111
+anchor_bottom = 3.56791
+offset_left = -416.0
+offset_top = -1664.0
+offset_right = -416.0
+offset_bottom = -1664.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+metadata/_edit_use_anchors_ = true
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 16
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+follow_focus = true
+horizontal_scroll_mode = 0
+
+[node name="Control" type="Control" parent="MarginContainer/MarginContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer/MarginContainer/ScrollContainer/Control"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -372.5
+offset_top = -48.0
+offset_right = 371.5
+offset_bottom = 48.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+mouse_filter = 2
+theme_override_constants/h_separation = 12
+theme_override_constants/v_separation = 12
+columns = 10
+
+[node name="RosterIcon" parent="MarginContainer/MarginContainer/ScrollContainer/Control/GridContainer" instance=ExtResource("2_dhiog")]
+layout_mode = 2
+
+[node name="RosterIcon2" parent="MarginContainer/MarginContainer/ScrollContainer/Control/GridContainer" instance=ExtResource("2_dhiog")]
+layout_mode = 2
+student = ExtResource("3_8i0qa")
+
+[node name="RosterIcon3" parent="MarginContainer/MarginContainer/ScrollContainer/Control/GridContainer" instance=ExtResource("2_dhiog")]
+layout_mode = 2
+student = ExtResource("4_ixdau")
+
+[node name="RosterIcon5" parent="MarginContainer/MarginContainer/ScrollContainer/Control/GridContainer" instance=ExtResource("2_dhiog")]
+layout_mode = 2
+student = ExtResource("5_xasdf")
+
+[node name="RosterIcon6" parent="MarginContainer/MarginContainer/ScrollContainer/Control/GridContainer" instance=ExtResource("2_dhiog")]
+layout_mode = 2
+student = ExtResource("6_5obn1")
+
+[node name="RosterIcon7" parent="MarginContainer/MarginContainer/ScrollContainer/Control/GridContainer" instance=ExtResource("2_dhiog")]
+layout_mode = 2
+student = ExtResource("7_yarnr")
+
+[node name="RosterIcon8" parent="MarginContainer/MarginContainer/ScrollContainer/Control/GridContainer" instance=ExtResource("2_dhiog")]
+layout_mode = 2
+student = ExtResource("8_lqefm")
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Control" type="Control" parent="MarginContainer/MarginContainer/CenterContainer"]
+custom_minimum_size = Vector2(12, 22)
+layout_mode = 2
+
+[node name="Button" type="Button" parent="MarginContainer/MarginContainer/CenterContainer/Control"]
+layout_mode = 2
+anchor_left = -2.91667
+anchor_top = -0.0454545
+anchor_right = 3.91667
+anchor_bottom = 1.0
+theme = ExtResource("11_lqefm")
+text = "	Ready	"
+metadata/_edit_use_anchors_ = true
+
+[node name="Selected" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.0987654
+anchor_right = 1.0
+anchor_bottom = 0.592593
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Primary" parent="Selected" instance=ExtResource("9_xasdf")]
+layout_mode = 2
+
+[node name="Secondary" parent="Selected" instance=ExtResource("9_xasdf")]
+layout_mode = 2
+student_or_besty = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_lqefm")
+}
+
+[node name="Back" type="Button" parent="."]
+layout_mode = 0
+anchor_left = 0.0130208
+anchor_top = 0.0231481
+anchor_right = 0.0520833
+anchor_bottom = 0.0709877
+theme = ExtResource("11_lqefm")
+text = "Back"
+metadata/_edit_use_anchors_ = true
+
+[connection signal="pressed" from="MarginContainer/MarginContainer/CenterContainer/Control/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Back" to="." method="_on_back_pressed"]

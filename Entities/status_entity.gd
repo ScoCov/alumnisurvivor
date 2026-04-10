@@ -16,7 +16,7 @@ signal tick
 @export var stack_count: int = 1:
 	set(value):
 		if max_stack > 0:
-			stack_count = clamp(value, 1, max_stack)
+			stack_count = clamp(value, 0, max_stack)
 		else:
 			stack_count = value
 ## If set to -1 the stack can be effectively infinite.
@@ -29,11 +29,12 @@ signal tick
 func _ready():
 	assert(status_resource, "Status-Effects must be paired with Status_Effect_Resource")
 	assert(entity, "Status-Effects must be assigned an entity.")
-	update_tick(status_resource.duration)
-	update_duration(status_resource.tick_rate)
+	$Tick.wait_time = status_resource.tick_rate 
+	$Duration.wait_time = status_resource.duration * (1 + entity.items.get_attribute_bonus("duration"))
 	initial_infection.emit()
 	
 func _on_duration_timeout():
+	var temp_stack = stack_count
 	stack_count -= 1
 	if stack_count <= 0:
 		expires.emit()

@@ -8,11 +8,11 @@ signal increase_status_effect_count
 @export var entity: Entity = get_parent()
 
 
-var _children: Array[Status_Effect_Entity]:
+var _children: Array[Node]:
 	set(value):
 		pass
 	get():
-		return get_children().filter(func(child): return child is Status_Effect_Entity)
+		return get_children().filter(func(child: Status_Effect_Entity): return child is Status_Effect_Entity)
 		
 var _status_dict: Dictionary
 
@@ -74,7 +74,9 @@ func add_status_effect(status: Status_Effect_Resource, parent_ability: Ability_E
 		_status_dict.get_or_add(stat_entity.status_resource.status_id, stat_entity)
 		add_child(stat_entity)
 		new_status_effect.emit()
-		
+
+
+## This method will spawn a Status Effect Entity onto the target entity. Providing the Status Effect Resource, the parent ability that is causing this effect, will assign the proper status.
 func add_status_effect_entity(status: Status_Effect_Resource, parent_ability: Ability_Entity, _max_count = null): 
 	if _children.any(func(child): child.status_resource == status):
 		var index = _children.rfind_custom(func(child): return child.status_resource == status)
@@ -83,7 +85,7 @@ func add_status_effect_entity(status: Status_Effect_Resource, parent_ability: Ab
 		extant_status_effect.stack_count += 1
 	else:
 		## Add new status entity
-		var load_string: String = "res://Entities/StatusEffects/Statuses/%s_status.tscn" % [status.status_id]
+		var load_string: String = "res://Entities/StatusEffects/%s_status.tscn" % [status.status_id]
 		var load_status_entity: PackedScene = load(load_string)
 		var stat_entity: Status_Effect_Entity = load_status_entity.instantiate()
 		stat_entity.entity = entity

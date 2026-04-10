@@ -10,6 +10,8 @@ extends Entity
 
 signal loaded 
 signal death
+signal experience_gained
+signal level_up
 
 ## Eventually remove this and place this into the Experience Manager
 const XP_COLLECTION_RANGE_DEFAULT = 100 
@@ -23,6 +25,7 @@ const XP_COLLECTION_RANGE_DEFAULT = 100
 
 func _process(_delta):
 	pick_up_range.shape.radius = XP_COLLECTION_RANGE_DEFAULT * (1 + items.get_attribute_bonus("collection_range"))
+	#$Label.text = "Direction: %s" % movment_component.direction 
 	
 func _ready():
 	loaded.emit()

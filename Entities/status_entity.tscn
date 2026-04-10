@@ -6,6 +6,7 @@
 script = ExtResource("1_b8m7u")
 
 [node name="Duration" type="Timer" parent="."]
+one_shot = true
 autostart = true
 
 [node name="Tick" type="Timer" parent="."]

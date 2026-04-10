@@ -20,15 +20,15 @@ var _current_student: _student_options:
 		_current_student = value
 
 ## This class variable is to be used as the currently active student between primary and besty student.
-var active_student: StudentResource
-var support_student: StudentResource
+var active_student: Student_Resource = Global.SELECTED_STUDENT
+var support_student: Student_Resource = Global.SELECTED_BESTY
 
 ## Primary Student is always the "SELECTED_STUDENT" from Global
-var primary_student: StudentResource:
+var primary_student: Student_Resource:
 	get():
 		return Global.SELECTED_STUDENT
 ## Besty Student is always the "SELECTED_BESTY" from Global
-var besty_student: StudentResource:
+var besty_student: Student_Resource:
 	get():
 		return Global.SELECTED_BESTY
 

@@ -10,8 +10,6 @@ signal ready_complete
 @export_category("Connections")
 @export var entity: Entity
 @export var ability: Ability_Resource
-#@export var damage_comp: Damage_Component
-## Assign Nodes and reusable default values.
 
 @export_group("Debug")
 @export var debug: bool = true
@@ -19,7 +17,6 @@ signal ready_complete
 @export var follow_mouse: bool = false
 @export var custom_target: Vector2 = Vector2.ZERO
 
-@onready var damage: Damage_Component = $Damage
 @onready var cooldown: Timer = $Cooldown
 @onready var state_machine = $StateMachine
 @onready var detection = $Detection/CollisionShape2D
@@ -49,8 +46,6 @@ var _cooldown_complete: bool = false
 func _get_configuration_warnings():
 	var _msg: Array[String]
 	var children = get_children()
-	if !children.any(func(child): return child is Damage_Component ):
-		_msg.append("Ability Entity Requires a Damage Component")
 	if !children.any(func(child): return child is State_Machine):
 		_msg.append("Ability Entity Requires a State Machine")
 	else:
@@ -85,10 +80,6 @@ func on_cooldown() -> bool:
 func ability_factory(_resource: Ability_Resource):
 	assert(ability != null, "Ability Entity must have an Ability_Resource connected")
 	cooldown.wait_time = _resource.cooldown
-	damage.base_damage = _resource.base_damage
-	damage.knockback = _resource.knockback
-	damage.critical_hit_chance = _resource.critical_hit_chance
-	damage.critical_damage_multiplier = _resource.critical_damage_multiplier
 	detection.shape.radius = _resource.attack_range
 	
 func add_entity_to_pool(_entity: Entity):
@@ -102,11 +93,6 @@ func remove_entity_from_pool(_entity: Entity):
 		var extant_entity = entity_pool.filter(func(_entity_): return _entity_ == _entity)
 		if extant_entity:
 			entity_pool.remove_at(entity_pool.find_custom(func(_entity_): return _entity_ == _entity))
-
-func _get_attribute_value(attribute_id: String) -> float:
-	if _items:
-		return ability[attribute_id] * (1 + _items.get_attribute_bonus(attribute_id))
-	return ability[attribute_id]
 
 ## Sorts the entity pool from closest to furthers distance.
 func sort_entity_pool():

@@ -1,10 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://be0ckcu77i1dw"]
+[gd_scene load_steps=4 format=3 uid="uid://be0ckcu77i1dw"]
 
 [ext_resource type="PackedScene" uid="uid://duhcemp1lve0q" path="res://Entities/status_entity.tscn" id="1_mesyr"]
 [ext_resource type="Script" uid="uid://hv8kowt4u03h" path="res://Entities/StatusEffects/stun_status.gd" id="2_socfd"]
+[ext_resource type="Resource" uid="uid://dv3iyw2sltqnf" path="res://Resources/Data/StatusEffects/stun_status.tres" id="3_a0kq3"]
 
 [node name="StunStatus" instance=ExtResource("1_mesyr")]
 script = ExtResource("2_socfd")
+status_resource = ExtResource("3_a0kq3")
 
 [node name="Duration" parent="." index="0"]
 wait_time = 0.5
+
+[connection signal="expires" from="." to="." method="_on_expires"]
+[connection signal="initial_infection" from="." to="." method="_on_initial_infection"]

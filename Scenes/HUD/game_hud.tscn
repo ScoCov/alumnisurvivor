@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://va580vf1m0o7" path="res://Assets/Image/Student/Head/Eyebrows/Eyebrows_01.png" id="3_6r443"]
 [ext_resource type="Texture2D" uid="uid://b5dlojhwtpkpo" path="res://Assets/Image/Student/Head/Eyes/Eyes_01.png" id="4_5oy75"]
 [ext_resource type="Texture2D" uid="uid://cr4jadxq3b6wj" path="res://Assets/Image/Student/Head/Mouth/Mouth_01.png" id="5_83cj2"]
-[ext_resource type="Theme" uid="uid://dtoedfkuckej4" path="res://Assets/Image/UI/Themes/menu_theme.tres" id="7_6r443"]
+[ext_resource type="Theme" uid="uid://ea0hpxrc3ot0" path="res://Resources/Themes/Menu_Themes.tres" id="7_6r443"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wk7wg"]
 bg_color = Color(0.197937, 0.197937, 0.197937, 1)
@@ -261,3 +261,54 @@ text = "Number of Enemies: %s"
 layout_mode = 2
 text = "Items: %s"
 fit_content = true
+
+[node name="Ability Info" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 64.0
+offset_top = 152.0
+offset_right = 104.0
+offset_bottom = 192.0
+
+[node name="ColorRect" type="ColorRect" parent="Ability Info"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(1, 0.0509804, 1, 1)
+
+[node name="Cooldown Visual" type="Panel" parent="Ability Info"]
+clip_contents = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -40.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Ability Info/Cooldown Visual"]
+layout_mode = 0
+offset_top = -40.0
+offset_right = 40.0
+color = Color(0.301961, 0.301961, 0.301961, 0.780392)
+
+[node name="Name" type="Label" parent="Ability Info"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 2.6
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Timeleft" type="Label" parent="Ability Info"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.425
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+horizontal_alignment = 2
+metadata/_edit_use_anchors_ = true

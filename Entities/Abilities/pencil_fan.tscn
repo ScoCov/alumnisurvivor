@@ -1,7 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://cvsfv85wcscvc"]
+[gd_scene load_steps=9 format=3 uid="uid://cvsfv85wcscvc"]
 
 [ext_resource type="Script" uid="uid://cy01axak3ebhg" path="res://Entities/Abilities/pencil_fan.gd" id="1_n7lu0"]
-[ext_resource type="Script" uid="uid://dpfyngj1e5q6j" path="res://Entities/Components/damage_component.gd" id="2_e2ygo"]
 [ext_resource type="Resource" uid="uid://ceqfgdr643hde" path="res://Resources/Data/Abilities/pencil_fan.tres" id="2_oc8hc"]
 [ext_resource type="Script" uid="uid://t3mlm4ybio8c" path="res://Scripts/States/state_machine.gd" id="3_oc8hc"]
 [ext_resource type="Script" uid="uid://dydaurl4tnt6i" path="res://Scripts/States/Ability/AbilityActive.gd" id="4_xgvkk"]
@@ -30,7 +29,6 @@ shape = SubResource("CircleShape2D_n7lu0")
 one_shot = true
 
 [node name="Damage" type="Node" parent="."]
-script = ExtResource("2_e2ygo")
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("3_oc8hc")

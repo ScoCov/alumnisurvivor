@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="StudentResource" load_steps=10 format=3 uid="uid://l12kygxdsvpi"]
+[gd_resource type="Resource" script_class="Student_Resource" load_steps=10 format=3 uid="uid://l12kygxdsvpi"]
 
 [ext_resource type="Texture2D" uid="uid://doicw3e1bmkir" path="res://Assets/Image/Student/Head/Eyebrows/Eyebrows_02.png" id="1_ucrg4"]
 [ext_resource type="Texture2D" uid="uid://b1pkn4viaktqf" path="res://Assets/Image/Student/Head/Eyes/Eyes_02.png" id="2_h4fue"]
@@ -16,6 +16,7 @@ student_name = "ClassClown"
 file_name = "ClassClown"
 ordinal = -1
 starting_ability = ExtResource("6_h4fue")
+background_color = Color(0, 0, 1, 1)
 primary = ExtResource("5_rokbx")
 secondary = ExtResource("7_vsa8q")
 weakness = ExtResource("9_e4pea")

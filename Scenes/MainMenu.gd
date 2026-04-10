@@ -14,7 +14,7 @@ func _on_quit_pressed():
 	get_tree().quit()
 	
 func _on_play_pressed():
-	get_tree().change_scene_to_file("res://Scenes/GameMenus/student_selection_screen.tscn")
+	get_tree().change_scene_to_file("res://Scenes/GameMenus/Roster/student_roster.tscn")
 
 func _on_collection_pressed():
 	page.emit_signal("page_type_changed", "Collection")

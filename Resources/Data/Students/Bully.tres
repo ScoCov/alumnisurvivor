@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="StudentResource" load_steps=10 format=3 uid="uid://be7tvpc2v1d3i"]
+[gd_resource type="Resource" script_class="Student_Resource" load_steps=10 format=3 uid="uid://be7tvpc2v1d3i"]
 
 [ext_resource type="Texture2D" uid="uid://va580vf1m0o7" path="res://Assets/Image/Student/Head/Eyebrows/Eyebrows_01.png" id="1_jauc0"]
 [ext_resource type="Texture2D" uid="uid://drtm0nrjkj1on" path="res://Assets/Image/Student/Head/Eyes/Eyes_03.png" id="2_jauc0"]
@@ -16,6 +16,7 @@ student_name = "Bully"
 file_name = "Bully"
 ordinal = -1
 starting_ability = ExtResource("6_de2bk")
+background_color = Color(0, 0.756863, 1, 1)
 primary = ExtResource("5_shui5")
 secondary = ExtResource("7_gt3wx")
 weakness = ExtResource("9_rh2te")
@@ -23,5 +24,5 @@ hair = ExtResource("3_de2bk")
 eyebrows = ExtResource("1_jauc0")
 eyes = ExtResource("2_jauc0")
 mouth = ExtResource("4_sr344")
-unlocked = true
+unlocked = false
 student_tags = 0

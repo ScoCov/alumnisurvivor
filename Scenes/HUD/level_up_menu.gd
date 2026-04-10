@@ -12,17 +12,10 @@ signal skip
 @onready var level_up_points = $"Title/Level Up Points"
 @onready var h_box_container = $Body/MarginContainer/HBoxContainer
 
-func _get_configuration_warnings():
-	var msg: Array[String]
-	if not game_ui:
-		msg.append("Level Up Menu Requires a Game UI object to opwerate.")
-	return msg
-
 func _ready():
 	var card_items: Array[Node] = h_box_container.get_children().filter(func(child): return child is Item_Display)
 	for card: Item_Display in card_items:
 		card.picked.connect(card_picked.bind(card))
-	#card_items[0].grab_focus()
 	
 func _on_skip_pressed():
 	game_ui.game_logic.skip_counter -= 1

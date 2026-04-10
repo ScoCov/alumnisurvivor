@@ -5,9 +5,9 @@
 
 [resource]
 script = ExtResource("2_ok6ak")
-status_name = "Slow"
-status_file_name = "slow_status"
-status_id = "Slow"
+status_name = "Stunned"
+status_file_name = "stun_status"
+status_id = "Stun"
 attribute_effected = ExtResource("1_xcyr2")
 duration = 0.1
 tick_rate = 1.0

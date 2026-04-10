@@ -21,6 +21,12 @@ Utility="*res://Scripts/Utility.gd"
 Global="*res://Scripts/Global.gd"
 Configuration="*res://Scripts/Configuration.gd"
 
+[display]
+
+window/size/resizable=false
+window/size/borderless=true
+window/stretch/mode="canvas_items"
+
 [editor]
 
 version_control/plugin_name="GitPlugin"

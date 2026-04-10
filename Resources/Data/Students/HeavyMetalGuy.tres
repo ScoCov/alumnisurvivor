@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="StudentResource" load_steps=10 format=3 uid="uid://crjsylvyx7g2w"]
+[gd_resource type="Resource" script_class="Student_Resource" load_steps=10 format=3 uid="uid://crjsylvyx7g2w"]
 
 [ext_resource type="Texture2D" uid="uid://va580vf1m0o7" path="res://Assets/Image/Student/Head/Eyebrows/Eyebrows_01.png" id="1_k7hwg"]
 [ext_resource type="Texture2D" uid="uid://j7kuh213qlee" path="res://Assets/Image/Student/Head/Eyes/Eyes_04.png" id="2_k7hwg"]
@@ -16,6 +16,7 @@ student_name = "Heavy Metal Guy"
 file_name = "HeavyMetalGuy"
 ordinal = -1
 starting_ability = ExtResource("6_njli3")
+background_color = Color(0.960784, 0.945098, 0, 1)
 primary = ExtResource("5_pjv2p")
 secondary = ExtResource("7_vmfd2")
 weakness = ExtResource("9_eds0d")

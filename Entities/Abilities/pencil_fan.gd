@@ -34,7 +34,7 @@ func on_ready():
 		target_entity = entity_pool[0]
 		
 		facing.look_at(target_entity.position )
-		return target_entity.position.distance_to(entity.position) < _get_attribute_value("attack_range")
+		return target_entity.position.distance_to(entity.position) < ability.attack_range + entity.items.get_attribute_bonus("attack_range")
 	return false
 	
 func on_active():

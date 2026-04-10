@@ -22,4 +22,4 @@ func build_enemy():
 	$Sprite2D.texture = entity.image_variants[2] ## get the 256x256 images
 
 func _death():
-	self.death.emit()
+	death.emit()

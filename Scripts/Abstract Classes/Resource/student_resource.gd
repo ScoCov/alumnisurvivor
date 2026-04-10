@@ -1,4 +1,4 @@
-class_name StudentResource
+class_name Student_Resource
 extends Resource
 
 @export_category("Meta Data")
@@ -10,6 +10,8 @@ extends Resource
 @export var ordinal: int = 0
 ### Each Student will start with an preassigned ability, ala Vampire Survivor. 
 @export var starting_ability: Ability_Resource
+@export_color_no_alpha var background_color: Color 
+
 @export_category("Bonuses")
 ### Increases growth of given stat, when selected as a Besty.
 @export var primary: AttributeResource

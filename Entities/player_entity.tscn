@@ -115,7 +115,8 @@ swap_timer = NodePath("swap_timer")
 [node name="swap_timer" type="Timer" parent="student_manager"]
 one_shot = true
 
-[node name="HealthComponent" parent="." instance=ExtResource("3_f8px4")]
+[node name="HealthComponent" parent="." node_paths=PackedStringArray("entity") instance=ExtResource("3_f8px4")]
+entity = NodePath("..")
 maximum_health = 0
 
 [node name="Experience" type="Node" parent="." node_paths=PackedStringArray("player")]
@@ -219,6 +220,12 @@ libraries = {
 
 [node name="BodyLagTimer" type="Timer" parent="Visuals"]
 wait_time = 0.2
+
+[node name="Label" type="Label" parent="."]
+offset_left = -20.0
+offset_top = -116.0
+offset_right = 20.0
+offset_bottom = -93.0
 
 [connection signal="student_swap" from="student_manager" to="." method="_on_student_manager_student_swap"]
 [connection signal="damage_lethal" from="HealthComponent" to="." method="_on_health_component_damage_lethal"]

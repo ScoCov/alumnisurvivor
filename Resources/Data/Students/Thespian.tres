@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="StudentResource" load_steps=9 format=3 uid="uid://cummv1e8257v8"]
+[gd_resource type="Resource" script_class="Student_Resource" load_steps=9 format=3 uid="uid://cummv1e8257v8"]
 
 [ext_resource type="Texture2D" uid="uid://doicw3e1bmkir" path="res://Assets/Image/Student/Head/Eyebrows/Eyebrows_02.png" id="1_rwg6p"]
 [ext_resource type="Texture2D" uid="uid://drtm0nrjkj1on" path="res://Assets/Image/Student/Head/Eyes/Eyes_03.png" id="2_lleik"]
@@ -15,11 +15,12 @@ student_name = "Academic"
 file_name = "Athlete"
 ordinal = -1
 starting_ability = ExtResource("5_rwg6p")
+background_color = Color(0.482353, 0.490196, 0.67451, 1)
 primary = ExtResource("4_ht6kv")
 secondary = ExtResource("6_ml418")
 weakness = ExtResource("8_6n6wg")
 eyebrows = ExtResource("1_rwg6p")
 eyes = ExtResource("2_lleik")
 mouth = ExtResource("3_lleik")
-unlocked = true
+unlocked = false
 student_tags = 0

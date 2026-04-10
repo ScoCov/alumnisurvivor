@@ -1,4 +1,4 @@
-class_name Strategy_Circl_Player
+class_name Strategy_Circle_Player
 extends Strategy_Enemy_Movement
 
 func enter():

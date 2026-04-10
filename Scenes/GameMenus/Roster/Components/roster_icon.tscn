@@ -1,0 +1,125 @@
+[gd_scene load_steps=7 format=3 uid="uid://bm20qapbxcgdc"]
+
+[ext_resource type="Theme" uid="uid://ea0hpxrc3ot0" path="res://Resources/Themes/Menu_Themes.tres" id="1_538ng"]
+[ext_resource type="Script" uid="uid://chpudftadc80c" path="res://Scenes/GameMenus/Roster/Components/roster_icon.gd" id="1_dtvru"]
+[ext_resource type="Resource" uid="uid://dtywod7hdge6p" path="res://Resources/Data/Students/Academic.tres" id="2_2nb41"]
+[ext_resource type="Texture2D" uid="uid://ckyqn1o6hh0i1" path="res://Assets/Image/Student/Head/Head_beta_2.png" id="3_al4w5"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_538ng"]
+draw_center = false
+border_width_left = 6
+border_width_top = 6
+border_width_right = 6
+border_width_bottom = 6
+border_color = Color(0.564962, 0.564962, 0.564961, 1)
+border_blend = true
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+shadow_size = 2
+shadow_offset = Vector2(1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yapse"]
+draw_center = false
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0.730983, 0.730983, 3.85046e-07, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[node name="RosterIcon" type="Control"]
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 3
+anchor_right = 0.0833333
+anchor_bottom = 0.148148
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+mouse_force_pass_scroll_events = false
+mouse_default_cursor_shape = 2
+theme = ExtResource("1_538ng")
+script = ExtResource("1_dtvru")
+student = ExtResource("2_2nb41")
+metadata/_edit_use_anchors_ = true
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 6.00002
+offset_top = 6.00005
+offset_right = 90.0
+offset_bottom = 90.0
+mouse_default_cursor_shape = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 6.0
+offset_top = 6.0
+offset_right = -6.0
+offset_bottom = -6.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_538ng")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+clip_contents = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Control" type="Control" parent="CenterContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Head" type="Sprite2D" parent="CenterContainer/Control"]
+scale = Vector2(0.33, 0.33)
+texture = ExtResource("3_al4w5")
+
+[node name="Hair" type="Sprite2D" parent="CenterContainer/Control"]
+scale = Vector2(0.33, 0.33)
+
+[node name="Eyebrows" type="Sprite2D" parent="CenterContainer/Control"]
+scale = Vector2(0.33, 0.33)
+
+[node name="Eyes" type="Sprite2D" parent="CenterContainer/Control"]
+scale = Vector2(0.33, 0.33)
+
+[node name="Mouth" type="Sprite2D" parent="CenterContainer/Control"]
+position = Vector2(0, 20)
+scale = Vector2(0.33, 0.33)
+
+[node name="Focused" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_yapse")
+
+[connection signal="button_down" from="Button" to="." method="_on_button_button_down"]
+[connection signal="button_up" from="Button" to="." method="_on_button_button_up"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

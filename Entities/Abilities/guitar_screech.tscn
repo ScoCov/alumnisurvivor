@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://y1ydv2mn708l"]
 
 [ext_resource type="Script" uid="uid://c0ymhmoexgqh8" path="res://Entities/Abilities/guitar_screech.gd" id="1_tnq5i"]
-[ext_resource type="Script" uid="uid://dpfyngj1e5q6j" path="res://Entities/Components/damage_component.gd" id="2_uqyti"]
+[ext_resource type="Resource" uid="uid://dv3iyw2sltqnf" path="res://Resources/Data/StatusEffects/stun_status.tres" id="2_3uevx"]
 [ext_resource type="Resource" uid="uid://dvi1u7e227gps" path="res://Resources/Data/Abilities/guitar_screech.tres" id="2_w0yg1"]
 [ext_resource type="Script" uid="uid://t3mlm4ybio8c" path="res://Scripts/States/state_machine.gd" id="3_0e5gk"]
 [ext_resource type="Script" uid="uid://dydaurl4tnt6i" path="res://Scripts/States/Ability/AbilityActive.gd" id="4_w0yg1"]
@@ -15,6 +15,7 @@
 
 [node name="GuitarScreech" type="Node2D"]
 script = ExtResource("1_tnq5i")
+status_effect_resource = ExtResource("2_3uevx")
 ability = ExtResource("2_w0yg1")
 metadata/_custom_type_script = "uid://gqwg5uj22upb"
 
@@ -25,7 +26,6 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="Damage" type="Node" parent="."]
-script = ExtResource("2_uqyti")
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("3_0e5gk")

@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://6oconyg6p0y"]
 
 [ext_resource type="Script" uid="uid://g1igguf7s5f1" path="res://Entities/Abilities/pencil_projectile.gd" id="1_6ug4x"]
-[ext_resource type="Texture2D" uid="uid://djahrjhcfofu7" path="res://Assets/Image/Ability/Pencil_rotated.png" id="2_2gyj7"]
+[ext_resource type="Texture2D" uid="uid://ol40weduonxb" path="res://Assets/Image/Effects/Plasma_Bolt.png" id="2_2gyj7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_grg02"]
 size = Vector2(0, 0)
@@ -31,7 +31,6 @@ one_shot = true
 autostart = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.14, 0.14)
 texture = ExtResource("2_2gyj7")
 
 [node name="Label" type="Label" parent="."]

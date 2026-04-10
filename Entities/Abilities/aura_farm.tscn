@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://krhyn7tgn3a3"]
 
 [ext_resource type="Script" uid="uid://1omkodm42v0x" path="res://Entities/Abilities/aura_farm.gd" id="1_wndcg"]
-[ext_resource type="Script" uid="uid://dpfyngj1e5q6j" path="res://Entities/Components/damage_component.gd" id="2_1bnb8"]
+[ext_resource type="Resource" uid="uid://hr0ojg7ra2ca" path="res://Resources/Data/StatusEffects/burn_status.tres" id="2_7ceia"]
 [ext_resource type="Resource" uid="uid://1dyd7dt5ia4m" path="res://Resources/Data/Abilities/aura_farm.tres" id="2_xyub7"]
 [ext_resource type="Script" uid="uid://t3mlm4ybio8c" path="res://Scripts/States/state_machine.gd" id="3_xc723"]
 [ext_resource type="Script" uid="uid://dydaurl4tnt6i" path="res://Scripts/States/Ability/AbilityActive.gd" id="4_xyub7"]
@@ -14,6 +14,7 @@ radius = 75.0
 
 [node name="AuraFarm" type="Node2D"]
 script = ExtResource("1_wndcg")
+fire_status_resource = ExtResource("2_7ceia")
 ability = ExtResource("2_xyub7")
 metadata/_custom_type_script = "uid://gqwg5uj22upb"
 
@@ -27,9 +28,6 @@ monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Detection"]
 shape = SubResource("CircleShape2D_wndcg")
-
-[node name="Damage" type="Node" parent="."]
-script = ExtResource("2_1bnb8")
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("3_xc723")

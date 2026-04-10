@@ -2,7 +2,7 @@ extends Node
 
 
 
-var STUDENT_ROSTER: Array[StudentResource]
+var STUDENT_ROSTER: Array[Student_Resource]
 
 var ENEMY_ROSTER: Array[EnemyResource]
 
@@ -16,9 +16,9 @@ var MAPS: Array[Map_Resource]
 
 var STATUS_EFFECTS: Array[Status_Effect_Resource]
 
-var SELECTED_STUDENT: StudentResource
+var SELECTED_STUDENT: Student_Resource
 
-var SELECTED_BESTY: StudentResource
+var SELECTED_BESTY: Student_Resource
 
 var SELECTED_MAP: Map_Resource
 
@@ -68,3 +68,24 @@ func load_objects(_dir: String, variable: Variant):
 	for file  in files: ## Iterate through the folder for each Student in it and add that student to the roster.
 		if not ".import" in file: 
 			variable.append(load(_dir + file))
+			
+func select_student_as_primary(student: Student_Resource):
+	if SELECTED_BESTY == student:
+		var temp_student: Student_Resource = SELECTED_STUDENT
+		SELECTED_STUDENT = SELECTED_BESTY
+		SELECTED_BESTY = temp_student
+	elif SELECTED_STUDENT == student:
+		pass
+	else:
+		SELECTED_STUDENT = student
+	
+func select_student_as_secondary(student: Student_Resource):
+	if SELECTED_STUDENT == student:
+		var temp_student: Student_Resource = SELECTED_BESTY
+		SELECTED_BESTY = SELECTED_STUDENT
+		SELECTED_STUDENT = temp_student
+	elif SELECTED_BESTY == student:
+		pass
+	else:
+		SELECTED_BESTY = student
+	

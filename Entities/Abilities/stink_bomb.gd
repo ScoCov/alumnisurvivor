@@ -3,11 +3,10 @@ extends Ability_Entity
 
 const poison_pool = preload("res://Entities/Abilities/stink_pool.tscn")
 
-#func _ready():
-	#ability_factory(ability)
-	
+
 func _process(_delta):
-	$Label.text = "Current State: %s" % state_machine.current_state.name
+	pass
+	#$Label.text = "Current State: %s" % state_machine.current_state.name
 
 func on_ready():
 	_cooldown_complete = false

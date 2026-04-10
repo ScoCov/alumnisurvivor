@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="StudentResource" load_steps=10 format=3 uid="uid://bqrarylfmicoh"]
+[gd_resource type="Resource" script_class="Student_Resource" load_steps=10 format=3 uid="uid://bqrarylfmicoh"]
 
 [ext_resource type="Texture2D" uid="uid://coxho8mkv06wf" path="res://Assets/Image/Student/Head/Eyebrows/Eyebrows_03.png" id="1_bgbcx"]
 [ext_resource type="Texture2D" uid="uid://b1pkn4viaktqf" path="res://Assets/Image/Student/Head/Eyes/Eyes_02.png" id="2_oxex6"]
@@ -16,6 +16,7 @@ student_name = "Nerd"
 file_name = "Nerd"
 ordinal = 1
 starting_ability = ExtResource("6_oxex6")
+background_color = Color(0.960784, 0, 0.941176, 1)
 primary = ExtResource("5_1xv3j")
 secondary = ExtResource("7_ivkq0")
 weakness = ExtResource("9_16x42")

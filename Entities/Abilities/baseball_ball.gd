@@ -16,23 +16,20 @@ var BASEBALL = preload("res://Entities/Abilities/baseball_projectile.tscn")
 var _attack_complete: bool = false
 var _ready_to_throw_again: bool = true
 
-#func _ready():
-	#ability_factory(ability)
-	#
 func _process(_delta):
 	$Label.text = "State: %s" % [state_machine.current_state.name]
 	pass
 	
 func on_ready():
 	if len(entity_pool) <= 0 : return false
-	detection_collision_shape.shape.radius = ability.attack_range + _items.get_attribute_bonus("attack_range")
+	detection_collision_shape.shape.radius = ability.attack_range + entity.items.get_attribute_bonus("attack_range")
 	
 	_cooldown_complete = false
 	if len(entity_pool) >= 1:
 		sort_entity_pool()
 		target_entity = entity_pool[0]
 		#facing.look_at(target_entity.position)
-		return target_entity.position.distance_to(entity.position) < _get_attribute_value("attack_range")
+		return target_entity.position.distance_to(entity.position) < ability.attack_range + entity.items.get_attribute_bonus("attack_range")
 	return false
 	
 func on_active():

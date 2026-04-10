@@ -5,6 +5,8 @@ extends Ability_Entity
 @export var growth_rate = 250
 @export var start_radius = 10
 @export var max_growth = 100
+@export var status_effect_resource: Status_Effect_Resource
+
 
 @onready var hitbox = $Hitbox/CollisionShape2D
 
@@ -51,9 +53,7 @@ func _on_detection_body_exited(body):
 
 func _on_hitbox_body_entered(body):
 	direction = entity.position.direction_to(body.position)
-	var stun_effect = Global.STATUS_EFFECTS.find_custom(func(stat): return stat is Status_Stun)
-	(body as Enemy_Entity).status_effects.add_status_effect_entity(stun_effect, self, 1)
-	#(body as Enemy_Entity).status_effects.add_status_effect(Global.STATUS_EFFECTS[stun_effect], self)
+	(body as Enemy_Entity).status_effects.add_status_effect_entity(status_effect_resource, self, 1)
 	## Ability does deal a small amount of damage
 	(body as Enemy_Entity).health.apply_damage_rider(Damage_Rider.new(entity,self, entity.items))
 

@@ -16,9 +16,8 @@ func _ready():
 	var _angle = position.direction_to(target_location).rotated(angle).angle()
 	$Sprite2D.rotation = _angle
 	$Hitbox.rotation = _angle
-	$Label.text = "Angle: %s " % [_angle]
 	
-func _physics_process(delta):
+func _physics_process(_delta):
 	_movement()
 	move_and_slide()
 

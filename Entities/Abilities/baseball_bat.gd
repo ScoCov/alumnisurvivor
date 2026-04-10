@@ -19,14 +19,14 @@ func on_ready() -> bool: ## Ready to go
 		sort_entity_pool()
 		target_entity = entity_pool[0]
 		facing.look_at(target_entity.position)
-		return target_entity.position.distance_to(entity.position) < _get_attribute_value("attack_range")
+		return target_entity.position.distance_to(entity.position) < ability.attack_range + entity.items.get_attribute_bonus("attack_range")
 	return false
 	
 func on_active() -> bool: ## Attack
 	## When active, it should disable the looking at function for Facing
 	look_at_target = false
 	_enable_bat(true)
-	swinging.rotation_degrees += (ability.attack_speed + _get_attribute_value("attack_speed")) *  get_process_delta_time()
+	swinging.rotation_degrees += (ability.attack_speed + entity.items.get_attribute_bonus("attack_speed")) *  get_process_delta_time()
 	return swinging.rotation_degrees >= 45 + (_items.get_attribute_bonus("attack_range") / PI)
 	
 func on_recovery() -> bool: ## Reset

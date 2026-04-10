@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://uyvavmy5rjt7"]
+[gd_scene load_steps=4 format=3 uid="uid://uyvavmy5rjt7"]
 
 [ext_resource type="Script" uid="uid://0ywxiixown5x" path="res://Scenes/MainMenu.gd" id="1_ronie"]
 [ext_resource type="PackedScene" uid="uid://qwvxvjmu2cpy" path="res://Scenes/Page.tscn" id="2_4fy8r"]
+[ext_resource type="Theme" uid="uid://ea0hpxrc3ot0" path="res://Resources/Themes/Menu_Themes.tres" id="2_8saeu"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -47,23 +48,28 @@ layout_mode = 2
 
 [node name="Play" type="Button" parent="HSplitContainer/Navigation/CenterContainer/VBoxContainer"]
 layout_mode = 2
+theme = ExtResource("2_8saeu")
 text = "Play"
 
 [node name="Collection" type="Button" parent="HSplitContainer/Navigation/CenterContainer/VBoxContainer"]
 layout_mode = 2
+theme = ExtResource("2_8saeu")
 text = "Collection"
 
 [node name="Settings" type="Button" parent="HSplitContainer/Navigation/CenterContainer/VBoxContainer"]
 layout_mode = 2
+theme = ExtResource("2_8saeu")
 text = "Settings"
 
 [node name="Quit" type="Button" parent="HSplitContainer/Navigation/CenterContainer/VBoxContainer"]
 layout_mode = 2
+theme = ExtResource("2_8saeu")
 text = "Quit
 "
 
 [node name="Button" type="Button" parent="HSplitContainer/Navigation/CenterContainer/VBoxContainer"]
 layout_mode = 2
+theme = ExtResource("2_8saeu")
 text = "DEBUG"
 
 [node name="Content" type="Control" parent="HSplitContainer"]

@@ -21,8 +21,8 @@ extends Node
 @export var reroll_counter: int = 1
 	
 func _ready() -> void:
-	player.loaded.connect(student_load)
-	player.death.connect(func(): get_tree().change_scene_to_file("res://Scenes/MainMenu.tscn"))
+	pass
+	player.death.connect(game_over)
 	if game_time != null and not debug:
 		game_time.timeout.connect(game_over)
 

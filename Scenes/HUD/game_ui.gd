@@ -1,4 +1,3 @@
-@tool
 extends Control
 class_name Game_Ui
 
@@ -16,7 +15,7 @@ signal player_death
 ## we detected the unhandled_event of the player pressing the pause button (ESC). 
 #endregion
 
-@export var player: Player_Entity
+@export var player: Player_Entity  = player_entity_loaded.instantiate()
 @export var game_logic: Game_Local
 @export var render_node: Node2D
 @export var debug_mode: bool = false
@@ -26,15 +25,14 @@ signal player_death
 @onready var pause_menu: Pause_Menu = $PauseMenu
 @onready var death_menu = $"Death Menu"
 
+
+##TEST:
+const player_entity_loaded = preload("res://Entities/player_entity.tscn")
+##
+
 func _ready():
 	player.death.connect(func(): player_death.emit())
 
-func _get_configuration_warnings():
-	var msg: Array[String]
-	if [game_logic, render_node, player].any(func(prop): return prop == null):
-		msg.append("Game UI lacks needed objects. %s" % [["player", "game_logic", "render_node"]])
-	return msg
-	
 func update_health_values():
 	game_hud.update_health_values()
 	
@@ -47,8 +45,7 @@ func _unhandled_input(event):
  
 func student_loaded(): ## I am not understanding load order so using _ready() hasn't worked out. 
 	game_hud.update_hud_static()
-	player.experience.level_up.connect(display_level_up_menu, 1)
-	
+	player.experience.level_up.connect(display_level_up_menu)
 	player.experience.experience_gained.connect(game_hud.update_experience_values)
 	player.health.damage_taken.connect(game_hud.update_health_values)
 	player.health.damage_healed.connect(game_hud.update_health_values)
