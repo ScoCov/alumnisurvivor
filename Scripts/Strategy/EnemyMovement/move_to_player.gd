@@ -1,8 +1,6 @@
 class_name Strategy_Move_to_Player
 extends Strategy_Enemy_Movement
 
-
-
 func enter():
 	pass
 	

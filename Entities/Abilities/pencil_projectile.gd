@@ -12,10 +12,11 @@ extends CharacterBody2D
 @onready var collision_shape_2d = $Hitbox/CollisionShape2D
 @onready var sprite_2d = $Sprite2D
 
+var test_index: int
+
 func _ready():
-	var _angle = position.direction_to(target_location).rotated(angle).angle()
-	$Sprite2D.rotation = _angle
-	$Hitbox.rotation = _angle
+	$Sprite2D.rotation = angle
+	$Hitbox.rotation = angle
 	
 func _physics_process(_delta):
 	_movement()
@@ -23,9 +24,9 @@ func _physics_process(_delta):
 
 func _movement(_target_location = target_location):
 	if velocity == Vector2.ZERO or _target_location != target_location:
-		var _direction = position.direction_to(_target_location).rotated(angle)
+		var _direction = Vector2.from_angle(angle)
 		velocity = (_direction) * (parent_ability.ability.projectile_speed )
-
+		
 func _on_duration_timeout():
 	self.queue_free()
 

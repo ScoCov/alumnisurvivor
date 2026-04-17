@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cvsfv85wcscvc"]
+[gd_scene load_steps=10 format=3 uid="uid://cvsfv85wcscvc"]
 
 [ext_resource type="Script" uid="uid://cy01axak3ebhg" path="res://Entities/Abilities/pencil_fan.gd" id="1_n7lu0"]
 [ext_resource type="Resource" uid="uid://ceqfgdr643hde" path="res://Resources/Data/Abilities/pencil_fan.tres" id="2_oc8hc"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://bgpw1jyinlpy" path="res://Scripts/States/Ability/AbilityReady.gd" id="5_qysj8"]
 [ext_resource type="Script" uid="uid://bb1ure7bwtit4" path="res://Scripts/States/Ability/AbilityRecovery.gd" id="6_87wwv"]
 [ext_resource type="Script" uid="uid://dxflctocngquj" path="res://Scripts/States/Ability/AbilityCooldown.gd" id="7_77o8k"]
+[ext_resource type="Texture2D" uid="uid://evvlxxf5qy7d" path="res://Assets/Image/UI/Arrow_Menu_02.png" id="8_oc8hc"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_n7lu0"]
 
@@ -16,6 +17,10 @@ ability = ExtResource("2_oc8hc")
 metadata/_custom_type_script = "uid://gqwg5uj22upb"
 
 [node name="Facing" type="Marker2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Facing"]
+z_index = 4
+texture = ExtResource("8_oc8hc")
 
 [node name="Detection" type="Area2D" parent="."]
 collision_layer = 2

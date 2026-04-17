@@ -5,6 +5,7 @@ signal damage_taken
 signal damage_negated
 signal damage_healed
 signal damage_lethal
+signal knockback
 
 const HIT_COLORS: Dictionary = {"Heal": Color.GREEN,"Damag": Color.RED, "Critical": Color.GOLD}
 const HEALTH_RES = preload("res://Resources/Data/Attributes/health.tres")
@@ -94,14 +95,13 @@ func _process(_delta):
 		health_regen.wait_time = regen_base * (regen_base/(1 + ((value -1) / regen_scale)))
 		health_regen.start()
 
-func _get_configuration_warnings():
-	var msg: Array[String]
-	if not get_parent() is Entity:
-		msg.append("Health Component must be a child in an Entity class.")
-	return msg
+func full_heal():
+	current_health = maximum_health
+	if not health_regen.is_stopped():
+		health_regen.stop()
 	
 func apply_dot_damage(amount: float, status_entity: Status_Effect_Entity):
-	current_health -= amount
+	current_health -= ceil(amount)
 	_react_to_dot(amount, status_entity)
 	
 func apply_damage_rider(damage_rider: Damage_Rider):
@@ -121,14 +121,18 @@ func has_dodged() -> bool:
 	return randf_range(0,1) <= clamp(dodge + entity.items.get_attribute_bonus("dodge"), MIN_DODGE_CHANCE,MAX_DODGE_CHANCE)
 	
 func _apply_knockback(damage_rider: Damage_Rider):
-	var kb_value = damage_rider.ability.ability.knockback 
-	kb_value += (damage_rider.items.get_attribute_bonus("knockback") if damage_rider["items"] else 0)
-	if kb_value != 0:
-		entity.movement_component.knockback_effect(damage_rider.ability.direction, kb_value)
+	knockback.emit()
+	#var kb_value
+	#if damage_rider.ability:
+		#kb_value = damage_rider.ability.ability.knockback 
+	#var kb_item = damage_rider.entity.items.get_attribute_bonus("knockback")
+	#kb_value += (0)
+	#if kb_value != 0 and damage_rider.ability: ## BUG: Need to make it so ability isn't necessary
+		#entity.movement_component.knockback_effect(damage_rider.ability.direction, kb_value)
 			
 func _react_to_damage(damage_rider: Damage_Rider):
 	## Determine if invul and what type of damage to emit
-	var damage_dealt = damage_rider.damage
+	var damage_dealt = ceil(damage_rider.damage)
 	current_health -= damage_dealt
 	if damage_dealt < 0: 
 		damage_taken.emit()
@@ -165,8 +169,8 @@ func emit_dot_indication(status_effect: Status_Effect_Entity = null):
 	strike.particle.modulate = status_effect.status_color
 	strike.particle.emitting = true
 
-func emit_hit_indication(entity: Entity, _amount: float, is_critical: bool = false):
-	strike.position = entity.position
+func emit_hit_indication(_entity: Entity, _amount: float, is_critical: bool = false):
+	strike.position = _entity.position
 	if is_critical:
 		strike.particle.modulate = Color.GOLD
 	strike.particle.emitting = true

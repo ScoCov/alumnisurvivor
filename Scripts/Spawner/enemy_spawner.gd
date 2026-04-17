@@ -1,9 +1,9 @@
 class_name Enemy_Spawner
 extends Node
 
-signal group_spawn ## Triggers when normal enemies spawn
-signal mini_boss_spawn ## Triggers when mini-boss spawns
-signal boss_spawn ## Triggers when map's boss is spawned
+#signal group_spawn ## Triggers when normal enemies spawn
+#signal mini_boss_spawn ## Triggers when mini-boss spawns
+#signal boss_spawn ## Triggers when map's boss is spawned
 signal spawn_attempt ## Triggers when there should be a spawn attempt
 signal power_increased
 signal power_decreased
@@ -35,7 +35,6 @@ var entities_dict: Dictionary  ## List of enemies? Whats the difference between 
 var current_pwer: float = 0 ## Current power on the field 
 var time_passed: int = 0 ## Time used for calculating how much power should be naturally on the field
 var _time_start: float
-var _offstage_entities: Array[Enemy_Entity]
 
 @onready var spawn_time: Timer = $'spawn_time'
 @onready var power_growth_timer: Timer = $'power_growth'
@@ -82,6 +81,7 @@ func load_entity(entity: EnemyResource) -> Enemy_Entity:
 func _remove_power(spawner,  entity):
 	call_deferred("drop_xp", entity)
 	spawner.current_pwer -= entity.entity.power_level
+	power_decreased.emit()
 	entity.queue_free()
 		
 func drop_xp( _entity: Enemy_Entity):

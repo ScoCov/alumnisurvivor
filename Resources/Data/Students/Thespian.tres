@@ -22,5 +22,5 @@ weakness = ExtResource("8_6n6wg")
 eyebrows = ExtResource("1_rwg6p")
 eyes = ExtResource("2_lleik")
 mouth = ExtResource("3_lleik")
-unlocked = false
+unlocked = true
 student_tags = 0

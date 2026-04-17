@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dxs4mstvhwgv"]
+[gd_scene load_steps=10 format=3 uid="uid://dxs4mstvhwgv"]
 
 [ext_resource type="Script" uid="uid://dy7n5gmkswm47" path="res://Scripts/GameLogic.gd" id="1_ujiyw"]
 [ext_resource type="Script" uid="uid://wj4520tlhte0" path="res://Scripts/Spawner/enemy_spawner.gd" id="2_wyfbo"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://ckklwqmrrbi60" path="res://Scripts/Abstract Classes/Resource/enemy_resource.gd" id="3_ibji4"]
 [ext_resource type="Resource" uid="uid://cmf76ta31ox1v" path="res://Resources/Data/Enemies/weakling.tres" id="4_pwssg"]
 [ext_resource type="Resource" uid="uid://d3t00c3xci4hm" path="res://Resources/Data/Enemies/slitherer.tres" id="5_c8ydw"]
+[ext_resource type="Resource" uid="uid://chujgr1qlg2eh" path="res://Resources/Data/Enemies/spitter.tres" id="6_p4l8i"]
 [ext_resource type="PackedScene" uid="uid://bh2ur6pblyj8n" path="res://Scenes/Maps/Shared/continuous_floor.tscn" id="7_c8ydw"]
 [ext_resource type="PackedScene" uid="uid://v1phrdf8cdqg" path="res://Entities/player_entity.tscn" id="8_c8ydw"]
 
@@ -26,11 +27,11 @@ autostart = true
 
 [node name="EnemySpawner" type="Node" parent="Game Local" node_paths=PackedStringArray("player", "enemy_container")]
 script = ExtResource("2_wyfbo")
-enemy_list = Array[ExtResource("3_ibji4")]([ExtResource("4_pwssg"), ExtResource("5_c8ydw")])
+enemy_list = Array[ExtResource("3_ibji4")]([ExtResource("4_pwssg"), ExtResource("5_c8ydw"), ExtResource("6_p4l8i")])
 player = NodePath("../../Forgound Rendering Node/Player Entity")
 enemy_container = NodePath("../../Forgound Rendering Node/EnemyContainer")
 max_number_of_entities = 999
-max_power = 1.0
+max_power = 15.0
 enemy_population_amount = 12
 
 [node name="spawn_time" type="Timer" parent="Game Local/EnemySpawner"]

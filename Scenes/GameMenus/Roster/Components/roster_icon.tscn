@@ -32,7 +32,7 @@ corner_radius_top_right = 12
 corner_radius_bottom_right = 12
 corner_radius_bottom_left = 12
 
-[node name="RosterIcon" type="Control"]
+[node name="RosterIcon" type="Control" node_paths=PackedStringArray("focused", "head", "hair", "eyebrows", "eyes", "mouth", "background_color")]
 custom_minimum_size = Vector2(96, 96)
 layout_mode = 3
 anchor_right = 0.0833333
@@ -45,6 +45,13 @@ mouse_default_cursor_shape = 2
 theme = ExtResource("1_538ng")
 script = ExtResource("1_dtvru")
 student = ExtResource("2_2nb41")
+focused = NodePath("Focused")
+head = NodePath("CenterContainer/Control/Head")
+hair = NodePath("CenterContainer/Control/Hair")
+eyebrows = NodePath("CenterContainer/Control/Eyebrows")
+eyes = NodePath("CenterContainer/Control/Eyes")
+mouth = NodePath("CenterContainer/Control/Mouth")
+background_color = NodePath("ColorRect")
 metadata/_edit_use_anchors_ = true
 
 [node name="Button" type="Button" parent="."]

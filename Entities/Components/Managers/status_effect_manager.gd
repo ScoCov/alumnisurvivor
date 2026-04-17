@@ -78,7 +78,7 @@ func add_status_effect(status: Status_Effect_Resource, parent_ability: Ability_E
 
 ## This method will spawn a Status Effect Entity onto the target entity. Providing the Status Effect Resource, the parent ability that is causing this effect, will assign the proper status.
 func add_status_effect_entity(status: Status_Effect_Resource, parent_ability: Ability_Entity, _max_count = null): 
-	if _children.any(func(child): child.status_resource == status):
+	if _children.any(func(child): return child.status_resource == status):
 		var index = _children.rfind_custom(func(child): return child.status_resource == status)
 		var extant_status_effect: Status_Effect_Entity = _children[index]
 		## Incrament Status Effect stack Count

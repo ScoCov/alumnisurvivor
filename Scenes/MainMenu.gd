@@ -22,5 +22,5 @@ func _on_collection_pressed():
 func _on_settings_pressed():
 	page.emit_signal("page_type_changed", "Settings")
 
-func _on_button_pressed():
+func _on_debug_pressed():
 	get_tree().change_scene_to_file("res://Scenes/Maps/Map_Entrance.tscn") # Replace with function body.

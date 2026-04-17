@@ -67,7 +67,7 @@ theme = ExtResource("2_8saeu")
 text = "Quit
 "
 
-[node name="Button" type="Button" parent="HSplitContainer/Navigation/CenterContainer/VBoxContainer"]
+[node name="Debug" type="Button" parent="HSplitContainer/Navigation/CenterContainer/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("2_8saeu")
 text = "DEBUG"
@@ -82,4 +82,4 @@ layout_mode = 1
 [connection signal="pressed" from="HSplitContainer/Navigation/CenterContainer/VBoxContainer/Collection" to="." method="_on_collection_pressed"]
 [connection signal="pressed" from="HSplitContainer/Navigation/CenterContainer/VBoxContainer/Settings" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="HSplitContainer/Navigation/CenterContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
-[connection signal="pressed" from="HSplitContainer/Navigation/CenterContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="HSplitContainer/Navigation/CenterContainer/VBoxContainer/Debug" to="." method="_on_debug_pressed"]

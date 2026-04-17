@@ -1,38 +1,38 @@
-[gd_scene load_steps=4 format=3 uid="uid://dxh5oel5rakfm"]
+[gd_scene load_steps=6 format=3 uid="uid://dxh5oel5rakfm"]
 
 [ext_resource type="PackedScene" uid="uid://cyimvhd78npmj" path="res://Entities/enemy_entity.tscn" id="1_th12s"]
 [ext_resource type="Script" uid="uid://bkmm4260ecnmn" path="res://Scripts/Strategy/EnemyMovement/avoid_player.gd" id="2_13qkv"]
 [ext_resource type="Resource" uid="uid://chujgr1qlg2eh" path="res://Resources/Data/Enemies/spitter.tres" id="2_60l3j"]
+[ext_resource type="Texture2D" uid="uid://evvlxxf5qy7d" path="res://Assets/Image/UI/Arrow_Menu_02.png" id="4_p4qnp"]
+[ext_resource type="PackedScene" uid="uid://cqt8es7v6pja5" path="res://Entities/Abilities/enemy_spit.tscn" id="5_nlatf"]
 
 [node name="Spitter" instance=ExtResource("1_th12s")]
 entity = ExtResource("2_60l3j")
 
-[node name="EnemeyMovementComponent#avoidplayer" type="Node" parent="." index="2"]
-script = ExtResource("2_13qkv")
-
-[node name="HealthComponent" parent="." index="4"]
+[node name="HealthComponent" parent="." index="3"]
 maximum_health = 5
 current_health = 5
 
-[node name="Label2" type="Label" parent="." index="5"]
-visible = false
-offset_left = -20.0
-offset_top = -53.0
-offset_right = 20.0
-offset_bottom = -30.0
+[node name="movement_component" parent="." index="4" node_paths=PackedStringArray("movement_type")]
+movement_type = NodePath("avoid_player")
+movement_speed = 22.0
 
-[node name="ColorRect" type="ColorRect" parent="." index="6"]
+[node name="avoid_player" type="Node" parent="movement_component" index="1" node_paths=PackedStringArray("entity", "manual_timer", "movement_component")]
+script = ExtResource("2_13qkv")
+entity = NodePath("../..")
+min_distance = 200.0
+max_distance = 300.0
+manual_timer = NodePath("manual override")
+movement_component = NodePath("..")
+
+[node name="manual override" type="Timer" parent="movement_component/avoid_player" index="0"]
+one_shot = true
+
+[node name="Direction Arrow" type="Sprite2D" parent="." index="6"]
 visible = false
-z_index = 10
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(1, 0.0313726, 1, 1)
+texture = ExtResource("4_p4qnp")
+
+[node name="EnemySpit" parent="." index="7" node_paths=PackedStringArray("entity") instance=ExtResource("5_nlatf")]
+entity = NodePath("..")
+
+[connection signal="timeout" from="movement_component/avoid_player/manual override" to="movement_component/avoid_player" method="_on_manual_override_timeout"]

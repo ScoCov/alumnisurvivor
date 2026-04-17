@@ -1,8 +1,8 @@
 class_name Level_Up_Menu
 extends Control
 
-signal menu_triggered
-signal game_resumed
+#signal menu_triggered
+#signal game_resumed
 signal object_chosen
 signal reroll
 signal ban

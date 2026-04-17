@@ -33,11 +33,6 @@ autostart = true
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_2gyj7")
 
-[node name="Label" type="Label" parent="."]
-visible = false
-offset_right = 40.0
-offset_bottom = 23.0
-
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
 [connection signal="body_exited" from="Hitbox" to="." method="_on_hitbox_body_exited"]
 [connection signal="timeout" from="Duration" to="." method="_on_duration_timeout"]

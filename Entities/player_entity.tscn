@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://v1phrdf8cdqg"]
+[gd_scene load_steps=26 format=3 uid="uid://v1phrdf8cdqg"]
 
 [ext_resource type="Script" uid="uid://d0tuntxkjee38" path="res://Entities/player_entity.gd" id="1_cue4i"]
 [ext_resource type="Script" uid="uid://bs86w8aueivx2" path="res://Entities/Components/Managers/ability_manager.gd" id="2_vvltm"]
@@ -18,15 +18,19 @@
 [ext_resource type="Texture2D" uid="uid://b1pkn4viaktqf" path="res://Assets/Image/Student/Head/Eyes/Eyes_02.png" id="15_anyje"]
 [ext_resource type="Texture2D" uid="uid://cr4jadxq3b6wj" path="res://Assets/Image/Student/Head/Mouth/Mouth_01.png" id="16_je17t"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8xx2g"]
-radius = 30.0
-height = 106.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cue4i"]
+radius = 28.0
+height = 108.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qr54b"]
 radius = 100.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fkouh"]
 radius = 32.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8xx2g"]
+radius = 35.0
+height = 125.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fkouh"]
 resource_local_to_scene = true
@@ -101,7 +105,7 @@ movment_component = NodePath("MovementComponent")
 metadata/_custom_type_script = "uid://dcgrocrt0ga75"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CapsuleShape2D_8xx2g")
+shape = SubResource("CapsuleShape2D_cue4i")
 debug_color = Color(0, 0.641216, 0.337845, 0.42)
 
 [node name="Abilities" type="Node2D" parent="." node_paths=PackedStringArray("parent_entity")]
@@ -123,11 +127,12 @@ maximum_health = 0
 script = ExtResource("4_5a7bc")
 player = NodePath("..")
 
-[node name="MovementComponent" parent="." node_paths=PackedStringArray("dash_manager", "entity") instance=ExtResource("5_dba2u")]
+[node name="MovementComponent" parent="." node_paths=PackedStringArray("dash_manager", "entity", "knockback_timer") instance=ExtResource("5_dba2u")]
 player_controls = true
 dash_manager = NodePath("Dashes")
 entity = NodePath("..")
 movement_speed = 100.0
+knockback_timer = NodePath("knockback")
 knockback_speed = 110.0
 
 [node name="Dashes" type="HBoxContainer" parent="MovementComponent" node_paths=PackedStringArray("movement_component")]
@@ -147,6 +152,9 @@ movement_component = NodePath("..")
 
 [node name="DashIndicator" parent="MovementComponent/Dashes" instance=ExtResource("7_tjc8g")]
 layout_mode = 2
+
+[node name="knockback" type="Timer" parent="MovementComponent"]
+wait_time = 0.25
 
 [node name="StatusEffects" type="Node2D" parent="." node_paths=PackedStringArray("entity")]
 script = ExtResource("8_ufpw1")
@@ -181,6 +189,14 @@ debug_color = Color(0.936353, 0.128452, 0.542358, 0.42)
 
 [node name="XpChime1" type="AudioStreamPlayer" parent="Sensors/XP_Collection_Zone"]
 stream = ExtResource("10_s7kd2")
+
+[node name="Hitbox" type="Area2D" parent="Sensors"]
+collision_layer = 0
+collision_mask = 18
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sensors/Hitbox"]
+shape = SubResource("CapsuleShape2D_8xx2g")
 
 [node name="Visuals" type="Node2D" parent="."]
 position = Vector2(3, -36)
@@ -231,3 +247,4 @@ offset_bottom = -93.0
 [connection signal="damage_lethal" from="HealthComponent" to="." method="_on_health_component_damage_lethal"]
 [connection signal="body_entered" from="Sensors/XP_Pickup_Range" to="." method="_on_xp_collector_body_entered"]
 [connection signal="body_entered" from="Sensors/XP_Collection_Zone" to="." method="_on_xp_collection_zone_body_entered"]
+[connection signal="body_entered" from="Sensors/Hitbox" to="." method="_on_hitbox_body_entered"]

@@ -34,7 +34,6 @@ func _ready():
 	initial_infection.emit()
 	
 func _on_duration_timeout():
-	var temp_stack = stack_count
 	stack_count -= 1
 	if stack_count <= 0:
 		expires.emit()

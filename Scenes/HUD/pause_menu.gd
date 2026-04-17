@@ -15,6 +15,8 @@ signal ready_signal
 
 func _ready():
 	emit_signal("ready_signal")
+	if get_tree().paused:
+		game_paused.emit()
 	
 func _on_resume_pressed():
 	game_ui.display_game_ui()

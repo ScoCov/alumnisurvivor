@@ -1,7 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://chwll3pjbu6r0"]
+[gd_scene load_steps=4 format=3 uid="uid://dhjlqor054l3c"]
 
-[ext_resource type="Script" uid="uid://dhpqomidacnh5" path="res://Entities/Abilities/baseball_projectile.gd" id="1_lstbg"]
-[ext_resource type="Texture2D" uid="uid://cucx1gpirwelw" path="res://Assets/Image/Ability/Baseball_Ball_128.png" id="1_s5g11"]
+[ext_resource type="Script" uid="uid://dhpqomidacnh5" path="res://Entities/Abilities/baseball_projectile.gd" id="1_54t4h"]
+[ext_resource type="Texture2D" uid="uid://cucx1gpirwelw" path="res://Assets/Image/Ability/Baseball_Ball_128.png" id="2_jpe8s"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lstbg"]
 radius = 32.7567
@@ -10,9 +10,7 @@ radius = 32.7567
 collision_layer = 0
 collision_mask = 0
 motion_mode = 1
-script = ExtResource("1_lstbg")
-shape = SubResource("CircleShape2D_lstbg")
-texture = ExtResource("1_s5g11")
+script = ExtResource("1_54t4h")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_lstbg")
@@ -20,7 +18,7 @@ debug_color = Color(0.223529, 0.623529, 0.905882, 0.45098)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("1_s5g11")
+texture = ExtResource("2_jpe8s")
 
 [node name="Hitbox" type="Area2D" parent="."]
 collision_layer = 0

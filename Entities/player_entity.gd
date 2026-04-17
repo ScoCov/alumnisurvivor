@@ -11,7 +11,7 @@ extends Entity
 signal loaded 
 signal death
 signal experience_gained
-signal level_up
+#signal level_up 
 
 ## Eventually remove this and place this into the Experience Manager
 const XP_COLLECTION_RANGE_DEFAULT = 100 
@@ -37,7 +37,6 @@ func _render_student() -> void:
 	$Visuals/Head/Eyes.texture = student_manager.active_student.eyes
 	$Visuals/Head/Mouth.texture = student_manager.active_student.mouth
 
-
 ## When an xp_node is within range of the of the pickup field, give the node
 ## a target of this entity.
 func _on_xp_collector_body_entered(body):
@@ -49,6 +48,7 @@ func _on_xp_collection_zone_body_entered(body):
 	if body is XP_Node:
 		body.collide_with_player()
 		experience.add_experience(body.xp_value)
+		experience_gained.emit()
 
 ## I probably don't need this as I can attach this to the health_components death signal.
 func _on_health_component_damage_lethal():
@@ -58,3 +58,10 @@ func _on_health_component_damage_lethal():
 ## I will likely also want to attach some sort of visual effect as well. 
 func _on_student_manager_student_swap():
 	_render_student()
+
+func _on_hitbox_body_entered(body):
+	var damage_rider = body.get_damage_rider()
+	health.apply_damage_rider(damage_rider)
+	if body is Projectile:
+		body.queue_free()
+	print("Player Hit for %s damage" % [damage_rider.deal_damage()])

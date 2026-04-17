@@ -37,5 +37,4 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[connection signal="player_paused" from="." to="PauseMenu" method="_on_game_paused"]
 [connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]

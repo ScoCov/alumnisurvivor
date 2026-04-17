@@ -8,7 +8,7 @@ extends Resource
 @export var starting_power_level: float = 0
 @export var power_level_growth: float = 0
 @export var xp_per_power: float = 0
-@export var power_level: float = 1
+@export var power_level: int = 1
 @export var minimum_spawn_power_needed: int = 1
 
 @export_group("Images")

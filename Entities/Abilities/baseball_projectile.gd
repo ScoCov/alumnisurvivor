@@ -1,23 +1,28 @@
 class_name Baseball_Projectile
-extends CharacterBody2D
+extends Projectile
 
-@export var target_location: Vector2
-@export var parent_ability: Ability_Entity
-@export var parent_entity: Entity
-@export var bounces_left: int = 0
-@export var pierces_left: int = 0
+@onready var hitbox = $Hitbox/CollisionShape2D
+@onready var duration = $Duration
 
 func _ready():
-	bounces_left = parent_ability.ability.bounce
-	pierces_left = parent_ability.ability.pierce
+	hitbox.shape = shape
+	sprite_2d.texture = texture
+	duration.wait_time = lifetime
+	start_position = position
+	if parent_ability:
+		bounce = parent_ability.ability.bounce
+		pierce = parent_ability.ability.pierce
 	
 func _physics_process(delta):
 	_movement()
 	move_and_slide()
 	$Sprite2D.rotate(10*delta)
 
-func _movement(_target_location = target_location):
-	if velocity == Vector2.ZERO or _target_location != target_location:
+func _movement(_target_location = target):
+	var distance_traveled = position.distance_to(start_position)
+	if distance_traveled >= max_range:
+		self.queue_free()
+	if velocity == Vector2.ZERO or _target_location != target:
 		velocity = (position.direction_to(_target_location) * (parent_ability.ability.projectile_speed + parent_entity.items.get_attribute_bonus("projectile_speed")))
 	
 func _on_hitbox_body_entered(body):
@@ -36,18 +41,18 @@ func _on_hitbox_body_entered(body):
 		self.queue_free()
 	
 func _on_hitbox_body_exited(_body):
-	if bounces_left > 0 or pierces_left > 0:
-		if bounces_left > 0:
-			bounces_left -= 1
-		elif pierces_left > 0:
-			pierces_left  -= 1
+	if bounce > 0 or pierce > 0:
+		if bounce > 0:
+			bounce -= 1
+		elif pierce > 0:
+			pierce -= 1
 			
 func _bounce_pierce():
-	if bounces_left > 0 or pierces_left > 0:
-		if bounces_left > 0: ## Do Bounce First
-			bounces_left -= 1
-		elif pierces_left > 0: ## Do Pierce Second (or not at all if Bounce is done)
-			pierces_left  -= 1
+	if bounce > 0 or pierce > 0:
+		if bounce > 0: ## Do Bounce First
+			bounce -= 1
+		elif pierce > 0: ## Do Pierce Second (or not at all if Bounce is done)
+			pierce -= 1
 		return true
 	return false
 

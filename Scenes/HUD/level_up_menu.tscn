@@ -165,7 +165,6 @@ grow_vertical = 2
 horizontal_alignment = 2
 metadata/_edit_use_anchors_ = true
 
-[connection signal="menu_triggered" from="." to="." method="_on_menu_triggered"]
 [connection signal="pressed" from="Options/MarginContainer/HBoxContainer/Reroll" to="." method="_on_reroll_pressed"]
 [connection signal="pressed" from="Options/MarginContainer/HBoxContainer/Ban" to="." method="_on_ban_pressed"]
 [connection signal="pressed" from="Options/MarginContainer/HBoxContainer/Skip" to="." method="_on_skip_pressed"]

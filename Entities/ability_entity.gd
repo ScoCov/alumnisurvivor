@@ -32,7 +32,6 @@ var bounce_current: int = 0
 var look_at_target: bool = true
 var enable_attack: bool = false
 
-
 var _items: Item_Container:
 	get():
 		if get_parent() is Ability_Manager:
@@ -40,7 +39,6 @@ var _items: Item_Container:
 				return get_parent().parent_entity.items
 		return null
 		
-@warning_ignore("unused_parameter")
 var _cooldown_complete: bool = false
 
 func _get_configuration_warnings():
@@ -75,7 +73,7 @@ func on_recovery() -> bool:
 	return false
 	
 func on_cooldown() -> bool:
-	return false
+	return _cooldown_complete
 	
 func ability_factory(_resource: Ability_Resource):
 	assert(ability != null, "Ability Entity must have an Ability_Resource connected")
@@ -99,3 +97,11 @@ func sort_entity_pool():
 	if len(entity_pool) > 0:
 		if len(entity_pool) > 1:
 			entity_pool.sort_custom(func(_entity_a, _entity_b): return get_parent().position.distance_to(_entity_a.position) < get_parent().position.distance_to(_entity_b.position)) 
+
+func item_bonus(item_id: String) -> float:
+	assert(entity.items, "Ability Entity cannot detect the Items manager for its' parent entity.")
+	return entity.items.get_attribute_bonus(item_id)
+
+func student_augment(attribute_id: String) -> float:
+	if not entity is Player_Entity: return 0.0
+	return entity.student_manager.get_bonus_by_attribute(attribute_id)

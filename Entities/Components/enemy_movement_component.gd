@@ -16,10 +16,3 @@ func _physics_process(delta):
 	if check_for_stun:
 		entity.velocity *= 0
 	entity.move_and_slide()
-
-func _on_knockback_timer_timeout():
-	is_knocked_backed = false
-
-func knockback_effect(direction: Vector2, knockback_value: float):
-	is_knocked_backed = true
-	knockback_speed += knockback_value

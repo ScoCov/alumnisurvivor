@@ -3,6 +3,8 @@ extends Node
 
 signal student_swap
 
+enum BONUS {PRIMARY, SECONDARY, WEAKNESS}  
+
 const PRIMARY_BONUS: float = 0.20
 const SECONDARY_BONUS: float = 0.10
 const WEAKNESS_BONUS: float = -0.10

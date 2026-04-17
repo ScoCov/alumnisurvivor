@@ -42,4 +42,5 @@ func _get_position(_origin: Vector2) -> Vector2:
 func spawn_entity(): 
 	entity.position = position
 	container.add_child(entity)
+	entity_spawned.emit()
 	self.queue_free() ## Remove Indicator.

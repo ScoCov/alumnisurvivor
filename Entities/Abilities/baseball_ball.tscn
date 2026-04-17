@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://t8tsmn2h0dcm"]
+[gd_scene load_steps=10 format=3 uid="uid://t8tsmn2h0dcm"]
 
 [ext_resource type="Script" uid="uid://c70ocafjqcphd" path="res://Entities/Abilities/baseball_ball.gd" id="1_3merp"]
 [ext_resource type="Script" uid="uid://t3mlm4ybio8c" path="res://Scripts/States/state_machine.gd" id="2_k12dq"]
 [ext_resource type="Resource" uid="uid://bmjdqf2hvrjxf" path="res://Resources/Data/Abilities/baseball_ball.tres" id="2_wvxja"]
+[ext_resource type="Texture2D" uid="uid://evvlxxf5qy7d" path="res://Assets/Image/UI/Arrow_Menu_02.png" id="3_k12dq"]
 [ext_resource type="Script" uid="uid://dydaurl4tnt6i" path="res://Scripts/States/Ability/AbilityActive.gd" id="3_wvxja"]
 [ext_resource type="Script" uid="uid://bgpw1jyinlpy" path="res://Scripts/States/Ability/AbilityReady.gd" id="4_alqp5"]
 [ext_resource type="Script" uid="uid://bb1ure7bwtit4" path="res://Scripts/States/Ability/AbilityRecovery.gd" id="5_vhagf"]
@@ -16,6 +17,10 @@ script = ExtResource("1_3merp")
 ability = ExtResource("2_wvxja")
 
 [node name="Facing" type="Marker2D" parent="."]
+
+[node name="Diraction Indicator" type="Sprite2D" parent="Facing"]
+z_index = 4
+texture = ExtResource("3_k12dq")
 
 [node name="Cooldown" type="Timer" parent="."]
 wait_time = 2.0
@@ -48,8 +53,6 @@ ability = NodePath("../..")
 [node name="Cooldown" type="Node" parent="StateMachine" node_paths=PackedStringArray("ability")]
 script = ExtResource("6_3vrij")
 ability = NodePath("../..")
-
-[node name="Damage" type="Node" parent="."]
 
 [node name="Label" type="Label" parent="."]
 offset_left = -155.0

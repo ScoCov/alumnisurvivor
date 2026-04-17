@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://dich6kxpoo335"]
+[gd_scene load_steps=6 format=3 uid="uid://dich6kxpoo335"]
 
 [ext_resource type="PackedScene" uid="uid://cyimvhd78npmj" path="res://Entities/enemy_entity.tscn" id="1_jxmd3"]
 [ext_resource type="Resource" uid="uid://d3t00c3xci4hm" path="res://Resources/Data/Enemies/slitherer.tres" id="2_0h84s"]
 [ext_resource type="Texture2D" uid="uid://yb1rq63bhh22" path="res://Assets/Image/Enemies/mutant_03_256x256.png" id="3_ysqs4"]
 [ext_resource type="Script" uid="uid://bytyu3ff0fojl" path="res://Scripts/Strategy/EnemyMovement/wander.gd" id="4_jxmd3"]
+[ext_resource type="Texture2D" uid="uid://evvlxxf5qy7d" path="res://Assets/Image/UI/Arrow_Menu_02.png" id="5_0h84s"]
 
 [node name="Slitherer" instance=ExtResource("1_jxmd3")]
 entity = ExtResource("2_0h84s")
@@ -14,12 +15,24 @@ texture = ExtResource("3_ysqs4")
 [node name="movement_component" parent="." index="4" node_paths=PackedStringArray("movement_type")]
 movement_type = NodePath("wander")
 
-[node name="wander" type="Node" parent="movement_component" index="1" node_paths=PackedStringArray("wander_time", "movement_component")]
+[node name="wander" type="Node" parent="movement_component" index="1" node_paths=PackedStringArray("wander_time", "entity", "direction_arrow", "label", "movement_component")]
 script = ExtResource("4_jxmd3")
+max_distance_from_player = 350.0
 wander_time = NodePath("wander_time")
+entity = NodePath("../..")
+direction_arrow = NodePath("../../Direction")
+label = NodePath("../../Label")
 movement_component = NodePath("..")
 
 [node name="wander_time" type="Timer" parent="movement_component/wander" index="0"]
 autostart = true
+
+[node name="Direction" type="Sprite2D" parent="." index="6"]
+visible = false
+texture = ExtResource("5_0h84s")
+
+[node name="Label" type="Label" parent="." index="7"]
+offset_right = 40.0
+offset_bottom = 23.0
 
 [connection signal="timeout" from="movement_component/wander/wander_time" to="movement_component/wander" method="_on_wander_time_timeout"]
