@@ -1,9 +1,5 @@
-[gd_resource type="Resource" script_class="Student_Resource" load_steps=10 format=3 uid="uid://l12kygxdsvpi"]
+[gd_resource type="Resource" script_class="Student_Resource" load_steps=6 format=3 uid="uid://l12kygxdsvpi"]
 
-[ext_resource type="Texture2D" uid="uid://doicw3e1bmkir" path="res://Assets/Image/Student/Head/Eyebrows/Eyebrows_02.png" id="1_ucrg4"]
-[ext_resource type="Texture2D" uid="uid://b1pkn4viaktqf" path="res://Assets/Image/Student/Head/Eyes/Eyes_02.png" id="2_h4fue"]
-[ext_resource type="Texture2D" uid="uid://clnjw3cmm8oad" path="res://Assets/Image/Student/Head/Hair/Hair_03.png" id="3_ucrg4"]
-[ext_resource type="Texture2D" uid="uid://2xnveispqogs" path="res://Assets/Image/Student/Head/Mouth/Mouth_07.png" id="4_h4fue"]
 [ext_resource type="Script" uid="uid://40jgn8mckuc1" path="res://Scripts/Abstract Classes/Resource/student_resource.gd" id="5_p0ixe"]
 [ext_resource type="Resource" uid="uid://daw6jacc8mg1s" path="res://Resources/Data/Attributes/critical_chance.tres" id="5_rokbx"]
 [ext_resource type="Resource" uid="uid://dvi1u7e227gps" path="res://Resources/Data/Abilities/guitar_screech.tres" id="6_h4fue"]
@@ -16,13 +12,16 @@ student_name = "ClassClown"
 file_name = "ClassClown"
 ordinal = -1
 starting_ability = ExtResource("6_h4fue")
-background_color = Color(0, 0, 1, 1)
 primary = ExtResource("5_rokbx")
 secondary = ExtResource("7_vsa8q")
 weakness = ExtResource("9_e4pea")
-hair = ExtResource("3_ucrg4")
-eyebrows = ExtResource("1_ucrg4")
-eyes = ExtResource("2_h4fue")
-mouth = ExtResource("4_h4fue")
+background_color = Color(0, 0, 1, 1)
+HEAD_VARIANT = 0
+HEAD_COLOR = 0
+EYE_VARIANT = 0
+EYE_COLOR = 0
+HAIR_VARIANT = 0
+HAIR_COLOR = 0
 unlocked = true
+hidden = false
 student_tags = 0

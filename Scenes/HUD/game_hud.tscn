@@ -1,11 +1,7 @@
-[gd_scene load_steps=13 format=3 uid="uid://bh5mx2v8tf4ku"]
+[gd_scene load_steps=9 format=3 uid="uid://bh5mx2v8tf4ku"]
 
 [ext_resource type="Script" uid="uid://dkcnyc1453p3b" path="res://Scenes/HUD/game_hud.gd" id="1_1ra4x"]
-[ext_resource type="Texture2D" uid="uid://ckyqn1o6hh0i1" path="res://Assets/Image/Student/Head/Head_beta_2.png" id="1_kv2g0"]
-[ext_resource type="Texture2D" uid="uid://cfg4vqlg36ofq" path="res://Assets/Image/Student/Head/Hair/Hair_01.png" id="2_1ra4x"]
-[ext_resource type="Texture2D" uid="uid://va580vf1m0o7" path="res://Assets/Image/Student/Head/Eyebrows/Eyebrows_01.png" id="3_6r443"]
-[ext_resource type="Texture2D" uid="uid://b5dlojhwtpkpo" path="res://Assets/Image/Student/Head/Eyes/Eyes_01.png" id="4_5oy75"]
-[ext_resource type="Texture2D" uid="uid://cr4jadxq3b6wj" path="res://Assets/Image/Student/Head/Mouth/Mouth_01.png" id="5_83cj2"]
+[ext_resource type="PackedScene" uid="uid://b0f1e837x5x87" path="res://Entities/Body Parts/student_head.tscn" id="2_5stvw"]
 [ext_resource type="Theme" uid="uid://ea0hpxrc3ot0" path="res://Resources/Themes/Menu_Themes.tres" id="7_6r443"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wk7wg"]
@@ -134,42 +130,14 @@ grow_vertical = 2
 mouse_filter = 2
 mouse_force_pass_scroll_events = false
 
-[node name="Student" type="Sprite2D" parent="Image/Control"]
-scale = Vector2(0.33, 0.33)
-texture = ExtResource("1_kv2g0")
+[node name="Student" parent="Image/Control" instance=ExtResource("2_5stvw")]
+scale = Vector2(0.3, 0.3)
+test_student = null
 
-[node name="Hair" type="Sprite2D" parent="Image/Control/Student"]
-scale = Vector2(0.888, 1)
-texture = ExtResource("2_1ra4x")
-
-[node name="Eyebrows" type="Sprite2D" parent="Image/Control/Student"]
-texture = ExtResource("3_6r443")
-
-[node name="Eyes" type="Sprite2D" parent="Image/Control/Student"]
-texture = ExtResource("4_5oy75")
-
-[node name="Mouth" type="Sprite2D" parent="Image/Control/Student"]
-position = Vector2(0, 50)
-texture = ExtResource("5_83cj2")
-
-[node name="Besty" type="Sprite2D" parent="Image/Control"]
-position = Vector2(52.5, 52.5)
-scale = Vector2(0.15, 0.15)
-texture = ExtResource("1_kv2g0")
-
-[node name="Hair" type="Sprite2D" parent="Image/Control/Besty"]
-scale = Vector2(0.888, 1)
-texture = ExtResource("2_1ra4x")
-
-[node name="Eyebrows" type="Sprite2D" parent="Image/Control/Besty"]
-texture = ExtResource("3_6r443")
-
-[node name="Eyes" type="Sprite2D" parent="Image/Control/Besty"]
-texture = ExtResource("4_5oy75")
-
-[node name="Mouth" type="Sprite2D" parent="Image/Control/Besty"]
-position = Vector2(0, 50)
-texture = ExtResource("5_83cj2")
+[node name="Besty" parent="Image/Control" instance=ExtResource("2_5stvw")]
+position = Vector2(43.5, 57.5)
+scale = Vector2(0.2, 0.2)
+test_student = null
 
 [node name="ExperienceBar" type="ProgressBar" parent="."]
 custom_minimum_size = Vector2(0, 24)

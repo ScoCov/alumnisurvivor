@@ -1,0 +1,324 @@
+[gd_scene load_steps=38 format=3 uid="uid://blw0oeqv3x401"]
+
+[ext_resource type="Script" uid="uid://bugwvvpwn4jie" path="res://Scenes/GameMenus/Roster/Components/student_selector.gd" id="1_i8ueb"]
+[ext_resource type="PackedScene" uid="uid://bm20qapbxcgdc" path="res://Scenes/GameMenus/Roster/Components/roster_icon.tscn" id="1_olkd5"]
+[ext_resource type="Texture2D" uid="uid://dbo0g7n0aremp" path="res://Assets/Image/UI/Arrow_Menu_04.png" id="2_6vnp3"]
+[ext_resource type="Resource" uid="uid://bqrarylfmicoh" path="res://Resources/Data/Students/Nerd.tres" id="2_i8ueb"]
+[ext_resource type="Texture2D" uid="uid://evvlxxf5qy7d" path="res://Assets/Image/UI/Arrow_Menu_02.png" id="3_qqpm1"]
+[ext_resource type="Resource" uid="uid://be7tvpc2v1d3i" path="res://Resources/Data/Students/Bully.tres" id="3_t5j0p"]
+[ext_resource type="Resource" uid="uid://l12kygxdsvpi" path="res://Resources/Data/Students/ClassClown.tres" id="4_valv7"]
+[ext_resource type="Resource" uid="uid://crjsylvyx7g2w" path="res://Resources/Data/Students/HeavyMetalGuy.tres" id="5_2k4pk"]
+[ext_resource type="Resource" uid="uid://bdyv3dp43ka7l" path="res://Resources/Data/Students/Athlete.tres" id="6_qeiih"]
+[ext_resource type="Resource" uid="uid://cummv1e8257v8" path="res://Resources/Data/Students/Thespian.tres" id="7_t35bh"]
+[ext_resource type="Theme" uid="uid://ea0hpxrc3ot0" path="res://Resources/Themes/Menu_Themes.tres" id="11_2k4pk"]
+[ext_resource type="AudioStream" uid="uid://dmdfma2dtee3l" path="res://Assets/SFX/low_medium_beep.mp3" id="12_qeiih"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t35bh"]
+draw_center = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_33f4c"]
+draw_center = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uecq4"]
+draw_center = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lmf1u"]
+draw_center = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_klbfy"]
+draw_center = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sw8kr"]
+content_margin_left = 16.0
+draw_center = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ifgap"]
+content_margin_left = 16.0
+draw_center = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o1lwk"]
+draw_center = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gvug5"]
+draw_center = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0vbk5"]
+draw_center = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nla1e"]
+content_margin_left = 16.0
+draw_center = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qeiih"]
+content_margin_left = 16.0
+draw_center = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q7n5f"]
+content_margin_left = 16.0
+draw_center = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a3il1"]
+content_margin_left = 16.0
+draw_center = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5tbq8"]
+content_margin_left = 16.0
+draw_center = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8yj34"]
+content_margin_left = 16.0
+draw_center = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8kihr"]
+content_margin_left = 16.0
+draw_center = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l0hcg"]
+content_margin_left = 16.0
+draw_center = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_botc5"]
+content_margin_left = 16.0
+draw_center = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xixdv"]
+content_margin_left = 32.0
+draw_center = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kdfvh"]
+content_margin_left = 16.0
+draw_center = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2s36x"]
+content_margin_left = 16.0
+draw_center = false
+
+[sub_resource type="Gradient" id="Gradient_qeiih"]
+colors = PackedColorArray(1, 1, 1, 0, 0, 0, 0, 0.329412)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_t35bh"]
+gradient = SubResource("Gradient_qeiih")
+height = 16
+fill = 1
+fill_from = Vector2(0.508547, 0.538462)
+fill_to = Vector2(0.881068, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qr0xj"]
+draw_center = false
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_blend = true
+
+[node name="Selector_Control" type="Control" node_paths=PackedStringArray("roster_cont", "scroll_cont", "mrgn_cont", "audio_stream")]
+layout_mode = 3
+anchor_left = 0.0269097
+anchor_right = 0.784722
+anchor_bottom = 0.231481
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+script = ExtResource("1_i8ueb")
+roster_cont = NodePath("Control/ScrollContainer/MarginContainer/Roster Container")
+scroll_cont = NodePath("Control/ScrollContainer")
+mrgn_cont = NodePath("Control/ScrollContainer/MarginContainer")
+audio_stream = NodePath("AudioStreamPlayer2D")
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="DecContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.110638
+anchor_bottom = 1.0
+
+[node name="Dec_Btn" type="Button" parent="DecContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+theme_override_icons/icon = ExtResource("2_6vnp3")
+theme_override_styles/focus = SubResource("StyleBoxFlat_t35bh")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxFlat_33f4c")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_uecq4")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxFlat_lmf1u")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_klbfy")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxFlat_sw8kr")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ifgap")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxFlat_o1lwk")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_gvug5")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_0vbk5")
+theme_override_styles/normal = SubResource("StyleBoxFlat_nla1e")
+metadata/_edit_use_anchors_ = true
+
+[node name="IncContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.878613
+anchor_right = 1.00193
+anchor_bottom = 1.0
+
+[node name="Inc_Btn" type="Button" parent="IncContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+theme_override_icons/icon = ExtResource("3_qqpm1")
+theme_override_styles/focus = SubResource("StyleBoxFlat_qeiih")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxFlat_q7n5f")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_a3il1")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxFlat_5tbq8")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_8yj34")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxFlat_8kihr")
+theme_override_styles/hover = SubResource("StyleBoxFlat_l0hcg")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxFlat_botc5")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_xixdv")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_kdfvh")
+theme_override_styles/normal = SubResource("StyleBoxFlat_2s36x")
+metadata/_edit_use_anchors_ = true
+
+[node name="Control" type="Control" parent="."]
+clip_contents = true
+anchors_preset = 0
+offset_left = 73.0
+offset_top = 8.0
+offset_right = 793.0
+offset_bottom = 136.0
+
+[node name="TextureRect" type="TextureRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_t35bh")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Control"]
+clip_contents = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_right = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+follow_focus = true
+horizontal_scroll_mode = 3
+vertical_scroll_mode = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_right = 20
+
+[node name="Roster Container" type="HBoxContainer" parent="Control/ScrollContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+theme_override_constants/separation = 30
+alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="RosterIcon" parent="Control/ScrollContainer/MarginContainer/Roster Container" instance=ExtResource("1_olkd5")]
+layout_mode = 2
+
+[node name="RosterIcon2" parent="Control/ScrollContainer/MarginContainer/Roster Container" instance=ExtResource("1_olkd5")]
+layout_mode = 2
+student = ExtResource("6_qeiih")
+
+[node name="RosterIcon3" parent="Control/ScrollContainer/MarginContainer/Roster Container" instance=ExtResource("1_olkd5")]
+layout_mode = 2
+student = ExtResource("3_t5j0p")
+
+[node name="RosterIcon4" parent="Control/ScrollContainer/MarginContainer/Roster Container" instance=ExtResource("1_olkd5")]
+layout_mode = 2
+student = ExtResource("4_valv7")
+
+[node name="RosterIcon5" parent="Control/ScrollContainer/MarginContainer/Roster Container" instance=ExtResource("1_olkd5")]
+layout_mode = 2
+student = ExtResource("5_2k4pk")
+
+[node name="RosterIcon6" parent="Control/ScrollContainer/MarginContainer/Roster Container" instance=ExtResource("1_olkd5")]
+layout_mode = 2
+student = ExtResource("2_i8ueb")
+
+[node name="RosterIcon7" parent="Control/ScrollContainer/MarginContainer/Roster Container" instance=ExtResource("1_olkd5")]
+layout_mode = 2
+student = ExtResource("7_t35bh")
+
+[node name="Panel" type="Panel" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_qr0xj")
+
+[node name="SelectStudent" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -267.5
+offset_top = 18.0
+offset_right = -110.5
+offset_bottom = 49.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("11_2k4pk")
+text = " SELECT AS PLAYER "
+
+[node name="SelectBesty" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -74.0
+offset_top = 18.0
+offset_right = 74.0
+offset_bottom = 49.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("11_2k4pk")
+text = " SELECT AS SUPPORT"
+
+[node name="Ready" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 108.5
+offset_top = 18.0
+offset_right = 256.5
+offset_bottom = 49.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("11_2k4pk")
+text = "READY"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("12_qeiih")
+
+[connection signal="pressed" from="DecContainer/Dec_Btn" to="." method="_on_dec_btn_pressed"]
+[connection signal="pressed" from="IncContainer/Inc_Btn" to="." method="_on_inc_btn_pressed"]
+[connection signal="pressed" from="SelectStudent" to="." method="_on_select_student_pressed"]
+[connection signal="pressed" from="SelectBesty" to="." method="_on_select_besty_pressed"]
+[connection signal="pressed" from="Ready" to="." method="_on_ready_pressed"]

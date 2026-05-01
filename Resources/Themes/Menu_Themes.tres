@@ -61,16 +61,15 @@ shadow_offset = Vector2(1, 2)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v1p4p"]
 bg_color = Color(0.309804, 0.309804, 0.309804, 0.686275)
+draw_center = false
 border_width_left = 2
 border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
-corner_radius_top_left = 2
-corner_radius_top_right = 2
-corner_radius_bottom_right = 2
-corner_radius_bottom_left = 2
-shadow_size = 2
-shadow_offset = Vector2(1, 2)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
 
 [resource]
 Button/styles/disabled = SubResource("StyleBoxFlat_t1xwt")

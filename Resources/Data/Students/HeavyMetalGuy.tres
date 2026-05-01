@@ -1,9 +1,5 @@
-[gd_resource type="Resource" script_class="Student_Resource" load_steps=10 format=3 uid="uid://crjsylvyx7g2w"]
+[gd_resource type="Resource" script_class="Student_Resource" load_steps=6 format=3 uid="uid://crjsylvyx7g2w"]
 
-[ext_resource type="Texture2D" uid="uid://va580vf1m0o7" path="res://Assets/Image/Student/Head/Eyebrows/Eyebrows_01.png" id="1_k7hwg"]
-[ext_resource type="Texture2D" uid="uid://j7kuh213qlee" path="res://Assets/Image/Student/Head/Eyes/Eyes_04.png" id="2_k7hwg"]
-[ext_resource type="Texture2D" uid="uid://c0ebqy6ydav7u" path="res://Assets/Image/Student/Head/Hair/Hair_02.png" id="3_k7hwg"]
-[ext_resource type="Texture2D" uid="uid://2xnveispqogs" path="res://Assets/Image/Student/Head/Mouth/Mouth_07.png" id="4_dykx3"]
 [ext_resource type="Script" uid="uid://40jgn8mckuc1" path="res://Scripts/Abstract Classes/Resource/student_resource.gd" id="5_kl4sb"]
 [ext_resource type="Resource" uid="uid://cxlq71nn5t6fm" path="res://Resources/Data/Attributes/armor.tres" id="5_pjv2p"]
 [ext_resource type="Resource" uid="uid://dvi1u7e227gps" path="res://Resources/Data/Abilities/guitar_screech.tres" id="6_njli3"]
@@ -16,13 +12,16 @@ student_name = "Heavy Metal Guy"
 file_name = "HeavyMetalGuy"
 ordinal = -1
 starting_ability = ExtResource("6_njli3")
-background_color = Color(0.960784, 0.945098, 0, 1)
 primary = ExtResource("5_pjv2p")
 secondary = ExtResource("7_vmfd2")
 weakness = ExtResource("9_eds0d")
-hair = ExtResource("3_k7hwg")
-eyebrows = ExtResource("1_k7hwg")
-eyes = ExtResource("2_k7hwg")
-mouth = ExtResource("4_dykx3")
+background_color = Color(0.960784, 0.945098, 0, 1)
+HEAD_VARIANT = 0
+HEAD_COLOR = 0
+EYE_VARIANT = 0
+EYE_COLOR = 0
+HAIR_VARIANT = 0
+HAIR_COLOR = 0
 unlocked = true
+hidden = false
 student_tags = 0

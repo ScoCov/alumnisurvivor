@@ -1,10 +1,11 @@
-[gd_scene load_steps=26 format=3 uid="uid://v1phrdf8cdqg"]
+[gd_scene load_steps=22 format=3 uid="uid://v1phrdf8cdqg"]
 
 [ext_resource type="Script" uid="uid://d0tuntxkjee38" path="res://Entities/player_entity.gd" id="1_cue4i"]
 [ext_resource type="Script" uid="uid://bs86w8aueivx2" path="res://Entities/Components/Managers/ability_manager.gd" id="2_vvltm"]
 [ext_resource type="PackedScene" uid="uid://xy2guokl2776" path="res://Entities/Components/health_component.tscn" id="3_f8px4"]
 [ext_resource type="Script" uid="uid://ktc70ogcp3ib" path="res://Entities/Components/Managers/student_manager.gd" id="3_vvltm"]
 [ext_resource type="Script" uid="uid://dl3knldaqwm3p" path="res://Entities/Components/Managers/experience_manager.gd" id="4_5a7bc"]
+[ext_resource type="Resource" uid="uid://dtywod7hdge6p" path="res://Resources/Data/Students/Academic.tres" id="4_qd053"]
 [ext_resource type="PackedScene" uid="uid://dysr53ibvwa8l" path="res://Entities/Components/player_movement_component.tscn" id="5_dba2u"]
 [ext_resource type="Script" uid="uid://wcnfsy2fs30a" path="res://Entities/Components/Managers/dash_manager.gd" id="6_p4eev"]
 [ext_resource type="PackedScene" uid="uid://di3yidl1tqbq4" path="res://Entities/Indicator/dash_indicator.tscn" id="7_tjc8g"]
@@ -12,11 +13,7 @@
 [ext_resource type="Script" uid="uid://cpwhsrq1ak3v5" path="res://Scripts/Abstract Classes/Item/item_container.gd" id="9_81gbu"]
 [ext_resource type="AudioStream" uid="uid://bsvxl6ry23s8q" path="res://Assets/SFX/XP Pickup Chime/XP Chime 1.wav" id="10_s7kd2"]
 [ext_resource type="Texture2D" uid="uid://dtt7h2na2opvb" path="res://Assets/Image/Student/Body/Student_Body.png" id="11_80tmn"]
-[ext_resource type="Texture2D" uid="uid://ckyqn1o6hh0i1" path="res://Assets/Image/Student/Head/Head_beta_2.png" id="12_v8sgw"]
-[ext_resource type="Texture2D" uid="uid://c0ebqy6ydav7u" path="res://Assets/Image/Student/Head/Hair/Hair_02.png" id="13_orfis"]
-[ext_resource type="Texture2D" uid="uid://va580vf1m0o7" path="res://Assets/Image/Student/Head/Eyebrows/Eyebrows_01.png" id="14_b1hmi"]
-[ext_resource type="Texture2D" uid="uid://b1pkn4viaktqf" path="res://Assets/Image/Student/Head/Eyes/Eyes_02.png" id="15_anyje"]
-[ext_resource type="Texture2D" uid="uid://cr4jadxq3b6wj" path="res://Assets/Image/Student/Head/Mouth/Mouth_01.png" id="16_je17t"]
+[ext_resource type="PackedScene" uid="uid://b0f1e837x5x87" path="res://Entities/Body Parts/student_head.tscn" id="13_o7pea"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cue4i"]
 radius = 28.0
@@ -32,59 +29,12 @@ radius = 32.0
 radius = 35.0
 height = 125.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_fkouh"]
-resource_local_to_scene = true
-
 [sub_resource type="Animation" id="Animation_1pn2y"]
 length = 0.001
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Head:position:x")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(-15.7, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/1/type = "bezier"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Head:position:y")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(-35.4, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
 
 [sub_resource type="Animation" id="Animation_gi4ri"]
 resource_name = "walk"
 loop_mode = 1
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Head:position:x")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0, 0, 0),
-"points": PackedFloat32Array(-15.7, -0.25, 0, 0.25, 0, -15.7, -0.25, 0, 0.25, 0, -15.7, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 0.5, 0.99)
-}
-tracks/1/type = "bezier"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Head:position:y")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"handle_modes": PackedInt32Array(0, 0, 0),
-"points": PackedFloat32Array(-35.4, -0.25, 0, 0.25, 0, -46, -0.25, 0, 0.25, 0, -36, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 0.5, 0.99)
-}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_876pq"]
 _data = {
@@ -92,12 +42,13 @@ _data = {
 &"walk": SubResource("Animation_gi4ri")
 }
 
-[node name="Player Entity" type="CharacterBody2D" node_paths=PackedStringArray("student_manager", "experience", "abilities", "status_effects", "health", "items", "movment_component")]
+[node name="Player Entity" type="CharacterBody2D" node_paths=PackedStringArray("student_manager", "experience", "abilities", "student_head", "status_effects", "health", "items", "movment_component")]
 slide_on_ceiling = false
 script = ExtResource("1_cue4i")
 student_manager = NodePath("student_manager")
 experience = NodePath("Experience")
 abilities = NodePath("Abilities")
+student_head = NodePath("Visuals/StudentHead")
 status_effects = NodePath("StatusEffects")
 health = NodePath("HealthComponent")
 items = NodePath("Items")
@@ -115,6 +66,7 @@ parent_entity = NodePath("..")
 [node name="student_manager" type="Node" parent="." node_paths=PackedStringArray("swap_timer")]
 script = ExtResource("3_vvltm")
 swap_timer = NodePath("swap_timer")
+active_student = ExtResource("4_qd053")
 
 [node name="swap_timer" type="Timer" parent="student_manager"]
 one_shot = true
@@ -203,31 +155,16 @@ position = Vector2(3, -36)
 scale = Vector2(0.2, 0.2)
 
 [node name="StudentBody" type="Sprite2D" parent="Visuals"]
+z_index = 1
 y_sort_enabled = true
-material = SubResource("ShaderMaterial_fkouh")
 position = Vector2(-16, 255)
 texture = ExtResource("11_80tmn")
 
-[node name="Head" type="Sprite2D" parent="Visuals"]
-position = Vector2(-15.7, -35.4)
-texture = ExtResource("12_v8sgw")
-
-[node name="Hair" type="Sprite2D" parent="Visuals/Head"]
-position = Vector2(-4.75454, 0)
-scale = Vector2(0.887784, 1)
-texture = ExtResource("13_orfis")
-
-[node name="Eyebrows" type="Sprite2D" parent="Visuals/Head"]
-position = Vector2(-1.90735e-06, 13.6364)
-texture = ExtResource("14_b1hmi")
-
-[node name="Eyes" type="Sprite2D" parent="Visuals/Head"]
-position = Vector2(0, 22.7272)
-texture = ExtResource("15_anyje")
-
-[node name="Mouth" type="Sprite2D" parent="Visuals/Head"]
-position = Vector2(-1.5, 62)
-texture = ExtResource("16_je17t")
+[node name="StudentHead" parent="Visuals" instance=ExtResource("13_o7pea")]
+z_index = 1
+position = Vector2(-20, -40)
+debug = false
+test_student = null
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Visuals"]
 libraries = {

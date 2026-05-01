@@ -1,33 +1,17 @@
 class_name Roster_Selected
 extends Control
 
-signal pick_button_pressed
-signal pick_button_down
-signal pick_button_up
-
 enum student_type {MAIN, BESTY} 
 
 @export var student_or_besty: student_type = student_type.MAIN
-@export var select_button: Button
-@export var disable_button: bool = false:
-	set(disabled):
-		disable_button = disabled
-		select_button.disabled = disabled
+@export var student_head: Body_Part_Student_Head
 
 @onready var background_panel = $Panel
-@onready var background_color = $ColorRect
-
 @onready var student_name = $Panel/MarginContainer/Panel/Label
-@onready var primary = $Panel/Data/Panel/MarginContainer/VBoxContainer/primary
-@onready var secondary = $Panel/Data/Panel/MarginContainer/VBoxContainer/secondary
-@onready var weakness = $Panel/Data/Panel/MarginContainer/VBoxContainer/weakness
-@onready var ability = $Panel/Data/Panel/MarginContainer/VBoxContainer/ability
-
-@onready var head = $Panel/Display/CenterContainer/Control/Head
-@onready var hair = $Panel/Display/CenterContainer/Control/Hair
-@onready var eyebrows = $Panel/Display/CenterContainer/Control/Eyebrows
-@onready var eyes = $Panel/Display/CenterContainer/Control/Eyes
-@onready var mouth = $Panel/Display/CenterContainer/Control/Mouth
+@onready var animation_player = $AnimationPlayer
+@onready var bg_box = $Panel/Display/bg_box
+@onready var box = $Panel/Display/Box
+@onready var border = $Border
 
 var student: Student_Resource:
 	get():
@@ -37,40 +21,45 @@ var student: Student_Resource:
 			
 func _ready():
 	card_update()
-	pass
 
-func card_update():
+func card_update(animate: bool = false):
+	if animate: animation_player.play("changed_student")
 	populate_image()
-	populate_text()
+	update_student_name()
+	update_ability_text()
+	update_passive_description()
 
-func populate_text():
-	student_name.text = "%s: \t%s" % [get_student_type(student_or_besty), student.student_name]
-	primary.text = "Primary: \t%s" % student.primary.name
-	secondary.text = "Secondary: \t%s" % student.secondary.name
-	weakness.text = "Weakness: \t%s" % student.weakness.name
-	ability.text = "Ability: \t%s" % student.starting_ability.ability_name 
-	background_color.color = student.background_color
+func update_ability_text():
+	var ability_name = $Panel/Ability_Data/Panel/MarginContainer/AbilityName
+	ability_name.text = "Ability: %s" % student.starting_ability.display_name
 
-func get_student_type(index: int)-> String:
-	var return_string
-	match index:
-		0:
-			return_string = "Main"
-		1: 
-			return_string = "Besty"
-	return return_string
+func update_student_name():
+	student_name.text = "%s %s" % ["Support:" if bool(student_or_besty) else "Player:" ,student.student_name]
+
+func update_passive_description():
+	var rt_label = $Panel/Data/Panel/MarginContainer/RichTextLabel
+	rt_label.text = "As a Besty:\n\nIf Player is struck by an enemy the player will get a small movement speed boost for 3s."
 
 func populate_image():
-	hair.texture = student.hair
-	eyebrows.texture = student.eyebrows
-	eyes.texture = student.eyes
-	mouth.texture = student.mouth
-
-func _on_button_pressed():
-	pick_button_pressed.emit()
-
-func _on_button_button_up():
-	pick_button_up.emit()
-
-func _on_button_button_down():
-	pick_button_down.emit()
+	student_head.build_head(student)
+	border_color()
+	
+func border_color():
+	var curr_stylebox: StyleBoxFlat = background_panel.get_theme_stylebox("panel")
+	var new_stylebox:= StyleBoxFlat.new()
+	var tR: TextureRect = $Panel/Display/bg_box/TextureRect
+	tR.texture.setup_local_to_scene()
+	var textRest = load("res://Assets/Image/Textures/radial_gradient.tres")
+	#textRest.setup_local_to_scene()
+	var tXR = textRest.duplicate(true)
+	tXR.gradient.colors = [student.background_color, Color(0,0,0,0)]
+	tR.texture = tXR
+	new_stylebox.bg_color = student.background_color/2
+	new_stylebox.set_corner_radius_all(curr_stylebox.corner_radius_bottom_left)
+	new_stylebox.set_border_width_all(curr_stylebox.border_width_left)
+	new_stylebox.shadow_size = curr_stylebox.shadow_size
+	new_stylebox.shadow_offset = curr_stylebox.shadow_offset
+	new_stylebox.draw_center = true
+	background_panel.add_theme_stylebox_override("panel",new_stylebox)
+	var sprite_2d = $Panel/Sprite2D
+	sprite_2d.modulate = student.background_color/3

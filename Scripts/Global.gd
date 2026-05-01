@@ -22,36 +22,16 @@ var SELECTED_BESTY: Student_Resource
 
 var SELECTED_MAP: Map_Resource
 
-var load_mouths_array: Array[Variant]
-var MOUTHS: Array[Texture]
-var load_eyes_array: Array[Variant]
-var EYES: Array[Texture]
-var load_eyebrows_array: Array[Variant]
-var EYEBROWS: Array[Texture]
-var load_hair_array: Array[Variant]
-var HAIR: Array[Texture]
-
 func _ready():
-	var config = Config.new()
-	load_objects(config.get_dir("student"), STUDENT_ROSTER)
-	load_objects(config.get_dir("attribute"), ATTRIBUTES)
-	load_objects(config.get_dir("enemy"), ENEMY_ROSTER)
-	load_objects(config.get_dir("ability"), ABILITIES)
-	load_objects(config.get_dir("item"), ITEM_COLLECTION)
-	load_objects(config.get_dir("mouth"), load_mouths_array)
-	load_objects(config.get_dir("eyes"), load_eyes_array)
-	load_objects(config.get_dir("eyebrows"), load_eyebrows_array)
-	load_objects(config.get_dir("hair"), load_hair_array)
-	load_objects(config.get_dir("map"), MAPS)
-	load_objects(config.get_dir("status_effects"), STATUS_EFFECTS)
+	load_objects(Loader.get_dir("student"), STUDENT_ROSTER)
+	load_objects(Loader.get_dir("attribute"), ATTRIBUTES)
+	load_objects(Loader.get_dir("enemy"), ENEMY_ROSTER)
+	load_objects(Loader.get_dir("ability"), ABILITIES)
+	load_objects(Loader.get_dir("item"), ITEM_COLLECTION)
+	load_objects(Loader.get_dir("map"), MAPS)
+	load_objects(Loader.get_dir("status_effects"), STATUS_EFFECTS)
 	
-	## Load in the Images
-	load_textures(load_mouths_array, MOUTHS)
-	load_textures(load_eyes_array, EYES)
-	load_textures(load_eyebrows_array, EYEBROWS)
-	load_textures(load_hair_array, HAIR)
-	
-	## Sorting Sections
+	# Sorting Sections
 	ATTRIBUTES.sort_custom(func(a,b): return a.ordinal < b.ordinal )
 	STUDENT_ROSTER.sort_custom(func(a,b): return a.ordinal > b.ordinal )
 	if len(STUDENT_ROSTER) > 1: ## If there's at least two students in the roster assign default students.
@@ -69,23 +49,28 @@ func load_objects(_dir: String, variable: Variant):
 		if not ".import" in file: 
 			variable.append(load(_dir + file))
 			
-func select_student_as_primary(student: Student_Resource):
+func select_student_as_primary(student: Student_Resource) -> bool:
+	var character_swap: bool = false
 	if SELECTED_BESTY == student:
 		var temp_student: Student_Resource = SELECTED_STUDENT
 		SELECTED_STUDENT = SELECTED_BESTY
 		SELECTED_BESTY = temp_student
+		character_swap = true
 	elif SELECTED_STUDENT == student:
 		pass
 	else:
 		SELECTED_STUDENT = student
+	return character_swap
 	
-func select_student_as_secondary(student: Student_Resource):
+func select_student_as_secondary(student: Student_Resource)-> bool:
+	var character_swap: bool = false
 	if SELECTED_STUDENT == student:
 		var temp_student: Student_Resource = SELECTED_BESTY
 		SELECTED_BESTY = SELECTED_STUDENT
 		SELECTED_STUDENT = temp_student
+		character_swap = true
 	elif SELECTED_BESTY == student:
 		pass
 	else:
 		SELECTED_BESTY = student
-	
+	return character_swap

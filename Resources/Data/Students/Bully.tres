@@ -1,9 +1,5 @@
-[gd_resource type="Resource" script_class="Student_Resource" load_steps=10 format=3 uid="uid://be7tvpc2v1d3i"]
+[gd_resource type="Resource" script_class="Student_Resource" load_steps=6 format=3 uid="uid://be7tvpc2v1d3i"]
 
-[ext_resource type="Texture2D" uid="uid://va580vf1m0o7" path="res://Assets/Image/Student/Head/Eyebrows/Eyebrows_01.png" id="1_jauc0"]
-[ext_resource type="Texture2D" uid="uid://drtm0nrjkj1on" path="res://Assets/Image/Student/Head/Eyes/Eyes_03.png" id="2_jauc0"]
-[ext_resource type="Texture2D" uid="uid://clnjw3cmm8oad" path="res://Assets/Image/Student/Head/Hair/Hair_03.png" id="3_de2bk"]
-[ext_resource type="Texture2D" uid="uid://disq0w1vwu68d" path="res://Assets/Image/Student/Head/Mouth/Mouth_05.png" id="4_sr344"]
 [ext_resource type="Script" uid="uid://40jgn8mckuc1" path="res://Scripts/Abstract Classes/Resource/student_resource.gd" id="5_2j0fg"]
 [ext_resource type="Resource" uid="uid://gl46emysxfo3" path="res://Resources/Data/Attributes/damage.tres" id="5_shui5"]
 [ext_resource type="Resource" uid="uid://bv6lkhj6q5gtx" path="res://Resources/Data/Abilities/baseball_bat.tres" id="6_de2bk"]
@@ -16,13 +12,16 @@ student_name = "Bully"
 file_name = "Bully"
 ordinal = -1
 starting_ability = ExtResource("6_de2bk")
-background_color = Color(0, 0.756863, 1, 1)
 primary = ExtResource("5_shui5")
 secondary = ExtResource("7_gt3wx")
 weakness = ExtResource("9_rh2te")
-hair = ExtResource("3_de2bk")
-eyebrows = ExtResource("1_jauc0")
-eyes = ExtResource("2_jauc0")
-mouth = ExtResource("4_sr344")
+background_color = Color(0, 0.756863, 1, 1)
+HEAD_VARIANT = 0
+HEAD_COLOR = 0
+EYE_VARIANT = 0
+EYE_COLOR = 0
+HAIR_VARIANT = 0
+HAIR_COLOR = 0
 unlocked = false
+hidden = false
 student_tags = 0

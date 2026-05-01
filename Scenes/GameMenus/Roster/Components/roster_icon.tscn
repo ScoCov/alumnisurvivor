@@ -1,38 +1,18 @@
-[gd_scene load_steps=7 format=3 uid="uid://bm20qapbxcgdc"]
+[gd_scene load_steps=8 format=3 uid="uid://bm20qapbxcgdc"]
 
 [ext_resource type="Theme" uid="uid://ea0hpxrc3ot0" path="res://Resources/Themes/Menu_Themes.tres" id="1_538ng"]
 [ext_resource type="Script" uid="uid://chpudftadc80c" path="res://Scenes/GameMenus/Roster/Components/roster_icon.gd" id="1_dtvru"]
 [ext_resource type="Resource" uid="uid://dtywod7hdge6p" path="res://Resources/Data/Students/Academic.tres" id="2_2nb41"]
-[ext_resource type="Texture2D" uid="uid://ckyqn1o6hh0i1" path="res://Assets/Image/Student/Head/Head_beta_2.png" id="3_al4w5"]
+[ext_resource type="PackedScene" uid="uid://b0f1e837x5x87" path="res://Entities/Body Parts/student_head.tscn" id="5_n6d1n"]
+[ext_resource type="Texture2D" uid="uid://0k2iqaep3dd6" path="res://Assets/Image/Textures/roster_icon_focus.tres" id="5_yapse"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_538ng"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_n6d1n"]
+texture = ExtResource("5_yapse")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n6d1n"]
 draw_center = false
-border_width_left = 6
-border_width_top = 6
-border_width_right = 6
-border_width_bottom = 6
-border_color = Color(0.564962, 0.564962, 0.564961, 1)
-border_blend = true
-corner_radius_top_left = 8
-corner_radius_top_right = 8
-corner_radius_bottom_right = 8
-corner_radius_bottom_left = 8
-shadow_size = 2
-shadow_offset = Vector2(1, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yapse"]
-draw_center = false
-border_width_left = 8
-border_width_top = 8
-border_width_right = 8
-border_width_bottom = 8
-border_color = Color(0.730983, 0.730983, 3.85046e-07, 1)
-corner_radius_top_left = 12
-corner_radius_top_right = 12
-corner_radius_bottom_right = 12
-corner_radius_bottom_left = 12
-
-[node name="RosterIcon" type="Control" node_paths=PackedStringArray("focused", "head", "hair", "eyebrows", "eyes", "mouth", "background_color")]
+[node name="RosterIcon" type="Control" node_paths=PackedStringArray("student_head")]
 custom_minimum_size = Vector2(96, 96)
 layout_mode = 3
 anchor_right = 0.0833333
@@ -45,24 +25,11 @@ mouse_default_cursor_shape = 2
 theme = ExtResource("1_538ng")
 script = ExtResource("1_dtvru")
 student = ExtResource("2_2nb41")
-focused = NodePath("Focused")
-head = NodePath("CenterContainer/Control/Head")
-hair = NodePath("CenterContainer/Control/Hair")
-eyebrows = NodePath("CenterContainer/Control/Eyebrows")
-eyes = NodePath("CenterContainer/Control/Eyes")
-mouth = NodePath("CenterContainer/Control/Mouth")
-background_color = NodePath("ColorRect")
+student_head = NodePath("CenterContainer/Control/StudentHead")
 metadata/_edit_use_anchors_ = true
 
-[node name="Button" type="Button" parent="."]
-layout_mode = 0
-offset_left = 6.00002
-offset_top = 6.00005
-offset_right = 90.0
-offset_bottom = 90.0
-mouse_default_cursor_shape = 2
-
 [node name="ColorRect" type="ColorRect" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -75,18 +42,22 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="Panel" type="Panel" parent="."]
+[node name="Focused" type="Panel" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -72.0
+offset_top = -78.0
+offset_right = 72.0
+offset_bottom = 78.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_538ng")
+theme_override_styles/panel = SubResource("StyleBoxTexture_n6d1n")
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
-clip_contents = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -99,34 +70,29 @@ mouse_filter = 2
 layout_mode = 2
 mouse_filter = 2
 
-[node name="Head" type="Sprite2D" parent="CenterContainer/Control"]
-scale = Vector2(0.33, 0.33)
-texture = ExtResource("3_al4w5")
+[node name="StudentHead" parent="CenterContainer/Control" instance=ExtResource("5_n6d1n")]
+z_index = 2
+scale = Vector2(0.2, 0.2)
+bob_head = false
+debug = false
+test_student = null
 
-[node name="Hair" type="Sprite2D" parent="CenterContainer/Control"]
-scale = Vector2(0.33, 0.33)
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_right = 96.0
+offset_bottom = 96.0
+focus_mode = 0
+theme_override_styles/focus = SubResource("StyleBoxFlat_n6d1n")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxFlat_n6d1n")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_n6d1n")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxFlat_n6d1n")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_n6d1n")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxFlat_n6d1n")
+theme_override_styles/hover = SubResource("StyleBoxFlat_n6d1n")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxFlat_n6d1n")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_n6d1n")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_n6d1n")
+theme_override_styles/normal = SubResource("StyleBoxFlat_n6d1n")
 
-[node name="Eyebrows" type="Sprite2D" parent="CenterContainer/Control"]
-scale = Vector2(0.33, 0.33)
-
-[node name="Eyes" type="Sprite2D" parent="CenterContainer/Control"]
-scale = Vector2(0.33, 0.33)
-
-[node name="Mouth" type="Sprite2D" parent="CenterContainer/Control"]
-position = Vector2(0, 20)
-scale = Vector2(0.33, 0.33)
-
-[node name="Focused" type="Panel" parent="."]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_yapse")
-
-[connection signal="button_down" from="Button" to="." method="_on_button_button_down"]
-[connection signal="button_up" from="Button" to="." method="_on_button_button_up"]
+[connection signal="loaded" from="." to="." method="_on_loaded"]
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

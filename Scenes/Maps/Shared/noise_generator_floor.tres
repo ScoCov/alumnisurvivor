@@ -30,9 +30,13 @@ void fragment() {
 	vec4 n_out2p0 = texture(tex_frg_2, UV);
 
 
+// VectorFunc:8
+	vec4 n_out8p0 = round(n_out2p0);
+
+
 // Output:0
 	COLOR.rgb = vec3(n_out9p0.xyz);
-	COLOR.a = n_out2p0.x;
+	COLOR.a = n_out8p0.x;
 
 
 }
@@ -46,4 +50,4 @@ nodes/fragment/8/node = SubResource("VisualShaderNodeVectorFunc_fkifl")
 nodes/fragment/8/position = Vector2(340, 460)
 nodes/fragment/9/node = SubResource("VisualShaderNodeColorConstant_fkifl")
 nodes/fragment/9/position = Vector2(220, 100)
-nodes/fragment/connections = PackedInt32Array(9, 0, 0, 0, 2, 0, 0, 1)
+nodes/fragment/connections = PackedInt32Array(9, 0, 0, 0, 2, 0, 8, 0, 8, 0, 0, 1)

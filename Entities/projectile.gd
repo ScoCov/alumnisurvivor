@@ -45,7 +45,6 @@ func _process(_delta):
 	if start_position.distance_to(global_position) >= max_range:
 		max_distance_reached()
 	velocity = direction * speed
-	#move_and_collide(velocity)
 	move_and_slide()
 	
 func get_damage_rider() -> Damage_Rider:

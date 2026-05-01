@@ -1,9 +1,5 @@
-[gd_resource type="Resource" script_class="Student_Resource" load_steps=10 format=3 uid="uid://bqrarylfmicoh"]
+[gd_resource type="Resource" script_class="Student_Resource" load_steps=6 format=3 uid="uid://bqrarylfmicoh"]
 
-[ext_resource type="Texture2D" uid="uid://coxho8mkv06wf" path="res://Assets/Image/Student/Head/Eyebrows/Eyebrows_03.png" id="1_bgbcx"]
-[ext_resource type="Texture2D" uid="uid://b1pkn4viaktqf" path="res://Assets/Image/Student/Head/Eyes/Eyes_02.png" id="2_oxex6"]
-[ext_resource type="Texture2D" uid="uid://cfg4vqlg36ofq" path="res://Assets/Image/Student/Head/Hair/Hair_01.png" id="3_od0se"]
-[ext_resource type="Texture2D" uid="uid://disq0w1vwu68d" path="res://Assets/Image/Student/Head/Mouth/Mouth_05.png" id="4_smry2"]
 [ext_resource type="Resource" uid="uid://b4tkhcjsw15ux" path="res://Resources/Data/Attributes/cooldown.tres" id="5_1xv3j"]
 [ext_resource type="Script" uid="uid://40jgn8mckuc1" path="res://Scripts/Abstract Classes/Resource/student_resource.gd" id="5_watf6"]
 [ext_resource type="Resource" uid="uid://btrgf34kuimn3" path="res://Resources/Data/Abilities/stink_bomb.tres" id="6_oxex6"]
@@ -16,13 +12,16 @@ student_name = "Nerd"
 file_name = "Nerd"
 ordinal = 1
 starting_ability = ExtResource("6_oxex6")
-background_color = Color(0.960784, 0, 0.941176, 1)
 primary = ExtResource("5_1xv3j")
 secondary = ExtResource("7_ivkq0")
 weakness = ExtResource("9_16x42")
-hair = ExtResource("3_od0se")
-eyebrows = ExtResource("1_bgbcx")
-eyes = ExtResource("2_oxex6")
-mouth = ExtResource("4_smry2")
+background_color = Color(0.41, 0, 0, 1)
+HEAD_VARIANT = 0
+HEAD_COLOR = 0
+EYE_VARIANT = 0
+EYE_COLOR = 0
+HAIR_VARIANT = 2
+HAIR_COLOR = 3
 unlocked = true
+hidden = false
 student_tags = 0

@@ -19,7 +19,7 @@ config/icon="res://icon.svg"
 
 Utility="*res://Scripts/Utility.gd"
 Global="*res://Scripts/Global.gd"
-Configuration="*res://Scripts/Configuration.gd"
+Loader="*res://Scripts/Loader.gd"
 
 [display]
 

@@ -1,14 +1,10 @@
-[gd_resource type="Resource" script_class="Student_Resource" load_steps=10 format=3 uid="uid://bdyv3dp43ka7l"]
+[gd_resource type="Resource" script_class="Student_Resource" load_steps=6 format=3 uid="uid://bdyv3dp43ka7l"]
 
-[ext_resource type="Texture2D" uid="uid://va580vf1m0o7" path="res://Assets/Image/Student/Head/Eyebrows/Eyebrows_01.png" id="1_14jll"]
-[ext_resource type="Texture2D" uid="uid://b5dlojhwtpkpo" path="res://Assets/Image/Student/Head/Eyes/Eyes_01.png" id="2_yuwmk"]
-[ext_resource type="Texture2D" uid="uid://crfkr6wxgmawr" path="res://Assets/Image/Student/Head/Hair/Hair_05.png" id="3_14jll"]
-[ext_resource type="Texture2D" uid="uid://qq2xynak3arc" path="res://Assets/Image/Student/Head/Mouth/Mouth_02.png" id="4_noivu"]
 [ext_resource type="Script" uid="uid://40jgn8mckuc1" path="res://Scripts/Abstract Classes/Resource/student_resource.gd" id="5_77tcy"]
 [ext_resource type="Resource" uid="uid://b7lj25emughbo" path="res://Resources/Data/Attributes/movement_speed.tres" id="5_qpo4f"]
 [ext_resource type="Resource" uid="uid://bmjdqf2hvrjxf" path="res://Resources/Data/Abilities/baseball_ball.tres" id="6_noivu"]
 [ext_resource type="Resource" uid="uid://gl46emysxfo3" path="res://Resources/Data/Attributes/damage.tres" id="7_yuwmk"]
-[ext_resource type="Resource" uid="uid://dvx88scshq1lb" path="res://Resources/Data/Attributes/pickup_range.tres" id="9_7ebpo"]
+[ext_resource type="Resource" uid="uid://b4tkhcjsw15ux" path="res://Resources/Data/Attributes/cooldown.tres" id="9_qpo4f"]
 
 [resource]
 script = ExtResource("5_77tcy")
@@ -16,13 +12,16 @@ student_name = "Athlete"
 file_name = "Athlete"
 ordinal = 1
 starting_ability = ExtResource("6_noivu")
-background_color = Color(1, 0, 0, 1)
 primary = ExtResource("5_qpo4f")
 secondary = ExtResource("7_yuwmk")
-weakness = ExtResource("9_7ebpo")
-hair = ExtResource("3_14jll")
-eyebrows = ExtResource("1_14jll")
-eyes = ExtResource("2_yuwmk")
-mouth = ExtResource("4_noivu")
+weakness = ExtResource("9_qpo4f")
+background_color = Color(1, 0, 0, 1)
+HEAD_VARIANT = 0
+HEAD_COLOR = 0
+EYE_VARIANT = 0
+EYE_COLOR = 0
+HAIR_VARIANT = 0
+HAIR_COLOR = 1
 unlocked = true
+hidden = false
 student_tags = 0

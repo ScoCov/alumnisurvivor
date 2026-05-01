@@ -1,13 +1,13 @@
-[gd_scene load_steps=7 format=3 uid="uid://cbpdb6c61ootf"]
+[gd_scene load_steps=13 format=3 uid="uid://cbpdb6c61ootf"]
 
 [ext_resource type="Script" uid="uid://b60u4i2wepg2p" path="res://Scenes/GameMenus/Roster/Components/current_student_container.gd" id="1_fn2m3"]
 [ext_resource type="Theme" uid="uid://ea0hpxrc3ot0" path="res://Resources/Themes/Menu_Themes.tres" id="1_ja0s0"]
-[ext_resource type="Texture2D" uid="uid://ckyqn1o6hh0i1" path="res://Assets/Image/Student/Head/Head_beta_2.png" id="2_fn2m3"]
-
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_fn2m3"]
+[ext_resource type="Texture2D" uid="uid://b7s4a5gh5qvy0" path="res://Assets/Image/Textures/radial_gradient.tres" id="3_ja0s0"]
+[ext_resource type="PackedScene" uid="uid://b0f1e837x5x87" path="res://Entities/Body Parts/student_head.tscn" id="5_7vxtw"]
+[ext_resource type="Texture2D" uid="uid://dtcox1uymld8h" path="res://Assets/Image/Backgrounds/Background.Layer1.png" id="5_pkte0"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pkte0"]
-bg_color = Color(0.41598, 0.41598, 0.41598, 0.690196)
+bg_color = Color(0.26, 0.2548, 0.2548, 1)
 border_width_left = 2
 border_width_top = 2
 border_width_right = 2
@@ -16,15 +16,84 @@ corner_radius_top_left = 2
 corner_radius_top_right = 2
 corner_radius_bottom_right = 2
 corner_radius_bottom_left = 2
-shadow_size = 3
-shadow_offset = Vector2(0, 2)
+shadow_color = Color(0, 0, 0, 1)
+shadow_size = 6
+shadow_offset = Vector2(2, 3)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fn2m3"]
 bg_color = Color(0.404511, 0.404511, 0.404511, 1)
-shadow_size = 3
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.0923971, 0.0923971, 0.092397, 1)
+border_blend = true
+shadow_size = 1
 shadow_offset = Vector2(0, 2)
 
-[node name="Selected Student" type="MarginContainer" node_paths=PackedStringArray("select_button")]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ja0s0"]
+bg_color = Color(0.27, 0.27, 0.27, 0)
+draw_center = false
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 0.784314)
+border_blend = true
+shadow_size = 4
+
+[sub_resource type="Animation" id="Animation_ja0s0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_fn2m3"]
+resource_name = "changed_student"
+length = 0.24
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.12, 0.24),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.1, 1.1), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pkte0"]
+_data = {
+&"RESET": SubResource("Animation_ja0s0"),
+&"changed_student": SubResource("Animation_fn2m3")
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n0rrt"]
+bg_color = Color(0.26, 0.2548, 0.2548, 1)
+draw_center = false
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+shadow_size = 12
+shadow_offset = Vector2(0, 0.2)
+
+[node name="Selected Student" type="MarginContainer" node_paths=PackedStringArray("student_head")]
 custom_minimum_size = Vector2(240, 320)
 anchors_preset = -1
 anchor_right = 0.208333
@@ -34,19 +103,20 @@ offset_bottom = -320.0
 mouse_filter = 2
 theme = ExtResource("1_ja0s0")
 script = ExtResource("1_fn2m3")
-select_button = NodePath("Control/MarginContainer/Button")
+student_head = NodePath("Panel/Display/CenterContainer/Control/StudentHead")
 metadata/_edit_use_anchors_ = true
 
-[node name="ColorRect" type="ColorRect" parent="."]
-material = SubResource("CanvasItemMaterial_fn2m3")
-layout_mode = 2
-color = Color(0.513726, 1, 1, 1)
-
 [node name="Panel" type="Panel" parent="."]
+clip_contents = true
 layout_mode = 2
 mouse_filter = 2
 theme = ExtResource("1_ja0s0")
 theme_override_styles/panel = SubResource("StyleBoxFlat_pkte0")
+
+[node name="Sprite2D" type="Sprite2D" parent="Panel"]
+modulate = Color(0.241156, 0.241156, 0.241156, 0.431373)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("5_pkte0")
 
 [node name="MarginContainer" type="MarginContainer" parent="Panel"]
 layout_mode = 1
@@ -62,23 +132,42 @@ layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_fn2m3")
 
 [node name="Label" type="Label" parent="Panel/MarginContainer/Panel"]
-layout_mode = 2
-offset_right = 192.0
-offset_bottom = 23.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
+grow_vertical = 2
 text = "Student Name: (Main)"
 horizontal_alignment = 1
-metadata/_edit_use_anchors_ = true
+vertical_alignment = 1
 
 [node name="Display" type="MarginContainer" parent="Panel"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.0231481
-anchor_top = 0.121622
-anchor_right = 0.967593
-anchor_bottom = 0.445946
+anchor_top = 0.12
+anchor_right = 0.991071
+anchor_bottom = 0.466667
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 2
-metadata/_edit_use_anchors_ = true
+
+[node name="bg_box" type="Panel" parent="Panel/Display"]
+clip_contents = true
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Panel/Display/bg_box"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_ja0s0")
+
+[node name="Box" type="Panel" parent="Panel/Display"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ja0s0")
 
 [node name="CenterContainer" type="CenterContainer" parent="Panel/Display"]
 layout_mode = 2
@@ -88,29 +177,18 @@ mouse_filter = 2
 layout_mode = 2
 mouse_filter = 2
 
-[node name="Head" type="Sprite2D" parent="Panel/Display/CenterContainer/Control"]
+[node name="StudentHead" parent="Panel/Display/CenterContainer/Control" instance=ExtResource("5_7vxtw")]
 scale = Vector2(0.22, 0.22)
-texture = ExtResource("2_fn2m3")
-
-[node name="Hair" type="Sprite2D" parent="Panel/Display/CenterContainer/Control"]
-scale = Vector2(0.22, 0.22)
-
-[node name="Eyebrows" type="Sprite2D" parent="Panel/Display/CenterContainer/Control"]
-scale = Vector2(0.22, 0.22)
-
-[node name="Eyes" type="Sprite2D" parent="Panel/Display/CenterContainer/Control"]
-scale = Vector2(0.22, 0.22)
-
-[node name="Mouth" type="Sprite2D" parent="Panel/Display/CenterContainer/Control"]
-position = Vector2(0, 13)
-scale = Vector2(0.22, 0.22)
+bob_head = false
+debug = false
+test_student = null
 
 [node name="Data" type="MarginContainer" parent="Panel"]
 layout_mode = 1
 anchors_preset = -1
-anchor_top = 0.418919
+anchor_top = 0.546667
 anchor_right = 1.0
-anchor_bottom = 0.851351
+anchor_bottom = 0.973333
 offset_bottom = -1.52588e-05
 grow_horizontal = 2
 grow_vertical = 2
@@ -132,48 +210,43 @@ theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 4
 theme_override_constants/margin_bottom = 4
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Panel/Data/Panel/MarginContainer"]
-layout_mode = 2
-mouse_filter = 2
-
-[node name="primary" type="Label" parent="Panel/Data/Panel/MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 12
-
-[node name="secondary" type="Label" parent="Panel/Data/Panel/MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 12
-
-[node name="weakness" type="Label" parent="Panel/Data/Panel/MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 12
-
-[node name="ability" type="Label" parent="Panel/Data/Panel/MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 12
-
-[node name="Control" type="Control" parent="."]
+[node name="RichTextLabel" type="RichTextLabel" parent="Panel/Data/Panel/MarginContainer"]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="Control"]
+[node name="Ability_Data" type="MarginContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.413333
+anchor_right = 1.0
+anchor_bottom = 0.586667
+metadata/_edit_use_anchors_ = true
+
+[node name="Panel" type="Panel" parent="Panel/Ability_Data"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_fn2m3")
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel/Ability_Data/Panel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 264.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 12
+theme_override_constants/margin_left = 4
 theme_override_constants/margin_top = 8
-theme_override_constants/margin_right = 12
-theme_override_constants/margin_bottom = 16
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 8
 
-[node name="Button" type="Button" parent="Control/MarginContainer"]
+[node name="AbilityName" type="Label" parent="Panel/Ability_Data/Panel/MarginContainer"]
 layout_mode = 2
-theme = ExtResource("1_ja0s0")
-text = "Pick Student"
-metadata/_edit_use_anchors_ = true
+text = "Ability: ________________"
+vertical_alignment = 1
 
-[connection signal="button_down" from="Control/MarginContainer/Button" to="." method="_on_button_button_down"]
-[connection signal="button_up" from="Control/MarginContainer/Button" to="." method="_on_button_button_up"]
-[connection signal="pressed" from="Control/MarginContainer/Button" to="." method="_on_button_pressed"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_pkte0")
+}
+
+[node name="Border" type="Panel" parent="."]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_n0rrt")

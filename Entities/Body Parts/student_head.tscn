@@ -1,0 +1,77 @@
+[gd_scene load_steps=11 format=3 uid="uid://b0f1e837x5x87"]
+
+[ext_resource type="Script" uid="uid://bp4ktoqghyvw0" path="res://Entities/Body Parts/student_head.gd" id="1_yug4i"]
+[ext_resource type="Resource" uid="uid://dtywod7hdge6p" path="res://Resources/Data/Students/Academic.tres" id="2_exokc"]
+[ext_resource type="Texture2D" uid="uid://yc8h75tbmvki" path="res://Assets/Image/Student/Head/Head Variants/Head 01/Head_01_01.png" id="3_3prff"]
+[ext_resource type="Texture2D" uid="uid://qq2xynak3arc" path="res://Assets/Image/Student/Head/Mouth Variants/Mouth_02.png" id="3_exokc"]
+[ext_resource type="Texture2D" uid="uid://b0mv6f7g0vd68" path="res://Assets/Image/Student/Head/Eyes Variants/Eyes 01/Eyes_01_01.png" id="4_3prff"]
+[ext_resource type="Texture2D" uid="uid://va580vf1m0o7" path="res://Assets/Image/Student/Head/Eyebrows Variants/Eyebrows_01.png" id="5_xvskk"]
+[ext_resource type="Texture2D" uid="uid://i63n2on10j64" path="res://Assets/Image/Student/Head/Hair Variants/Hair 01/Hair_01_01.png" id="7_exokc"]
+
+[sub_resource type="Animation" id="Animation_3prff"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Container:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_exokc"]
+resource_name = "head_bob"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Container:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -5), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xvskk"]
+_data = {
+&"RESET": SubResource("Animation_3prff"),
+&"head_bob": SubResource("Animation_exokc")
+}
+
+[node name="StudentHead" type="Node2D"]
+script = ExtResource("1_yug4i")
+test_student = ExtResource("2_exokc")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_xvskk")
+}
+
+[node name="Container" type="Node2D" parent="."]
+
+[node name="HairBack" type="Sprite2D" parent="Container"]
+z_index = -1
+
+[node name="Head" type="Sprite2D" parent="Container"]
+texture = ExtResource("3_3prff")
+
+[node name="Mouth" type="Sprite2D" parent="Container"]
+position = Vector2(2, 62)
+texture = ExtResource("3_exokc")
+
+[node name="Eyes" type="Sprite2D" parent="Container"]
+texture = ExtResource("4_3prff")
+
+[node name="Eyebrows" type="Sprite2D" parent="Container"]
+texture = ExtResource("5_xvskk")
+
+[node name="Hair" type="Sprite2D" parent="Container"]
+position = Vector2(-1, -13)
+texture = ExtResource("7_exokc")

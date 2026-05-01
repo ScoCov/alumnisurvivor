@@ -20,6 +20,7 @@ const XP_COLLECTION_RANGE_DEFAULT = 100
 @export var student_manager: Student_Manager
 @export var experience: Experience_Manager 
 @export var abilities: Ability_Manager
+@export var student_head: Body_Part_Student_Head
 
 @onready var pick_up_range = $Sensors/XP_Pickup_Range/CollisionShape2D
 
@@ -28,14 +29,17 @@ func _process(_delta):
 	#$Label.text = "Direction: %s" % movment_component.direction 
 	
 func _ready():
+	_render_student()
 	loaded.emit()
 	
 func _render_student() -> void:
 	if not student_manager.active_student: return
-	$Visuals/Head/Hair.texture = student_manager.active_student.hair 
-	$Visuals/Head/Eyebrows.texture = student_manager.active_student.eyebrows
-	$Visuals/Head/Eyes.texture = student_manager.active_student.eyes
-	$Visuals/Head/Mouth.texture = student_manager.active_student.mouth
+	student_head.build_head(student_manager.active_student)
+	#$Visuals/Head.texture = student_manager.active_student.head
+	#$Visuals/Hair.texture = student_manager.active_student.hair 
+	#$Visuals/Eyebrows.texture = student_manager.active_student.eyebrows
+	#$Visuals/Eyes.texture = student_manager.active_student.eyes
+	#$Visuals/Mouth.texture = student_manager.active_student.mouth
 
 ## When an xp_node is within range of the of the pickup field, give the node
 ## a target of this entity.

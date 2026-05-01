@@ -17,6 +17,8 @@ enum UPDATE_OPTIONS {STUDENT_AND_BESTY, HEALTH, EXPERIENCE, TIME}
 @onready var cooldown_visual = $"Ability Info/Cooldown Visual"
 @onready var ability_info_label = $"Ability Info/Name"
 @onready var ability_timeleft = $"Ability Info/Timeleft"
+@onready var student = $Image/Control/Student
+@onready var besty = $Image/Control/Besty
 
 
 func _ready():
@@ -27,6 +29,7 @@ func _process(_delta):
 		update_debug_info()
 	update_health_values()
 	update_ability_info()
+	update_faces()
 	update_experience_values()
 
 func update_items():
@@ -38,19 +41,20 @@ func update_hud_static():
 	student_name.text = Global.SELECTED_STUDENT.student_name
 	besty_name.text = Global.SELECTED_BESTY.student_name
 	## Fill out Faces
-	update_faces(Global.SELECTED_STUDENT, STUDENT_OPTIONS.STUDENT)
-	update_faces(Global.SELECTED_BESTY, STUDENT_OPTIONS.BESTY)
+	update_faces()
+	#update_faces(Global.SELECTED_STUDENT, STUDENT_OPTIONS.STUDENT)
+	#update_faces(Global.SELECTED_BESTY, STUDENT_OPTIONS.BESTY)
 	## Update Health
 	#update_health_values()
 	## Update Experience
 	update_experience_values()
 		
-func update_faces(_student:Student_Resource, option: STUDENT_OPTIONS ):
-	var control: Control = $Image/Control
-	var target = control.find_child("Student" if option == STUDENT_OPTIONS.STUDENT else "Besty")
-	var resource = Global.SELECTED_STUDENT if option == STUDENT_OPTIONS.STUDENT else Global.SELECTED_BESTY
-	for part in target.get_children():
-		part.texture = resource[part.name.to_lower()]
+func update_faces():
+	var alt_student = game_ui.player.student_manager.besty_student
+	if alt_student == game_ui.player.student_manager.active_student:
+		alt_student = game_ui.player.student_manager.primary_student
+	student.build_head(game_ui.player.student_manager.active_student)
+	besty.build_head(alt_student)
 	
 func update_health_values():
 	var student = game_ui.player
