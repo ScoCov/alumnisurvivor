@@ -1,0 +1,188 @@
+[gd_scene load_steps=14 format=3 uid="uid://bxakbeh57oe5y"]
+
+[ext_resource type="Texture2D" uid="uid://ca37pmu5jk5pq" path="res://Assets/Image/Backgrounds/grass_floor_02_720x540.png" id="1_hsyn0"]
+[ext_resource type="Script" uid="uid://dy7n5gmkswm47" path="res://Scripts/GameLogic.gd" id="1_ugo5h"]
+[ext_resource type="Resource" uid="uid://c4d4dd13bctj0" path="res://Resources/Data/Stages/stage_01.tres" id="2_dfj8v"]
+[ext_resource type="Script" uid="uid://wj4520tlhte0" path="res://Scripts/Spawner/enemy_spawner.gd" id="2_sgcg6"]
+[ext_resource type="PackedScene" uid="uid://v1phrdf8cdqg" path="res://Entities/player_entity.tscn" id="3_dfj8v"]
+[ext_resource type="Script" uid="uid://c8jqrieptw2gt" path="res://Scripts/Spawner/spawn_zone.gd" id="5_rn3vw"]
+[ext_resource type="Script" uid="uid://ckklwqmrrbi60" path="res://Scripts/Abstract Classes/Resource/enemy_resource.gd" id="5_x5imr"]
+[ext_resource type="Resource" uid="uid://cmf76ta31ox1v" path="res://Resources/Data/Enemies/weakling.tres" id="6_sfwxy"]
+[ext_resource type="PackedScene" uid="uid://cry3gb37tqlm0" path="res://Scenes/HUD/game_ui.tscn" id="9_sfwxy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kmm7h"]
+size = Vector2(1896, 1928)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_6k6fe"]
+a = Vector2(-499, -282)
+b = Vector2(-502, 1646)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_rn3vw"]
+a = Vector2(-499, -282)
+b = Vector2(-500, 1651)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_kmm7h"]
+a = Vector2(-494, 781)
+b = Vector2(1423.75, 780.817)
+
+[node name="Stage01 - School Entrance" type="Node2D"]
+
+[node name="Background" type="CanvasLayer" parent="."]
+layer = -1
+follow_viewport_enabled = true
+
+[node name="GrassFloor02720x543" type="Sprite2D" parent="Background"]
+position = Vector2(-14, -11)
+texture = ExtResource("1_hsyn0")
+
+[node name="GrassFloor02720x542" type="Sprite2D" parent="Background"]
+position = Vector2(-14, 511)
+texture = ExtResource("1_hsyn0")
+
+[node name="GrassFloor02720x541" type="Sprite2D" parent="Background"]
+position = Vector2(930, 511)
+texture = ExtResource("1_hsyn0")
+
+[node name="GrassFloor02720x546" type="Sprite2D" parent="Background"]
+position = Vector2(-6, 1051)
+texture = ExtResource("1_hsyn0")
+
+[node name="GrassFloor02720x547" type="Sprite2D" parent="Background"]
+position = Vector2(-7, 1377)
+texture = ExtResource("1_hsyn0")
+
+[node name="GrassFloor02720x544" type="Sprite2D" parent="Background"]
+position = Vector2(934, 1047)
+texture = ExtResource("1_hsyn0")
+
+[node name="GrassFloor02720x545" type="Sprite2D" parent="Background"]
+position = Vector2(933, 1373)
+texture = ExtResource("1_hsyn0")
+
+[node name="GrassFloor02720x540" type="Sprite2D" parent="Background"]
+position = Vector2(930, -11)
+texture = ExtResource("1_hsyn0")
+
+[node name="ColorRect3" type="ColorRect" parent="Background"]
+offset_left = -527.0
+offset_top = -326.0
+offset_right = 1410.0
+offset_bottom = -281.0
+color = Color(1.52815e-06, 0.421452, 0.0618975, 1)
+
+[node name="ColorRect4" type="ColorRect" parent="Background"]
+offset_left = -527.0
+offset_top = 1642.0
+offset_right = 1410.0
+offset_bottom = 1687.0
+color = Color(1.52815e-06, 0.421452, 0.0618975, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="Background"]
+offset_left = 1410.0
+offset_top = -326.0
+offset_right = 1450.0
+offset_bottom = 1687.0
+color = Color(1.52815e-06, 0.421452, 0.0618975, 1)
+
+[node name="ColorRect" type="ColorRect" parent="Background"]
+offset_left = -527.0
+offset_top = -326.0
+offset_right = -487.0
+offset_bottom = 1687.0
+color = Color(1.52815e-06, 0.421452, 0.0618975, 1)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Game UI" parent="CanvasLayer" instance=ExtResource("9_sfwxy")]
+top_level = true
+
+[node name="Game_Local" type="Node" parent="." node_paths=PackedStringArray("player", "game_time", "enemy_spawner", "game_ui")]
+script = ExtResource("1_ugo5h")
+stage_resource = ExtResource("2_dfj8v")
+player = NodePath("../Entities/Player/Player Entity")
+game_time = NodePath("Game_Time")
+enemy_spawner = NodePath("enemy_spawner")
+game_ui = NodePath("../CanvasLayer/Game UI")
+reroll_counter = 0
+
+[node name="Game_Time" type="Timer" parent="Game_Local"]
+wait_time = 120.0
+
+[node name="enemy_spawner" type="Node" parent="Game_Local" node_paths=PackedStringArray("player", "enemy_container", "spawn_zone")]
+script = ExtResource("2_sgcg6")
+enemy_list = Array[ExtResource("5_x5imr")]([ExtResource("6_sfwxy")])
+player = NodePath("../../Entities/Player/Player Entity")
+enemy_container = NodePath("../../Entities/Enemy")
+spawn_zone = NodePath("Spawn_Zone")
+
+[node name="spawn_time" type="Timer" parent="Game_Local/enemy_spawner"]
+autostart = true
+
+[node name="power_growth" type="Timer" parent="Game_Local/enemy_spawner"]
+wait_time = 3.0
+autostart = true
+
+[node name="Spawn_Zone" type="Node2D" parent="Game_Local/enemy_spawner"]
+script = ExtResource("5_rn3vw")
+metadata/_custom_type_script = "uid://c8jqrieptw2gt"
+
+[node name="Area2D" type="Area2D" parent="Game_Local/enemy_spawner/Spawn_Zone"]
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Game_Local/enemy_spawner/Spawn_Zone/Area2D"]
+position = Vector2(460, 680)
+shape = SubResource("RectangleShape2D_kmm7h")
+
+[node name="Entities" type="Node2D" parent="."]
+
+[node name="Enemy" type="Node2D" parent="Entities"]
+
+[node name="Currency" type="Node2D" parent="Entities"]
+
+[node name="Stage_Objects" type="Node2D" parent="Entities"]
+
+[node name="Projectiles" type="Node2D" parent="Entities"]
+
+[node name="Player" type="Node2D" parent="Entities"]
+position = Vector2(584, 324)
+
+[node name="Player Entity" parent="Entities/Player" instance=ExtResource("3_dfj8v")]
+
+[node name="Walls" type="Node" parent="."]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Walls"]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/StaticBody2D"]
+position = Vector2(14, 3)
+shape = SubResource("SegmentShape2D_6k6fe")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="Walls"]
+position = Vector2(1906, 0)
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/StaticBody2D2"]
+scale = Vector2(0.998794, 1)
+shape = SubResource("SegmentShape2D_rn3vw")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="Walls"]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/StaticBody2D3"]
+scale = Vector2(0.988936, 2.10421)
+shape = SubResource("SegmentShape2D_kmm7h")
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="Walls"]
+position = Vector2(0, -1051)
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/StaticBody2D4"]
+position = Vector2(0, -8)
+shape = SubResource("SegmentShape2D_kmm7h")
+
+[connection signal="loaded" from="Game_Local" to="Game_Local" method="_on_loaded"]

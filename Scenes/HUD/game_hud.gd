@@ -17,72 +17,43 @@ enum UPDATE_OPTIONS {STUDENT_AND_BESTY, HEALTH, EXPERIENCE, TIME}
 @onready var cooldown_visual = $"Ability Info/Cooldown Visual"
 @onready var ability_info_label = $"Ability Info/Name"
 @onready var ability_timeleft = $"Ability Info/Timeleft"
-@onready var student = $Image/Control/Student
-@onready var besty = $Image/Control/Besty
-
+@onready var student: Body_Part_Student_Head = $Image/Control/Student
+@onready var besty: Body_Part_Student_Head = $Image/Control/Besty
 
 func _ready():
-	debug_info.visible = game_ui.debug_mode
+	pass
 	
 func _process(_delta):
-	if game_ui.debug_mode:
-		update_debug_info()
-	update_health_values()
-	update_ability_info()
-	update_faces()
-	update_experience_values()
-
-func update_items():
-	var items = $"Debug Info/MarginContainer/VBoxContainer/Items"
-	items.text = "Items: %s" % game_ui.player.items.map(func(e): return e.item_name)
+	#if Global.DEBUG_MODE:
+		#update_debug_info()
+	pass
 	
 func update_hud_static():
 	## Develop Names
-	student_name.text = Global.SELECTED_STUDENT.student_name
-	besty_name.text = Global.SELECTED_BESTY.student_name
-	## Fill out Faces
-	update_faces()
-	#update_faces(Global.SELECTED_STUDENT, STUDENT_OPTIONS.STUDENT)
-	#update_faces(Global.SELECTED_BESTY, STUDENT_OPTIONS.BESTY)
-	## Update Health
-	#update_health_values()
-	## Update Experience
+	
 	update_experience_values()
 		
 func update_faces():
-	var alt_student = game_ui.player.student_manager.besty_student
-	if alt_student == game_ui.player.student_manager.active_student:
-		alt_student = game_ui.player.student_manager.primary_student
-	student.build_head(game_ui.player.student_manager.active_student)
+	var alt_student = Global.CURRENT_RUN.current_player_entity.student_manager.besty_student
+	if alt_student == Global.CURRENT_RUN.current_player_entity.student_manager.active_student:
+		alt_student = Global.CURRENT_RUN.current_player_entity.student_manager.primary_student
+	## Figure out how to change the names to the appropriate student names.
+	## student_name.text = "Active Student"
+	## besty_name.text = "Non-Active Student" 
+	student.build_head(Global.CURRENT_RUN.current_player_entity.student_manager.active_student)
 	besty.build_head(alt_student)
 	
 func update_health_values():
-	var student = game_ui.player
-	health.max_value = student.health.maximum_health
-	health.value = student.health.current_health
-	health_bar_text.text = "%s/%s" % [student.health.current_health, student.health.maximum_health]
+	var _student = game_ui.player
+	health.max_value = _student.health.maximum_health
+	health.value = _student.health.current_health
+	health_bar_text.text = "%s/%s" % [_student.health.current_health, _student.health.maximum_health]
 	
 func update_experience_values():
-	var student = game_ui.player
-	experience_bar.max_value = student.experience.xp_until_level_up
-	experience_bar.value = student.experience.current_xp
-	experience_bar_text.text = "Lvl. %s     EXP: %s        (Next Level: %s)" % [student.experience.player_level, student.experience.current_xp, student.experience.xp_until_level_up]
-
-func update_ability_info():
-	#var x_height = ability_info.get_transform().y
-	var ability_entity: Ability_Entity = game_ui.player.abilities.get_child(0)
-	var rect: Rect2 = ability_info.get_rect()
-	if ability_entity.cooldown.time_left > 0:
-		var percentage_complete =  ability_entity.cooldown.time_left / ability_entity.cooldown.wait_time
-		var y_size = rect.size.y * percentage_complete
-		cooldown_visual.size.y = rect.size.y - y_size
-		ability_timeleft.text = str(Utility.round_to_dec( ability_entity.cooldown.time_left, 2))
-	else:
-		rect.size.y = 0
-		ability_timeleft.text = ""
-	ability_info_label.text = ability_entity.ability.ability_name
-	
-	pass
+	var _student = game_ui.player
+	experience_bar.max_value = _student.experience.xp_until_level_up
+	experience_bar.value = _student.experience.current_xp
+	experience_bar_text.text = "Lvl. %s     EXP: %s        (Next Level: %s)" % [_student.experience.player_level, _student.experience.current_xp, _student.experience.xp_until_level_up]
 
 func update_debug_info():
 	var enemy_spawner: Enemy_Spawner = game_ui.game_logic.enemy_spawner

@@ -23,19 +23,20 @@ func _process(_delta):
 	
 func on_ready():
 	if len(entity_pool) <= 0 and not debug: return false
-	detection_shape_2d.shape.radius = ability.attack_range + _items.get_attribute_bonus("attack_range")
+	detection_shape_2d.shape.radius = get_stat(ability.detection_range) + _items.get_attribute_bonus("attack_range")
 	_cooldown_complete = false
 	_ready_to_throw_again = true
 	if len(entity_pool) >= 1:
 		sort_entity_pool()
 		target_entity = entity_pool[0]
 		facing.look_at(target_entity.position )
-		return target_entity.position.distance_to(entity.position) < ability.attack_range + entity.items.get_attribute_bonus("attack_range")
+		return target_entity.position.distance_to(entity.position) < get_stat(ability.detection_range) + entity.items.get_attribute_bonus("attack_range")
 	return false
 	
 func on_active():
 	if not _ready_to_throw_again and _attack_complete: return true
 	if not _ready_to_throw_again: return false
+	#if Global.DEBUG_MODE: return false ## TEMP
 	_create_fan()
 	_ready_to_throw_again = false
 	if attack_duration.is_stopped():
@@ -48,7 +49,7 @@ func on_recovery():
 	
 func on_cooldown():
 	if cooldown.is_stopped() and not _cooldown_complete:
-		cooldown.wait_time = clamp(ability.cooldown * (1 + _items.get_attribute_bonus("cooldown")), COOLDOWN_MIN ,COOLDOWN_MAX) 
+		cooldown.wait_time = clamp(get_stat(ability.cooldown) * (1 + _items.get_attribute_bonus("cooldown")), COOLDOWN_MIN ,COOLDOWN_MAX) 
 		cooldown.start()
 	return _cooldown_complete
 	
@@ -67,7 +68,7 @@ func _on_detection_body_exited(body):
 func _create_fan():
 	var _angle = facing.rotation_degrees
 	for index in range(0,number_of_projectiles):
-		var _source = get_tree().get_root().get_node("MapEntrance")
+		var _source = get_tree().get_root().get_node("Entities/Projectiles")
 		_source.call_deferred("add_child", _create_pencil(index, _angle))
 
 func _create_pencil(index: int, _new_angle = null) -> Pencil_Projectile:

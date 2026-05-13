@@ -70,5 +70,5 @@ func _ready():
 func _on_animation_player_animation_finished():
 	$AnimationPlayer.play("Background_Movement")
 
-func transition_to_color(color: Color):
-	trans_color = true
+#func transition_to_color(color: Color):
+	#trans_color = true

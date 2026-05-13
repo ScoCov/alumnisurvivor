@@ -7,15 +7,16 @@ signal ready_complete
 ## This is the base ability entity that will have all the other abilities based upon.
 ## each form should be an instantiated Ability_Entity.
 #endregion
-@export_category("Connections")
 @export var entity: Entity
 @export var ability: Ability_Resource
+@export_range(1,4) var level: int = 1 
 
 @export_group("Debug")
 @export var debug: bool = true
 @export var debug_loop: bool = false
 @export var follow_mouse: bool = false
 @export var custom_target: Vector2 = Vector2.ZERO
+
 
 @onready var cooldown: Timer = $Cooldown
 @onready var state_machine = $StateMachine
@@ -32,12 +33,10 @@ var bounce_current: int = 0
 var look_at_target: bool = true
 var enable_attack: bool = false
 
+@warning_ignore("unused_private_class_variable")
 var _items: Item_Container:
 	get():
-		if get_parent() is Ability_Manager:
-			if get_parent().parent_entity.has_node("Items"):
-				return get_parent().parent_entity.items
-		return null
+		return Global.CURRENT_RUN.items
 		
 var _cooldown_complete: bool = false
 
@@ -77,8 +76,8 @@ func on_cooldown() -> bool:
 	
 func ability_factory(_resource: Ability_Resource):
 	assert(ability != null, "Ability Entity must have an Ability_Resource connected")
-	cooldown.wait_time = _resource.cooldown
-	detection.shape.radius = _resource.attack_range
+	cooldown.wait_time = get_stat_float(_resource.cooldown)
+	detection.shape.radius = get_stat_float(_resource.detection_range)
 	
 func add_entity_to_pool(_entity: Entity):
 	if _entity is Enemy_Entity:
@@ -105,3 +104,28 @@ func item_bonus(item_id: String) -> float:
 func student_augment(attribute_id: String) -> float:
 	if not entity is Player_Entity: return 0.0
 	return entity.student_manager.get_bonus_by_attribute(attribute_id)
+
+## Function used to obtain base attribute values based on the 
+## ability's current level. This function will accept 3 different
+## data types: Array[float], Array[int], and String. 
+func get_stat(attribute: Variant):
+	if attribute is Array[float]:
+		return get_stat_float(attribute)
+	elif attribute is Array[int]:
+		return get_stat_int(attribute)
+	elif attribute is String:
+		return get_stat_string(attribute)
+
+## This function will return a float value based on the parameter given, 
+## which should be an Array[float] type.
+func get_stat_float(attribute: Array[float]) -> float:
+	return attribute[level - 1]
+	
+## This function will return an int value based on the parameter given, 
+## which should be an Array[int] type.
+func get_stat_int(attribute: Array[int]) -> int:
+	return attribute[level - 1]
+
+## This function will return an int, or float, based on the attribute's string.
+func get_stat_string(attribute: String):
+	return ability[attribute][level -1]

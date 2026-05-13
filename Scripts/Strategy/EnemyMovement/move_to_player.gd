@@ -8,7 +8,7 @@ func exit():
 	pass
 
 func update(_entity: Enemy_Entity, _delta: float):
-	var direction_to_player:= _entity.position.direction_to(_entity.player.position)
+	var direction_to_player:= _entity.position.direction_to(Global.CURRENT_RUN.game_logic.player.global_position)
 	var slow_entity: Status_Slow = null
 	var speed: float = movement_component.movement_speed
 	if movement_component.check_for_slow:

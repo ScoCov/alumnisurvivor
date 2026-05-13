@@ -55,7 +55,7 @@ func on_recovery():
 	
 func on_cooldown():
 	if cooldown.is_stopped() and not _cooldown_complete:
-		cooldown.wait_time = clamp(ability.cooldown * (1 + _items.get_attribute_bonus("cooldown")), COOLDOWN_MIN ,COOLDOWN_MAX) 
+		cooldown.wait_time = clamp(get_stat_float(ability.cooldown) * (1 + _items.get_attribute_bonus("cooldown")), COOLDOWN_MIN ,COOLDOWN_MAX) 
 		cooldown.start()
 	return _cooldown_complete
 	

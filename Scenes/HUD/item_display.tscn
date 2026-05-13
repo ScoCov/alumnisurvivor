@@ -1,26 +1,20 @@
-[gd_scene load_steps=6 format=3 uid="uid://cmfryqpg8p4oy"]
+[gd_scene load_steps=5 format=3 uid="uid://cmfryqpg8p4oy"]
 
 [ext_resource type="Script" uid="uid://totcu6mbpxtt" path="res://Scenes/HUD/item_display.gd" id="1_k8xo2"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a6jw7"]
 bg_color = Color(0.633857, 0.590578, 0.568653, 1)
-corner_radius_top_left = 6
-corner_radius_top_right = 6
-corner_radius_bottom_right = 6
-corner_radius_bottom_left = 6
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k8xo2"]
-bg_color = Color(0.633857, 0.590578, 0.568653, 1)
-draw_center = false
-border_width_left = 8
-border_width_top = 8
-border_width_right = 8
-border_width_bottom = 8
+border_width_left = 6
+border_width_top = 6
+border_width_right = 6
+border_width_bottom = 6
+border_color = Color(1, 1, 1, 1)
 corner_radius_top_left = 6
 corner_radius_top_right = 6
 corner_radius_bottom_right = 6
 corner_radius_bottom_left = 6
 shadow_size = 4
+shadow_offset = Vector2(0, 3)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_awjwo"]
 corner_radius_top_left = 8
@@ -51,15 +45,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_a6jw7")
-
-[node name="Border" type="Panel" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_k8xo2")
 
 [node name="Title" type="Control" parent="."]
 layout_mode = 1
@@ -129,13 +114,13 @@ grow_vertical = 2
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.4
-anchor_top = 1.01429
+anchor_top = 1.04
 anchor_right = 0.6
-anchor_bottom = 1.10286
+anchor_bottom = 1.12857
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/focus = SubResource("StyleBoxLine_k8xo2")
-text = "Pick"
+text = "Buy"
 metadata/_edit_use_anchors_ = true
 
 [node name="Information" type="Control" parent="."]
@@ -229,5 +214,5 @@ horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[connection signal="focus_entered" from="." to="." method="_on_focus_entered"]
+[connection signal="picked" from="." to="." method="_on_picked"]
 [connection signal="pressed" from="Pick" to="." method="_on_pick_pressed"]

@@ -67,6 +67,11 @@ func get_attribute_bonus(attribute_id: String) -> float:
 		sum += obj.base_value + (obj.growth_value * (obj.count -1))
 	return sum
 
+func get_JSON() -> JSON:
+	var json:= JSON.new()
+	json.set("items", _items)	
+	return json
+
 func _create_dict_row(_item_stack: Item_Stack, iea: Item_Effect_Attribute) -> Dictionary:
 	var _item = _item_stack.item
 	return {_item.item_id: _item, "count": _item_stack.count, "base_value": iea.base_value , "growth_value": iea.base_stack_mod}

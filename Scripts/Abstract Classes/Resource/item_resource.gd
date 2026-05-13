@@ -7,6 +7,9 @@ extends Resource
 @export var item_name: String
 ## Unique Idtentifier - meant to be used to find in the files
 @export var item_id: String 
+## The base credit amounts the item will cost. Increases in value will be
+## handled by a simple algorithim. (( (Stage_No. * 0.2) * base_cost) Increased by 20% of base)
+@export_range(1,1000) var base_cost: int
 ## Full description of what the item does and what buff/debuffs it will give.
 @export_multiline var item_description: String = ""
 ## Quick information - WIP

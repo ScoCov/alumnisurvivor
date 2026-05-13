@@ -1,0 +1,2 @@
+class_name Store_Abilities
+extends Control

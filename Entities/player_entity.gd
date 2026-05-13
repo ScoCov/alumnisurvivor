@@ -11,7 +11,6 @@ extends Entity
 signal loaded 
 signal death
 signal experience_gained
-#signal level_up 
 
 ## Eventually remove this and place this into the Experience Manager
 const XP_COLLECTION_RANGE_DEFAULT = 100 
@@ -26,7 +25,6 @@ const XP_COLLECTION_RANGE_DEFAULT = 100
 
 func _process(_delta):
 	pick_up_range.shape.radius = XP_COLLECTION_RANGE_DEFAULT * (1 + items.get_attribute_bonus("collection_range"))
-	#$Label.text = "Direction: %s" % movment_component.direction 
 	
 func _ready():
 	_render_student()
@@ -35,11 +33,6 @@ func _ready():
 func _render_student() -> void:
 	if not student_manager.active_student: return
 	student_head.build_head(student_manager.active_student)
-	#$Visuals/Head.texture = student_manager.active_student.head
-	#$Visuals/Hair.texture = student_manager.active_student.hair 
-	#$Visuals/Eyebrows.texture = student_manager.active_student.eyebrows
-	#$Visuals/Eyes.texture = student_manager.active_student.eyes
-	#$Visuals/Mouth.texture = student_manager.active_student.mouth
 
 ## When an xp_node is within range of the of the pickup field, give the node
 ## a target of this entity.
@@ -68,4 +61,3 @@ func _on_hitbox_body_entered(body):
 	health.apply_damage_rider(damage_rider)
 	if body is Projectile:
 		body.queue_free()
-	print("Player Hit for %s damage" % [damage_rider.deal_damage()])

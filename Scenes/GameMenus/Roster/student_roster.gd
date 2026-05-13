@@ -14,7 +14,7 @@ func _on_back_pressed():
 	get_tree().change_scene_to_file("res://Scenes/MainMenu.tscn")
 
 func _on_selector_control_ready_pressed():
-	get_tree().change_scene_to_file("res://Scenes/Maps/Map_Entrance.tscn")
+	get_tree().change_scene_to_file("res://Scenes/GameMenus/select_difficulty.tscn")
 
 func _on_selector_control_student_selected():
 	select(student_selector.focused_student.student, true)

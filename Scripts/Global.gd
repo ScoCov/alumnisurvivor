@@ -1,6 +1,7 @@
 extends Node
 
-
+#const RUN_CONDUCTOR: Conductor = load("res://Scripts/Game_Conductor.gd")
+var DEBUG_MODE: bool = true
 
 var STUDENT_ROSTER: Array[Student_Resource]
 
@@ -21,6 +22,8 @@ var SELECTED_STUDENT: Student_Resource
 var SELECTED_BESTY: Student_Resource
 
 var SELECTED_MAP: Map_Resource
+
+var CURRENT_RUN: Conductor
 
 func _ready():
 	load_objects(Loader.get_dir("student"), STUDENT_ROSTER)

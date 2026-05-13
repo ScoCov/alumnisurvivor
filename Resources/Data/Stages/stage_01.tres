@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="Stage_Resource" load_steps=4 format=3 uid="uid://c4d4dd13bctj0"]
+
+[ext_resource type="Script" uid="uid://ckklwqmrrbi60" path="res://Scripts/Abstract Classes/Resource/enemy_resource.gd" id="1_dimoe"]
+[ext_resource type="Resource" uid="uid://cmf76ta31ox1v" path="res://Resources/Data/Enemies/weakling.tres" id="2_1a0e0"]
+[ext_resource type="Script" uid="uid://0lp3mvwvxddu" path="res://Scripts/Abstract Classes/Resource/stage_resource.gd" id="2_6y3hh"]
+
+[resource]
+script = ExtResource("2_6y3hh")
+stage_number = 1
+stage_type = 0
+stage_name = "School Entrance"
+description = "[center]The School Entrance[/center]
+
+
+	You and your friends show up to school a little late today, thanks to a late school bus. As you approach the school, monsters burst forth from the school's doors. The bus drives off before you and your friends could reboard."
+time_limit = 45.0
+normal_enemies = Array[ExtResource("1_dimoe")]([ExtResource("2_1a0e0")])
+difficulty_enemies = Array[ExtResource("1_dimoe")]([])
+hard_enemies = Array[ExtResource("1_dimoe")]([])
+very_hard_enemies = Array[ExtResource("1_dimoe")]([])
+impossible_enemies = Array[ExtResource("1_dimoe")]([])
+legendary_enemies = Array[ExtResource("1_dimoe")]([])
+metadata/_custom_type_script = "uid://0lp3mvwvxddu"

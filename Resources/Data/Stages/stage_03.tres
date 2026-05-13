@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="Stage_Resource" load_steps=5 format=3 uid="uid://dseua0vc6wu81"]
+
+[ext_resource type="Script" uid="uid://84dwsma4tnqu" path="res://Scripts/Abstract Classes/difficulty.gd" id="1_7jmj8"]
+[ext_resource type="Script" uid="uid://ckklwqmrrbi60" path="res://Scripts/Abstract Classes/Resource/enemy_resource.gd" id="2_rfa8x"]
+[ext_resource type="Script" uid="uid://0lp3mvwvxddu" path="res://Scripts/Abstract Classes/Resource/stage_resource.gd" id="3_n5n2o"]
+
+[sub_resource type="Resource" id="Resource_1a0e0"]
+script = ExtResource("1_7jmj8")
+current_mode = 0
+metadata/_custom_type_script = "uid://84dwsma4tnqu"
+
+[resource]
+script = ExtResource("3_n5n2o")
+stage_number = 3
+stage_name = "Court Yard"
+description = "[center]The Court Yard[/center]
+
+	You and your friends escaped from the parking lot with only one path available. This brought you deeper into the school, the Court Yard. Now you're surrounded by buildings and monsters. "
+time_limit = 120.0
+difficulty = SubResource("Resource_1a0e0")
+normal_enemies = Array[ExtResource("2_rfa8x")]([])
+difficulty_enemies = Array[ExtResource("2_rfa8x")]([])
+hard_enemies = Array[ExtResource("2_rfa8x")]([])
+very_hard_enemies = Array[ExtResource("2_rfa8x")]([])
+impossible_enemies = Array[ExtResource("2_rfa8x")]([])
+legendary_enemies = Array[ExtResource("2_rfa8x")]([])
+metadata/_custom_type_script = "uid://0lp3mvwvxddu"

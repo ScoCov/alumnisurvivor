@@ -26,6 +26,7 @@ metadata/_custom_type_script = "uid://uibb0wxuei0a"
 script = ExtResource("1_ovrua")
 item_name = "Backpack"
 item_id = "backpack"
+base_cost = 0
 item_description = ""
 tool_tip = ""
 unlocked = false

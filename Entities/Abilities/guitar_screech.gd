@@ -20,7 +20,7 @@ func _draw():
 	hitbox.shape.radius = radius_growth
 	
 func on_ready():
-	cooldown.wait_time = ability.cooldown * (1 +(_items.get_attribute_bonus("cooldown")))
+	cooldown.wait_time = get_stat(ability.cooldown) * (1 +(_items.get_attribute_bonus("cooldown")))
 	detection.shape.radius = max_growth + (_items.get_attribute_bonus("attack_range"))
 	_cooldown_complete = false
 	hitbox.disabled = true

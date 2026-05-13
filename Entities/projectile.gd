@@ -2,7 +2,6 @@ class_name Projectile
 extends CharacterBody2D
 
 signal decay
-signal collided
 
 enum TYPE {SPHERE, ROD, BULLET, BOMB}
 enum MOVEMENT {STRAIGHT, WAVE}

@@ -11,6 +11,8 @@ signal entity_spawned
 
 var entity: Entity
 var container: Node2D
+var spawn_zone: Spawn_Zone
+@onready var collision_shape_2d = $Area2D/CollisionShape2D
 
 func _ready():
 	modulate.a = alpha
@@ -25,20 +27,15 @@ func _on_duration_timeout():
 	$AnimationPlayer.play("spawn")
 
 ## If player steps on the spawn point, then move it and restart the timer.
-func _on_area_2d_body_entered(body):
+func _on_area_2d_body_entered(_body):
 	$Duration.stop()
 	$Duration.start(0)
-	position = _get_position(body.position)
+	position = _get_position()
 	
-## Provides a Vector2 using ranges from the max_distance_to_player and min_distance_to_player as a means to determines spawns for individualt entity.
-func _get_position(_origin: Vector2) -> Vector2:
-	var new_position:= Vector2(randf_range(-max_distance_to_player, max_distance_to_player),randf_range(-max_distance_to_player, max_distance_to_player)) + _origin
-	var distance_to_player: float = new_position.distance_to(_origin)
-	if distance_to_player < min_distance_to_player or distance_to_player > max_distance_to_player:
-		new_position = _get_position(_origin)
-	return new_position
+func _get_position():
+	return spawn_zone.get_spawn_vector2(collision_shape_2d.shape.radius, collision_shape_2d.shape.radius)
 
-## Use the entity and container provided to spawn in the contained entity.
+	## Use the entity and container provided to spawn in the contained entity.
 func spawn_entity(): 
 	entity.position = position
 	container.add_child(entity)

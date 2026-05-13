@@ -26,7 +26,7 @@ func on_active() -> bool: ## Attack
 	## When active, it should disable the looking at function for Facing
 	look_at_target = false
 	_enable_bat(true)
-	swinging.rotation_degrees += (ability.attack_speed + entity.items.get_attribute_bonus("attack_speed")) *  get_process_delta_time()
+	swinging.rotation_degrees += (get_stat(ability.attack_speed) + entity.items.get_attribute_bonus("attack_speed")) *  get_process_delta_time()
 	return swinging.rotation_degrees >= 45 + (_items.get_attribute_bonus("attack_range") / PI)
 	
 func on_recovery() -> bool: ## Reset
@@ -36,7 +36,7 @@ func on_recovery() -> bool: ## Reset
 	
 func on_cooldown()-> bool: ## During Cooldown
 	if entity is Player_Entity and entity.items.get_attribute_bonus("cooldown") != 0:
-		cooldown.wait_time = ability.cooldown / (ability.cooldown 
+		cooldown.wait_time = get_stat_float(ability.cooldown) / (get_stat_float(ability.cooldown) 
 		+ -(1 + entity.items.get_attribute_bonus("cooldown")))
 	if cooldown.is_stopped():
 		cooldown.start()
@@ -44,7 +44,7 @@ func on_cooldown()-> bool: ## During Cooldown
 
 func _on_hitbox_body_entered(body):
 	body.health.apply_damage_rider(Damage_Rider.new(entity, self, entity.items))
-	var total_knockback = (ability.knockback + _items.get_attribute_bonus("knockback"))
+	var total_knockback = (get_stat_float(ability.knockback) + _items.get_attribute_bonus("knockback"))
 	if total_knockback != 0: 
 		body.movement_component.knockback_effect(entity.position.direction_to(body.position), 
 														total_knockback)

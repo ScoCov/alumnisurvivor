@@ -5,12 +5,9 @@ signal death
 signal birth
 
 @export var entity: EnemyResource
-@export var player: Player_Entity
 @onready var sprite_2d = $Sprite2D
+@export var shape: CollisionShape2D
 
-func _process(_delta):
-	pass
-	
 func _ready():
 	health.damage_lethal.connect(_death)
 	build_enemy()

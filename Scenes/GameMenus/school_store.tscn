@@ -1,0 +1,316 @@
+[gd_scene load_steps=6 format=3 uid="uid://chvxsgmi3yteo"]
+
+[ext_resource type="Script" uid="uid://d03xllicj1u1o" path="res://Scenes/GameMenus/school_store.gd" id="1_hgpst"]
+[ext_resource type="PackedScene" uid="uid://f5m7acye5mxe" path="res://Scenes/GameMenus/Store/store_items.tscn" id="2_qdvb8"]
+[ext_resource type="Theme" uid="uid://dtoedfkuckej4" path="res://Assets/Image/UI/Themes/menu_theme.tres" id="2_vecqm"]
+[ext_resource type="PackedScene" uid="uid://dj5elm1d40yvy" path="res://Scenes/GameMenus/Store/store_abilities.tscn" id="3_t82ng"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vecqm"]
+bg_color = Color(0, 0, 0, 1)
+
+[node name="SchoolStore" type="Control" node_paths=PackedStringArray("back_btn", "skip_btn", "credits_label", "levels_label", "stage_label", "shop_items", "shop_abilities")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_hgpst")
+back_btn = NodePath("Control/MarginContainer/HBoxContainer/Back")
+skip_btn = NodePath("Control/MarginContainer/HBoxContainer/Skip")
+credits_label = NodePath("Banner/Panel/Credits")
+levels_label = NodePath("Banner/Panel/Levels")
+stage_label = NodePath("Banner/Panel/Stage")
+shop_items = NodePath("Shop_Page/Items/StoreItems")
+shop_abilities = NodePath("Shop_Page/Abilities/StoreAbilities")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 0.41, 0.41, 1)
+
+[node name="Level_Store" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -120.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Item_Store" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -120.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Shop_Page" type="Control" parent="."]
+anchors_preset = 0
+offset_top = 56.0
+offset_right = 1152.0
+offset_bottom = 517.0
+
+[node name="Items" type="MarginContainer" parent="Shop_Page"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 44
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 44
+theme_override_constants/margin_bottom = 10
+
+[node name="StoreItems" parent="Shop_Page/Items" instance=ExtResource("2_qdvb8")]
+layout_mode = 2
+
+[node name="Abilities" type="MarginContainer" parent="Shop_Page"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="StoreAbilities" parent="Shop_Page/Abilities" instance=ExtResource("3_t82ng")]
+layout_mode = 2
+
+[node name="Selection" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 56.0
+offset_right = -270.0
+offset_bottom = -120.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Selection"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_top = -11.0
+offset_right = 1.0
+offset_bottom = 11.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 44
+theme_override_constants/margin_top = 22
+theme_override_constants/margin_right = 44
+theme_override_constants/margin_bottom = 22
+
+[node name="Panel" type="Panel" parent="Selection/MarginContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Selection/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 96
+alignment = 1
+
+[node name="Control" type="Control" parent="Selection/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(350, 450)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Panel" type="Panel" parent="Selection/MarginContainer/HBoxContainer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Selection/MarginContainer/HBoxContainer/Control/Panel"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 54.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 24
+text = "Abilities (Level Shop)"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LevelShop" type="Button" parent="Selection/MarginContainer/HBoxContainer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_vecqm")
+theme_type_variation = &"FlatButton"
+
+[node name="Control2" type="Control" parent="Selection/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(350, 450)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Panel" type="Panel" parent="Selection/MarginContainer/HBoxContainer/Control2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Selection/MarginContainer/HBoxContainer/Control2/Panel"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 54.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 24
+text = "Items (Credits Shop)"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CreditShop" type="Button" parent="Selection/MarginContainer/HBoxContainer/Control2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_vecqm")
+theme_type_variation = &"FlatButton"
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 1
+anchor_top = 0.814815
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="MarginContainer" type="MarginContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 44.0
+offset_right = -44.0
+offset_bottom = 0.00012207
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 44
+theme_override_constants/margin_top = 22
+theme_override_constants/margin_right = 44
+theme_override_constants/margin_bottom = 22
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Skip" type="Button" parent="Control/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "DONE"
+
+[node name="Back" type="Button" parent="Control/MarginContainer/HBoxContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Back
+"
+
+[node name="Banner" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.0694444
+grow_horizontal = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Panel" type="Panel" parent="Banner"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_vecqm")
+
+[node name="Credits" type="Label" parent="Banner/Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.541667
+anchor_right = 0.845486
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 22
+text = "Credits: ######"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Levels" type="Label" parent="Banner/Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.154514
+anchor_right = 0.458333
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 22
+text = "Level-Points: ##"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Stage" type="Label" parent="Banner/Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.190972
+anchor_bottom = 1.0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 22
+text = "Stage Name & Number"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Stats" type="Control" parent="."]
+layout_mode = 1
+anchor_right = 0.223
+anchor_bottom = 0.187
+offset_left = 839.0
+offset_top = 67.0
+offset_right = 895.104
+offset_bottom = 395.824
+
+[node name="MarginContainer" type="MarginContainer" parent="Stats"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_right = 12
+
+[node name="Panel" type="Panel" parent="Stats/MarginContainer"]
+layout_mode = 2
+
+[connection signal="pressed" from="Selection/MarginContainer/HBoxContainer/Control/LevelShop" to="." method="_on_level_shop_pressed"]
+[connection signal="pressed" from="Selection/MarginContainer/HBoxContainer/Control2/CreditShop" to="." method="_on_credit_shop_pressed"]
+[connection signal="pressed" from="Control/MarginContainer/HBoxContainer/Skip" to="." method="_on_skip_pressed"]
+[connection signal="pressed" from="Control/MarginContainer/HBoxContainer/Back" to="." method="_on_back_pressed"]

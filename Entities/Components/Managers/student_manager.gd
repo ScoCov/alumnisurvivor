@@ -42,6 +42,7 @@ func _input(event):
 			_current_student = _student_options.BESTY
 		else:
 			_current_student = _student_options.STUDENT
+		student_swap.emit()
 			
 func _ready():
 	swap_timer.connect("timeout", reset_swap)
@@ -65,6 +66,7 @@ func swap_students(student: _student_options):
 
 ## This function is used to obtain a percentage value that should be applied on top of the 
 ## base value of an attribute and the items bonuses combined. 
+##
 ## Example: If player is using movement_speed is 100 and they have items that increase that by 20%,
 ## giving the player 120 movement speed, the bonus given by this will be applied to that total sum.
 ## If the bonus given by this function is "0.15", the resulting speed will now be 138

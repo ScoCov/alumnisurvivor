@@ -15,6 +15,7 @@ const SPAWN_INDICATOR = preload("res://Scripts/Spawner/spawn_indicator.tscn")
 @export var enemy_list: Array[EnemyResource] ## List of enemies for the given map
 @export var player: Player_Entity
 @export var enemy_container: Node2D ## The container in which enemies operate.
+@export var spawn_zone: Spawn_Zone
 
 @export_category("Settings")
 @export var max_number_of_entities: int = 10 ## Currently Unused
@@ -72,8 +73,6 @@ func grab_entities_to_spawn() -> Array[Enemy_Entity]:
 ## Create an Insantiated Enemy_Entity. The purpose of which is to add these new entities to the _offstage_entity array
 func load_entity(entity: EnemyResource) -> Enemy_Entity:
 	var _entity: Enemy_Entity = load("res://Entities/Enemies/%s.tscn" % entity.file_name).instantiate()
-	_entity.player = player
-	#if !_entity.death.is_connected(_remove_power(self, _entity)):
 	_entity.death.connect(_remove_power.bind(self, _entity))
 	return _entity
 
@@ -98,6 +97,9 @@ func _get_position(_origin: Vector2) -> Vector2:
 		new_position = _get_position(_origin)
 	return new_position
 	
+func get_position(width, height) -> Vector2:
+	return Vector2(spawn_zone.get_spawn_vector2(width,height))
+	
 func spawn_a_group(entity_group: Array[Enemy_Entity]):
 	if len(entity_group) <= 0:
 		return
@@ -106,15 +108,16 @@ func spawn_a_group(entity_group: Array[Enemy_Entity]):
 	## Small difference should always spawn 1 to 2 weaker entities.
 	if randf_range(0,1) <= spawn_chance:
 		var entity  = entity_group[randi_range(0, len(entity_group) -1)]
-		create_spawn_indicator(entity, _get_position(player.position))
+		create_spawn_indicator(entity)
 		increase_power(entity.entity.power_level)
 			
 func increase_power(amount: float):
 	current_pwer += amount
 	
-func create_spawn_indicator(entity_to_spawn: Enemy_Entity, _position: Vector2):
+func create_spawn_indicator(entity_to_spawn: Enemy_Entity):
 	var indicator = SPAWN_INDICATOR.instantiate()
-	indicator.position = _position
+	indicator.position = spawn_zone.get_spawn_vector2(entity_to_spawn.shape.shape.radius, entity_to_spawn.shape.shape.radius)
+	indicator.spawn_zone = spawn_zone
 	indicator.container = enemy_container
 	indicator.entity = entity_to_spawn
 	enemy_container.add_child(indicator)

@@ -50,7 +50,6 @@ func border_color():
 	var tR: TextureRect = $Panel/Display/bg_box/TextureRect
 	tR.texture.setup_local_to_scene()
 	var textRest = load("res://Assets/Image/Textures/radial_gradient.tres")
-	#textRest.setup_local_to_scene()
 	var tXR = textRest.duplicate(true)
 	tXR.gradient.colors = [student.background_color, Color(0,0,0,0)]
 	tR.texture = tXR

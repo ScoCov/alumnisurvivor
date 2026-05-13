@@ -105,7 +105,7 @@ func apply_dot_damage(amount: float, status_entity: Status_Effect_Entity):
 	_react_to_dot(amount, status_entity)
 	
 func apply_damage_rider(damage_rider: Damage_Rider):
-	if invulnerable: return ## Guard
+	if invulnerable or debug: return ## Guard
 	var damage_value = damage_rider.deal_damage()
 	var reduction_value = get_armor_reduction_value()
 	if !has_dodged():
@@ -120,7 +120,7 @@ func get_armor_reduction_value() -> float:
 func has_dodged() -> bool:
 	return randf_range(0,1) <= clamp(dodge + entity.items.get_attribute_bonus("dodge"), MIN_DODGE_CHANCE,MAX_DODGE_CHANCE)
 	
-func _apply_knockback(damage_rider: Damage_Rider):
+func _apply_knockback(_damage_rider: Damage_Rider):
 	knockback.emit()
 	#var kb_value
 	#if damage_rider.ability:

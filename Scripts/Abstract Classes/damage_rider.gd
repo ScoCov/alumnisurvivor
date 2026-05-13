@@ -41,7 +41,7 @@ func deal_damage() -> int:
 	damage_dealt.emit()
 	return floori(damage)
 	
-func deal_knockback() -> float:
-	if not ability: return 0.0
-	return ability.ability.knockback + entity.items.get_attribute_bonus("knockback")
+#func deal_knockback() -> float:
+	#if not ability: return 0.0
+	#return get_stat(ability.ability.knockback) + entity.items.get_attribute_bonus("knockback")
 	

@@ -10,8 +10,8 @@ func _ready():
 	duration.wait_time = lifetime
 	start_position = position
 	if parent_ability:
-		bounce = parent_ability.ability.bounce
-		pierce = parent_ability.ability.pierce
+		bounce = parent_ability.get_stat(parent_ability.ability.bounce)
+		pierce = parent_ability.get_stat(parent_ability.ability.pierce)
 	
 func _physics_process(delta):
 	_movement()
@@ -23,11 +23,11 @@ func _movement(_target_location = target):
 	if distance_traveled >= max_range:
 		self.queue_free()
 	if velocity == Vector2.ZERO or _target_location != target:
-		velocity = (position.direction_to(_target_location) * (parent_ability.ability.projectile_speed + parent_entity.items.get_attribute_bonus("projectile_speed")))
+		velocity = (position.direction_to(_target_location) * (parent_ability.get_stat(parent_ability.ability.projectile_speed) + parent_entity.items.get_attribute_bonus("projectile_speed")))
 	
 func _on_hitbox_body_entered(body):
 	body.health.apply_damage_rider(Damage_Rider.new(parent_entity,parent_ability , parent_entity.items))
-	var total_knockback = (parent_ability.ability.knockback + parent_entity.items.get_attribute_bonus("knockback"))
+	var total_knockback = (parent_ability.get_stat(parent_ability.ability.knockback) + parent_entity.items.get_attribute_bonus("knockback"))
 	if total_knockback != 0: 
 		body.movement_component.knockback_effect(parent_entity.position.direction_to(body.position), 
 														total_knockback)

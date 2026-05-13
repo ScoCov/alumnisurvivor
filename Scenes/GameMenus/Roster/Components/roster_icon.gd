@@ -21,7 +21,6 @@ func _ready():
 
 func _on_loaded():
 	student_head.build_head(student)
-	var tStyle = student
 	var ntStyle:= StyleBoxTexture.new()
 	var background: GradientTexture2D = load("res://Assets/Image/Textures/roster_icon_focus.tres")
 	var nTxtr = background.duplicate(true)

@@ -1,0 +1,75 @@
+[gd_scene load_steps=10 format=3 uid="uid://ly8jijd06w1o"]
+
+[ext_resource type="PackedScene" uid="uid://cry3gb37tqlm0" path="res://Scenes/HUD/game_ui.tscn" id="1_l64rd"]
+[ext_resource type="Script" uid="uid://dy7n5gmkswm47" path="res://Scripts/GameLogic.gd" id="2_7ygfm"]
+[ext_resource type="Resource" uid="uid://c4d4dd13bctj0" path="res://Resources/Data/Stages/stage_01.tres" id="3_id06g"]
+[ext_resource type="Script" uid="uid://wj4520tlhte0" path="res://Scripts/Spawner/enemy_spawner.gd" id="4_kb6xu"]
+[ext_resource type="Script" uid="uid://ckklwqmrrbi60" path="res://Scripts/Abstract Classes/Resource/enemy_resource.gd" id="5_01ww0"]
+[ext_resource type="Resource" uid="uid://cmf76ta31ox1v" path="res://Resources/Data/Enemies/weakling.tres" id="6_b1fn0"]
+[ext_resource type="Script" uid="uid://c8jqrieptw2gt" path="res://Scripts/Spawner/spawn_zone.gd" id="7_td70b"]
+[ext_resource type="PackedScene" uid="uid://v1phrdf8cdqg" path="res://Entities/player_entity.tscn" id="8_14h6m"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_460kf"]
+size = Vector2(1905, 1055)
+
+[node name="Stage01" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Game UI" parent="CanvasLayer" instance=ExtResource("1_l64rd")]
+top_level = true
+
+[node name="Game_Local" type="Node" parent="." node_paths=PackedStringArray("player", "game_time", "enemy_spawner", "game_ui")]
+script = ExtResource("2_7ygfm")
+stage_resource = ExtResource("3_id06g")
+player = NodePath("../Entities/Player/Player Entity")
+game_time = NodePath("Game_Time")
+enemy_spawner = NodePath("enemy_spawner")
+game_ui = NodePath("../CanvasLayer/Game UI")
+reroll_counter = 0
+
+[node name="Game_Time" type="Timer" parent="Game_Local"]
+wait_time = 120.0
+
+[node name="enemy_spawner" type="Node" parent="Game_Local" node_paths=PackedStringArray("player", "enemy_container", "spawn_zone")]
+script = ExtResource("4_kb6xu")
+enemy_list = Array[ExtResource("5_01ww0")]([ExtResource("6_b1fn0")])
+player = NodePath("../../Entities/Player/Player Entity")
+enemy_container = NodePath("../../Entities/Enemy")
+spawn_zone = NodePath("Spawn_Zone")
+
+[node name="spawn_time" type="Timer" parent="Game_Local/enemy_spawner"]
+autostart = true
+
+[node name="power_growth" type="Timer" parent="Game_Local/enemy_spawner"]
+wait_time = 3.0
+autostart = true
+
+[node name="Spawn_Zone" type="Node2D" parent="Game_Local/enemy_spawner"]
+script = ExtResource("7_td70b")
+metadata/_custom_type_script = "uid://c8jqrieptw2gt"
+
+[node name="Area2D" type="Area2D" parent="Game_Local/enemy_spawner/Spawn_Zone"]
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Game_Local/enemy_spawner/Spawn_Zone/Area2D"]
+position = Vector2(454.5, 247.5)
+shape = SubResource("RectangleShape2D_460kf")
+
+[node name="Entities" type="Node2D" parent="."]
+
+[node name="Enemy" type="Node2D" parent="Entities"]
+
+[node name="Currency" type="Node2D" parent="Entities"]
+
+[node name="Stage_Objects" type="Node2D" parent="Entities"]
+
+[node name="Projectiles" type="Node2D" parent="Entities"]
+
+[node name="Player" type="Node2D" parent="Entities"]
+position = Vector2(584, 324)
+
+[node name="Player Entity" parent="Entities/Player" instance=ExtResource("8_14h6m")]
+
+[connection signal="loaded" from="Game_Local" to="Game_Local" method="_on_loaded"]

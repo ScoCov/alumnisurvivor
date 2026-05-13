@@ -27,5 +27,6 @@ func add_experience(amount: float):
 func _level_up():
 	current_xp =  current_xp - xp_until_level_up 
 	player_level += 1
+	Global.CURRENT_RUN.level_up_points += 1
 	level_up_points += 1
 	level_up.emit()

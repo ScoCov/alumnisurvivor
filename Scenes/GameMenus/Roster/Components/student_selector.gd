@@ -27,13 +27,12 @@ var tween_duration: float = 0.25
 
 
 ## Carousel Video: https://www.youtube.com/watch?v=By1KxJ-LRsE
-
 func _ready():
-	grab_student(Global.SELECTED_STUDENT)
+	grab_student()
 	for ricon: Roster_Icon in roster_cont.get_children():
 		ricon.request_focus.connect(request_focus.bind(ricon))
 	
-func update_focused_student(student: Student_Resource, next: int = 0):
+func update_focused_student(next: int = 0):
 	var index = get_student_index() + next
 	if index >= roster_cont.get_child_count() or index <= -1:
 		index = get_student_index()
@@ -41,8 +40,8 @@ func update_focused_student(student: Student_Resource, next: int = 0):
 		highlight_icon(false)
 	focused_student = roster_cont.get_child(index)
 
-func grab_student(student: Student_Resource):
-	update_focused_student(student)
+func grab_student():
+	update_focused_student()
 	highlight_icon(true)
 	
 func play_noise():
@@ -59,7 +58,7 @@ func find_student_index(student_resource: Student_Resource) -> int:
 	
 func _on_inc_btn_pressed():
 	var scroll_value = tween_value + (get_scroll_distance())
-	update_focused_student(focused_student.student, 1) 
+	update_focused_student(1) 
 	inc_btn.disabled = true
 	play_noise()
 	await tween_scroll(scroll_value)
@@ -69,7 +68,7 @@ func _on_inc_btn_pressed():
 
 func _on_dec_btn_pressed():
 	var scroll_value = tween_value - (get_scroll_distance() + 10)
-	update_focused_student(focused_student.student, -1)
+	update_focused_student(-1)
 	dec_btn.disabled = true
 	play_noise()
 	await tween_scroll(scroll_value)
@@ -96,10 +95,10 @@ func enable_buttons():
 	self.inc_btn.disabled = false
 	self.dec_btn.disabled = false
 
-func highlight_icon(is_visible: bool):
-	focused_student.get_node("Focused").visible = is_visible
-	focused_student.student_head.bob_head = is_visible
-	var sNo: float = 1.1 if is_visible else 1.0
+func highlight_icon(make_visible: bool):
+	focused_student.get_node("Focused").visible = make_visible
+	focused_student.student_head.bob_head = make_visible
+	var sNo: float = 1.1 if make_visible else 1.0
 	focused_student.scale = Vector2(sNo,sNo)
 
 func _on_select_student_pressed():
@@ -124,7 +123,7 @@ func request_focus(roster_icon: Roster_Icon):
 		else:
 			if old_fs.position.x / roster_icon.position.x >= 0.5:
 				tween_duration = 0.3
-		tween_scroll(roster_icon.position.x +( 1 if roster_icon.position.x > old_fs.position.x else -1 * (roster_icon.size.x + roster_cont.get_theme_constant("seperation"))))
+		tween_scroll(roster_icon.position.x +( 1.00 if roster_icon.position.x > old_fs.position.x else -1.00 * (roster_icon.size.x + roster_cont.get_theme_constant("seperation") as float)))
 		tween_duration = store_duration
 		play_noise()
 		highlight_icon(true)

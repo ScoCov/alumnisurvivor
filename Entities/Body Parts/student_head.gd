@@ -23,7 +23,6 @@ func _ready():
 func build_head(student: Student_Resource):
 	head.texture = get_part_by_string("Head", student)
 	eyes.texture = get_part_by_string("Eyes", student)
-	var temp = student.hair_variant
 	if student.hair_variant in [1,2]:
 		hair.texture = get_hair(student, {"front": true})
 		hair_back.texture = get_hair(student, {"back": true})

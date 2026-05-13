@@ -12,7 +12,7 @@ func _ready():
 func _physics_process(delta):
 	movement_type.update(entity,delta)
 	if is_knocked_backed:
-		entity.velocity = -entity.position.direction_to(entity.player.position) * (knockback_speed)
+		entity.velocity = -entity.position.direction_to(Global.CURRENT_RUN.game_logic.player.global_position) * (knockback_speed)
 	if check_for_stun:
 		entity.velocity *= 0
 	entity.move_and_slide()

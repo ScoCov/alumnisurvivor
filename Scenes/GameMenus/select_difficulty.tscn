@@ -1,0 +1,305 @@
+[gd_scene load_steps=10 format=3 uid="uid://b534pfyr7jrnj"]
+
+[ext_resource type="Script" uid="uid://bfjdm5v2322fa" path="res://Scenes/GameMenus/select_difficulty.gd" id="1_gmbre"]
+[ext_resource type="PackedScene" uid="uid://dlx6bgpsdi00e" path="res://Scenes/GameMenus/menu_background.tscn" id="2_gmbre"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wmfm7"]
+bg_color = Color(0.2278, 0.26146, 0.34, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.24, 0.24, 0.24, 1)
+border_blend = true
+shadow_color = Color(0, 0, 0, 0.682353)
+shadow_size = 8
+shadow_offset = Vector2(0, 12)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gmbre"]
+draw_center = false
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.44, 0.44, 0.44, 1)
+border_blend = true
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1kl0c"]
+bg_color = Color(0.208562, 0.718896, 0, 1)
+draw_center = false
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.208562, 0.718896, 0, 1)
+border_blend = true
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_50pf4"]
+bg_color = Color(0.208562, 0.718896, 0, 1)
+draw_center = false
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.627275, 0.62716, 0, 1)
+border_blend = true
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mpy42"]
+bg_color = Color(0.208562, 0.718896, 0, 1)
+draw_center = false
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.792628, 0.545816, 5.77569e-07, 1)
+border_blend = true
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vv3yl"]
+bg_color = Color(0.208562, 0.718896, 0, 1)
+draw_center = false
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.969673, 0.396724, 7.70092e-07, 1)
+border_blend = true
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j4bmv"]
+bg_color = Color(0.208562, 0.718896, 0, 1)
+draw_center = false
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(1, 0, 0.0666666, 1)
+border_blend = true
+
+[node name="SelectDifficulty" type="Control" node_paths=PackedStringArray("diff_title")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_gmbre")
+diff_title = NodePath("MarginContainer/Panel/Control/Difficulty Name")
+
+[node name="Menu Background" parent="." instance=ExtResource("2_gmbre")]
+layout_mode = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.229167
+anchor_top = 0.148148
+anchor_right = 0.770833
+anchor_bottom = 0.851852
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+metadata/_edit_use_anchors_ = true
+
+[node name="Panel" type="Panel" parent="MarginContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_wmfm7")
+
+[node name="Control" type="Control" parent="MarginContainer/Panel"]
+layout_mode = 1
+anchor_left = 0.210526
+anchor_top = 0.2
+anchor_right = 0.802632
+anchor_bottom = 0.509091
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/Panel/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -106.0
+offset_top = -16.0
+offset_right = 106.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Normal" type="Button" parent="MarginContainer/Panel/Control/HBoxContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "0"
+
+[node name="Panel" type="Panel" parent="MarginContainer/Panel/Control/HBoxContainer/Normal"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_gmbre")
+
+[node name="Difficult" type="Button" parent="MarginContainer/Panel/Control/HBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+disabled = true
+text = "1"
+
+[node name="Panel" type="Panel" parent="MarginContainer/Panel/Control/HBoxContainer/Difficult"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_1kl0c")
+
+[node name="Hard" type="Button" parent="MarginContainer/Panel/Control/HBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+disabled = true
+text = "2"
+
+[node name="Panel" type="Panel" parent="MarginContainer/Panel/Control/HBoxContainer/Hard"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_50pf4")
+
+[node name="Very Hard" type="Button" parent="MarginContainer/Panel/Control/HBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+disabled = true
+text = "3"
+
+[node name="Panel" type="Panel" parent="MarginContainer/Panel/Control/HBoxContainer/Very Hard"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_mpy42")
+
+[node name="Impossible" type="Button" parent="MarginContainer/Panel/Control/HBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+disabled = true
+text = "4"
+
+[node name="Panel" type="Panel" parent="MarginContainer/Panel/Control/HBoxContainer/Impossible"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_vv3yl")
+
+[node name="Legendary" type="Button" parent="MarginContainer/Panel/Control/HBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+disabled = true
+text = "5"
+
+[node name="Panel" type="Panel" parent="MarginContainer/Panel/Control/HBoxContainer/Legendary"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_j4bmv")
+
+[node name="Difficulty Name" type="Label" parent="MarginContainer/Panel/Control"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 23.0
+grow_horizontal = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_outline_size = 2
+theme_override_font_sizes/font_size = 24
+text = "Difficulty Name"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control_Confirmation" type="Control" parent="MarginContainer/Panel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -168.0
+offset_top = -168.0
+offset_right = 168.0
+offset_bottom = -128.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Confirm" type="Button" parent="MarginContainer/Panel/Control_Confirmation"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.394345
+anchor_top = 0.1125
+anchor_right = 0.605655
+anchor_bottom = 0.8875
+grow_horizontal = 2
+grow_vertical = 2
+text = "Confirm
+"
+metadata/_edit_use_anchors_ = true
+
+[node name="Back" type="Button" parent="."]
+layout_mode = 0
+anchor_left = 0.0217014
+anchor_top = 0.0231481
+anchor_right = 0.0607639
+anchor_bottom = 0.0709877
+text = "Back"
+metadata/_edit_use_anchors_ = true
+
+[connection signal="pressed" from="MarginContainer/Panel/Control/HBoxContainer/Normal" to="." method="_on_normal_pressed"]
+[connection signal="pressed" from="MarginContainer/Panel/Control/HBoxContainer/Difficult" to="." method="_on_difficult_pressed"]
+[connection signal="pressed" from="MarginContainer/Panel/Control/HBoxContainer/Hard" to="." method="_on_hard_pressed"]
+[connection signal="pressed" from="MarginContainer/Panel/Control/HBoxContainer/Very Hard" to="." method="_on_very_hard_pressed"]
+[connection signal="pressed" from="MarginContainer/Panel/Control/HBoxContainer/Impossible" to="." method="_on_impossible_pressed"]
+[connection signal="pressed" from="MarginContainer/Panel/Control/HBoxContainer/Legendary" to="." method="_on_legendary_pressed"]
+[connection signal="pressed" from="MarginContainer/Panel/Control_Confirmation/Confirm" to="." method="_on_confirm_pressed"]
+[connection signal="pressed" from="Back" to="." method="_on_back_pressed"]
